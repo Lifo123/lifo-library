@@ -1,0 +1,139 @@
+---
+import "../components/Global.css";
+import DarkmodeToggle from "../components/Darkmode/DarkmodeToggle.tsx";
+import DarkmodeDrop from "../components/Darkmode/DarkmodeDrop.tsx";
+import Setting from "../components/Settings/Setting";
+---
+
+<script is:inline>
+	(function () {
+		try {
+			const mediaQuery = window.matchMedia(
+				"(prefers-color-scheme: dark)",
+			);
+			const TOGGLES = document.querySelectorAll(".lb-dm-togle");
+			const DROPS = document.querySelectorAll(".lb-dm-drop");
+
+			const applyTheme = () => {
+				const theme = localStorage.getItem("F-Theme") || "system";
+				const isDarkMode =
+					theme === "dark" ||
+					(theme === "system" && mediaQuery.matches);
+				const colorScheme = isDarkMode ? "dark" : "light";
+
+				document.documentElement.classList.toggle("dark", isDarkMode);
+				document.documentElement.style.colorScheme = colorScheme;
+
+				DROPS.forEach(
+					(drop) =>
+						(drop.value = theme === "system" ? colorScheme : theme),
+				);
+				TOGGLES.forEach((toggle) =>
+					toggle.classList.toggle("active", isDarkMode),
+				);
+			};
+
+			applyTheme();
+			mediaQuery.addEventListener("change", applyTheme);
+		} catch (e) {
+			console.error("Error applying theme:", e);
+		}
+	})();
+</script>
+
+<!-- <script is:inline>
+	(function () {
+		try {
+			const mediaQuery = window.matchMedia(
+				"(prefers-color-scheme: dark)",
+			);
+
+			const applyTheme = () => {
+				const theme = localStorage.getItem("F-Theme") || "system";
+				const isDark = window.matchMedia(
+					"(prefers-color-scheme: dark)",
+				).matches;
+				const TOGGLES = document.querySelectorAll(".lb-dm-togle");
+				const DROPS = document.querySelectorAll(".lb-dm-drop");
+
+				if (theme === "system") {
+					document.documentElement.style.colorScheme = isDark
+						? "dark"
+						: "light";
+					document.documentElement.classList[
+						isDark ? "add" : "remove"
+					]("dark");
+					DROPS.forEach((d) => {
+						d.value = isDark ? "dark" : "light";
+					});
+					TOGGLES.forEach((t) => {
+						t.classList[isDark ? "add" : "remove"]("active");
+					});
+					return;
+				}
+				document.documentElement.classList[
+					theme === "dark" ? "add" : "remove"
+				]("dark");
+				document.documentElement.style.colorScheme =
+					theme === "dark" ? "dark" : "light";
+				DROPS.forEach((d) => {
+					d.value = theme === "dark" ? "dark" : "light";
+				});
+				TOGGLES.forEach((t) => {
+					t.classList[theme === "dark" ? "add" : "remove"]("active");
+				});
+			};
+
+			applyTheme();
+
+			mediaQuery.addEventListener("change", applyTheme);
+		} catch (e) {
+			console.error("Error applying theme:", e);
+		}
+	})();
+</script> -->
+<html lang="en">
+	<head>
+		<title>Lifo Library</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link
+			rel="preconnect"
+			href="https://fonts.gstatic.com"
+			crossorigin=""
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/Lifo123/FlifoCSS@main/src/output/Flifo.css"
+		/>
+	</head>
+	<body id="app">
+		<header>TESTING</header>
+		<main class="f-row g-4">
+			<div class="f-col g-3">
+				<DarkmodeDrop storage="F-Theme" client:only="react" />
+				<DarkmodeToggle storage="F-Theme" client:only="react" />
+			</div>
+			<div class="test-cont">
+				<Setting client:only="react" >
+			</div>
+		</main>
+	</body>
+</html>
+
+<style is:inline>
+	main {
+		margin-top: 50px;
+		padding-inline: 50px;
+	}
+	.test-cont {
+		background-color: var(--bg-bento);
+		height: 600px;
+		width: 900px;
+	}
+</style>

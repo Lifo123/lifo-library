@@ -1,0 +1,50 @@
+.lb-dm-drop {
+    appearance: none;
+    min-width: 50px;
+    width: 90px;
+    padding: 7px 13px;
+    border-radius: 6px;
+    background-color: var(--lb-bg-secondary);
+    border: solid 1px var(--lb-border);
+    color: var(--lb-lowtext);
+    font-size: 14px;
+}
+
+.lb-dm-drop:focus {
+    border: solid 1px var(--lb-primary);
+    outline: solid 1px var(--lb-primary);
+}
+
+
+.lb-dm-togle {
+    cursor: pointer;
+    border-radius: 999px;
+    display: flex;
+    height: 22px;
+    width: 38px;
+    position: relative;
+    background-color: #6a6a6a;
+}
+
+.lb-dm-togle.active {
+    background-color: var(--lb-primary);
+}
+
+.lb-dm-togle span {
+    border-radius: 50%;
+    display: flex;
+    height: 70%;
+    top: 50%;
+    left: 4px;
+    transform: translateY(-50%);
+    aspect-ratio: 1;
+    position: absolute;
+    background-color: #fff;
+    transition: left .1s ease;
+    box-shadow: 1px 1px 6px #0000009e;
+}
+
+.lb-dm-togle.active span {
+    left: calc(100% - 19px);
+    right: 4px;
+}

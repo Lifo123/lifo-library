@@ -1,0 +1,7 @@
+.lb-setting {
+    display: grid;
+}
+
+.lb-setting aside {
+    min-width: 320px;
+}
