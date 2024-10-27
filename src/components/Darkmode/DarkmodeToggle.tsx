@@ -19,7 +19,9 @@ export default function DarkModeBTN({ storage = 'dm-theme', className, style }: 
 
     // Functions
     const Toggle = () => {
+        
         const theme = localStorage.getItem(storage) || 'system';
+        console.log(theme);
         const DROPS = document.querySelectorAll('.lb-dm-drop');
         const TOGGLES = document.querySelectorAll('.lb-dm-togle');
 
@@ -34,7 +36,7 @@ export default function DarkModeBTN({ storage = 'dm-theme', className, style }: 
             document.documentElement.style.colorScheme = isDark ? 'light' : 'dark';
             document.documentElement.classList[isDark ? 'remove' : 'add']('dark');
 
-            localStorage.setItem(storage, isDark ? 'dark' : 'light');
+            localStorage.setItem(storage, isDark ? 'light' : 'dark');
             return
         }
 
@@ -54,7 +56,7 @@ export default function DarkModeBTN({ storage = 'dm-theme', className, style }: 
 
     return (
         <span className={`lb-dm-togle ${initialDark ? 'active' : ''}`} onClick={Toggle} style={style}>
-            <span></span>
+            <span className='no-select'></span>
         </span>
     );
 }

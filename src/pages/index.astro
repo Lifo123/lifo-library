@@ -1,8 +1,6 @@
 ---
 import "../components/Global.css";
-import DarkmodeToggle from "../components/Darkmode/DarkmodeToggle.tsx";
-import DarkmodeDrop from "../components/Darkmode/DarkmodeDrop.tsx";
-import Setting from "../components/Settings/Setting";
+import Wrapper from "../components/Settings/Wrapper";
 ---
 
 <script is:inline>
@@ -112,28 +110,17 @@ import Setting from "../components/Settings/Setting";
 			href="https://cdn.jsdelivr.net/gh/Lifo123/FlifoCSS@main/src/output/Flifo.css"
 		/>
 	</head>
-	<body id="app">
-		<header>TESTING</header>
+	<body class="p-3 h-max" id="app">
 		<main class="f-row g-4">
-			<div class="f-col g-3">
-				<DarkmodeDrop storage="F-Theme" client:only="react" />
-				<DarkmodeToggle storage="F-Theme" client:only="react" />
-			</div>
-			<div class="test-cont">
-				<Setting client:only="react" >
+			<div class="test-cont mx-auto mt-4 w-100">
+				<Wrapper client:only="react">
 			</div>
 		</main>
 	</body>
-</html>
 
-<style is:inline>
-	main {
-		margin-top: 50px;
-		padding-inline: 50px;
-	}
-	.test-cont {
-		background-color: var(--bg-bento);
-		height: 600px;
-		width: 900px;
-	}
-</style>
+	<style is:inline>
+		.test-cont {
+			height: 600px;
+		}
+	</style>
+</html>
