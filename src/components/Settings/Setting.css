@@ -1,5 +1,6 @@
 .lb-setting-container{
     max-width: 1300px;
+    width: 80%;
 }
 .lb-setting {
     flex-direction: row;
@@ -23,6 +24,7 @@
 .lb-options {
     padding: 0.5rem;
     font-size: var(--lb-font-size-normal);
+    position: relative;
 }
 
 .lb-options.active {

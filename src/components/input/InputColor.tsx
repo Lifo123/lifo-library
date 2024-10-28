@@ -13,7 +13,8 @@ export default function InputRange({
 }: InputColorProps ) {
     //States
     const [value, setValue] = useState(initialValue);
-
+    console.log(initialValue);
+    
     const handleInputChange = (e: any) => {
         const newValue = e.target.value;
         setValue(newValue);
@@ -22,7 +23,7 @@ export default function InputRange({
 
     return (
         <input type="color"
-            value={value}
+            value='#1348a9'
             onInput={handleInputChange}
         />
     )
