@@ -1,0 +1,144 @@
+<!DOCTYPE html><script>
+	(function () {
+		try {
+			const mediaQuery = window.matchMedia(
+				"(prefers-color-scheme: dark)",
+			);
+			const TOGGLES = document.querySelectorAll(".lb-dm-togle");
+			const DROPS = document.querySelectorAll(".lb-dm-drop");
+
+			const applyTheme = () => {
+				const theme = localStorage.getItem("F-Theme") || "system";
+				const isDarkMode =
+					theme === "dark" ||
+					(theme === "system" && mediaQuery.matches);
+				const colorScheme = isDarkMode ? "dark" : "light";
+
+				document.documentElement.classList.toggle("dark", isDarkMode);
+				document.documentElement.style.colorScheme = colorScheme;
+
+				DROPS.forEach(
+					(drop) =>
+						(drop.value = theme === "system" ? colorScheme : theme),
+				);
+				TOGGLES.forEach((toggle) =>
+					toggle.classList.toggle("active", isDarkMode),
+				);
+			};
+
+			applyTheme();
+			mediaQuery.addEventListener("change", applyTheme);
+		} catch (e) {
+			console.error("Error applying theme:", e);
+		}
+	})();
+</script> <!-- <script is:inline>
+	(function () {
+		try {
+			const mediaQuery = window.matchMedia(
+				"(prefers-color-scheme: dark)",
+			);
+
+			const applyTheme = () => {
+				const theme = localStorage.getItem("F-Theme") || "system";
+				const isDark = window.matchMedia(
+					"(prefers-color-scheme: dark)",
+				).matches;
+				const TOGGLES = document.querySelectorAll(".lb-dm-togle");
+				const DROPS = document.querySelectorAll(".lb-dm-drop");
+
+				if (theme === "system") {
+					document.documentElement.style.colorScheme = isDark
+						? "dark"
+						: "light";
+					document.documentElement.classList[
+						isDark ? "add" : "remove"
+					]("dark");
+					DROPS.forEach((d) => {
+						d.value = isDark ? "dark" : "light";
+					});
+					TOGGLES.forEach((t) => {
+						t.classList[isDark ? "add" : "remove"]("active");
+					});
+					return;
+				}
+				document.documentElement.classList[
+					theme === "dark" ? "add" : "remove"
+				]("dark");
+				document.documentElement.style.colorScheme =
+					theme === "dark" ? "dark" : "light";
+				DROPS.forEach((d) => {
+					d.value = theme === "dark" ? "dark" : "light";
+				});
+				TOGGLES.forEach((t) => {
+					t.classList[theme === "dark" ? "add" : "remove"]("active");
+				});
+			};
+
+			applyTheme();
+
+			mediaQuery.addEventListener("change", applyTheme);
+		} catch (e) {
+			console.error("Error applying theme:", e);
+		}
+	})();
+</script> --><html lang="en"> <head><title>Lifo Library</title><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lifo123/FlifoCSS@main/src/output/Flifo.css"><style>*{font-family:Inter Tight,sans-serif}:root{--lb-bg: #ebebeb;--lb-bg-secondary: #e2e2e2;--lb-bg-third: #dfe1e2;--lb-bg-hover: #dee0e1;--lb-border: #1e1e1e;--lb-border-input: #343538;--lb-title: #18181a;--lb-subtitle: #191a1b;--lb-text: #161616;--lb-lowtext: #343434;--lb-hover: #fff;--lb-primary: #007bff;--lb-secondary: #6c757d;--lb-third: #343a40;--lb-link: #007bff;--lb-code-bg: #fff;--lb-code-html-tag: #1348a9;--lb-code-html-attr: #16c6c9;--lb-code-css-attr-value: #d37a1a;--lb-multiplier: 1.5;--lb-font-size-normal: calc(var(--lb-multiplier) * .67em);--lb-font-size-xxsmall: calc(var(--lb-multiplier) * .6em);--lb-font-size-xsmall: calc(var(--lb-multiplier) * .7em);--lb-font-size-small: calc(var(--lb-multiplier) * 1em);--lb-font-size-large: calc(var(--lb-multiplier) * 1.3em);--lb-font-size-xlarge: calc(var(--lb-multiplier) * 1.65em);--lb-font-size-xxlarge: calc(var(--lb-multiplier) * 1.9em)}.dark{--lb-bg: #1e1e1e;--lb-bg-dark: #1a1a1b;--lb-bg-secondary: #292828;--lb-bg-third: #2a2b2d;--lb-bg-hover: #424244;--lb-border: #6c6d70;--lb-border-input: #3b3c3f;--lb-title: #fff;--lb-subtitle: #fff;--lb-text: #fff;--lb-lowtext: #e8eaf0;--lb-hover: #fff;--lb-primary: #0e79f4;--lb-secondary: #6c757d;--lb-third: #343a40;--lb-link: #0c81ff;--lb-code-bg: #fff;--lb-code-html-tag: #1f71f2;--lb-code-html-attr: #2eadf2;--lb-code-css-attr-value: #d37a1a}body{background-color:var(--lb-bg)}input[type=color]{border:none;border-color:#007bff;outline:none;width:40px;height:40px;border-radius:10px}
+.lb-setting-container{max-width:1300px;width:80%}.lb-setting{flex-direction:row;flex-wrap:wrap}.lb-setting aside{min-width:250px;height:max-content}.lb-setting aside h3{font-size:var(--lb-font-size-small);font-weight:500}.lb-setting main{min-width:320px;flex:1}.lb-options{padding:.5rem;font-size:var(--lb-font-size-normal);position:relative}.lb-options.active{background-color:var(--lb-bg-third);font-weight:500}.lb-options:hover{background-color:var(--lb-bg-hover)}.lb-options.active:before{content:"";position:absolute;height:78%;width:4px;left:-6px;top:50%;transform:translateY(-50%);border-radius:150px;background-color:var(--lb-primary);z-index:1}@media (850px > width){.lb-setting{flex-direction:column}.lb-setting aside{width:100%;height:max-content}.lb-setting main{width:100%;min-width:100%}}.lb-main{font-family:Inter Tight,sans-serif;line-height:1.6;color:#333}.lb-main h1{color:var(--lb-title);margin-bottom:.2em;font-weight:600;font-size:var(--lb-font-size-xxlarge)}.lb-main h2{border-bottom:solid 1px var(--lb-border);color:var(--lb-title);margin-bottom:.6em;padding:4px 2px;font-weight:500;font-size:var(--lb-font-size-xlarge)}.lb-main h3{margin-bottom:.1em;color:var(--lb-subtitle);font-weight:400;font-size:var(--lb-font-size-large)}.lb-main h4{font-size:var(--lb-font-size-small);color:var(--lb-subtitle);margin-bottom:.5em;font-weight:400}.lb-main h5{font-size:var(--lb-font-size-xsmall);color:var(--lb-subtitle);margin-bottom:.5em;font-weight:400}.lb-main p{margin-bottom:1em;color:var(--lb-text);font-weight:300;font-size:var(--lb-font-size-normal)}.lb-main blockquote{font-style:italic;color:var(--lb-text);border:solid 1px var(--lb-bg-hover);border-left:4px solid var(--lb-primary);margin:1em 0;padding:.7em 1em;border-radius:4px;font-weight:300;font-size:var(--lb-font-size-xxsmall);display:flex;flex-direction:column;gap:.5em}.lb-main blockquote h1,.lb-main blockquote h2,.lb-main blockquote h3,.lb-main blockquote h4,.lb-main blockquote h5{font-size:var(--lb-font-size-small);margin-bottom:.5em;font-weight:400}.lb-main blockquote p{margin-bottom:0;color:var(--lb-lowtext)}.lb-main ul,.lb-main ol{color:var(--lb-text);margin:1em 0;padding-left:1.8em}.lb-main li{font-weight:300;margin-bottom:.5em}.lb-main a{color:var(--lb-link);text-decoration:underline;text-underline-offset:3px}.lb-main a:hover{text-decoration:underline}.lb-main img{max-width:100%;height:auto;margin:1em 0;display:block;color:var(--lb-text);font-weight:300}.lb-main hr{border:none;border-top:1px solid var(--lb-border);margin:2em 0}.lb-main pre{background-color:var(--lb-bg-third);border:solid 1px var(--lb-border-input);max-height:540px;padding:1em;border-radius:4px;overflow:auto;font-size:var(--lb-font-size-xxsmall)}.lb-main pre code{font-family:monospace;font-size:var(--lb-font-size-xxsmall);font-weight:400;color:var(--lb-text)}.lb-main label{font-weight:500;font-size:var(--lb-font-size-xxsmall);color:var(--lb-title);margin-bottom:.3em}.lb-main input[type=text],.lb-main input[type=password],.lb-main input[type=email],.lb-main input[type=number],.lb-main input[type=search],.lb-main input[type=tel],.lb-main input[type=url]{padding:12px 16px;background-color:var(--lb-bg-secondary);border:1px solid var(--lb-border-input);border-radius:6px;font-size:var(--lb-font-size-normal);font-weight:300}.lb-main input[type=text],.lb-main input[type=password],.lb-main input[type=email],.lb-main input[type=number],.lb-main input[type=search],.lb-main input[type=tel],.lb-main input[type=url]:focus{outline:solid 1px var(--lb-primary);border:1px solid var(--lb-primary)}.lb-main input[type=range]::-moz-range-progress{background-color:var(--lb-primary)}.lb-main input[type=range]::-moz-range-track{background-color:var(--lb-bg-secondary)}
+.lb-dm-drop{appearance:none;min-width:50px;width:90px;padding:7px 13px;border-radius:6px;background-color:var(--lb-bg-secondary);border:solid 1px var(--lb-border);color:var(--lb-lowtext);font-size:14px}.lb-dm-drop:focus{border:solid 1px var(--lb-primary);outline:solid 1px var(--lb-primary)}.lb-dm-togle{cursor:pointer;border-radius:999px;display:flex;height:22px;width:38px;position:relative;background-color:#6a6a6a}.lb-dm-togle.active{background-color:var(--lb-primary)}.lb-dm-togle span{border-radius:50%;display:flex;height:70%;top:50%;left:4px;transform:translateY(-50%);aspect-ratio:1;position:absolute;background-color:#fff;transition:left .1s ease;box-shadow:1px 1px 6px #0000009e}.lb-dm-togle.active span{left:calc(100% - 19px);right:4px}
+</style></head> <body class="p-3 h-max" id="app"> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).only=e;window.dispatchEvent(new Event("astro:only"));})();;(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="1w3VXz" component-url="/lifo-library/assets/Setting._YIziC6_.js" component-export="default" renderer-url="/lifo-library/assets/client.BIGLHmRd.js" props="{&quot;head&quot;:[0,&quot;Testing Modulate component&quot;]}" ssr="" client="only" opts="{&quot;name&quot;:&quot;Setting&quot;,&quot;value&quot;:&quot;react&quot;}" await-children=""><template data-astro-template> <astro-island uid="2ax54a" component-url="/lifo-library/assets/SettingAside.BJW4hCvK.js" component-export="default" renderer-url="/lifo-library/assets/client.BIGLHmRd.js" props="{&quot;head&quot;:[0,&quot;Settings&quot;]}" ssr="" client="only" opts="{&quot;name&quot;:&quot;SettingAside&quot;,&quot;value&quot;:&quot;react&quot;}" await-children=""><template data-astro-template="1-Content"><p>Content</p></template><template data-astro-template="2-Appearence"><p>Appearence</p></template><template data-astro-template="3-Darkmode"><p>Darkmode</p></template><template data-astro-template="4-Headings"><p>Headings</p></template><template data-astro-template="5-Texts"><p>Texts</p></template><template data-astro-template="6-Code"><p>Code</p></template><template data-astro-template="7-Language"><p></p></template><template data-astro-template="8-Blog of the Week"><p></p></template><!--astro:end--></astro-island> <astro-island uid="Z1rGrwg" component-url="/lifo-library/assets/SettingMain.2RbY6Be8.js" component-export="default" renderer-url="/lifo-library/assets/client.BIGLHmRd.js" props="{&quot;initName&quot;:[0,&quot;Appearence&quot;]}" ssr="" client="only" opts="{&quot;name&quot;:&quot;SettingMain&quot;,&quot;value&quot;:&quot;react&quot;}" await-children=""><template data-astro-template="Blog of the Week"><h1 id="la-importancia-del-acceso-a-internet-en-la-educación">La Importancia del Acceso a Internet en la Educación</h1>
+<h2 id="introducción">Introducción</h2>
+<p>En la última década, el acceso a Internet se ha convertido en un componente esencial de la educación moderna. Desde la investigación en línea hasta las plataformas de aprendizaje, el Internet ofrece recursos ilimitados para estudiantes y educadores. Este artículo explorará cómo el acceso a Internet mejora la educación, las disparidades en el acceso y las iniciativas que están cerrando la brecha digital.</p>
+<h2 id="beneficios-del-acceso-a-internet-en-la-educación">Beneficios del Acceso a Internet en la Educación</h2>
+<h3 id="1-recursos-de-aprendizaje-ilimitados">1. Recursos de Aprendizaje Ilimitados</h3>
+<p>El acceso a Internet permite a los estudiantes acceder a una variedad de recursos educativos:</p>
+<ul>
+<li><strong>Bibliotecas digitales</strong>: Los estudiantes pueden acceder a libros, artículos y revistas en línea.</li>
+<li><strong>Cursos en línea</strong>: Plataformas como Coursera y edX ofrecen cursos de instituciones de renombre mundial.</li>
+<li><strong>Videos educativos</strong>: Sitios como YouTube tienen una vasta cantidad de contenido educativo.</li>
+</ul>
+<h3 id="2-aprendizaje-personalizado">2. Aprendizaje Personalizado</h3>
+<p>Las herramientas de aprendizaje en línea permiten a los estudiantes avanzar a su propio ritmo. Esto es especialmente beneficioso para aquellos que necesitan más tiempo para entender ciertos conceptos. Las plataformas de aprendizaje adaptativo ajustan el contenido según el progreso del estudiante.</p>
+<h3 id="3-fomento-de-la-colaboración">3. Fomento de la Colaboración</h3>
+<p>El Internet facilita la colaboración entre estudiantes y educadores a través de:</p>
+<ul>
+<li><strong>Foros de discusión</strong>: Los estudiantes pueden compartir ideas y resolver dudas juntos.</li>
+<li><strong>Proyectos en grupo</strong>: Herramientas como Google Docs permiten la colaboración en tiempo real.</li>
+</ul>
+<h2 id="desigualdades-en-el-acceso-a-internet">Desigualdades en el Acceso a Internet</h2>
+<p>A pesar de los numerosos beneficios, el acceso a Internet no es equitativo. Según un informe de la Unión Internacional de Telecomunicaciones (UIT):</p>
+<ul>
+<li><strong>Zonas rurales</strong>: Muchas comunidades rurales carecen de infraestructura adecuada, lo que limita el acceso a Internet.</li>
+<li><strong>Familias de bajos ingresos</strong>: Los estudiantes de familias con recursos limitados a menudo no tienen acceso a dispositivos o servicios de Internet.</li>
+</ul>
+<h2 id="iniciativas-para-cerrar-la-brecha-digital">Iniciativas para Cerrar la Brecha Digital</h2>
+<p>Varios gobiernos y organizaciones están trabajando para cerrar la brecha digital. Algunas de estas iniciativas incluyen:</p>
+<ul>
+<li><strong>Programas de subsidios</strong>: Ofrecen servicios de Internet a bajo costo para familias de bajos ingresos.</li>
+<li><strong>Inversiones en infraestructura</strong>: Proyectos para expandir la conectividad en áreas rurales.</li>
+<li><strong>Distribución de dispositivos</strong>: Donaciones de computadoras y tabletas a estudiantes necesitados.</li>
+</ul>
+<h2 id="conclusión">Conclusión</h2>
+<p>El acceso a Internet es crucial para una educación de calidad en el siglo XXI. Si bien hemos avanzado, todavía hay trabajo por hacer para garantizar que todos los estudiantes tengan acceso a los recursos y oportunidades que el Internet ofrece. Invertir en infraestructura y programas de apoyo es vital para cerrar la brecha digital y asegurar un futuro educativo equitativo para todos.</p>
+<h2 id="referencias">Referencias</h2>
+<ol>
+<li>Unión Internacional de Telecomunicaciones (UIT). (2021). <em>Informe sobre el Acceso a Internet en el Mundo</em>.</li>
+<li>Pew Research Center. (2020). <em>La Brecha Digital entre Estudiantes de Diferentes Estratos Socioeconómicos</em>.</li>
+<li>Coursera. (n.d.). <em>Cursos en Línea de Universidades de Prestigio</em>.</li>
+</ol>
+<hr>
+<p><strong>¡Gracias por leer!</strong> ¿Cuál es tu opinión sobre el acceso a Internet en la educación? Déjanos tus comentarios abajo.</p></template><template data-astro-template="Content"><h2 id="my-first-blog">My first blog</h2>
+<p>in this page you can see how to use the markdown component</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">  const</span><span style="color:#B392F0"> data</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">>hola&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span></code></pre>
+<h4 id="hello">Hello</h4>
+<p>This is a test</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">  const</span><span style="color:#B392F0"> data</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">>hola&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span></code></pre></template><template data-astro-template="Appearence"><astro-island uid="10Ulf7" component-url="/lifo-library/assets/Appearence.jeaenzZb.js" component-export="default" renderer-url="/lifo-library/assets/client.BIGLHmRd.js" props="{&quot;slot&quot;:[0,&quot;Appearence&quot;]}" ssr="" client="only" opts="{&quot;name&quot;:&quot;Appearence&quot;,&quot;value&quot;:&quot;react&quot;}"></astro-island></template><template data-astro-template="Darkmode"><astro-island uid="ZeNJPB" component-url="/lifo-library/assets/Darkmode.DDyv7dMk.js" component-export="default" renderer-url="/lifo-library/assets/client.BIGLHmRd.js" props="{&quot;slot&quot;:[0,&quot;Darkmode&quot;]}" ssr="" client="only" opts="{&quot;name&quot;:&quot;Darkmode&quot;,&quot;value&quot;:&quot;react&quot;}"></astro-island></template><template data-astro-template="Headings"><div><h2>Headings preview</h2><p>This is a paragraph that explains the purpose of this article. You can use this space to provide context about the topic you are discussing.</p><h1>Heading 1</h1><p>this is a paragrafh for heading 1</p><h2>Heading 2</h2><p>this is a paragrafh for heading 2</p><h3>Heading 3</h3><p>this is a paragrafh for heading 3</p><h4>Heading 4</h4><p>this is a paragrafh for heading 4</p><h5>Heading 5</h5><p>this is a paragrafh for heading 5</p></div></template><template data-astro-template="Language"><div><h2>Language settings</h2></div></template><template data-astro-template="Texts"><div><h2>Paragragh preview</h2><p>This is a paragraph that explains the purpose of this article. You can use this space to provide context about the topic you are discussing.</p><p>This is a paragraph that explains the purpose of this article. You can use this space to provide context about the topic you are discussing.</p><label>Blockquote</label><blockquote><p>This is a paragraph that explains the purpose of this article. You can use this space to provide context about the topic you are discussing.</p><p>This is a paragraph that explains the purpose of this article. You can use this space to provide context about the topic you are discussing.</p></blockquote><h2>Paragragh preview</h2><p>This is a paragraph that explains the purpose of this article. You can use this space to provide context about the topic you are discussing.</p><p>This is a paragraph that explains the purpose of this article. You can use this space to provide context about the topic you are discussing.</p><label>Blockquote</label><blockquote><p>This is a paragraph that explains the purpose of this article. You can use this space to provide context about the topic you are discussing.</p><p>This is a paragraph that explains the purpose of this article. You can use this space to provide context about the topic you are discussing.</p></blockquote></div></template><!--astro:end--></astro-island> </template><!--astro:end--></astro-island> <style>
+		.test-cont {
+			height: 600px;
+		}
+	</style> </body></html>
