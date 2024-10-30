@@ -1,17 +1,8 @@
 ---
 import "@Components/Global.css";
-import Setting from "@Components/Settings/Setting";
-import SettingAside from "@Components/Settings/SettingAside";
-import SettingMain from "@Components/Settings/SettingMain";
-import MD from "@Blogs/Firstblog.md";
 import Appearence from "@Components/Settings/Contents/Appearence";
 import DarkModeBTN from "@Components/Darkmode/DarkmodeToggle";
-import Darkmode from "@Components/Settings/Contents/Darkmode";
 import DarkmodeDrop from "@Components/Darkmode/DarkmodeDrop";
-import Blog from "@Blogs/Secondblog.md";
-import Headings from "@Components/Settings/Contents/Headings";
-import Texts from "@Components/Settings/Contents/Texts";
-import Language from "@Components/Settings/Contents/Language";
 
 
 ---
@@ -124,27 +115,7 @@ import Language from "@Components/Settings/Contents/Language";
 		/>
 	</head>
 	<body class="p-3 h-max" id="app">
-		<Setting head="Testing Modulate component" client:only="react">
-			<SettingAside client:only="react" head="Settings">
-				<p slot="1-Content">Content</p>
-				<p slot="2-Appearence">Appearence</p>
-				<p slot="3-Darkmode">Darkmode</p>
-				<p slot="4-Headings">Headings</p>
-				<p slot="5-Texts">Texts</p>
-				<p slot="6-Code">Code</p>
-				<p slot="7-Language"></p>
-				<p slot="8-Blog of the Week"></p>
-			</SettingAside>
-			<SettingMain client:only="react" initName="Appearence">
-				<Appearence slot="Appearence" client:only="react" />
-				<MD slot="Content" />
-				<Darkmode slot="Darkmode" client:only="react" />
-				<Headings slot="Headings"/>
-				<Texts slot="Texts"/>
-				<Language slot="Language"/>
-				<Blog slot="Blog of the Week"/>
-			</SettingMain>
-		</Setting>
+		<DarkmodeDrop storage="F-Theme" client:only="react" />
 	</body>
 
 	<style is:inline>

@@ -1,8 +1,11 @@
 {
-  "name": "lifo-library",
+  "homepage": "https://lifo123.github.io/lifo-library",
+  "name": "@lifo/lifo-library",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "deploy": "gh-pages -d Build --dotfiles",
+    "predeploy": "pnpm run build",
     "dev": "astro dev --host",
     "start": "astro dev",
     "build": "astro check && astro build",
@@ -21,5 +24,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "typescript": "^5.6.3"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.2.0"
   }
 }

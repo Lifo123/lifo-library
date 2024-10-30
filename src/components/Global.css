@@ -21,10 +21,7 @@
     --lb-third: #343a40;
     --lb-link: #007bff;
 
-    --lb-code-bg: #fff;
-    --lb-code-html-tag: #1348a9;
-    --lb-code-html-attr: #16c6c9;
-    --lb-code-css-attr-value: #d37a1a;
+    --lb-icon: #828282;
 
     --lb-multiplier: 1.5;
 
@@ -57,10 +54,7 @@
     --lb-third: #343a40;
     --lb-link: #0c81ff;
 
-    --lb-code-bg: #fff;
-    --lb-code-html-tag: #1f71f2;
-    --lb-code-html-attr: #2eadf2;
-    --lb-code-css-attr-value: #d37a1a;
+    --lb-icon: #828282;
 
 }
 
@@ -75,4 +69,16 @@ input[type="color"] {
     width: 40px;
     height: 40px;
     border-radius: 10px;
+}
+.icon{
+    stroke: var(--lb-icon);
+    fill: var(--lb-icon);
+    cursor: pointer;
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon svg{
+    pointer-events: none;
 }
