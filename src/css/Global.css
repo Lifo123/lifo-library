@@ -58,10 +58,6 @@
 
 }
 
-body {
-    background-color: var(--lb-bg);
-}
-
 input[type="color"] {
     border: none;
     border-color: #007bff;

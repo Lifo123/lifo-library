@@ -1,9 +1,8 @@
 ---
 import "@Components/Global.css";
-import Appearence from "@Components/Settings/Contents/Appearence";
-import DarkModeBTN from "@Components/Darkmode/DarkmodeToggle";
-import DarkmodeDrop from "@Components/Darkmode/DarkmodeDrop";
-
+import DarkModeBTN from "src/Darkmode/DarkmodeToggle";
+import DarkmodeDrop from "@lifo123/lifo-library/src/components/Darkmode/DarkmodeDrop";
+import Plus from '@lifo123/lifo-library/src/Icons/Social';
 
 ---
 
@@ -116,6 +115,7 @@ import DarkmodeDrop from "@Components/Darkmode/DarkmodeDrop";
 	</head>
 	<body class="p-3 h-max" id="app">
 		<DarkmodeDrop storage="F-Theme" client:only="react" />
+		<Plus type="square" />
 	</body>
 
 	<style is:inline>

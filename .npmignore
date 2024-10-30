@@ -1,0 +1,13 @@
+Build/
+dist
+.git
+.astro/
+.vscode/
+node_modules
+node_modules/
+public/
+src/pages
+astro.config.mjs
+tsconfig.json
+pnpm-lock.yaml
+README.md

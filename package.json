@@ -1,31 +1,46 @@
 {
-  "homepage": "https://lifo123.github.io/lifo-library",
-  "name": "@lifo/lifo-library",
-  "type": "module",
-  "version": "0.0.1",
+  "name": "@lifo123/library",
+  "version": "1.0.9",
+  "description": "Librería de componentes de React para @lifo",
+  "main": "Build/index.js",
+  "types": "Build/index.d.ts",
+  "files": [
+    "src",
+    "!src/pages",
+    "index.ts"
+  ],
   "scripts": {
-    "deploy": "gh-pages -d Build --dotfiles",
-    "predeploy": "pnpm run build",
     "dev": "astro dev --host",
-    "start": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview --host",
-    "astro": "astro"
+    "astro": "astro",
+    "build": "tsc",
+    "prepublishOnly": "pnpm run build"
+  },
+  "keywords": [
+    "components",
+    "react",
+    "library"
+  ],
+  "author": "Lifo",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lifo123/lifo-library"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/react": "^3.6.2",
-    "@nanostores/react": "^0.8.0",
+    "@lifo123/library": "1.0.9",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "astro": "^4.16.7",
-    "markdown-to-jsx": "^7.5.0",
-    "nanostores": "^0.11.3",
+    "astro": "^4.15.12",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "typescript": "^5.6.3"
+    "react-dom": "^18.3.1"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "gh-pages": "^6.2.0"
+    "typescript": "^5.6.3"
   }
 }

@@ -1,5 +1,5 @@
 import './Darkmode.css';
-import { useEffect, useState } from "react";
+import { useState } from "react/";
 
 interface DarkmodeDropProps {
     storage: string;
@@ -40,7 +40,6 @@ export default function DarkmodeDrop({ storage, className = '', style = {} }: Da
         TOGGLES.forEach((t) => {
             t.classList[newTheme === 'dark' ? 'add' : 'remove']('active');
         });
-
 
     }
 
