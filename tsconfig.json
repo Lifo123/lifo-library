@@ -1,18 +1,19 @@
 {
-  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "react",
-    "baseUrl": ".",
-    "paths": {
-      "@Components/*": ["src/components/*"],
-      "@Layouts/*": ["src/layouts/*"],
-      "@Pages/*": ["src/pages/*"],
-      "@Assets/*": ["src/assets/*"],
-      "@Lib/*": ["src/lib/*"],
-      "@Context/*": ["src/context/*"],
-      "@Blogs/*": ["src/blogs/*"]
-
-    }
-  }
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "outDir": "./dist",
+    "declaration": true,
+    "module": "ESNext",
+    "target": "ES6",
+    "jsx": "react",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "rootDir": "./src",
+    "moduleResolution": "node"
+  },
+  "include": [
+    "src/**/*"
+  ]
 }

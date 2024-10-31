@@ -1,5 +1,6 @@
-import './Darkmode.css';
-import { useEffect, useState } from 'react';
+import '../../css/library.css';
+import React, { useState } from 'react';
+
 
 interface DarkmodeDropProps {
     storage: string;
@@ -7,7 +8,7 @@ interface DarkmodeDropProps {
     style?: React.CSSProperties;
 }
 
-export default function DarkModeBTN({ storage = 'dm-theme', className, style }: DarkmodeDropProps) {
+export default function DarkModeToggle({ storage = 'dm-theme', className, style }: DarkmodeDropProps) {
     // States
     const [initialDark, setInitialDark] = useState(() => {
         const savedTheme = localStorage.getItem(storage) || 'system';
@@ -19,7 +20,7 @@ export default function DarkModeBTN({ storage = 'dm-theme', className, style }: 
 
     // Functions
     const Toggle = () => {
-        
+
         const theme = localStorage.getItem(storage) || 'system';
         console.log(theme);
         const DROPS = document.querySelectorAll('.lb-dm-drop');
@@ -55,7 +56,7 @@ export default function DarkModeBTN({ storage = 'dm-theme', className, style }: 
     };
 
     return (
-        <span className={`lb-dm-togle ${initialDark ? 'active' : ''}`} onClick={Toggle} style={style}>
+        <span className={`lb-dm-togle ${initialDark ? 'active' : ''} ${className || ''}`} onClick={Toggle} style={style}>
             <span className='no-select'></span>
         </span>
     );

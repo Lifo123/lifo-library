@@ -1,3 +1,4 @@
+import React from "react";
 interface PlusProps {
     type?: string;
     style?: React.CSSProperties;
@@ -11,7 +12,7 @@ const typeMap: Record<string, string> = {
     only: 'M18 12h-6m0 0H6m6 0V6m0 6v6'
 }
 
-export default function Social({ type = 'github', style, funct }: PlusProps) {
+export default function Plus({ type = 'square', style, funct }: PlusProps) {
     return (
         <span className="icon" style={style} onClick={funct}>
             <svg width="32" height="32" fill="none" stroke="currenColor" strokeWidth="1.5" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">

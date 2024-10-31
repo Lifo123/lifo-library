@@ -1,17 +1,19 @@
-import { useState } from "react";
+import React,{ useState } from "react";
 
+interface InputColorProps {
+    initialValue: string;
+    funct?: (value: any) => void;
+}
 
 export default function InputRange({
-    min = 3, max = 10,
-    initialValue = 5,
-    step = 1,
+    initialValue,
     funct = (value: any) => {
         console.log('Sin funcion', value);
     }
-}) {
+}: InputColorProps ) {
     //States
     const [value, setValue] = useState(initialValue);
-
+    
     const handleInputChange = (e: any) => {
         const newValue = e.target.value;
         setValue(newValue);
@@ -19,9 +21,8 @@ export default function InputRange({
     };
 
     return (
-        <input type="range"
-            min={min} max={max}
-            value={value} step={step}
+        <input type="color"
+            value='#1348a9'
             onInput={handleInputChange}
         />
     )

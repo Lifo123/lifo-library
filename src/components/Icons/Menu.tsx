@@ -1,3 +1,4 @@
+import React from "react";
 interface MenuProps {
     type?: string;
     style?: React.CSSProperties;

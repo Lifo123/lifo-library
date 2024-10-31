@@ -1,5 +1,5 @@
-import './Darkmode.css';
-import { useState } from "react/";
+import '../../css/library.css';
+import React, { useState } from 'react';
 
 interface DarkmodeDropProps {
     storage: string;
@@ -7,7 +7,7 @@ interface DarkmodeDropProps {
     style?: React.CSSProperties;
 }
 
-export default function DarkmodeDrop({ storage, className = '', style = {} }: DarkmodeDropProps) {
+export default function DarkmodeDrop({ storage, className, style = {} }: DarkmodeDropProps) {
     const [theme, setThemeState] = useState(localStorage.getItem(storage) || 'system');
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -46,7 +46,7 @@ export default function DarkmodeDrop({ storage, className = '', style = {} }: Da
 
 
     return (
-        <select className={`lb-dm-drop ${className}`} value={theme} onChange={handleChange} style={style} data-theme={theme}>
+        <select className={`lb-dm-drop ${className || ''}`} value={theme} onChange={handleChange} style={style} data-theme={theme}>
             <option value="light">Light</option>
             <option value="dark">Dark</option>
             <option value="system" >System</option>
