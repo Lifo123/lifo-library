@@ -1,4 +1,4 @@
-import DarkModeToggle  from './DarkmodeToggle';
+import DarkmodeToggle  from './DarkmodeToggle';
 import DarkmodeDrop from './DarkmodeDrop';
 
-export { DarkModeToggle, DarkmodeDrop };
+export { DarkmodeToggle, DarkmodeDrop };

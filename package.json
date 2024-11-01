@@ -1,6 +1,6 @@
 {
-  "name": "@lifo123/library-test",
-  "version": "0.0.0",
+  "name": "@lifo123/library",
+  "version": "1.1.2",
   "description": "Lifo library",
   "type": "module",
   "repository": {
@@ -14,7 +14,8 @@
   },
   "files": [
     "dist",
-    "css"
+    "css",
+    "README.md"
   ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

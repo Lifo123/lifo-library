@@ -1,0 +1,28 @@
+.lb-btn{
+    padding: 8px 16px;
+    font-size: calc(var(--lb-multiplier) * 0.64em);
+    transition: border .2s ease;
+}
+.lb-btn-primary:hover{
+    outline: solid 1px var(--lb-btn-hover);
+    border: solid 1px var(--lb-btn-hover);
+}
+.lb-btn-secondary:hover{
+    outline: solid 1px var(--lb-btn-hover);
+    border: solid 1px var(--lb-btn-hover);
+}
+
+.lb-btn-primary{
+    background-color: var(--lb-btn-primary);
+    color: #eaeaea;
+    border: solid 1px var(--lb-border);
+}
+
+.lb-btn-secondary{
+    color: var(--lb-text);
+    border: solid 1px var(--lb-btn-secondary);
+}
+
+.lb-btn-tertiary{
+    color: var(--lb-text);
+}
