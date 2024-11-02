@@ -1,8 +1,7 @@
 {
   "name": "@lifo123/library",
-  "version": "1.1.6",
+  "version": "1.2.1",
   "description": "Lifo library",
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Lifo123/lifo-library.git"

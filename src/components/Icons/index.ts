@@ -1,5 +1,7 @@
-import Menu from './Menu';
-import Plus from './Plus';
-import Social from './Social';
+export { default as Menu } from "./Menu";
+export { default as Plus } from "./Plus";
+export { default as Social } from "./Social";
 
-export { Menu, Plus, Social };
+export * from "./Menu";
+export * from "./Plus";
+export * from "./Social";

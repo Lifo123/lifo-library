@@ -8,6 +8,8 @@ interface DarkmodeDropProps {
 }
 
 export default function DarkModeToggle({ storage = 'dm-theme', className, style }: DarkmodeDropProps) {
+    if (typeof window === 'undefined') return null;
+
     // States
     const [initialDark, setInitialDark] = useState(() => {
         const savedTheme = localStorage.getItem(storage) || 'system';

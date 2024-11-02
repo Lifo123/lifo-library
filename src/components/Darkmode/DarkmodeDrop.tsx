@@ -7,6 +7,8 @@ interface DarkmodeDropProps {
 }
 
 export default function DarkmodeDrop({ storage, className, style = {} }: DarkmodeDropProps) {
+    if (typeof window === 'undefined') return null;
+    
     const [theme, setThemeState] = useState(localStorage.getItem(storage) || 'system');
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

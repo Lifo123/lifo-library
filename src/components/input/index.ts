@@ -1,10 +1,7 @@
-import InputColor from './InputColor'
-import InputRange from './InputRange'
-import InputText from './InputText'
+export { default as InputText } from "./InputText";
+export { default as InputColor } from "./InputColor";
+export { default as InputRange } from "./InputRange";
 
-
-export {
-    InputColor,
-    InputRange,
-    InputText
-}
+export * from "./InputText";
+export * from "./InputColor";
+export * from "./InputRange";

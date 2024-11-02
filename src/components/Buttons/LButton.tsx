@@ -10,24 +10,22 @@ interface LButtonProps {
     className?: string
 }
 
-const LButton: React.FC<LButtonProps> = ({ type, mode = 'button', href, text, funct, style, color, className }: LButtonProps) => {
+export default function LButton({ type, mode = 'button', href, text, funct, style, color, className }: LButtonProps) {
 
     const handleClick = (e: React.MouseEvent<HTMLSpanElement>) => {
         if (funct === undefined) return
         funct?.(e)
     }
 
-
-    return React.createElement(
-        mode === 'href' ? 'a' : 'span',
-        {
-            className: `lb-btn-${type} lb-btn pointer w-max ${className || ''}`,
-            style: { ...style, backgroundColor: color || null },
-            onClick: handleClick,
-            href: mode === 'href' ? href : null,
-        },
-        text
-    );
+    return (
+        mode === 'href' ? (
+            <a className={`lb-btn-${type} lb-btn pointer w-max ${className || ''}`} href={href || '#'} style={{ ...style, backgroundColor: color || undefined }} onClick={handleClick}>
+                {text}
+            </a>
+        ) : (
+            <span className={`lb-btn-${type} lb-btn pointer w-max ${className || ''}`} style={{ ...style, backgroundColor: color || undefined }} onClick={handleClick}>
+                {text}
+            </span>
+        )
+    )
 }
-
-export default LButton
