@@ -10,7 +10,7 @@ interface LButtonProps {
     className?: string
 }
 
-export default function LButton({ type, mode = 'button', href, text, funct, style, color, className }: LButtonProps) {
+const LButton: React.FC<LButtonProps> = ({ type, mode = 'button', href, text, funct, style, color, className }: LButtonProps) => {
 
     const handleClick = (e: React.MouseEvent<HTMLSpanElement>) => {
         if (funct === undefined) return
@@ -29,3 +29,5 @@ export default function LButton({ type, mode = 'button', href, text, funct, styl
         text
     );
 }
+
+export default LButton
