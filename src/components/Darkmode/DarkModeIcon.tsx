@@ -1,3 +1,4 @@
+'use client';
 import React from "react";
 import { useState } from "react";
 
@@ -6,7 +7,6 @@ interface DarkModeIconProps {
 }
 
 export default function DarkModeIcon({ storage = 'F-Theme' }: DarkModeIconProps) {
-    if (typeof window === 'undefined') return null;
     const [initialDark, setInitialDark] = useState(() => {
         const savedTheme = localStorage.getItem(storage) || 'system';
         if (savedTheme === 'system') {
@@ -51,7 +51,7 @@ export default function DarkModeIcon({ storage = 'F-Theme' }: DarkModeIconProps)
     };
 
     return (
-        <span className="dm-icon-toggle icon d-flex f-center pointer br-6" onClick={Toggle}>
+        <span className="lb-dm-icon-toggle icon d-flex f-center pointer br-6" onClick={Toggle}>
             {
                 !initialDark ?
                     <svg viewBox="-5.5 0 32 32" stroke="none" fill="var(--f-p-text)">

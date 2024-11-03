@@ -1,1 +1,1 @@
-import './library.css';
+export default './library.css';
