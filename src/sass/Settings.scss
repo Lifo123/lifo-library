@@ -12,7 +12,7 @@
     height: max-content;
 }
 .lb-setting aside h3{
-    font-size: var(--lb-font-size-small);
+    font-size: var(--lb-fs-4);
     font-weight: 500;
 }
 
@@ -23,16 +23,16 @@
 
 .lb-options {
     padding: 0.5rem;
-    font-size: var(--lb-font-size-normal);
+    font-size: var(--lb-fs-2);
     position: relative;
 }
 
 .lb-options.active {
-    background-color: var(--lb-bg-third);
+    background-color: var(--lb-bg-2-hover);
     font-weight: 500;
 }
 .lb-options:hover {
-    background-color: var(--lb-bg-hover);
+    background-color: var(--lb-br-2-hover);
 }
 
 .lb-options.active::before {
@@ -44,7 +44,7 @@
     top: 50%;
     transform: translateY(-50%);
     border-radius: 150px;
-    background-color: var(--lb-primary);
+    background-color: var(--lb-hsl-primary);
     z-index: 1;
 }
 
@@ -66,7 +66,7 @@
 
 /*Styless*/
 .lb-main {
-    font-family: Inter Tight, sans-serif;
+    font-family: Satooshi,Inter Tight, sans-serif;
     line-height: 1.6;
     color: #333;
 }

@@ -19,11 +19,11 @@ export default function LButton({ type, mode = 'button', href, text, funct, styl
 
     return (
         mode === 'href' ? (
-            <a className={`lb-btn-${type} lb-btn pointer w-max ${className || ''}`} href={href || '#'} style={{ ...style, backgroundColor: color || undefined }} onClick={handleClick}>
+            <a className={`btn-${type} btn pointer w-max ${className || ''}`} href={href || '#'} style={{ ...style, backgroundColor: color || undefined }} onClick={handleClick}>
                 {text}
             </a>
         ) : (
-            <span className={`lb-btn-${type} lb-btn pointer w-max ${className || ''}`} style={{ ...style, backgroundColor: color || undefined }} onClick={handleClick}>
+            <span className={`btn-${type} btn pointer w-max ${className || ''}`} style={{ ...style, backgroundColor: color || undefined }} onClick={handleClick}>
                 {text}
             </span>
         )

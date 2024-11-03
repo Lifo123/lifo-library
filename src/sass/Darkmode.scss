@@ -4,15 +4,15 @@
     width: 90px;
     padding: 7px 13px;
     border-radius: 6px;
-    background-color: var(--lb-bg-secondary);
-    border: solid 1px var(--lb-border);
+    background-color: var(--lb-bg-2);
+    border: solid 1px var(--lb-br);
     color: var(--lb-lowtext);
     font-size: 14px;
 }
 
 .lb-dm-drop:focus {
-    border: solid 1px var(--lb-primary);
-    outline: solid 1px var(--lb-primary);
+    border: solid 1px var(--lb-hsl-primary);
+    outline: solid 1px var(--lb-hsl-primary);
 }
 
 
@@ -27,7 +27,7 @@
 }
 
 .lb-dm-togle.active {
-    background-color: var(--lb-primary);
+    background-color: #1f6feb;
 }
 
 .lb-dm-togle span {
@@ -48,3 +48,18 @@
     left: calc(100% - 19px);
     right: 4px;
 }
+
+.lb-dm-icon-toggle{
+    border: solid 1px var(--f-p-br-low);
+    padding: .25rem;
+    height: 36px;
+    aspect-ratio: 1 / 1;
+}
+.lb-dm-icon-toggle:hover{
+    background-color: var(--f-p-bg-2-hover);
+}
+.lb-dm-icon-toggle svg{
+    height: 100%;
+    width: 100%;
+}
+
