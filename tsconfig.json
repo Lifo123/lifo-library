@@ -1,19 +1,23 @@
 {
   "compilerOptions": {
     "resolveJsonModule": true,
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "allowJs": true,
     "outDir": "./dist",
     "declaration": true,
-    "module": "ES6",
-    "target": "ES6",
-    "jsx": "react",
+    "declarationDir": "./dist",
+    "module": "ESNext",
+    "target": "ESNext",
+    "jsx": "react-jsx",
+    "isolatedModules": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "noFallthroughCasesInSwitch": true,
     "strict": true,
     "rootDir": "./src",
     "moduleResolution": "node"
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"]
 }

@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useEffect, useState } from 'react';
 
 
@@ -8,7 +9,7 @@ interface DarkmodeDropProps {
     style?: React.CSSProperties;
 }
 
-export default function DarkModeToggle({ storage = 'dm-theme', className, style }: DarkmodeDropProps) {
+const DarkModeToggle = ({ storage = 'dm-theme', className, style }: DarkmodeDropProps) =>{
     const [initialDark, setInitialDark] = useState(() => {
         const savedTheme = localStorage.getItem(storage) || 'system';
         if (savedTheme === 'system') {
@@ -53,3 +54,5 @@ export default function DarkModeToggle({ storage = 'dm-theme', className, style 
         </span>
     );
 }
+
+export default DarkModeToggle;

@@ -1,12 +1,12 @@
 'use client';
-import React from "react";
+
 import { useState } from "react";
 
 interface DarkModeIconProps {
     storage: string;
 }
 
-export default function DarkModeIcon({ storage = 'F-Theme' }: DarkModeIconProps) {
+const DarkModeIcon = ({ storage = 'F-Theme' }: DarkModeIconProps) => {
     const [initialDark, setInitialDark] = useState(() => {
         const savedTheme = localStorage.getItem(storage) || 'system';
         if (savedTheme === 'system') {
@@ -70,3 +70,5 @@ export default function DarkModeIcon({ storage = 'F-Theme' }: DarkModeIconProps)
         </span>
     )
 }
+
+export default DarkModeIcon;

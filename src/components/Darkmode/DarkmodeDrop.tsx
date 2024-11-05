@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useState } from 'react';
 
 interface DarkmodeDropProps {
@@ -7,7 +8,7 @@ interface DarkmodeDropProps {
     style?: React.CSSProperties;
 }
 
-export default function DarkmodeDrop({ storage, className, style = {} }: DarkmodeDropProps) {
+const DarkmodeDrop = ({ storage, className, style = {} }: DarkmodeDropProps) => {
     
     const [theme, setThemeState] = useState(localStorage.getItem(storage) || 'system');
 
@@ -54,3 +55,5 @@ export default function DarkmodeDrop({ storage, className, style = {} }: Darkmod
         </select>
     );
 }
+
+export default DarkmodeDrop;

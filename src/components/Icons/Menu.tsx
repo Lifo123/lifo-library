@@ -1,3 +1,5 @@
+'use client';
+
 import React from "react";
 interface MenuProps {
     type?: string;
@@ -10,7 +12,7 @@ const typeMap: Record<string, string> = {
 
 }
 
-export default function Menu({ type = 'burger', style, funct }: MenuProps) {
+const  Menu = ({ type = 'burger', style, funct }: MenuProps) => { 
     return (
         <span className="icon" style={style} onClick={funct}>
             <svg width="32" height="32" fill="none" stroke="currenColor" strokeWidth="1.5" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
@@ -19,3 +21,6 @@ export default function Menu({ type = 'burger', style, funct }: MenuProps) {
         </span>
     )
 }
+
+
+export default Menu;

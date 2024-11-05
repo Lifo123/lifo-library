@@ -1,3 +1,1 @@
-import local from './Local';
-
-export { local };
+export { default as local} from "./Local";

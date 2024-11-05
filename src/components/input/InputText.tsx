@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import React from "react";
 import { useState } from "react";
 
@@ -15,9 +16,9 @@ interface InputTextProps {
     state?: string
 }
 
-export default function InputText({
+const InputText = ({
     placeholder, type = 'text', msg, className, style, name, onBlur, onFocus, onChange, state
-}: InputTextProps) {
+}: InputTextProps) => {
     //State
     const [isSee, setIsSee] = useState(false)
 
@@ -53,7 +54,7 @@ export default function InputText({
             <span>{msg}</span>
             {
                 type === 'password' ? (
-                    <span className="icon absolute" style={{ right: '12px', top: '47%', transform: 'translateY(-50%)' }} onClick={handleTogglePassword} title={isSee ? 'Hide password' : 'Show password'}>
+                    <span className="icon absolute pointer" style={{ right: '12px', left:'inherit', top: '53%', transform: 'translateY(-50%)' }} onClick={handleTogglePassword} title={isSee ? 'Hide password' : 'Show password'}>
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
                             <g>
                                 {
@@ -74,3 +75,5 @@ export default function InputText({
         </label>
     )
 }
+
+export default InputText;

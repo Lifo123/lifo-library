@@ -1,17 +1,18 @@
 'use client';
-import React,{ useState } from "react";
+
+import { useState } from "react";
 
 interface InputColorProps {
     initialValue: string;
     funct?: (value: any) => void;
 }
 
-export default function InputRange({
+const InputRange =({
     initialValue,
     funct = (value: any) => {
         console.log('Sin funcion', value);
     }
-}: InputColorProps ) {
+}: InputColorProps ) =>{
     //States
     const [value, setValue] = useState(initialValue);
     
@@ -23,8 +24,10 @@ export default function InputRange({
 
     return (
         <input type="color"
-            value='#1348a9'
+            value={value || '#1348a9'}
             onInput={handleInputChange}
         />
     )
 }
+
+export default InputRange;

@@ -1,15 +1,16 @@
-'use client'
-import React, { useState } from "react";
+'use client';
+
+import { useState } from "react";
 
 
-export default function InputRange({
+const InputRange = ({
     min = 3, max = 10,
     initialValue = 5,
     step = 1,
     funct = (value: any) => {
         console.log('Sin funcion', value);
     }
-}) {
+}) => {
     //States
     const [value, setValue] = useState(initialValue);
 
@@ -27,3 +28,5 @@ export default function InputRange({
         />
     )
 }
+
+export default InputRange;
