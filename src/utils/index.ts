@@ -1,1 +1,1 @@
-export { default as local} from "./Local";
+export { local } from "./Local";

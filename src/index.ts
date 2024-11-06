@@ -1,4 +1,6 @@
-export * from './components/Darkmode';
-export * from './components/Icons';
-export * from './components/input';
+'use client';
+
+export * from './Darkmode';
+export * from './Icons';
+export * from './input';
 export * from './utils'

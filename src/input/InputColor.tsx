@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import React from "react";
 
 interface InputColorProps {
     initialValue: string;
@@ -13,8 +13,9 @@ const InputRange =({
         console.log('Sin funcion', value);
     }
 }: InputColorProps ) =>{
+
     //States
-    const [value, setValue] = useState(initialValue);
+    const [value, setValue] = React.useState(initialValue);
     
     const handleInputChange = (e: any) => {
         const newValue = e.target.value;

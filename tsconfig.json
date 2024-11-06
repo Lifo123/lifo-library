@@ -2,22 +2,26 @@
   "compilerOptions": {
     "resolveJsonModule": true,
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": ["es2015", "dom"],
     "allowJs": true,
     "outDir": "./dist",
     "declaration": true,
     "declarationDir": "./dist",
     "module": "ESNext",
     "target": "ESNext",
-    "jsx": "react-jsx",
+    "jsx": "react", // Cambia a "react-jsx" para compatibilidad con React 17+
     "isolatedModules": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "noUnusedLocals": true,
+    "noEmit": false,
+    "emitDeclarationOnly": false,
     "noFallthroughCasesInSwitch": true,
     "strict": true,
     "rootDir": "./src",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true, // Asegura el uso consistente de mayúsculas y minúsculas en nombres de archivos
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "src/**/*.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"] // Excluye archivos de pruebas
 }

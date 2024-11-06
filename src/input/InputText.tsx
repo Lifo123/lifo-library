@@ -1,7 +1,6 @@
 'use client';
 
 import React from "react";
-import { useState } from "react";
 
 interface InputTextProps {
     placeholder?: string,
@@ -20,7 +19,7 @@ const InputText = ({
     placeholder, type = 'text', msg, className, style, name, onBlur, onFocus, onChange, state
 }: InputTextProps) => {
     //State
-    const [isSee, setIsSee] = useState(false)
+    const [isSee, setIsSee] = React.useState(false)
 
     const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
         if (e.target.value.length === 0) {

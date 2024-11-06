@@ -19,12 +19,19 @@ const inmutable = (obj: any) => {
     return JSON.parse(JSON.stringify(obj));
 }
 
+const parse = (str: string) => {
+    return JSON.parse(str);
+}
 
-const Local = {
+const stringify = (obj: any) => {
+    return JSON.stringify(obj);
+}
+
+export const local = {
     set,
     get,
     remove,
-    inmutable
+    inmutable,
+    parse,
+    stringify
 }
-
-export default Local

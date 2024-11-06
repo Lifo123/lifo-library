@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import React from "react";
 
 
 const InputRange = ({
@@ -11,8 +11,9 @@ const InputRange = ({
         console.log('Sin funcion', value);
     }
 }) => {
+
     //States
-    const [value, setValue] = useState(initialValue);
+    const [value, setValue] = React.useState(initialValue);
 
     const handleInputChange = (e: any) => {
         const newValue = e.target.value;
