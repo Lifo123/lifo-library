@@ -35,7 +35,7 @@
     ".": "./dist/index.js",
     "./Icons": "./dist/Icons/index.js",
     "./Darkmode": "./dist/Darkmode/index.js",
-    "./Inputs": "./dist/Inputs/index.js",
+    "./Inputs": "./dist/Input/index.js",
     "./utils": "./dist/utils/index.js"
   }
 }

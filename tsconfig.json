@@ -20,7 +20,8 @@
     "strict": true,
     "rootDir": "./src",
     "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true, // Asegura el uso consistente de mayúsculas y minúsculas en nombres de archivos
+    "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": false
   },
   "include": ["src/**/*", "src/**/*.ts"],
   "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"] // Excluye archivos de pruebas
