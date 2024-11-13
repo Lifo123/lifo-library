@@ -4,3 +4,5 @@ export * from './Darkmode';
 export * from './Icons';
 export * from './input';
 export * from './utils'
+export * from './Alert';
+export * from './General';
