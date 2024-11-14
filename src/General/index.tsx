@@ -1,5 +1,7 @@
 'use client';
 import React from 'react';
+
+
 interface Props {
     style?: React.CSSProperties;
     stroke?: string;
@@ -35,6 +37,9 @@ const ButtonPromise = ({ text, className, style, stroke, funct = () => {
     const handleClick = async () => {
         setIsLoading(true)
         await funct()
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 50)
     }
 
 
