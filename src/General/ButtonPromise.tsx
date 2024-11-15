@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { useStore } from '@nanostores/react';
-import loading, { Loading } from '@Stores/Loading.Store.js'
+import loading, { Loading } from '../Stores/Loading.Store.js'
 
 
 interface ButtonProps {
@@ -13,7 +13,7 @@ interface ButtonProps {
     stroke?: string;
 }
 
-export default function ButtonPromise ({ id = 'G_fetch', text, className, style, stroke, funct }: ButtonProps) {
+export default function ButtonPromise({ id = 'G_fetch', text, className, style, stroke, funct }: ButtonProps) {
     const LOADING = useStore(loading)
 
     const handleClick = async () => {

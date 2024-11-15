@@ -1,6 +1,6 @@
 import { useStore } from "@nanostores/react";
-import { $darkmode, Darkmode } from "@Stores/Darkmode.Store.js";
-import { DarkmodeDropProps } from "./Darkmode.types.js";
+import { $darkmode, Darkmode } from "./Darkmode.Store.js";
+import { type DarkmodeDropProps } from "./Darkmode.types.js";
 
 export default function DarkmodeDrop({ storage = 'F-Theme', className, style = {} }: DarkmodeDropProps) {
     const theme = useStore($darkmode);

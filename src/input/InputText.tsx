@@ -1,5 +1,5 @@
 'use client';
-import { Loading } from "@Stores/Loading.Store";
+import { Loading } from "../Stores/Loading.Store.js";
 import React from "react";
 
 interface InputTextProps {

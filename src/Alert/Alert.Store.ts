@@ -1,5 +1,5 @@
 import { atom, map } from "nanostores";
-import { BaseProps, NormalProps } from "./Alert.Types.js";
+import { type BaseProps, type NormalProps } from "./Alert.Types.js";
 
 
 export const $isOpen = atom(false);

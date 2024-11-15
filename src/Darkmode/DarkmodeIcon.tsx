@@ -1,8 +1,8 @@
 import { useStore } from "@nanostores/react";
-import { $darkmode, Darkmode } from "@Stores/Darkmode.Store.js";
+import { $isDark, Darkmode } from "./Darkmode.Store.js";
 
 export default function DarkmodeIcon({ storage = 'F-Theme' }) {
-    const isDark = useStore($darkmode) === 'dark';
+    const isDark = useStore($isDark);
 
     return (
         <span className="lb-dm-icon-toggle icon d-flex f-center pointer br-6" onClick={() => Darkmode.toggle(storage)}>

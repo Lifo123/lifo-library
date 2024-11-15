@@ -1,9 +1,18 @@
 const set = (path: string, value: any) => {
-    localStorage.setItem(path, JSON.stringify(value));
+    const valueToStore = typeof value === 'string' ? value : JSON.stringify(value);
+    localStorage.setItem(path, valueToStore);
 }
 
 const get = (path: string) => {
-    return JSON.parse(localStorage.getItem(path) || '{}');
+    const storedValue = localStorage.getItem(path);
+    if (!storedValue) return {};
+
+    try {
+        return JSON.parse(storedValue);
+    } catch (error) {
+        console.error('Error parsing JSON from localStorage:', error);
+        return storedValue;
+    }
 }
 
 const remove = (key: string) => {

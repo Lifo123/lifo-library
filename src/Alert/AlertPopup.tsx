@@ -1,7 +1,7 @@
 'use client'
 import React from "react";
 import { useStore } from "@nanostores/react";
-import { AlertPopupProps } from "./Alert.Types.js";
+import { type AlertPopupProps } from "./Alert.Types.js";
 import { $bgProps, $currentPopup, $custom, $isOpen, $isVisible, $normal, Alert } from "./Alert.Store.js";
 import CloseBtn from "./CloseBtn.js";
 
