@@ -1,88 +1,11 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import { $dark, handleChange, preferTheme } from './Darkmode.Store';
-import { DarkmodeDropProps } from './Darkmode.types';
-import { useStore } from '@nanostores/react';
+import { useStore } from "@nanostores/react";
+import { $darkmode, Darkmode } from "@Stores/Darkmode.Store.js";
 
-
-const DarkmodeToggle = ({ storage = 'F-Theme', className, style }: DarkmodeDropProps) => {
-    const savedTheme = useStore($dark);
-    const [isDark, setIsDark] = useState(savedTheme === 'dark');
-
-    const handleToggle = () => {
-        if (savedTheme === 'system') {
-            const isDark = preferTheme();
-            handleChange(storage, isDark ? 'light' : 'dark');
-            return
-        }
-
-        const isDark = $dark.get() === 'dark'
-        handleChange(storage, isDark ? 'light' : 'dark');
-    }
-
-    useEffect(() => {
-        if (savedTheme === 'system') {
-            const isDark = preferTheme();
-            setIsDark(isDark);
-            return
-        }
-
-        const isDark = $dark.get() === 'dark'
-        setIsDark(isDark);
-    }, [savedTheme])
+export default function DarkmodeIcon({ storage = 'F-Theme' }) {
+    const isDark = useStore($darkmode) === 'dark';
 
     return (
-        <span className={`lb-dm-togle ${isDark ? 'active' : ''} ${className || ''}`} onClick={handleToggle} style={style}>
-            <span className='no-select'></span>
-        </span>
-    );
-}
-
-
-const DarkmodeDrop = ({ storage = 'F-Theme', className, style = {} }: DarkmodeDropProps) => {
-    const savedTheme = useStore($dark);
-
-    const handleSelect = (e: any) => {
-        handleChange(storage, e.target.value);
-    }
-
-    return (
-        <select className={`lb-dm-drop ${className || ''}`} value={savedTheme} onChange={handleSelect} style={style}>
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-            <option value="system" >System</option>
-        </select>
-    );
-}
-
-const DarkmodeIcon = ({ storage = 'F-Theme' }) => {
-    const savedTheme = useStore($dark);
-    const [isDark, setIsDark] = useState(savedTheme === 'dark');
-
-    const handleToggle = () => {
-        if (savedTheme === 'system') {
-            const isDark = preferTheme();
-            handleChange(storage, isDark ? 'light' : 'dark');
-            return
-        }
-
-        const isDark = $dark.get() === 'dark'
-        handleChange(storage, isDark ? 'light' : 'dark');
-    }
-
-    useEffect(() => {
-        if (savedTheme === 'system') {
-            const isDark = preferTheme();
-            setIsDark(isDark);
-            return
-        }
-
-        const isDark = $dark.get() === 'dark'
-        setIsDark(isDark);
-    }, [savedTheme])
-
-    return (
-        <span className="lb-dm-icon-toggle icon d-flex f-center pointer br-6" onClick={handleToggle}>
+        <span className="lb-dm-icon-toggle icon d-flex f-center pointer br-6" onClick={() => Darkmode.toggle(storage)}>
             {
                 isDark ?
                     <svg viewBox="-5 -4 26 26" fill="var(--f-p-title)" stroke="none">
@@ -101,6 +24,3 @@ const DarkmodeIcon = ({ storage = 'F-Theme' }) => {
         </span>
     )
 }
-
-
-export { DarkmodeToggle, DarkmodeDrop, DarkmodeIcon }

@@ -2,14 +2,14 @@
   "compilerOptions": {
     "resolveJsonModule": true,
     "useDefineForClassFields": true,
-    "lib": ["es2015", "dom"],
     "allowJs": true,
     "outDir": "./dist",
     "declaration": true,
     "declarationDir": "./dist",
     "module": "ESNext",
-    "target": "ESNext",
-    "jsx": "react", // Cambia a "react-jsx" para compatibilidad con React 17+
+    "moduleResolution": "node", 
+    "target": "ES2020",
+    "jsx": "react-jsx",
     "isolatedModules": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -19,10 +19,17 @@
     "noFallthroughCasesInSwitch": true,
     "strict": true,
     "rootDir": "./src",
-    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "verbatimModuleSyntax": false
+    "verbatimModuleSyntax": false,
+    "baseUrl": ".",
+    "paths": {
+      "@Components/*": ["src/components/*"],
+      "@Hooks/*": ["src/hooks/*"],
+      "@Utils/*": ["src/utils/*"],
+      "@Stores/*": ["src/Stores/*"],
+    },
   },
   "include": ["src/**/*", "src/**/*.ts"],
-  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"] // Excluye archivos de pruebas
+  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"]
 }

@@ -1,6 +1,6 @@
 {
   "name": "@lifo123/library",
-  "version": "1.3.6",
+  "version": "1.3.8",
   "description": "Lifo library",
   "type": "module",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "git+https://github.com/Lifo123/lifo-library.git"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc && tsc --module commonjs --outDir dist/cjs"
   },
   "files": [
     "dist"
@@ -32,12 +32,6 @@
     "node": ">=20.0.0"
   },
   "exports": {
-    ".": "./dist/index.js",
-    "./Icons": "./dist/Icons/index.js",
-    "./Darkmode": "./dist/Darkmode/index.js",
-    "./Inputs": "./dist/Input/index.js",
-    "./utils": "./dist/utils/index.js",
-    "./Alert": "./dist/Alert/index.js",
-    "./General": "./dist/General/index.js"
+    ".": "./dist/index.js"
   }
 }

@@ -3,3 +3,5 @@ export interface DarkmodeDropProps {
     className?: string;
     style?: React.CSSProperties;
 }
+
+export type DarkmodeDropType = 'light' | 'dark' | 'system';

@@ -1,10 +1,11 @@
 'use client';
-
+import { Loading } from "@Stores/Loading.Store";
 import React from "react";
 
 interface InputTextProps {
-    placeholder?: string,
     type: string | 'text' | 'password' | 'email',
+    loadingID?: string,
+    placeholder?: string,
     msg?: string,
     className?: string,
     name?: string,
@@ -12,11 +13,11 @@ interface InputTextProps {
     onBlur?: (e: any) => void,
     onFocus?: (e: any) => void,
     onChange?: (e: any) => void,
-    state?: string
+    onEnter?: () => void,
 }
 
 const InputText = ({
-    placeholder, type = 'text', msg, className, style, name, onBlur, onFocus, onChange, state
+    placeholder, type = 'text', msg, className, style, name, loadingID, onBlur, onFocus, onChange, onEnter
 }: InputTextProps) => {
     //State
     const [isSee, setIsSee] = React.useState(false)
@@ -25,7 +26,6 @@ const InputText = ({
         if (e.target.value.length === 0) {
             e.target.parentElement?.classList.remove('focused')
         }
-
         onBlur?.(e)
     };
 
@@ -39,6 +39,16 @@ const InputText = ({
         onChange?.(e)
     }
 
+    const handleEnter = (e: any) => {
+        if (e.key === 'Enter') {
+            if (onEnter) {
+                Loading.promise(() => onEnter(), { id: loadingID, delayOut: 20 });
+            } else {
+                console.warn('onEnter function is not defined');
+            }
+        }
+    }
+
     const handleTogglePassword = (e: React.MouseEvent<HTMLSpanElement>) => {
         const parent = (e.target as HTMLSpanElement).parentElement
         const input = parent?.querySelector('input')
@@ -49,12 +59,17 @@ const InputText = ({
     return (
         <label className="lb-input-text f-col relative g-1">
             <span className="holder absolute no-select">{placeholder}</span>
-            <input type={type} className={className} style={style} name={name || type} onBlur={handleBlur} onFocus={handleFocus} onChange={handleChange} />
+            <input type={type} className={className} style={style} name={name || type}
+                onBlur={handleBlur}
+                onFocus={handleFocus}
+                onChange={handleChange}
+                onKeyDown={handleEnter}
+            />
             <span>{msg}</span>
             {
                 type === 'password' ? (
-                    <span className="icon absolute pointer" style={{ right: '12px', left:'inherit', top: '53%', transform: 'translateY(-50%)' }} onClick={handleTogglePassword} title={isSee ? 'Hide password' : 'Show password'}>
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <span className="icon absolute pointer" style={{ right: '12px', left: 'inherit', top: '52.5%', transform: 'translateY(-50%)' }} onClick={handleTogglePassword} title={isSee ? 'Hide password' : 'Show password'}>
+                        <svg width="25" height="28" viewBox="0 0 24 24" fill="none">
                             <g>
                                 {
                                     isSee ? (

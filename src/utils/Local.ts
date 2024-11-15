@@ -27,7 +27,7 @@ const stringify = (obj: any) => {
     return JSON.stringify(obj);
 }
 
-export const local = {
+export const Local = {
     set,
     get,
     remove,
