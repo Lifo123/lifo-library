@@ -55,7 +55,7 @@ export default function AlertPopup({ className, style, backgroundColor, id, bgCl
                                     {normal.title && <h4 className="fs-4 m-0 fw-600">{normal.title}</h4>}
                                     {closeBtn && <CloseBtn size={30} />}
                                 </div>
-                                <p className="fs-2 text-common m-0 f-row f-wrap g-1">{normal.description || 'Message'} {normal.link && (
+                                <p className="fs-2 text-common m-0 f-row f-wrap g-1">{normal.message || 'Message'} {normal.link && (
                                     <a className='w-max link fs-custom-13-5 text-common fw-400' href={normal.link}>
                                         More information
                                     </a>

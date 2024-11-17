@@ -12,13 +12,13 @@ export const $custom = map<BaseProps>()
 export const $normal = map<NormalProps>()
 
 const normal = async ({
-    title, description, link, children, id, bgClose, closeBtn, funct = () => {
+    title, message, link, children, id, bgClose, closeBtn, funct = () => {
         console.log('Without Function');
     }
 }: NormalProps) => {
     setState(true, id || '');
     $bgProps.set({ bgClose, closeBtn });
-    $normal.set({ title, description, link, children, funct });
+    $normal.set({ title, message, link, children, funct });
 };
 
 const custom = async (children: React.ReactNode, props?: BaseProps) => {
@@ -63,7 +63,7 @@ const setState = async (state: boolean, id?: string) => {
             $custom.set({});
             $bgProps.set({});
             $currentPopup.set(null);
-            $normal.set({ title: '', description: '' });
+            $normal.set({ title: '', message: '' });
         }, 150);
         setBodyScroll(state);
     }

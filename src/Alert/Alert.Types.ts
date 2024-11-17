@@ -8,7 +8,7 @@ export interface BaseProps {
 
 export interface NormalProps extends BaseProps {
     title: string;
-    description: string;
+    message: string;
     link?: string;
     funct?: () => void;
 }
