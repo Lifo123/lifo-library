@@ -1,5 +1,5 @@
-export { Alert } from '../Alert/Alert.Store.js'
-export { $darkmode, $isDark, Darkmode } from '../Darkmode/Darkmode.Store.js'
+export { Alert } from '../components/AlertDialog/Alert.Store.js'
+export { Darkmode, $theme } from '../components/Darkmode/Darkmode.Store.js'
 export { $error, Error } from './Error.Store.js'
 
 export * from './Loading.Store.js';

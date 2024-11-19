@@ -33,7 +33,8 @@
   },
   "exports": {
     ".": "./dist/index.js",
-    "./Toast": "./dist/Toast/index.js",
-    "./Stores": "./dist/Stores/index.js"
+    "./Toast": "./dist/components/Toast/index.js",
+    "./Stores": "./dist/Stores/index.js",
+    "./utils": "./dist/utils/index.js"
   }
 }

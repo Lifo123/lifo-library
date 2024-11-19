@@ -4,15 +4,11 @@ interface loadingProps {
     [key: string]: boolean
 }
 
-const $loading = map<loadingProps>({
+export const $loading = map<loadingProps>({
     G_all: false,
     G_fetch: false,
 })
 
-const toggle = (id: string) => {
-    const currentData = $loading.get()[id]
-    $loading.setKey(id, !currentData)
-}
 
 const set = (id: string, value: boolean) => {
     $loading.setKey(id, value)
@@ -39,7 +35,8 @@ const promise = async (funct: () => void, props?: PromiseProps) => {
     }, props?.delayOut || 0));
 }
 
-export default $loading
+
 export const Loading = {
-    toggle, set, promise
+    set, 
+    promise
 }
