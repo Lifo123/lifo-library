@@ -2,50 +2,79 @@
 import React from "react";
 import { useStore } from "@nanostores/react";
 import type { AlertDialogerProps, AlertProps } from "./Alert.Types.js";
-import FlifoPortal from "../FlifoPortal/FlifoPortal.js";
 import { EventManager } from '../../utils/ManageDocument.js'
-import { CloseBtn, ButtonPromise } from '../../index.js';
+import { CloseBtn, ButtonPromise } from '../index.js';
 import { $Alert, Alert } from "./Alert.Store.js";
+import { $loading } from "../../Stores/Loading.Store.js";
 
 
 
-export default function AlertDialoger(props: AlertDialogerProps) {
+export default function AlertDialoger({
+    dialogerID = 'init',
+    ...props
+}: AlertDialogerProps) {
     const data = useStore($Alert);
-    const AvailableDialog = data[data.length - 1];
-    if (!AvailableDialog) return null;
+    const [isVisible, setIsVisible] = React.useState(false);
+    const portalRef = React.useRef<HTMLSpanElement | null>(null);
 
-    const bgClose = AvailableDialog.bgClose !== undefined ? AvailableDialog.bgClose : (props.bgClose !== undefined ? props.bgClose : false);
-    const bgColor = AvailableDialog.bgColor || '#00000095';
+    React.useEffect(() => {
+        const existingPortals = document.querySelectorAll(`[data-dialoger-id="${dialogerID}"]`);
+        if (existingPortals.length > 1) {
+            console.warn(`There is already a Dialoger with the same ID: "${dialogerID}". Skipping render.`);
+            return;
+        }
+    }, []);
+
+
+    const Available = data[data.length - 1];
+    const bgClose = Available?.bgClose !== undefined ? Available.bgClose : (props.bgClose !== undefined ? props.bgClose : false);
+    const bgColor = Available?.bgColor || '#00000095';
+
+
+    React.useEffect(() => {
+        setIsVisible(Available?.state);
+        if (Available) {
+            if (Available.state === false) {
+                setIsVisible(false);
+            }
+        }
+    }, [Available?.state]);
 
     return (
-        <FlifoPortal
-            portalID={'init'}
-            portalType="Dialoger"
-            state={AvailableDialog.state}
-            bgClose={props.bgClose}
-            bgColor={bgColor}
+        <span
+            className={`flifo-portal h-100 w-100 o-hidden ${props.isRelative ? `relative` : 'fixed'} ${isVisible ? 'visible' : 'delete'}`}
+            style={{
+                pointerEvents: isVisible ? 'visible' : 'none',
+                backgroundColor: isVisible ? bgColor : 'none',
+            }}
+            data-portal-type="dialoger"
+            data-dialoger-id={'init'}
+            ref={portalRef}
         >
-            <Dialoger key={AvailableDialog?.id} {...AvailableDialog} bgClose={bgClose} />
-        </FlifoPortal>
+            {Available && <Dialoger key={Available?.id} {...Available} bgClose={bgClose} />}
+        </span>
     );
 };
 
 
 
-const Dialoger = (props: AlertProps) => {
+const Dialoger = ({
+    loadingID = 'G_fetch',
+    ...props
+}: AlertProps) => {
     const dialogRef = React.useRef<HTMLDivElement | null>(null);
     const [isVisible, setIsVisible] = React.useState(false);
+    const loading = useStore($loading);
+
 
     React.useEffect(() => {
-        setIsVisible(props.state !== undefined ? props.state : true);
-
+        setIsVisible(props.state);
         if (props.state === false) {
-            Alert.removeDelay(props.id, props.animate === 'none' ? 0 : 150);
+            Alert.removeDelay(props.id, props.animate === 'none' ? 0 : 200);
         }
-    }, [props.state]);
+    }, [props.state])
 
-    React.useEffect(() => {
-
+    React.useEffect(() => { 
         if (props.id) {
             if (isVisible && props.bgClose) {
                 EventManager.OutsideClick(props.id, dialogRef.current, () => Alert.dismiss(props.id));
@@ -60,7 +89,7 @@ const Dialoger = (props: AlertProps) => {
                 EventManager.removeResize(props.id);
             }
         };
-    }, [isVisible, props.bgClose, props.id]);
+    });
 
     return (
         <>
@@ -82,16 +111,15 @@ const Dialoger = (props: AlertProps) => {
                             {props.closeBtn && <span><CloseBtn size={24} onClick={() => Alert.dismiss(props.id)} /></span>}
                         </div>
                         <div className="f-row g-2 f-wrap f-justify-between mt-1">
-                            <span className="btn btn-third br-6 fs-2 pointer" onPointerDown={() => Alert.dismiss(props.id)}>
+                            <span className="btn btn-third br-6 fs-2 pointer" onPointerDown={() => {
+                                if (loading[loadingID]) return;
+                                Alert.dismiss(props.id)
+                            }}>
                                 Cancel
                             </span>
                             <ButtonPromise className="btn-primary btn br-6" text="Continue" onClick={async () => {
-                                try {
-                                    await props.onClick?.();
-                                    Alert.dismiss(props.id)
-                                } catch (e) {
-                                    Alert.dismiss(props.id)
-                                }
+                                await props.onClick?.()
+                                Alert.dismiss(props.id)
                             }} />
                         </div>
                     </div>

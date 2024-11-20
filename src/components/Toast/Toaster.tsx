@@ -4,7 +4,7 @@ import { useStore } from "@nanostores/react"
 import type { ToasterItemProps, ToasterProps } from "./Toast.Types.js"
 import { $firstToast, $toast, LocalToast, toast } from "./Toast.Store.js"
 import { ToastIcons } from "./ToastAssets.js";
-import { ButtonPromise, CloseBtn } from '../../index.js'
+import { ButtonPromise, CloseBtn } from '../index.js'
 import FlifoPortal from "../FlifoPortal/FlifoPortal.js";
 
 export default function Toaster({
@@ -60,6 +60,7 @@ const ToastRow = ({
     };
 
     React.useEffect(() => {
+        
         setIsVisible(props.state !== undefined ? props.state : true);
         if (props.state === false) {
             LocalToast.removeDelay(props.toastID, props.id, props.animate === 'none' ? 0 : 350);
@@ -117,8 +118,8 @@ const ToastRow = ({
                             )}
 
                             <div className="f-col f-justify-center">
-                                {props.title && <h3 className="fs-2" style={{ color: 'rgb(var(--lb-title))' }}>{props?.title}</h3>}
-                                <p className="fs-2 m-0">{props?.message}</p>
+                                {props.title && <h3 className="fs-custom-14-5 mb-1" style={{ color: 'rgb(var(--lb-title))' }}>{props?.title}</h3>}
+                                <p className="fs-2 m-0" style={{fontWeight: '450'}}>{props?.message}</p>
                                 {props.href && <a className="info fs-custom-13 br-6 w-max" href={props.href}>More</a>}
 
                             </div>

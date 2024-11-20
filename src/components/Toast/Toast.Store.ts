@@ -10,8 +10,6 @@ export const $toast = deepMap<ToastProps>()
 const set = (props: ToastItemProps) => {
     const toastID = props.toastID || 'init';
     const updatedToasts = $toast.get()[toastID] || [];
-    if (updatedToasts.some(toast => toast.id === props.id)) return;
-
     const newToast = { ...props, toastID, state: true, id: props.id };
     $toast.setKey(toastID, [...updatedToasts, newToast]);
     $firstToast.set(updatedToasts[0] || newToast)
@@ -34,24 +32,24 @@ const custom = (children: React.ReactNode, props?: ToastCustomProps) => {
 
 const promise = async (funct: () => Promise<void>, props?: ToastPromiseProps): Promise<void> => {
     const toastID = props?.toastID || 'init';
-
-    const localID = props?.loading
-        ? await set({
+    const id = Flifo.IDnumber()
+    let localID;
+    if (props?.loading) {
+        localID = set({
             ...props,
             message: props.loading,
-            noDissapear: true,
-            state: true,
             type: 'loading',
             toastID,
-            id: Flifo.IDnumber(),
-        }) as number
-        : undefined;
+            noDissapear: true,
+            id: id,
+        });
+    }
 
     try {
         await funct();
         if (props?.success) {
             if (localID) {
-                updateToast(toastID, localID, {
+                updateToast(toastID, id, {
                     message: props.success,
                     type: 'success',
                     noDissapear: false,
@@ -62,7 +60,7 @@ const promise = async (funct: () => Promise<void>, props?: ToastPromiseProps): P
                     message: props.success,
                     type: 'success',
                     toastID,
-                    id: Flifo.IDnumber(),
+                    id: id,
                 });
             }
         }
@@ -80,7 +78,7 @@ const promise = async (funct: () => Promise<void>, props?: ToastPromiseProps): P
                     message: props.error,
                     type: 'error',
                     toastID,
-                    id: Flifo.IDnumber(),
+                    id: id,
                 });
             }
         }

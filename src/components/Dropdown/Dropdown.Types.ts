@@ -2,6 +2,11 @@ export type DropOffset = "bottom" | "top" | "left" | "right"
 export type DropDirectionAppear = "toBottom" | "toLeft" | "toTop" | "toRight"
 export type DropAnimation = "slide" | "fade" | "custom"
 
+export interface BasicDropdownProps {
+    title?: string;
+    items?: Array<ListProps>;
+}
+
 
 interface ListProps {
     id?: number;

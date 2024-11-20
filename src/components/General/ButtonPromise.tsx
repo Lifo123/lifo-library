@@ -10,7 +10,7 @@ interface ButtonProps {
     text: string;
     className?: string;
     style?: React.CSSProperties;
-    onClick?: () => void;
+    onClick?: () => Promise<void>;
     stroke?: string;
     size?: number;
 }
@@ -19,8 +19,9 @@ export default function ButtonPromise({ id = 'G_fetch', text, className, style, 
     const LOADING = useStore($loading)
 
     const handleClick = async () => {
-        if (!onClick) return
-        Loading.promise(onClick, { id, delayOut: 20 })
+        if (onClick) {
+            await Loading.promise(onClick, { id, delayOut: 20 });
+        }
     }
 
     return (

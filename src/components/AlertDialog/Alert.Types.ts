@@ -12,14 +12,15 @@ export interface AlertBasicProps {
 
 export interface AlertProps extends AlertBasicProps, BaseComponentProps {
     id?: number;
-    state?: boolean;
+    state: boolean;
     title?: string;
     message?: string;
     href?: string;
     children?: React.ReactNode;
     closeResize?: boolean;
     closeBtn?: boolean;
-    onClick?: () => void;
+    onClick?: () => Promise<void>;
+    loadingID?: string;
 }
 
 export interface AlertFunctionProps extends BaseComponentProps {
@@ -31,11 +32,15 @@ export interface AlertFunctionProps extends BaseComponentProps {
     bgColor?: string;
     href?: string;
     closeResize?: boolean;
-    onClick?: () => void;
+    onClick?: () => Promise<void>;
 }
-export interface AlertCustomProps extends AlertBasicProps, BaseComponentProps, AlertProps {}
+export interface AlertCustomProps extends AlertBasicProps, BaseComponentProps, AlertProps { }
 
 
-export interface AlertDialogerProps  {
+export interface AlertDialogerProps {
+    dialogerID?: string
+    isRelative?: boolean;
     bgClose?: boolean;
+    bgColor?: string;
+    state?: boolean
 }

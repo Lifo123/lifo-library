@@ -57,7 +57,7 @@ const removeDelay = (id?: number, delay?: number) => {
 };
 
 const custom = (children: React.ReactNode, props?: AlertCustomProps) => {
-    const id = set({ children, ...props })
+    const id = set({ children, ...props, state: true })
     return id
 }
 
