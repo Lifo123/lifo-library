@@ -1,6 +1,6 @@
 {
   "name": "@lifo123/library",
-  "version": "1.4.6",
+  "version": "1.4.8",
   "description": "Lifo library",
   "type": "module",
   "repository": {
@@ -35,6 +35,7 @@
     ".": "./dist/index.js",
     "./Toast": "./dist/components/Toast/index.js",
     "./Stores": "./dist/Stores/index.js",
-    "./utils": "./dist/utils/index.js"
+    "./utils": "./dist/utils/index.js",
+    "./components": "./dist/components/index.js"
   }
 }

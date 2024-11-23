@@ -1,24 +1,13 @@
 'use client';
 import React from "react";
-import { EventManager } from "../../utils/ManageDocument.js";
 import type { DropdownButtonProps, DropdownProps, ListDropProps } from "./Dropdown.Types.js";
 
 export default function Dropdown(props: DropdownProps) {
     const [isVisible] = React.useState(false);
     const dropRef = React.useRef<HTMLDivElement>(null);
 
-    React.useEffect(() => {
-        if (dropRef.current && props.id) {
-            EventManager.OutsideClick(props.id, dropRef.current, () => console.log('wasa'));
-        }
-        return () => {
-            if (props.id) {
-                EventManager.removeOutsideClick(props.id);
-            }
-        };
-    }, [props.id]);
 
-    return (
+    return (    
         <div
             className={`dropdown-menu f-col fixed br-6 sd-1 ${isVisible ? 'visible' : 'delete'} ${props.animation}`}
             style={{ ...props.style, top: props.top, left: props.left, transform: props.transform }}

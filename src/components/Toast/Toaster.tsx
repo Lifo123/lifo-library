@@ -41,30 +41,30 @@ export default function Toaster({
 
 const ToastRow = ({
     scaleOffset = 'center',
-    startOffset,
-    endOffset,
+    startAnim,
+    endAnim,
     ...props
 }: ToasterItemProps) => {
     const first = useStore($firstToast)
     const [isVisible, setIsVisible] = React.useState<boolean>(false);
     const [isHovered, setIsHovered] = React.useState<boolean>(false);
     const AllOffsets = {
-        '--toast-start-top': startOffset?.top,
-        '--toast-start-bottom': startOffset?.bottom,
-        '--toast-start-left': startOffset?.left,
-        '--toast-start-right': startOffset?.right,
-        '--toast-end-top': endOffset?.top,
-        '--toast-end-bottom': endOffset?.bottom,
-        '--toast-end-left': endOffset?.left,
-        '--toast-end-right': endOffset?.right,
+        '--custom-start-top': startAnim?.top,
+        '--custom-start-bottom': startAnim?.bottom,
+        '--custom-start-left': startAnim?.left,
+        '--custom-start-right': startAnim?.right,
+        '--custom-end-top': endAnim?.top,
+        '--custom-end-bottom': endAnim?.bottom,
+        '--custom-end-left': endAnim?.left,
+        '--custom-end-right': endAnim?.right,
     };
 
     React.useEffect(() => {
-        
+
         setIsVisible(props.state !== undefined ? props.state : true);
         if (props.state === false) {
             LocalToast.removeDelay(props.toastID, props.id, props.animate === 'none' ? 0 : 350);
-        }else{
+        } else {
             setTimeout(() => {
                 setIsVisible(true);
             }, 50)
@@ -80,9 +80,9 @@ const ToastRow = ({
     }, [first, props.index, props.maxToasts]);
 
     React.useEffect(() => {
-        if(props.noDissapear) return;
-        if(props.noDissapear && isHovered) return;
-        
+        if (props.noDissapear) return;
+        if (props.noDissapear && isHovered) return;
+
         const hideTimeout = setTimeout(() => {
             toast.dismiss(props.toastID, props.id);
         }, props.duration);
@@ -118,27 +118,29 @@ const ToastRow = ({
                             )}
 
                             <div className="f-col f-justify-center">
-                                {props.title && <h3 className="fs-custom-14-5 mb-1" style={{ color: 'rgb(var(--lb-title))' }}>{props?.title}</h3>}
-                                <p className="fs-2 m-0" style={{fontWeight: '450'}}>{props?.message}</p>
+                                {props.title && <h3 className="fs-custom-14-5" style={{ color: 'rgb(var(--lb-title))' }}>{props?.title}</h3>}
+                                <p className="fs-2 m-0" style={{ fontWeight: '450' }}>{props?.message}</p>
                                 {props.href && <a className="info fs-custom-13 br-6 w-max" href={props.href}>More</a>}
 
                             </div>
                         </div>
                         {
-                            props.action ?
-                                <ButtonPromise className="fs-custom-13 pointer btn-fourth br-6"
-                                    text={props.actionText || 'Continue'}
-                                    size={16}
-                                    style={{ padding: '.35rem .8rem' }}
-                                    onClick={async () => {
-                                        setIsHovered(true);
-                                        await props.action!()
-                                        toast.dismiss(props.toastID, props.id)
-                                    }}
-                                />
-                                : props.closeBtn ? <span className="ml-3 d-block" onClick={() => { toast.dismiss(props.toastID, props.id) }}>
-                                    <CloseBtn size={24} />
-                                </span> : null
+                            props.customAction ? props.customAction :
+                                props.action ?
+                                    <ButtonPromise className="fs-custom-12-5 pointer btn-secondary br-6"
+                                        text={props.actionText || 'Continue'}
+                                        size={16}
+                                        style={{ padding: '.3rem .65rem' }}
+                                        stroke="rgb(var(--lb-white))"
+                                        onClick={async () => {
+                                            setIsHovered(true);
+                                            await props.action!()
+                                            toast.dismiss(props.toastID, props.id)
+                                        }}
+                                    />
+                                    : props.closeBtn ? <span className="ml-3 d-block" onClick={() => { toast.dismiss(props.toastID, props.id) }}>
+                                        <CloseBtn size={24} />
+                                    </span> : null
                         }
                     </span>
                 )

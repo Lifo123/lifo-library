@@ -1,46 +1,38 @@
-import type { AnimationTypes, BaseComponentProps, DirTypes, OffsetTypes } from "../../Types/GeneralTypes.js";
-type AnimationWithoutSlide = Exclude<AnimationTypes, 'slide'>;
+import type { BaseComponentProps, AnimationProps } from "../../Types/GeneralTypes.js";
+type AnimateType = "custom" | 'none';
 
-export interface AlertBasicProps {
-    dialogerID?: string;
-    animate?: AnimationWithoutSlide;
-    offset?: OffsetTypes;
-    bgColor?: string;
-    bgClose?: boolean;
-    dir?: DirTypes;
-}
-
-export interface AlertProps extends AlertBasicProps, BaseComponentProps {
-    id?: number;
-    state: boolean;
+export interface AlertStoreProps extends AlertBasicProps, BaseComponentProps {
     title?: string;
     message?: string;
+    state?: boolean;
     href?: string;
-    children?: React.ReactNode;
-    closeResize?: boolean;
     closeBtn?: boolean;
-    onClick?: () => Promise<void>;
+    onClick?: () => Promise<void> | void;
     loadingID?: string;
+    children?: React.ReactNode;
 }
 
-export interface AlertFunctionProps extends BaseComponentProps {
+export interface AlertBasicProps {
+    animate?: AnimateType;
+    startAnim?: AnimationProps;
+    endAnim?: AnimationProps;
+    bgColor?: string;
+    bgClose?: boolean;
+}
+
+export interface AlertFunctionProps extends BaseComponentProps, AlertBasicProps {
     title?: string
     message: string;
     closeBtn?: boolean;
-    bgClose?: boolean;
-    animate?: AnimationWithoutSlide;
-    bgColor?: string;
     href?: string;
-    closeResize?: boolean;
-    onClick?: () => Promise<void>;
+    onClick?: () => Promise<void> | void;
 }
-export interface AlertCustomProps extends AlertBasicProps, BaseComponentProps, AlertProps { }
 
 
-export interface AlertDialogerProps {
-    dialogerID?: string
-    isRelative?: boolean;
-    bgClose?: boolean;
+export interface AlertCustomProps extends AlertBasicProps, BaseComponentProps { }
+
+export interface AlertDialogerProps{
+    loadingID?: string;
     bgColor?: string;
-    state?: boolean
+    bgClose?: boolean;
 }

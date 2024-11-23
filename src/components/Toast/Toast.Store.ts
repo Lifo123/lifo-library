@@ -4,6 +4,7 @@ import type { CustomFunctionProps, ShowProps, ToastCustomProps, ToastFunctionPro
 import { Flifo } from '../../utils/General.Utils.js'
 
 export const $firstToast = atom<ToastItemProps>({ id: 0 })
+const $selectToast = atom<ToastItemProps>({ id: 0 })
 export const $currentToast = atom<ToastItemProps>({ id: 0 })
 export const $toast = deepMap<ToastProps>()
 
@@ -22,7 +23,7 @@ const render = (message: string, props?: ToastFunctionProps) => {
 
 const delay = async (message: string, props?: ToastFunctionProps) => {
     setTimeout(() => {
-        render(message, props)
+        return render(message, props)
     }, props?.delay || 350);
 }
 
@@ -150,11 +151,21 @@ export const LocalToast = {
 }
 
 export const toast = {
-    show: (message: string, props?: ShowProps) => render(message, props),
-    success: (message: string, props?: CustomFunctionProps) => render(message, { ...props, type: 'success' }),
-    error: (message: string, props?: CustomFunctionProps) => render(message, { ...props, type: 'error' }),
-    warning: (message: string, props?: CustomFunctionProps) => render(message, { ...props, type: 'warning' }),
-    info: (message: string, props?: CustomFunctionProps) => render(message, { ...props, type: 'info' }),
+    show: (message: string, props?: ShowProps) => {
+        return render(message, props)
+    },
+    success: (message: string, props?: CustomFunctionProps) => {
+        return render(message, { ...props, type: 'success' })
+    },
+    error: (message: string, props?: CustomFunctionProps) => {
+        return render(message, { ...props, type: 'error' })
+    },
+    warning: (message: string, props?: CustomFunctionProps) => {
+        return render(message, { ...props, type: 'warning' })
+    },
+    info: (message: string, props?: CustomFunctionProps) => {
+        return render(message, { ...props, type: 'info' })
+    },
     delay,
     custom,
     dismiss,
@@ -164,5 +175,5 @@ export const toast = {
 
 export const DevToast = {
     ...toast, ...LocalToast,
-    $currentToast, $firstToast, $toast,
+    $currentToast, $firstToast, $toast, $selectToast
 };

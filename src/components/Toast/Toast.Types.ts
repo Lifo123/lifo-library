@@ -1,5 +1,5 @@
 import type React from "react";
-import type { AnimationTypes, BaseComponentProps, DirTypes, OffsetProps, ThemeTypes } from "../../Types/GeneralTypes.js";
+import type { AnimationTypes, BaseComponentProps, DirTypes, AnimationProps, ThemeTypes } from "../../Types/GeneralTypes.js";
 import type { RelativeTypes } from "../FlifoPortal/FlifoPortal.Types.js";
 
 export type ToastTypes = "success" | "error" | "warning" | "info" | "loading";
@@ -12,9 +12,8 @@ export interface ToastBasicProps {
   duration?: number;
   animate?: AnimationTypes;
   scaleOffset?: ScaleOffsetTypes;
-  startOffset?: OffsetProps;
-  endOffset?: OffsetProps;
-  delay?: number;
+  startAnim?: AnimationProps;
+  endAnim?: AnimationProps;
   theme?: ThemeTypes;
 }
 
@@ -43,6 +42,7 @@ export interface ToastItemProps extends ToastBasicProps, RelativeTypes {
   maxToasts?: number;
   action?: () => void;
   actionText?: string;
+  customAction?: React.ReactNode;
   noDissapear?: boolean;
 }
 
@@ -55,6 +55,7 @@ export interface ToastPromiseProps extends ToastBasicProps {
 
 export interface ToastCustomProps extends ToastBasicProps {
   toastID?: string;
+  noDissapear?: boolean;
 }
 
 export interface ToastFunctionProps extends ToastBasicProps {
@@ -67,7 +68,9 @@ export interface ToastFunctionProps extends ToastBasicProps {
   closeBtn?: boolean;
   action?: () => void;
   actionText?: string;
+  customAction?: React.ReactNode;
   noDissapear?: boolean;
+  delay?: number;
 }
 
 export interface ToasterProps extends BaseComponentProps, RelativeTypes {

@@ -1,2 +1,2 @@
+export { Alert } from './Alert.Store.js'
 export { default as AlertDialoger } from "./AlertDialoger.js"
-export type { AlertProps } from './Alert.Types.js'

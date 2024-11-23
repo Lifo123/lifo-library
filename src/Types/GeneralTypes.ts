@@ -5,11 +5,13 @@ export type ThemeTypes = 'light' | 'dark';
 
 
 
-export interface OffsetProps {
+export interface AnimationProps {
     top?: string;
     left?: string;
     right?: string;
     bottom?: string;
+    opacity?: string;
+    transform?: string;
 }
 
 export interface BaseComponentProps {
