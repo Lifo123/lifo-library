@@ -5,7 +5,7 @@ const set = (path: string, value: any) => {
 
 const get = (path: string) => {
     const storedValue = localStorage.getItem(path);
-    if (!storedValue) return {};
+    if (!storedValue) return null;
 
     try {
         return JSON.parse(storedValue);

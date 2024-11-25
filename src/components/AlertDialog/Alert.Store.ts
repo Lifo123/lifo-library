@@ -1,43 +1,61 @@
 'use client'
 import { map } from "nanostores";
-import type { AlertCustomProps, AlertFunctionProps, AlertStoreProps } from "./Alert.Types.js";
+import type { AlertCustomProps, AlertFunctionProps, AlertStoreProps, Storeitem } from "./Alert.Types.js";
 import { Scroll } from "../../utils/Scroll.Utils.js";
-
 
 export const $Alert = map<AlertStoreProps>({})
 
-const set = (props: AlertStoreProps) => {
-    $Alert.set({ ...props, state: true })
+const set = (props: Storeitem) => {
+    const newAlert = { ...props };
+    $Alert.setKey(props.id, newAlert);
     Scroll.hide()
-}
+};
 
 const show = (props: AlertFunctionProps) => {
-    set({
+    return set({
         ...props,
         state: true
     })
 }
 
-const dismiss = () => {
-    $Alert.setKey('state', false)
-};
+const dismiss = (id: string) => {
+    const currentAlert = $Alert.get()[id];
+    if (!currentAlert) return;
 
-const remove = () => {
-    $Alert.set({});
-    Scroll.show();
-};
+    $Alert.setKey(id, {
+        ...currentAlert,
+        isVisible: false,
+    });
 
-const removeDelay = (delay?: number) => {
     setTimeout(() => {
-        remove();
+        remove(id);
+        if(currentAlert.endFunc) currentAlert.endFunc();
+        Scroll.show();
+    }, 200)
+
+};
+
+const remove = (id: string) => {
+    const DATA = $Alert.get();
+    if (!DATA) return;
+
+    const updatedData = Object.fromEntries(
+        Object.entries(DATA).filter(([key]) => key !== id)
+    );
+    $Alert.set(updatedData);
+};
+
+const removeDelay = (id: string, delay?: number) => {
+    setTimeout(() => {
+        remove(id);
     }, delay || 0);
 };
 
-const custom = (children: React.ReactNode, props?: AlertCustomProps) => {
-    set({
+const custom = (children: React.ReactNode, props: AlertCustomProps) => {
+    return set({
         children,
         state: true,
-        ...props
+        ...props,
     })
 }
 

@@ -5,7 +5,6 @@ interface loadingProps {
 }
 
 export const $loading = map<loadingProps>({
-    G_all: false,
     G_fetch: false,
 })
 
@@ -30,7 +29,7 @@ const promise = async (funct: () => Promise<void> | void, props?: PromiseProps) 
     }
 
     try {
-        set(id, true);
+        Loading.start(id);
         if (props?.delayIn) {
             await new Promise<void>((resolve) => setTimeout(resolve, props.delayIn));
         }
@@ -40,7 +39,7 @@ const promise = async (funct: () => Promise<void> | void, props?: PromiseProps) 
         console.error(`Error in Loading.promise for ${id}:`, error);
     } finally {
         await new Promise<void>((resolve) => setTimeout(() => {
-            set(id, false);
+            Loading.end(id);
             resolve();
         }, props?.delayOut || 0));
     }
