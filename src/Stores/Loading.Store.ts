@@ -14,15 +14,7 @@ const set = (id: string, value: boolean) => {
 }
 
 
-interface PromiseProps {
-    id?: string,
-    delayIn?: number,
-    delayOut?: number
-}
-
-const promise = async (funct: () => Promise<void> | void, props?: PromiseProps) => {
-    const id = props?.id || 'G_fetch';
-
+const promise = async (funct: () => void, id: string) => {
     if ($loading.get()[id]) {
         console.warn(`Promise for ${id} is already running.`);
         return;
@@ -30,20 +22,14 @@ const promise = async (funct: () => Promise<void> | void, props?: PromiseProps) 
 
     try {
         Loading.start(id);
-        if (props?.delayIn) {
-            await new Promise<void>((resolve) => setTimeout(resolve, props.delayIn));
-        }
-
         await funct();
     } catch (error) {
         console.error(`Error in Loading.promise for ${id}:`, error);
     } finally {
-        await new Promise<void>((resolve) => setTimeout(() => {
-            Loading.end(id);
-            resolve();
-        }, props?.delayOut || 0));
+        Loading.end(id);
     }
 };
+
 
 
 export const Loading = {

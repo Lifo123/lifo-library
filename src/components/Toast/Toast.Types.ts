@@ -1,6 +1,5 @@
 import type React from "react";
 import type { AnimationTypes, BaseComponentProps, DirTypes, AnimationProps, ThemeTypes } from "../../Types/GeneralTypes.js";
-import type { RelativeTypes } from "../FlifoPortal/FlifoPortal.Types.js";
 
 export type ToastTypes = "success" | "error" | "warning" | "info" | "loading";
 export type PositionTypes = "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right";
@@ -22,7 +21,7 @@ export interface ToastProps {
   [key: string]: ToastItemProps[]
 }
 
-export interface ToastItemProps extends ToastBasicProps, RelativeTypes {
+export interface ToastItemProps extends ToastBasicProps {
   index?: number;
   id: number;
   type?: ToastTypes;
@@ -73,7 +72,7 @@ export interface ToastFunctionProps extends ToastBasicProps {
   delay?: number;
 }
 
-export interface ToasterProps extends BaseComponentProps, RelativeTypes {
+export interface ToasterProps extends BaseComponentProps {
   toastID?: string;
   position?: PositionTypes;
   duration?: number;

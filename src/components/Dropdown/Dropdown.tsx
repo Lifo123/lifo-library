@@ -1,75 +1,80 @@
-'use client';
-import React from "react";
-import type { DropdownButtonProps, DropdownProps, ListDropProps } from "./Dropdown.Types.js";
+import React, { forwardRef, useImperativeHandle } from "react";
 
-export default function Dropdown(props: DropdownProps) {
-    const [isVisible] = React.useState(false);
-    const dropRef = React.useRef<HTMLDivElement>(null);
-
-
-    return (    
-        <div
-            className={`dropdown-menu f-col fixed br-6 sd-1 ${isVisible ? 'visible' : 'delete'} ${props.animation}`}
-            style={{ ...props.style, top: props.top, left: props.left, transform: props.transform }}
-            data-offset={props.offset}
-            ref={dropRef}
-        >
-            {props.title && (
-                <p className="dropdown-menu-head m-0 fs-2 fw-600">{props.title}</p>
-            )}
-            {props.contents?.map((data, i) => (
-                <DropmenuSection key={i} props={data} id={props.id} />
-            ))}
-        </div>
-    );
+export interface DropDownAllTypes {
+    text?: string;
+    dir?: 'dtb' | 'dbt' | 'dlr' | 'drl';
+    animate?: {
+        start?: { scale?: string };
+        end?: { scale?: string };
+        duration?: number;
+    };
+    className?: string;
+    children?: React.ReactNode;
 }
-export const DropmenuSection = ({ props, id }: { props: ListDropProps[], id?: number }) => {
-    return (
-        <ul className="dropmenu-section f-col">
-            {props.map((data, i) => (
-                <DropmenuItem key={i} {...data} id={id} />
-            ))}
-        </ul>
-    );
-};
 
-export const DropmenuItem = (props: ListDropProps) => {
+const Dropdown = forwardRef(function Dropdown(
+    { text, dir = 'dtb', animate, className, children }: DropDownAllTypes,
+    ref: React.Ref<any>
+) {
+    const [isOpen, setIsOpen] = React.useState(false);
+    const [isAnim, setIsAnim] = React.useState(false);
 
-    const handleClick = async (e: React.MouseEvent) => {
-        e.preventDefault()
-        await props.onClick?.();
-
-        if (props.href) {
-            if (!props.href.startsWith('http')) {
-                return;
-            }
-            window.location.href = props.href;
-        }
+    const Dir = {
+        dtb: 'top left',
+        dbt: 'bottom left',
+        dlr: 'left center',
+        drl: 'right center',
     };
 
+    const AllOffsets = {
+        '--lb-start-dropdown-scale': animate?.start?.scale || '1',
+        '--lb-end-dropdown-scale': animate?.end?.scale || '1',
+        '--lb-dropdown-origin': Dir[dir],
+    };
+
+    const manageDrop = (state: boolean) => {
+        state ? setIsOpen(true) : setIsAnim(false);
+        setTimeout(() => {
+            state ? setIsAnim(true) : setIsOpen(false);
+        }, state ? 10 : animate?.duration || 120);
+    };
+
+    // Exponer métodos de control mediante el ref
+    useImperativeHandle(ref, () => ({
+        close: () => manageDrop(false),
+        open: () => manageDrop(true),
+        toggle: () => manageDrop(!isOpen),
+    }));
+
     return (
-        <li className="dropmenu-item br-4 f-row f-justify-between pointer" onClick={handleClick}>
-            {props.href ? (
-                <a className="fs-2 fw-500 m-0 mr-6 w-100" href={props.href}>
-                    {props.text}
-                </a>
-            ) : (
-                <p className="fs-2 fw-500 m-0 mr-6w-100">
-                    {props.text}
-                </p>
+        <div className={`dropdown f-col f-center relative w-max mx-auto`}>
+            <span
+                className={`btn btn-third br-6`}
+                onClick={() => manageDrop(!isOpen)}
+            >
+                {text || 'Dropdown'}
+            </span>
+            {isOpen && (
+                <>
+                    <span
+                        className="lifo-portal d-flex f-center fixed dialog h-100"
+                        onClick={() => manageDrop(false)}
+                    ></span>
+                    <div
+                        className={`dropdown-content absolute d-flex ${className || 'br-6 f-col'} mx-auto`}
+                        style={{
+                            overflow: 'visible',
+                            ...AllOffsets,
+                        }}
+                        data-anim={`${isAnim ? 'true' : 'false'}`}
+                        data-dir={dir}
+                    >
+                        {children || <div>No content provided</div>}
+                    </div>
+                </>
             )}
-        </li>
+        </div>
     );
-};
+});
 
-
-export const OpenDropdown = (data: DropdownButtonProps) => {
-    
-
-
-    return (
-        <span className={`drop-btn btn  ${data?.className || 'btn-third br-6'}`}>
-            {data?.text || 'Open'}
-        </span>
-    )
-}
+export default Dropdown;

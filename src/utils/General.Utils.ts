@@ -20,12 +20,17 @@ const timeTracker = async <T extends any[], R>(
         await funct(...args);
     } catch (e) {
         console.log(e);
-    }finally{
+    } finally {
         const endTime = performance.now();
         return endTime - startTime;
     }
 };
 
+const delay = async (time: number) => {
+    return new Promise((res) => setTimeout(res, time || 0));
+}
+
+
 export const Flifo = {
-    IDnumber, IDstring, timeTracker
+    IDnumber, IDstring, timeTracker, delay
 };

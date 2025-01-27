@@ -5,7 +5,6 @@ import type { ToasterItemProps, ToasterProps } from "./Toast.Types.js"
 import { $firstToast, $toast, LocalToast, toast } from "./Toast.Store.js"
 import { ToastIcons } from "./ToastAssets.js";
 import { ButtonPromise, CloseBtn } from '../index.js'
-import FlifoPortal from "../FlifoPortal/FlifoPortal.js";
 
 export default function Toaster({
     toastID = 'init',
@@ -22,7 +21,7 @@ export default function Toaster({
     const AvailableToast = ToastData[toastID].slice(-maxToasts - 1);
 
     return (
-        <FlifoPortal portalID={toastID} portalType="Toaster" {...props} bgClose={false} state={true}>
+        <span className="lifo-portal fixed h-100 w-100 no-select" data-toaster-id={toastID}>
             {AvailableToast.map((toast, i) => (
                 <ToastRow
                     key={toast.id}
@@ -35,7 +34,7 @@ export default function Toaster({
                     {...toast}
                 />
             ))}
-        </FlifoPortal>
+        </span>
     )
 }
 
@@ -91,7 +90,7 @@ const ToastRow = ({
     }, [isHovered, props.duration, props.noDissapear]);
 
     return (
-        <div className={`toast-container d-flex f-center w-max h-max${isVisible ? ' visible' : ' delete'} ${props.theme || ''}${props.isRelative ? ' fixed' : ' absolute'}`}
+        <div className={`toast-container d-flex f-center w-max h-max${isVisible ? ' visible' : ' delete'} ${props.theme || ''} absolute`}
             data-axis-y={props.position?.split('-')[0]}
             data-axis-x={props.position?.split('-')[1]}
             data-scale-offset={scaleOffset}

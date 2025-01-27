@@ -1,21 +1,22 @@
-'use client'
 import { useStore } from "@nanostores/react";
+import type { DarkmodeAllTypes, DarkmodeProps } from "./Darkmode.types.js";
 import { $theme, Darkmode } from "./Darkmode.Store.js";
-import type { DarkmodeProps } from "./Darkmode.types.js";
+import SelectOptions from "../Select/SelectOptions.js";
 
-export default function DarkmodeDrop(props: DarkmodeProps) {
+export default function Test(props: DarkmodeProps) {
     const theme = useStore($theme);
 
-    const handleSelect = (e: any) => {
-        const value = e.target.value;
-        Darkmode.change(props.storage, value);
+    const handleSelect = (value: DarkmodeAllTypes) => {
+        Darkmode.change(props.storage || 'F-Theme', value);
     }
 
     return (
-        <select className={`lb-dm-drop ${props.className || ''}`} value={theme} onChange={handleSelect} style={props.style}>
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-            <option value="system" >System</option>
-        </select>
+        <>
+            <SelectOptions text={theme}
+                className="br-6 lb-dm-dropdown"
+                options={['light', 'dark', 'system']}
+                onChange={handleSelect}
+            />
+        </>
     );
 }

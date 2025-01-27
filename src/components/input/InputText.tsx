@@ -42,7 +42,7 @@ const InputText = ({
     const handleEnter = (e: any) => {
         if (e.key === 'Enter') {
             if (onEnter) {
-                Loading.promise(() => onEnter(), { id: loadingID, delayOut: 20 });
+                Loading.promise(() => onEnter(), loadingID || 'G_fetch');
             } else {
                 console.warn('onEnter function is not defined');
             }

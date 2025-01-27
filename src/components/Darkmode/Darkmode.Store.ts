@@ -36,11 +36,6 @@ const preferTheme = () => {
     return window.matchMedia('(prefers-color-scheme: dark)').matches;
 }
 
-const local = (e: React.MouseEvent, theme: DarkmodeAllTypes) => {
-    const target = e.target as HTMLElement
-    target.classList.remove('light', 'dark')
-    target.classList.add(theme)
-}
 
 const remove = (target: HTMLElement) => {
     target.classList.remove('light', 'dark')
@@ -49,7 +44,6 @@ const remove = (target: HTMLElement) => {
 
 
 export const Darkmode = {
-    local,
     remove,
     toggle, 
     change, 

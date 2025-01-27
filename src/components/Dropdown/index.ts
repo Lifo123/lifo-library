@@ -1,1 +1,1 @@
-export * from './Dropdown.js'
+export { default as Dropdown } from './Dropdown.js';
