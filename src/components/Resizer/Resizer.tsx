@@ -1,4 +1,5 @@
-import { useResize } from "./useResize";
+'use client'
+import { useResize } from "./useResize.js";
 
 interface ResizerProps {
     type?: 'row' | 'col' | 'both';
