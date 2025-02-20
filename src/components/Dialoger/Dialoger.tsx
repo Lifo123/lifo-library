@@ -26,7 +26,7 @@ export default function Dialoger({ ...props }: DialogerPropsTypes) {
 
     return (
         Store.isVisible && (
-            <span className="lifo-portal d-flex f-center fixed dialog h-100"
+            <span className="lifo-portal d-flex f-center fixed dialog h-100 w-100"
                 style={{
                     backgroundColor: Store.bgColor || '#0000003b',
                     pointerEvents: 'visible'
