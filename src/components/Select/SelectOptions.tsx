@@ -22,7 +22,7 @@ export default function SelectOptions({ className, title, text = "Select", optio
 
     return (
         <>
-            <Dropdown ref={dropdownRef} text={selected} dir="dtb" className={`${className} mt-1`}>
+            <Dropdown text={selected} className={`${className} mt-1`}>
                 {title ? <h4 className="dropdown-title">{title}</h4> : null}
                 <div className="f-col w-100">
                     {options.map((option, index) => (

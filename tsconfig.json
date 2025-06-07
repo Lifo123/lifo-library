@@ -66,6 +66,8 @@
   ],
   "exclude": [
     "node_modules",
+    "src/apps",
+    "src/styles",
     "**/*.spec.ts",
     "**/*.test.ts"
   ]

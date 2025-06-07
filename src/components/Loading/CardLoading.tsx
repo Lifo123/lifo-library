@@ -2,7 +2,7 @@ import React from "react";
 import CircleLoading from "./CircleLoading.js";
 import { Scroll } from "../../utils/Scroll.Utils.js";
 import { useStore } from "@nanostores/react";
-import { $loading } from "src/Stores/Loading.Store.js";
+import { $loading } from "../../Stores/Loading.Store.js";
 
 interface CardLoadingProps {
     custom?: React.ReactNode;

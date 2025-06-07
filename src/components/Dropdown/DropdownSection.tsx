@@ -1,5 +1,5 @@
-import { DropdownItems } from "./Dropdown.Types";
-import Dropdownitem from "./Dropdownitem";
+import { DropdownItems } from "./Dropdown.Types.js";
+import Dropdownitem from "./Dropdownitem.js";
 
 interface Props {
     items: DropdownItems[];

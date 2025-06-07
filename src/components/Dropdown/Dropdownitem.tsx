@@ -1,4 +1,4 @@
-import { DropdownItems } from "./Dropdown.Types";
+import { DropdownItems } from "./Dropdown.Types.js";
 
 interface Props {
     close?: (state?: boolean) => void;

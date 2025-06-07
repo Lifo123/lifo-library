@@ -1,4 +1,4 @@
-import { AnimationPropsTypes, AnimationTypes, BaseComponentProps, DirTypes } from "src/Types/GeneralTypes";
+import { AnimationPropsTypes, AnimationTypes, BaseComponentProps, DirTypes } from "../../Types/GeneralTypes.js";
 
 export interface DropDownAllTypes extends BaseComponentProps {
     text?: string;

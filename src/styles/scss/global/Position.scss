@@ -22,6 +22,7 @@
   overflow: visible;
 }
 
+
 .ox-hidden {
   overflow-x: hidden;
 }
@@ -29,7 +30,12 @@
 .ox-visible {
   overflow-x: visible;
 }
-.ox-auto{
+
+.ox-scroll {
+  overflow-x: scroll;
+}
+
+.ox-auto {
   overflow-x: auto;
   overflow-y: hidden;
 }
@@ -42,7 +48,11 @@
   overflow-y: visible;
 }
 
-.oy-auto{
+.oy-scroll {
+  overflow-y: scroll;
+}
+
+.oy-auto {
   overflow-y: auto;
   overflow-x: hidden;
 }

@@ -1,4 +1,6 @@
 @import './Color.scss';
+@import './Font.scss';
+@import './Lifo.scss';
 
 
 :root {
@@ -39,13 +41,6 @@
   --lb-warning: rgb(206 150 71);
   --lb-info: rgb(9 113 225);
 
-  --lb-hue: 210;
-  --lb-sat: 100%;
-  --lb-light: 50%;
-  --lb-opacity: 1;
-
-  --lb-hsl-primary: hsl(var(--lb-hue), var(--lb-sat), var(--lb-light), var(--lb-opacity));
-
   // #endregion
 
 
@@ -65,27 +60,6 @@
   --spacing-12: 7rem;
   --spacing-13: 8rem;
   --spacing-14: 10rem;
-
-  //#endregion
-
-  // #region Font Size
-  --lb-multiplier: 1;
-  --lb-fs-1: calc(var(--lb-multiplier) * 12px);
-  --lb-fs-2: calc(var(--lb-multiplier) * 14px);
-  --lb-fs-3: calc(var(--lb-multiplier) * 16px);
-  --lb-fs-4: calc(var(--lb-multiplier) * 18px);
-  --lb-fs-5: calc(var(--lb-multiplier) * 20px);
-  --lb-fs-6: calc(var(--lb-multiplier) * 24px);
-  --lb-fs-7: calc(var(--lb-multiplier) * 28px);
-  --lb-fs-8: calc(var(--lb-multiplier) * 36px);
-  --lb-fs-9: calc(var(--lb-multiplier) * 42px);
-  --lb-fs-10: calc(var(--lb-multiplier) * 48px);
-  --lb-fs-11: calc(var(--lb-multiplier) * 56px);
-  --lb-fs-12: calc(var(--lb-multiplier) * 64px);
-  --lb-fs-13: calc(var(--lb-multiplier) * 72px);
-  --lb-fs-14: calc(var(--lb-multiplier) * 80px);
-  --lb-fs-15: calc(var(--lb-multiplier) * 96px);
-  --lb-fs-16: calc(var(--lb-multiplier) * 112px);
 
   //#endregion
 }
@@ -169,16 +143,19 @@
   background-color: rgb(var(--color-info), .1);
   color: rgba(var(--color-info), 1);
 }
+
 .msg-error {
   border: solid 1px rgba(var(--color-error), 1);
   background-color: rgb(var(--color-error), .1);
   color: rgba(var(--color-error), 1);
 }
+
 .msg-warn {
   border: solid 1px rgba(var(--color-warn), 1);
   background-color: rgb(var(--color-warn), .1);
   color: rgba(var(--color-warn), 1);
 }
+
 .msg-success {
   border: solid 1px rgba(var(--color-success), 1);
   background-color: rgb(var(--color-success), .1);

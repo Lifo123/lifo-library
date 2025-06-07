@@ -1,9 +1,37 @@
 :root {
 
-    --color-blue: hsl(210, 100%, 50%, 1);
+    --color-white: 250, 250, 250;
+    --color-black: 9, 9, 11;
+
+    --color-info: 0, 128, 255;
+    --color-error: 249, 23, 23;
+    --color-warn: 252, 163, 31;
+    --color-success: 30, 187, 18;
+
+    --color-hue: 210;
+    --color-sat: 100%;
+    --color-light: 50%;
+    --color-opacity: 1;
+
+    --color-hsl-primary: hsla(var(--color-hue), var(--color-sat), var(--color-light), var(--color-opacity));
+
+}
+
+.light {
+    --color-white: 250, 250, 250;
+    --color-black: 9, 9, 11;
+
+    --color-info: 0, 128, 255;
+    --color-error: 249, 23, 23;
+    --color-warn: 252, 163, 31;
+    --color-success: 30, 187, 18;
 }
 
 .dark {
+
+    --color-white: 9, 9, 11;
+    --color-black: 250, 250, 250;
+
     --color-info: 0, 128, 255;
     --color-error: 249, 23, 23;
     --color-warn: 252, 163, 31;

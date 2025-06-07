@@ -1,0 +1,44 @@
+:root {
+
+    --fc-title: 9, 9, 11;
+    --fc-subtitle: 9, 9, 11;
+    --fc-text: 115, 115, 115;
+    --fc-placeholder: 250, 250, 250;
+
+    // #region Font Size
+    --fs-multiplier: 1;
+    --lb-fs-1: calc(var(--fs-multiplier) * 12px);
+    --lb-fs-2: calc(var(--fs-multiplier) * 14px);
+    --lb-fs-3: calc(var(--fs-multiplier) * 16px);
+    --lb-fs-4: calc(var(--fs-multiplier) * 18px);
+    --lb-fs-5: calc(var(--fs-multiplier) * 20px);
+    --lb-fs-6: calc(var(--fs-multiplier) * 24px);
+    --lb-fs-7: calc(var(--fs-multiplier) * 28px);
+    --lb-fs-8: calc(var(--fs-multiplier) * 36px);
+    --lb-fs-9: calc(var(--fs-multiplier) * 42px);
+    --lb-fs-10: calc(var(--fs-multiplier) * 48px);
+    --lb-fs-11: calc(var(--fs-multiplier) * 56px);
+    --lb-fs-12: calc(var(--fs-multiplier) * 64px);
+    --lb-fs-13: calc(var(--fs-multiplier) * 72px);
+    --lb-fs-14: calc(var(--fs-multiplier) * 80px);
+    --lb-fs-15: calc(var(--fs-multiplier) * 96px);
+    --lb-fs-16: calc(var(--fs-multiplier) * 112px);
+    //#endregion
+
+}
+
+.light {
+    --fc-title: 9, 9, 11;
+    --fc-subtitle: 9, 9, 11;
+    --fc-text: 115, 115, 115;
+    --fc-placeholder: 250, 250, 250;
+}
+
+.dark {
+
+    --fc-title: 250, 250, 250;
+    --fc-subtitle: 250, 250, 250;
+    --fc-text: 163, 163, 163;
+    --fc-placeholder: 250, 250, 250;
+
+}

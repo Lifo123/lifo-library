@@ -1,11 +1,10 @@
 ---
 import "../styles/output/Global.css";
 import "../styles/output/Flifo.css";
-import Test from "@Apps/Test";
 import { Toaster } from "@Components/Toast";
 import { Dialoger } from "@Components/Dialoger";
-import { Dropdown } from "@Components/Dropdown";
 import { CardLoading } from "@Components/Loading";
+import { DarkmodeIcon } from "@Components/Darkmode";
 
 interface Props {
     title: string;
@@ -65,20 +64,26 @@ const { title, description } = Astro.props;
         <Toaster client:only="react" />
         <Dialoger client:only="react" />
         <CardLoading client:only="react" />
-        <h1 class="text-center mt-6">Lifo Library</h1>
-        <p class="d-flex">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur aliquid expedita fugit porro asperiores! Ratione expedita praesentium assumenda placeat consectetur!</p>
-        <Test client:only="react" />
+
+        <h1 class="text-center mt-6 title">Lifo Library</h1>
+        <h2>Subtitle</h2>
+        <p class="d-flex text-small">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
+            aliquid expedita fugit porro asperiores! Ratione expedita
+            praesentium assumenda placeat consectetur!
+        </p>
+        <DarkmodeIcon client:only="react" />
+        <div class="f-row g-2 mt-5">
+            <span class="btn btn-primary br-6 d-flex">Primary</span>
+            <span class="btn btn-secondary br-6 d-flex">Secondary</span>
+            <span class="btn btn-third br-6 d-flex">Third</span>
+            <span class="btn btn-fourth br-6 d-flex">Fourth</span>
+        </div>
+
         <p class="mt-6">wadawda</p>
         <p class="mt-6">wadawda</p>
         <p class="mt-6">wadawda</p>
         <p class="mt-6">wadawda</p>
-        <p class="mt-6">wadawda</p>
-        <p class="mt-6">wadawda</p>
-        <p class="mt-6">wadawda</p>
-        <Dropdown text="Open Dropdown" items={[
-                [{ text: 'Item 1' }, { text: 'Item 2' }],
-                [{ text: 'Item 3' }, { text: 'Item 4' }],
-            ]} client:only="react" />
         <p class="mt-6">wadawda</p>
         <p class="mt-6">wadawda</p>
         <p class="mt-6">wadawda</p>

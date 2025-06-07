@@ -1,6 +1,7 @@
-import { DropDownAllTypes } from "./Dropdown.Types";
-import DropdownSection from "./DropdownSection";
-import { useDropdown } from "./useDropdown";
+'use client'
+import { DropDownAllTypes } from "./Dropdown.Types.js";
+import DropdownSection from "./DropdownSection.js";
+import { useDropdown } from "./useDropdown.js";
 
 
 export default function Dropdown({ ...props }: DropDownAllTypes) {

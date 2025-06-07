@@ -131,55 +131,55 @@ p {
 }
 
 .fs-custom-11 {
-    font-size: calc(var(--lb-multiplier) * 11px);
+    font-size: calc(var(--fs-multiplier) * 11px);
 }
 
 .fs-custom-11-5 {
-    font-size: calc(var(--lb-multiplier) * 11px);
+    font-size: calc(var(--fs-multiplier) * 11px);
 }
 
 .fs-custom-12-5 {
-    font-size: calc(var(--lb-multiplier) * 12.5px);
+    font-size: calc(var(--fs-multiplier) * 12.5px);
 }
 
 .fs-custom-13 {
-    font-size: calc(var(--lb-multiplier) * 13px);
+    font-size: calc(var(--fs-multiplier) * 13px);
 }
 
 .fs-custom-13-5 {
-    font-size: calc(var(--lb-multiplier) * 13.5px);
+    font-size: calc(var(--fs-multiplier) * 13.5px);
 }
 
 .fs-custom-14-5 {
-    font-size: calc(var(--lb-multiplier) * 14.5px);
+    font-size: calc(var(--fs-multiplier) * 14.5px);
 }
 
 .fs-custom-15 {
-    font-size: calc(var(--lb-multiplier) * 15px);
+    font-size: calc(var(--fs-multiplier) * 15px);
 }
 
 .fs-custom-15-5 {
-    font-size: calc(var(--lb-multiplier) * 15.5px);
+    font-size: calc(var(--fs-multiplier) * 15.5px);
 }
 
 .fs-custom-16-5 {
-    font-size: calc(var(--lb-multiplier) * 16.5px);
+    font-size: calc(var(--fs-multiplier) * 16.5px);
 }
 
 .fs-custom-17 {
-    font-size: calc(var(--lb-multiplier) * 17px);
+    font-size: calc(var(--fs-multiplier) * 17px);
 }
 
 .fs-custom-17-5 {
-    font-size: calc(var(--lb-multiplier) * 17.5px);
+    font-size: calc(var(--fs-multiplier) * 17.5px);
 }
 
 .fs-custom-18-5 {
-    font-size: calc(var(--lb-multiplier) * 18.5px);
+    font-size: calc(var(--fs-multiplier) * 18.5px);
 }
 
 .fs-custom-19 {
-    font-size: calc(var(--lb-multiplier) * 19px);
+    font-size: calc(var(--fs-multiplier) * 19px);
 }
 
 
@@ -201,7 +201,7 @@ p {
 }
 
 .link:hover {
-    color: var(--lb-hsl-primary);
+    color: var(--color-hsl-primary);
     text-decoration: underline;
     text-underline-offset: 2px;
 }
@@ -210,37 +210,37 @@ p {
 .title {
     line-height: 46px;
     font-weight: 575;
-    font-size: calc(var(--lb-multiplier) * 40px);
+    font-size: calc(var(--fs-multiplier) * 36px);
     letter-spacing: -.025em;
     margin-bottom: 1.5rem;
-    color: rgb(var(--lb-title-gray));
+    color: rgb(var(--fc-title));
 }
 
 .subtitle {
     line-height: 1.75rem;
     font-weight: 500;
-    font-size: calc(var(--lb-multiplier) * 20px);
+    font-size: calc(var(--fs-multiplier) * 24px);
     letter-spacing: -.025em;
     margin-bottom: .8rem;
-    color: rgb(var(--lb-title-gray));
+    color: rgb(var(--fc-subtitle));
 }
 
 .strong {
     font-weight: 575;
-    color: rgb(var(--lb-title-gray));
+    color: rgb(var(--fc-subtitley));
 }
 
 .text {
-    font-size: calc(var(--lb-multiplier) * 15.5px);
+    font-size: calc(var(--fs-multiplier) * 15.5px);
     line-height: 1.7rem;
-    color: rgb(var(--lb-text));
+    color: rgb(var(--fc-text));
 }
 
 .text-small {
-    font-size: calc(var(--lb-multiplier) * 12px);
+    font-size: calc(var(--fs-multiplier) * 13px);
     line-height: 1rem;
     letter-spacing: 0.015em;
-    color: rgb(var(--lb-text));
+    color: rgb(var(--fc-text));
 }
 
 .text-white {
@@ -249,14 +249,6 @@ p {
 
 .text-black {
     color: #000;
-}
-
-.text-blue {
-    color: var(--lb-link);
-}
-
-.text-common {
-    color: var(--lb-text);
 }
 
 .text-info {
