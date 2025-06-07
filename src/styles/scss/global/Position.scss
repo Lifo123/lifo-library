@@ -1,0 +1,48 @@
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.fixed {
+  position: fixed !important;
+}
+
+.sticky {
+  position: sticky !important;
+}
+
+.o-hidden {
+  overflow: hidden;
+}
+
+.o-visible {
+  overflow: visible;
+}
+
+.ox-hidden {
+  overflow-x: hidden;
+}
+
+.ox-visible {
+  overflow-x: visible;
+}
+.ox-auto{
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.oy-hidden {
+  overflow-y: hidden;
+}
+
+.oy-visible {
+  overflow-y: visible;
+}
+
+.oy-auto{
+  overflow-y: auto;
+  overflow-x: hidden;
+}

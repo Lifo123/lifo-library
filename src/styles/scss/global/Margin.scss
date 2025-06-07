@@ -1,0 +1,276 @@
+.m-0{
+  margin: 0;
+}
+
+// #region Margin with Rem
+.mt-1 {
+  margin-top: var(--spacing-1);
+}
+.mt-2 {
+  margin-top: var(--spacing-2);
+}
+.mt-3 {
+  margin-top: var(--spacing-3);
+}
+.mt-4 {
+  margin-top: var(--spacing-4);
+}
+.mt-5 {
+  margin-top: var(--spacing-5);
+}
+.mt-6 {
+  margin-top: var(--spacing-6);
+}
+.mt-7 {
+  margin-top: var(--spacing-7);
+}
+.mt-8 {
+  margin-top: var(--spacing-8);
+}
+.mt-9 {
+  margin-top: var(--spacing-9);
+}
+.mt-10 {
+  margin-top: var(--spacing-10);
+}
+.mt-11 {
+  margin-top: var(--spacing-11);
+}
+.mt-12 {
+  margin-top: var(--spacing-12);
+}
+.mt-13 {
+  margin-top: var(--spacing-13);
+}
+.mt-14 {
+  margin-top: var(--spacing-14);
+}
+
+.mb-1 {
+  margin-bottom: var(--spacing-1);
+}
+.mb-2 {
+  margin-bottom: var(--spacing-2);
+}
+.mb-3 {
+  margin-bottom: var(--spacing-3);
+}
+.mb-4 {
+  margin-bottom: var(--spacing-4);
+}
+.mb-5 {
+  margin-bottom: var(--spacing-5);
+}
+.mb-6 {
+  margin-bottom: var(--spacing-6);
+}
+.mb-7 {
+  margin-bottom: var(--spacing-7);
+}
+.mb-8 {
+  margin-bottom: var(--spacing-8);
+}
+.mb-9 {
+  margin-bottom: var(--spacing-9);
+}
+.mb-10 {
+  margin-bottom: var(--spacing-10);
+}
+.mb-11 {
+  margin-bottom: var(--spacing-11);
+}
+.mb-12 {
+  margin-bottom: var(--spacing-12);
+}
+.mb-13 {
+  margin-bottom: var(--spacing-13);
+}
+.mb-14 {
+  margin-bottom: var(--spacing-14);
+}
+
+.ml-1 {
+  margin-left: var(--spacing-1);
+}
+.ml-2 {
+  margin-left: var(--spacing-2);
+}
+.ml-3 {
+  margin-left: var(--spacing-3);
+}
+.ml-4 {
+  margin-left: var(--spacing-4);
+}
+.ml-5 {
+  margin-left: var(--spacing-5);
+}
+.ml-6 {
+  margin-left: var(--spacing-6);
+}
+.ml-7 {
+  margin-left: var(--spacing-7);
+}
+.ml-8 {
+  margin-left: var(--spacing-8);
+}
+.ml-9 {
+  margin-left: var(--spacing-9);
+}
+.ml-10 {
+  margin-left: var(--spacing-10);
+}
+.ml-11 {
+  margin-left: var(--spacing-11);
+}
+.ml-12 {
+  margin-left: var(--spacing-12);
+}
+.ml-13 {
+  margin-left: var(--spacing-13);
+}
+.ml-14 {
+  margin-left: var(--spacing-14);
+}
+
+.mr-1 {
+  margin-right: var(--spacing-1);
+}
+.mr-2 {
+  margin-right: var(--spacing-2);
+}
+.mr-3 {
+  margin-right: var(--spacing-3);
+}
+.mr-4 {
+  margin-right: var(--spacing-4);
+}
+.mr-5 {
+  margin-right: var(--spacing-5);
+}
+.mr-6 {
+  margin-right: var(--spacing-6);
+}
+.mr-7 {
+  margin-right: var(--spacing-7);
+}
+.mr-8 {
+  margin-right: var(--spacing-8);
+}
+.mr-9 {
+  margin-right: var(--spacing-9);
+}
+.mr-10 {
+  margin-right: var(--spacing-10);
+}
+.mr-11 {
+  margin-right: var(--spacing-11);
+}
+.mr-12 {
+  margin-right: var(--spacing-12);
+}
+.mr-13 {
+  margin-right: var(--spacing-13);
+}
+.mr-14 {
+  margin-right: var(--spacing-14);
+}
+
+.my-1 {
+  margin-block: var(--spacing-1);
+}
+.my-2 {
+  margin-block: var(--spacing-2);
+}
+.my-3 {
+  margin-block: var(--spacing-3);
+}
+.my-4 {
+  margin-block: var(--spacing-4);
+}
+.my-5 {
+  margin-block: var(--spacing-5);
+}
+.my-6 {
+  margin-block: var(--spacing-6);
+}
+.my-7 {
+  margin-block: var(--spacing-7);
+}
+.my-8 {
+  margin-block: var(--spacing-8);
+}
+.my-9 {
+  margin-block: var(--spacing-9);
+}
+.my-10 {
+  margin-block: var(--spacing-10);
+}
+.my-11 {
+  margin-block: var(--spacing-11);
+}
+.my-12 {
+  margin-block: var(--spacing-12);
+}
+.my-13 {
+  margin-block: var(--spacing-13);
+}
+.my-14 {
+  margin-block: var(--spacing-14);
+}
+
+.mx-1 {
+  margin-inline: var(--spacing-1);
+}
+.mx-2 {
+  margin-inline: var(--spacing-2);
+}
+.mx-3 {
+  margin-inline: var(--spacing-3);
+}
+.mx-4 {
+  margin-inline: var(--spacing-4);
+}
+.mx-5 {
+  margin-inline: var(--spacing-5);
+}
+.mx-6 {
+  margin-inline: var(--spacing-6);
+}
+.mx-7 {
+  margin-inline: var(--spacing-7);
+}
+.mx-8 {
+  margin-inline: var(--spacing-8);
+}
+.mx-9 {
+  margin-inline: var(--spacing-9);
+}
+.mx-10 {
+  margin-inline: var(--spacing-10);
+}
+.mx-11 {
+  margin-inline: var(--spacing-11);
+}
+.mx-12 {
+  margin-inline: var(--spacing-12);
+}
+.mx-13 {
+  margin-inline: var(--spacing-13);
+}
+.mx-14 {
+  margin-inline: var(--spacing-14);
+}
+
+// #endregion
+
+.m-auto {
+  margin: auto;
+}
+
+.mx-auto {
+  margin-inline: auto;
+}
+
+.my-auto {
+  margin-inline: auto;
+}

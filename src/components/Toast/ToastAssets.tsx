@@ -1,6 +1,6 @@
 'use client';
 
-import CircleLoading from "../General/CircleLoading.js";
+import CircleLoading from "../Loading/CircleLoading.js";
 
 const success = (
     <svg viewBox="0 0 20 20" fill="currentColor" height="22" width="22">

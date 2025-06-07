@@ -6,6 +6,7 @@ interface loadingProps {
 
 export const $loading = map<loadingProps>({
     G_fetch: false,
+    card_loading: false,
 })
 
 

@@ -16,7 +16,7 @@ const create = ({ ...props }) => {
         ...props,
         isVisible: true,
     })
-
+    
     setTimeout(() => {
         $Dialoger.setKey("isAnimate", true);
     }, 10);
@@ -28,11 +28,11 @@ const hide = async () => {
 
     $Dialoger.setKey("isAnimate", false);
     await new Promise(() => {
-        Scroll.show();
         setTimeout(() => {
             $Dialoger.set({
                 isVisible: false,
             });
+            Scroll.show();
         }, DATA.animate?.duration || 300)
     });
 };

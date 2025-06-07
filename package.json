@@ -8,7 +8,9 @@
     "url": "git+https://github.com/Lifo123/lifo-library.git"
   },
   "scripts": {
-    "build": "tsc && tsc --module commonjs --outDir dist/cjs"
+    "build": "tsc && tsc --module commonjs --outDir dist/cjs",
+    "dev": "astro dev --host",
+    "sass": "sass --style=compressed src/styles/scss/Main.scss src/styles/output/Flifo.css"
   },
   "files": [
     "dist"
@@ -19,14 +21,16 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^22.9.0",
-    "@types/react": "^18.3.12",
+    "@types/react": "^19.1.6",
+    "astro": "^5.9.0",
+    "sass": "1.77.0",
     "typescript": "^5.6.3"
   },
   "peerDependencies": {
-    "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0",
     "@nanostores/react": "^0.8.0",
-    "nanostores": "^0.11.3"
+    "nanostores": "^0.11.3",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -37,5 +41,9 @@
     "./Stores": "./dist/Stores/index.js",
     "./utils": "./dist/utils/index.js",
     "./components": "./dist/components/index.js"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.3.0",
+    "@types/react-dom": "^19.1.6"
   }
 }

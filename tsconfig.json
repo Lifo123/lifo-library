@@ -7,7 +7,7 @@
     "declaration": true,
     "declarationDir": "./dist",
     "module": "ESNext",
-    "moduleResolution": "node", 
+    "moduleResolution": "node",
     "target": "ES2020",
     "jsx": "react-jsx",
     "isolatedModules": true,
@@ -22,7 +22,51 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "verbatimModuleSyntax": false,
+    "baseUrl": ".",
+    "paths": {
+      "@Components/*": [
+        "src/components/*"
+      ],
+      "@Hooks/*": [
+        "src/hooks/*"
+      ],
+      "@Apps/*": [
+        "src/apps/*"
+      ],
+      "@Services/*": [
+        "src/services/*"
+      ],
+      "@Utils/*": [
+        "src/utils/*"
+      ],
+      "@Layouts/*": [
+        "src/layouts/*"
+      ],
+      "@Assets/*": [
+        "src/assets/*"
+      ],
+      "@Pages/*": [
+        "src/pages/*"
+      ],
+      "@Content/*": [
+        "src/content/*"
+      ],
+      "@Styles/*": [
+        "src/styles/*"
+      ],
+      "@Stores/*": [
+        "src/stores/*"
+      ]
+    },
+    "jsxImportSource": "react"
   },
-  "include": ["src/**/*", "src/**/*.ts"],
-  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"]
+  "include": [
+    "src/**/*",
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ]
 }

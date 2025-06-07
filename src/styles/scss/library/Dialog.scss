@@ -1,0 +1,53 @@
+.dialoger-container {
+    top: 50%;
+    left: 50%;
+    transform: var(--custom-start-transform, translate(-50%, -50%));
+    opacity: var(--custom-start-opacity, 0);
+    pointer-events: all;
+    backface-visibility: hidden;
+    transition: all var(--custom-duration, 0.25s) ease;
+    transform-origin: center center;
+}
+
+.dialoger-container[data-anim="true"] {
+    transform: var(--custom-end-transform, translate(-50%, -50%) scale(1));
+    opacity: var(--custom-end-opacity, 1);
+}
+
+.dialoger-content {
+    width: 100%;
+    min-width: 340px;
+    max-width: 480px;
+    background-color: rgb(var(--lb-bg));
+    border: solid 1px rgba(var(--lb-bg-4));
+    top: var(--custom-start-top);
+    left: var(--custom-start-left);
+    transition: all var(--custom-duration, 0.25s) ease;
+}
+
+.dialoger-container[data-anim="true"] .dialoger-content {
+    top: var(--custom-end-top);
+    left: var(--custom-end-left);
+}
+
+
+
+.dialoger-content .btn {
+    min-width: 140px;
+}
+
+@media(550px > width) {
+    .dialoger-content {
+        width: 96%;
+        text-align: center;
+    }
+
+    .dialoger-content .close-btn {
+        display: none;
+    }
+
+    .dialoger-content a {
+        margin-inline: auto;
+        margin-top: .25rem;
+    }
+}

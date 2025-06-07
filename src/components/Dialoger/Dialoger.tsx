@@ -8,7 +8,7 @@ import { ButtonPromise, CloseBtn } from '../General/index.js';
 export default function Dialoger({ ...props }: DialogerPropsTypes) {
     const Store = useStore(DialogDev.$Dialoger)
     const AllOffsets = {
-        '--custom-start-top': Store.animate?.start?.top || '-1.5rem',
+        '--custom-start-top': Store.animate?.start?.top || '-1.8rem',
         '--custom-end-top': Store.animate?.end?.top || '-2rem',
 
         '--custom-start-left': Store.animate?.start?.left,
@@ -26,7 +26,7 @@ export default function Dialoger({ ...props }: DialogerPropsTypes) {
 
     return (
         Store.isVisible && (
-            <span className="lifo-portal d-flex f-center fixed dialog h-100 w-100"
+            <span className={`flifo-portal d-flex f-center fixed dialog h-100 w-100 ${Store.isAnimate ? "visible" : "delete"}`}
                 style={{
                     backgroundColor: Store.bgColor || '#0000003b',
                     pointerEvents: 'visible'
@@ -36,7 +36,7 @@ export default function Dialoger({ ...props }: DialogerPropsTypes) {
                 }}
                 data-anim={Store.isAnimate ? "true" : "false"}
             >
-                <span className="dialoger-container f-col relative" style={{
+                <span className="dialoger-container f-col" style={{
                     overflow: 'visible',
                     ...AllOffsets
                 }}
@@ -46,11 +46,11 @@ export default function Dialoger({ ...props }: DialogerPropsTypes) {
                     }}
                 >
                     {Store.children || (
-                        <div className="dialoger-child f-col g-1 f-justify-center p-4 br-10 w-95 mx-auto">
+                        <div className="dialoger-content f-col g-1 f-justify-center p-4 br-10 mx-auto relative">
                             <div className='f-row f-justify-between f-align-start g-3'>
                                 <div className="f-col g-1 text-left">
                                     {Store.title && <h4 className="fs-4 m-0 fw-600 mb-2">{Store.title}</h4>}
-                                    {Store.desc && <p className="fs-3 m-0 fw-500 mb-2">{Store.desc}</p>}
+                                    {Store.desc && <p className="fs-2 m-0 fw-400 mb-2">{Store.desc} <span className="text-success">que onda perros</span> wasa</p>}
                                 </div>
                                 {Store.closeBtn && (
                                     <span className='pb-5'>

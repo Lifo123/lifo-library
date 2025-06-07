@@ -1,0 +1,300 @@
+
+h1 {
+    font-size: var(--lb-fs-8);
+}
+
+h2 {
+    font-size: var(--lb-fs-6);
+}
+
+h3 {
+    font-size: var(--lb-fs-4);
+}
+
+h4 {
+    font-size: var(--lb-fs-4);
+}
+
+h5 {
+    font-size: var(--lb-fs-3);
+}
+
+h6 {
+    font-size: var(--lb-fs-2);
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+// #region FontWeight
+.fw-100 {
+    font-weight: 100;
+}
+
+.fw-200 {
+    font-weight: 200;
+}
+
+.fw-300 {
+    font-weight: 300;
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+.fw-800 {
+    font-weight: 800;
+}
+
+.fw-900 {
+    font-weight: 900;
+}
+
+
+
+.fs-1 {
+    font-size: var(--lb-fs-1);
+}
+
+.fs-2 {
+    font-size: var(--lb-fs-2);
+}
+
+.fs-3 {
+    font-size: var(--lb-fs-3);
+}
+
+.fs-4 {
+    font-size: var(--lb-fs-4);
+}
+
+.fs-5 {
+    font-size: var(--lb-fs-5);
+}
+
+.fs-6 {
+    font-size: var(--lb-fs-6);
+}
+
+.fs-7 {
+    font-size: var(--lb-fs-7);
+}
+
+.fs-8 {
+    font-size: var(--lb-fs-8);
+}
+
+.fs-9 {
+    font-size: var(--lb-fs-9);
+}
+
+.fs-10 {
+    font-size: var(--lb-fs-10);
+}
+
+.fs-11 {
+    font-size: var(--lb-fs-11);
+}
+
+.fs-12 {
+    font-size: var(--lb-fs-12);
+}
+
+.fs-13 {
+    font-size: var(--lb-fs-13);
+}
+
+.fs-14 {
+    font-size: var(--lb-fs-14);
+}
+
+.fs-15 {
+    font-size: var(--lb-fs-15);
+}
+
+.fs-16 {
+    font-size: var(--lb-fs-16);
+}
+
+.fs-custom-11 {
+    font-size: calc(var(--lb-multiplier) * 11px);
+}
+
+.fs-custom-11-5 {
+    font-size: calc(var(--lb-multiplier) * 11px);
+}
+
+.fs-custom-12-5 {
+    font-size: calc(var(--lb-multiplier) * 12.5px);
+}
+
+.fs-custom-13 {
+    font-size: calc(var(--lb-multiplier) * 13px);
+}
+
+.fs-custom-13-5 {
+    font-size: calc(var(--lb-multiplier) * 13.5px);
+}
+
+.fs-custom-14-5 {
+    font-size: calc(var(--lb-multiplier) * 14.5px);
+}
+
+.fs-custom-15 {
+    font-size: calc(var(--lb-multiplier) * 15px);
+}
+
+.fs-custom-15-5 {
+    font-size: calc(var(--lb-multiplier) * 15.5px);
+}
+
+.fs-custom-16-5 {
+    font-size: calc(var(--lb-multiplier) * 16.5px);
+}
+
+.fs-custom-17 {
+    font-size: calc(var(--lb-multiplier) * 17px);
+}
+
+.fs-custom-17-5 {
+    font-size: calc(var(--lb-multiplier) * 17.5px);
+}
+
+.fs-custom-18-5 {
+    font-size: calc(var(--lb-multiplier) * 18.5px);
+}
+
+.fs-custom-19 {
+    font-size: calc(var(--lb-multiplier) * 19px);
+}
+
+
+/*Font Color*/
+.text-left {
+    text-align: start;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: end;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.link:hover {
+    color: var(--lb-hsl-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+
+.title {
+    line-height: 46px;
+    font-weight: 575;
+    font-size: calc(var(--lb-multiplier) * 40px);
+    letter-spacing: -.025em;
+    margin-bottom: 1.5rem;
+    color: rgb(var(--lb-title-gray));
+}
+
+.subtitle {
+    line-height: 1.75rem;
+    font-weight: 500;
+    font-size: calc(var(--lb-multiplier) * 20px);
+    letter-spacing: -.025em;
+    margin-bottom: .8rem;
+    color: rgb(var(--lb-title-gray));
+}
+
+.strong {
+    font-weight: 575;
+    color: rgb(var(--lb-title-gray));
+}
+
+.text {
+    font-size: calc(var(--lb-multiplier) * 15.5px);
+    line-height: 1.7rem;
+    color: rgb(var(--lb-text));
+}
+
+.text-small {
+    font-size: calc(var(--lb-multiplier) * 12px);
+    line-height: 1rem;
+    letter-spacing: 0.015em;
+    color: rgb(var(--lb-text));
+}
+
+.text-white {
+    color: #FFF;
+}
+
+.text-black {
+    color: #000;
+}
+
+.text-blue {
+    color: var(--lb-link);
+}
+
+.text-common {
+    color: var(--lb-text);
+}
+
+.text-info {
+    padding: .15rem .2rem;
+    color: rgb(var(--color-info));
+    transition: background-color .2s ease;
+}
+
+.text-info:hover {
+    background-color: rgb(var(--color-info), .15);
+}
+
+.text-error {
+    padding: .15rem .2rem;
+    color: rgb(var(--color-error));
+    transition: background-color .2s ease;
+}
+
+.text-error:hover {
+    background-color: rgb(var(--color-error), .12);
+}
+
+.text-warn {
+    padding: .15rem .2rem;
+    color: rgb(var(--color-warn));
+    transition: background-color .2s ease;
+}
+
+.text-warn:hover {
+    background-color: rgb(var(--color-warn), .12);
+}
+
+.text-success {
+    padding: .15rem .2rem;
+    color: rgb(var(--color-success));
+    transition: background-color .2s ease;
+}
+
+.text-success:hover {
+    background-color: rgb(var(--color-success), .12);
+}

@@ -21,7 +21,7 @@ export default function Toaster({
     const AvailableToast = ToastData[toastID].slice(-maxToasts - 1);
 
     return (
-        <span className="lifo-portal fixed h-100 w-100 no-select" data-toaster-id={toastID}>
+        <span className="flifo-portal fixed no-select" data-toaster-id={toastID}>
             {AvailableToast.map((toast, i) => (
                 <ToastRow
                     key={toast.id}

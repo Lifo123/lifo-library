@@ -1,20 +1,18 @@
-interface AnimationTypes {
-    opacity?: number;
-    scale?: number;
-    transform?: string;
-}
+import { AnimationPropsTypes, AnimationTypes, BaseComponentProps, DirTypes } from "src/Types/GeneralTypes";
 
-export interface DropDownAllTypes extends DropdownPropsTypes {
-    children?: React.ReactNode;
-}
-
-export interface DropdownPropsTypes{
+export interface DropDownAllTypes extends BaseComponentProps {
     text?: string;
-    className?: string;
-    dir?: 'dtb' | 'dbt' | 'dlr' | 'drl'; 
-    animate?: {
-        start: AnimationTypes;
-        end: AnimationTypes;
-        duration?: number;
-    }
+    children?: React.ReactNode;
+    items?: DropdownItems[][];
+    dir?: DirTypes;
+    animation?: AnimationTypes;
+    animate?: AnimationPropsTypes;
+}
+
+
+export interface DropdownItems {
+    text: string;
+    href?: string;
+    icon?: React.ReactNode
+    onClick?: () => void | Promise<void>;
 }

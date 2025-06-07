@@ -1,0 +1,107 @@
+.flifo-portal {
+    height: 100%;
+    width: calc(100% - var(--padding-cut, 0px));
+    top: 0%;
+    left: 0%;
+    z-index: 1100;
+    pointer-events: none;
+    transition: background-color .2s ease, opacity .2s ease;
+}
+
+.flifo-portal.visible {
+    opacity: 1;
+}
+
+.flifo-portal.delete {
+    opacity: 0;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Inter, Geist, system-ui, -apple-system, sans-serif, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html[data-scroll-lock="true"] {
+    overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+body {
+    scrollbar-gutter: stable;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(var(--lb-br), 0.45) transparent;
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #5b21b6;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #7c3aed;
+}
+
+@media (hover: none) {
+    *::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+svg {
+    pointer-events: none;
+}
+
+p {
+    line-height: 1.65;
+}
+
+.icon {
+    background-color: transparent;
+    stroke: var(--lb-icon);
+    fill: var(--lb-icon);
+    transition: stroke .2s ease, fill .2s ease;
+}
+
+.icon svg {
+    pointer-events: none;
+}

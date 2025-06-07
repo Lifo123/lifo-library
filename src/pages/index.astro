@@ -1,0 +1,86 @@
+---
+import "../styles/output/Global.css";
+import "../styles/output/Flifo.css";
+import Test from "@Apps/Test";
+import { Toaster } from "@Components/Toast";
+import { Dialoger } from "@Components/Dialoger";
+import { Dropdown } from "@Components/Dropdown";
+import { CardLoading } from "@Components/Loading";
+
+interface Props {
+    title: string;
+    description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<script>
+    const setDarkMode = (document: Document) => {
+        const isDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+        ).matches;
+        const theme =
+            localStorage.getItem("F-Theme") || (isDark ? "dark" : "light");
+
+        const applyTheme = (mode: string) => {
+            document.documentElement.classList.toggle("dark", mode === "dark");
+            document.documentElement.style.colorScheme = mode;
+        };
+
+        theme === "system"
+            ? applyTheme(isDark ? "dark" : "light")
+            : applyTheme(theme);
+    };
+
+    setDarkMode(document);
+    document.addEventListener("astro:before-swap", (e) =>
+        setDarkMode(e.newDocument),
+    );
+    window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", () => setDarkMode(document));
+</script>
+
+<html lang="en" translate="no">
+    <head>
+        <title>{`Lifo Library - ${title || "Home"}`}</title>
+        <meta name="Author" content="Lifo123" />
+        <meta name="description" content={description} />
+
+        <meta charset="utf-8" />
+        <meta
+            name="robots"
+            content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body class="f-col f-align-center">
+        <Toaster client:only="react" />
+        <Dialoger client:only="react" />
+        <CardLoading client:only="react" />
+        <h1 class="text-center mt-6">Lifo Library</h1>
+        <p class="d-flex">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur aliquid expedita fugit porro asperiores! Ratione expedita praesentium assumenda placeat consectetur!</p>
+        <Test client:only="react" />
+        <p class="mt-6">wadawda</p>
+        <p class="mt-6">wadawda</p>
+        <p class="mt-6">wadawda</p>
+        <p class="mt-6">wadawda</p>
+        <p class="mt-6">wadawda</p>
+        <p class="mt-6">wadawda</p>
+        <p class="mt-6">wadawda</p>
+        <Dropdown text="Open Dropdown" items={[
+                [{ text: 'Item 1' }, { text: 'Item 2' }],
+                [{ text: 'Item 3' }, { text: 'Item 4' }],
+            ]} client:only="react" />
+        <p class="mt-6">wadawda</p>
+        <p class="mt-6">wadawda</p>
+        <p class="mt-6">wadawda</p>
+    </body>
+</html>

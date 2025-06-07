@@ -1,3 +1,5 @@
+//This component depent of Dropdown
+
 'use client'
 import React from "react";
 import Dropdown from "../Dropdown/Dropdown.js";

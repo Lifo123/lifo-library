@@ -2,7 +2,7 @@
 import React from 'react';
 import { useStore } from '@nanostores/react';
 import { $loading, Loading } from '../../Stores/Loading.Store.js';
-import CircleLoading from './CircleLoading.js';
+import CircleLoading from '../Loading/CircleLoading.js';
 
 //test
 
@@ -16,7 +16,7 @@ interface ButtonProps {
     size?: number;
 }
 
-export default function ButtonPromise({ id = 'G_fetch', text, className, style, stroke, onClick, size }: ButtonProps) {
+export default function ButtonPromise({ id = 'none', text, className, style, stroke, onClick, size }: ButtonProps) {
     const LOADING = useStore($loading)
 
     const handleClick = async () => {
@@ -30,7 +30,7 @@ export default function ButtonPromise({ id = 'G_fetch', text, className, style, 
     };
 
     return (
-        <span className={`d-flex f-center relative ${className || 'btn-primary btn-promise br-6'}`} onClick={handleClick} style={style} data-btn-promise={id}>
+        <span className={`d-flex f-center relative ${className || 'btn-primary btn-promise br-6 py-1 pointer fw-400 fs-3'}`} onClick={handleClick} style={style} data-btn-promise={id}>
             {
                 LOADING[id] && <CircleLoading size={size || 20} stroke={stroke || 'rgb(var(--lb-black))'} />
             }

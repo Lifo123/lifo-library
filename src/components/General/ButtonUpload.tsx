@@ -1,7 +1,7 @@
 'use client'
 import React from "react";
 import { toast } from "../Toast/Toast.Store.js";
-import CircleLoading from "./CircleLoading.js";
+import CircleLoading from "../Loading/CircleLoading.js";
 
 interface Props {
     className?: string;
