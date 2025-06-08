@@ -5,6 +5,7 @@ import { Toaster } from "@Components/Toast";
 import { Dialoger } from "@Components/Dialoger";
 import { CardLoading } from "@Components/Loading";
 import { DarkmodeIcon } from "@Components/Darkmode";
+import Test from "@Apps/Test";
 
 interface Props {
     title: string;
@@ -79,7 +80,7 @@ const { title, description } = Astro.props;
             <span class="btn btn-third br-6 d-flex">Third</span>
             <span class="btn btn-fourth br-6 d-flex">Fourth</span>
         </div>
-
+        <Test client:only="react" />
         <p class="mt-6">wadawda</p>
         <p class="mt-6">wadawda</p>
         <p class="mt-6">wadawda</p>

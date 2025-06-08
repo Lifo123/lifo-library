@@ -1,4 +1,3 @@
-
 h1 {
     font-size: var(--lb-fs-8);
 }
@@ -232,11 +231,11 @@ p {
 
 .text {
     font-size: calc(var(--fs-multiplier) * 15.5px);
-    line-height: 1.7rem;
+    line-height: 1.25;
     color: rgb(var(--fc-text));
 }
 
-.text-small {
+.text-sm {
     font-size: calc(var(--fs-multiplier) * 13px);
     line-height: 1rem;
     letter-spacing: 0.015em;
@@ -252,7 +251,7 @@ p {
 }
 
 .text-info {
-    padding: .15rem .2rem;
+    padding: 0rem .2rem;
     color: rgb(var(--color-info));
     transition: background-color .2s ease;
 }
@@ -262,7 +261,7 @@ p {
 }
 
 .text-error {
-    padding: .15rem .2rem;
+    padding: 0rem .2rem;
     color: rgb(var(--color-error));
     transition: background-color .2s ease;
 }
@@ -272,7 +271,7 @@ p {
 }
 
 .text-warn {
-    padding: .15rem .2rem;
+    padding: 0rem .2rem;
     color: rgb(var(--color-warn));
     transition: background-color .2s ease;
 }
@@ -282,7 +281,7 @@ p {
 }
 
 .text-success {
-    padding: .15rem .2rem;
+    padding: 0rem .2rem;
     color: rgb(var(--color-success));
     transition: background-color .2s ease;
 }

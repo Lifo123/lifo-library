@@ -16,7 +16,7 @@ interface CommonTypes {
 
 export interface DialogTypes extends CommonTypes {
     title?: string;
-    desc?: string;
+    message?: string;
     closeBtn?: boolean;
     isVisible?: boolean;
     isAnimate?: boolean;
@@ -27,7 +27,7 @@ export interface DialogTypes extends CommonTypes {
 
 export interface DialogPropsTypes extends CommonTypes {
     title: string
-    desc?: string
+    message?: string
     closeBtn?: boolean
     onClick?: () => void | Promise<void>;
 }

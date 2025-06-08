@@ -1,11 +1,15 @@
 'use client'
-interface Props {
-    height?: number;
-    width?: number;
+
+import { BaseComponentProps } from "../../Types/GeneralTypes.js";
+
+interface Props extends BaseComponentProps {
+
 }
 
-export default function Skeleton({ height, width }: Props) {
-    const size = height ?? width ?? 30;
-    
-    return <span className="skeleton f-col" style={{ height: height ?? size, width: width ?? size }}></span>;
+export default function Skeleton({ ...props }: Props) {
+    return <span className={`skeleton f-col ${props.className}`} style={{
+        height: props?.style?.height || '18px',
+        ...props.style
+    }}>
+    </span>;
 }

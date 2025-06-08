@@ -14,8 +14,16 @@
   position: sticky !important;
 }
 
+.o-auto {
+  overflow: auto;
+}
+
 .o-hidden {
   overflow: hidden;
+}
+
+.o-scroll {
+  overflow: scroll;
 }
 
 .o-visible {

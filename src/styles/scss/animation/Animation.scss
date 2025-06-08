@@ -1,3 +1,5 @@
+@import './Skeleton.scss';
+
 [data-animate="none"] {
     transition: none;
 }
@@ -8,6 +10,7 @@
     right: var(--slide-start-right, auto);
     bottom: var(--slide-start-bottom, auto);
 }
+
 [data-animate="none"].visible {
     top: var(--slide-end-top, auto);
     left: var(--slide-end-left, auto);
@@ -30,6 +33,7 @@
     --slide-start-left: 1.2rem;
     --slide-end-left: 1.2rem;
 }
+
 [data-animate="none"][data-axis-x="right"] {
     --slide-start-right: 1.2rem;
     --slide-end-right: 1.2rem;
@@ -60,7 +64,7 @@
     scale: .7;
 }
 
-.visible[data-animate="scale"]{
+.visible[data-animate="scale"] {
     scale: 1;
 }
 
@@ -95,6 +99,7 @@
     --slide-start-left: 1.2rem;
     --slide-end-left: 1.2rem;
 }
+
 [data-animate="slide"][data-axis-x="right"] {
     --slide-start-right: 1.2rem;
     --slide-end-right: 1.2rem;
@@ -151,6 +156,7 @@
     --slide-start-left: 1.2rem;
     --slide-end-left: 1.2rem;
 }
+
 [data-animate="scale"][data-axis-x="right"] {
     --slide-start-right: 1.2rem;
     --slide-end-right: 1.2rem;
@@ -185,6 +191,7 @@
     --slide-start-left: 1.2rem;
     --slide-end-left: 1.2rem;
 }
+
 [data-animate="fade"][data-axis-x="right"] {
     --slide-start-right: 1.2rem;
     --slide-end-right: 1.2rem;
@@ -218,7 +225,7 @@
 }
 
 @keyframes rotate {
-    to{
+    to {
         transform: rotate(720deg);
     }
 }

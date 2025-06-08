@@ -1,0 +1,15 @@
+
+.tab-item {
+    color: rgb(var(--fc-text))
+}
+.tab-item.active-tab {
+    background-color: rgb(var(--border-color), .2);
+    color: rgb(var(--fc-title));
+    outline: solid 1px rgb(var(--border-color));
+}
+
+.tab-content {
+    border: solid 1px rgb(var(--border-color));
+    min-width: 340px;
+    min-height: 200px;
+}

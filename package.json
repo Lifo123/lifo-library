@@ -1,6 +1,6 @@
 {
   "name": "@lifo123/library",
-  "version": "1.5.5",
+  "version": "1.5.6",
   "description": "Lifo library",
   "type": "module",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "git+https://github.com/Lifo123/lifo-library.git"
   },
   "scripts": {
-    "build": "tsc && tsc --module commonjs --outDir dist/cjs",
+    "build": "tsc",
     "dev": "astro dev --host",
     "sass": "sass --style=compressed src/styles/scss/Main.scss src/styles/output/Flifo.css"
   },

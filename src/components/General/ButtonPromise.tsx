@@ -16,7 +16,7 @@ interface ButtonProps {
     size?: number;
 }
 
-export default function ButtonPromise({ id = 'none', text, className, style, stroke, onClick, size }: ButtonProps) {
+export default function ButtonPromise({ id = 'G_Fetch', text, className, style, stroke, onClick, size }: ButtonProps) {
     const LOADING = useStore($loading)
 
     const handleClick = async () => {
@@ -30,7 +30,7 @@ export default function ButtonPromise({ id = 'none', text, className, style, str
     };
 
     return (
-        <span className={`d-flex f-center relative ${className || 'btn-primary btn-promise br-6 py-1 pointer fw-400 fs-3'}`} onClick={handleClick} style={style} data-btn-promise={id}>
+        <span className={`d-flex f-center relative ${className || 'btn-primary btn-promise br-6 btn pointer fw-400 fs-2'}`} onClick={handleClick} style={style} data-btn-promise={id}>
             {
                 LOADING[id] && <CircleLoading size={size || 20} stroke={stroke || 'rgb(var(--lb-black))'} />
             }

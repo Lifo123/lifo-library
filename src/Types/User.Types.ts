@@ -1,16 +1,11 @@
 export interface UserProps {
     user: string;
     token: string;
+    phone?: string;
     email?: string;
-    isLogin?: boolean;
-    isPremium: boolean;
-    premiumFeatures?: UserPremiumProps;
-    suscriptionExpires?: Date;
     avatarUrl?: string;
-}
 
-export interface UserPremiumProps {
-    wins?: number;
-    streak?: number;
-    data?: any;
+    isLogin?: boolean;
+    isPremium?: boolean;
+    suscriptionExpires?: Date;
 }
