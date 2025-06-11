@@ -1,6 +1,6 @@
 import { map } from "nanostores";
 
-interface loadingProps {
+export interface loadingProps {
     [key: string]: boolean
 }
 
@@ -15,7 +15,7 @@ const set = (id: string, value: boolean) => {
 }
 
 
-const promise = async (funct: () => void, id: string) => {
+const promise = async (funct: () => void | Promise<void>, id: string) => {
     if ($loading.get()[id]) {
         console.warn(`Promise for ${id} is already running.`);
         return;
@@ -34,7 +34,6 @@ const promise = async (funct: () => void, id: string) => {
 
 
 export const Loading = {
-    set,
     start: (id: string) => set(id, true),
     end: (id: string) => set(id, false),
     promise

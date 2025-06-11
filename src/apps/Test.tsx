@@ -1,5 +1,4 @@
 import { DarkmodeDrop } from "@Components/Darkmode";
-import { Dialog } from "@Components/Dialoger";
 import { ButtonPromise, Skeleton } from "@Components/General";
 import { Icon } from "@Components/Icons";
 import TabContent from "@Components/Tabs/TabContent";
@@ -9,7 +8,7 @@ import TabMenu from "@Components/Tabs/TabMenu";
 
 //Darkmode GOOD
 //Dialog GOOD
-//Dropdown FIX
+//Dropdown GOOD
 //General GOOD
 //Icons GOOD
 //Resizer FIX
@@ -20,8 +19,12 @@ import TabMenu from "@Components/Tabs/TabMenu";
 export default function Test() {
 
     return (
-        <TabMenu default="Item 3" style={{ height: 320, width: 470 }} >
-            <TabList active={{ style: { backgroundColor: 'red' } }}>
+        <TabMenu default="Item 3" style={{ height: 320, width: 470, }} customize={{
+            item: { className: "fs-2 fw-500" },
+            activeItem: { className: "fs-2 fw-500 active-tab" },
+            content: { className: "tab-content p-3 br-10" }
+        }}>
+            <TabList >
                 <TabItem id="Item 3" custom={<Icon icon='setting' size={34} className="p-1" />} />
                 <TabItem id="Item 1" text="Account" />
                 <TabItem id="Item 2" text="Darkmode" />
@@ -30,19 +33,7 @@ export default function Test() {
                 <h4 className="fs-2 fw-500">Username</h4>
                 <p className="mt-1 fs-2" style={{ color: `rgb(var(--fc-text))` }}>Change your username <a className="text-info pointer br-4" href="/">here.</a></p>
                 <h4 className="fs-2 fw-500">Password</h4>
-                <p className="mt-1 fs-2 text-small" style={{ color: `rgb(var(--fc-text))` }}>dawdwadawdw adaw ng text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text long text</p>
-                <ButtonPromise text="Save" onClick={async () => {
-                    await new Promise((res) => setTimeout(res, 1000))
-                    Dialog.normal({
-                        title: "Success",
-                        message: "Your password was changed successfully.",
-                        closeBtn: true,
-                        onClick: async () => {
-                            await new Promise((res) => setTimeout(res, 1000))
-                            Dialog.hide()
-                        }
-                    })
-                }} />
+                <p className="mt-1 fs-2 text-small" style={{ color: `rgb(var(--fc-text))` }}>dawdwadawdw adaw ng text long tex</p>
             </TabContent>
             <TabContent id="Item 2">
                 <DarkmodeDrop />

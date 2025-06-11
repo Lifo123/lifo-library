@@ -19,7 +19,7 @@ export default function SocialIcons({
     stroke,
     fill,
     className,
-    funct = () => console.log('No function'),
+    onClick = () => console.log('No function'),
 }: SocialIconsProps) {
     const selectedIcon = typeIcons[icon] || null;
 
@@ -36,7 +36,7 @@ export default function SocialIcons({
                 alignItems: 'center',
                 justifyContent: 'center'
             }}
-            onClick={funct}
+            onClick={onClick}
         >
             {selectedIcon ? selectedIcon : <span className="btn btn-third fs-2">None</span>}
         </span>

@@ -3,7 +3,7 @@ import type { DialogPropsCustomTypes, DialogPropsTypes, DialogTypes } from "./Di
 import { Scroll } from "../../utils/Scroll.Utils.js";
 
 
-const $Dialoger = map<DialogTypes>({
+export const $Dialoger = map<DialogTypes>({
     bgColor: '#0000003b',
     isVisible: false,
     isAnimate: false,
@@ -37,9 +37,6 @@ const hide = async () => {
     });
 };
 
-
-
-
 const normal = ({ ...props }: DialogPropsTypes) => {
     create({
         ...props,
@@ -54,15 +51,8 @@ const custom = (node: React.ReactNode, props?: DialogPropsCustomTypes) => {
     })
 }
 
-
-
-const Dialog = {
+export const Dialog = {
     normal,
     custom,
     hide
-}
-
-export default Dialog
-export const DialogDev = {
-    $Dialoger
 }

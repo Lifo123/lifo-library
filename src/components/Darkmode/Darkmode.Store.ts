@@ -24,11 +24,13 @@ const change = (storage: string, newTheme: DarkmodeAllTypes | 'system') => {
     if (newTheme === 'system') {
         const isDark = preferTheme();
         document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+        document.documentElement.classList[isDark ? 'remove' : 'add']('light');
         document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
         return;
     }
     const isDark = newTheme === 'dark';
     document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+    document.documentElement.classList[isDark ? 'remove' : 'add']('light');
     document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
 }
 
@@ -45,7 +47,7 @@ const remove = (target: HTMLElement) => {
 
 export const Darkmode = {
     remove,
-    toggle, 
-    change, 
+    toggle,
+    change,
     preferTheme
 };

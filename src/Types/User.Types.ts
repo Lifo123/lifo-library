@@ -8,4 +8,5 @@ export interface UserProps {
     isLogin?: boolean;
     isPremium?: boolean;
     suscriptionExpires?: Date;
+    [key: string]: any;
 }

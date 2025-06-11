@@ -3,7 +3,7 @@ import Dropdownitem from "./Dropdownitem.js";
 
 interface Props {
     items: DropdownItems[];
-    close?: (state?: any) => void | Promise<void> | void;
+    close?: (state?: any) => void;
 }
 
 export default function DropdownSection({ items, close }: Props) {

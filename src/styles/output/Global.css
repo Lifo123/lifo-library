@@ -1,0 +1,11 @@
+.input-area {
+    min-height: 154px;
+    background: var(--vscode-editor-background);
+    border: solid 1px var(--vscode-panel-border);
+    color: var(--vscode-description-foreground);
+}
+
+.tab-content {
+    background: var(--vscode-editor-background);
+    border: solid 1px var(--vscode-panel-border) !important;
+}

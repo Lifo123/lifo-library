@@ -1,18 +1,18 @@
-import { AnimationPropsTypes, AnimationTypes, BaseComponentProps, DirTypes } from "../../Types/GeneralTypes.js";
+import { BaseComponentProps } from "../../Types/GeneralTypes.js";
 
 export interface DropDownAllTypes extends BaseComponentProps {
     text?: string;
-    children?: React.ReactNode;
+    title?: string;
+    custom?: React.ReactNode;
     items?: DropdownItems[][];
-    dir?: DirTypes;
-    animation?: AnimationTypes;
-    animate?: AnimationPropsTypes;
+    margin?: number;
+    frezzeScroll?: boolean;
 }
 
 
 export interface DropdownItems {
     text: string;
     href?: string;
-    icon?: React.ReactNode
+    icon?: React.ReactNode;
     onClick?: () => void | Promise<void>;
 }

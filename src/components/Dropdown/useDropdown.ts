@@ -1,75 +1,122 @@
-'use strict'
+'use client';
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Scroll } from "../../utils/Scroll.Utils.js";
-import { DropDownAllTypes } from "./Dropdown.Types.js";
 
+interface Props {
+    margin?: number;
+    frezzeScroll?: boolean;
+}
 
-export function useDropdown({ ...props }: DropDownAllTypes = {}) {
+export function useDropdown({
+    frezzeScroll = true,
+    ...props
+}: Props = {}) {
     const [isVisible, setIsVisible] = useState(false);
     const [isAnim, setIsAnim] = useState(false);
+    const [openDirection, setOpenDirection] = useState<"up" | "down">("down");
+
 
     const btnRef = useRef<HTMLSpanElement>(null);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
-    const toggle = (state: boolean) => {
-        state ? setIsVisible(state) : setIsAnim(state);
-        setTimeout(() => {
-            state ? setIsAnim(state) : setIsVisible(state);
-        }, props.animate?.duration || 100);
+    const margin = props.margin !== undefined ? props.margin : 8;
 
-        Scroll[state ? "hide" : "show"]();
+    const updatePosition = () => {
+        const btn = btnRef.current;
+        const dropdown = dropdownRef.current;
+        if (!btn || !dropdown) return;
+
+        const btnRect = btn.getBoundingClientRect();
+        const dropdownHeight = dropdown.offsetHeight;
+
+        const spaceBelow = window.innerHeight - btnRect.bottom;
+        const spaceAbove = btnRect.top;
+        const openUpwards = dropdownHeight > spaceBelow && spaceAbove > spaceBelow;
+        setOpenDirection(openUpwards ? "up" : "down");
+
+        const maxHeight = openUpwards
+            ? btnRect.top - margin * 2
+            : window.innerHeight - btnRect.bottom - margin * 2;
+
+        const top = openUpwards
+            ? Math.max(margin, btnRect.top - dropdownHeight - margin)
+            : Math.min(btnRect.bottom + margin, window.innerHeight - dropdownHeight - margin);
+
+        Object.assign(dropdown.style, {
+            top: `${top + window.scrollY}px`,
+            left: `${btnRect.left + window.scrollX}px`,
+            minWidth: `${btnRect.width}px`,
+            maxHeight: `${maxHeight}px`,
+            overflowY: "auto",
+            zIndex: "999",
+        });
+
+    };
+
+    const toggle = (state: boolean) => {
+        state ? setIsVisible(true) : setIsAnim(false);
+        const timeout = setTimeout(() => {
+            state ? setIsAnim(true) : setIsVisible(false);
+        },);
+
+        frezzeScroll ? Scroll[state ? "hide" : "show"]() : null;
+
+        return () => clearTimeout(timeout);
     };
 
     // Cierre al hacer clic fuera
     useEffect(() => {
+        if (!isVisible) return;
+
         const handleClickOutside = (event: MouseEvent) => {
+            const target = event.target as Node;
             if (
-                dropdownRef.current &&
-                !dropdownRef.current.contains(event.target as Node) &&
-                !btnRef.current?.contains(event.target as Node)
+                !dropdownRef.current?.contains(target) &&
+                !btnRef.current?.contains(target)
             ) {
                 toggle(false);
             }
         };
 
-        if (isVisible) {
-            document.addEventListener("mousedown", handleClickOutside);
-        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, [isVisible]);
+
+    // Reposicionar en scroll, resize y cambio de tamaño del botón
+    useLayoutEffect(() => {
+        if (!isVisible) return;
+
+        updatePosition();
+
+        const handleScrollOrResize = () => updatePosition();
+        const resizeObserver = new ResizeObserver(() => updatePosition());
+
+        window.addEventListener("scroll", handleScrollOrResize, true);
+        window.addEventListener("resize", handleScrollOrResize);
+        btnRef.current && resizeObserver.observe(btnRef.current);
 
         return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
+            window.removeEventListener("scroll", handleScrollOrResize, true);
+            window.removeEventListener("resize", handleScrollOrResize);
+            resizeObserver.disconnect();
         };
     }, [isVisible]);
 
-    // Cierre al hacer resize
+    // Cierre si cambia de pestaña o pierde foco
     useEffect(() => {
-        const handleResize = () => toggle(false);
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
+        const handleWindowBlur = () => toggle(false);
+        const handleVisibilityChange = () => {
+            if (document.hidden) toggle(false);
+        };
+
+        window.addEventListener("blur", handleWindowBlur);
+        document.addEventListener("visibilitychange", handleVisibilityChange);
+
+        return () => {
+            window.removeEventListener("blur", handleWindowBlur);
+            document.removeEventListener("visibilitychange", handleVisibilityChange);
+        };
     }, []);
-
-    // Posicionamiento dinámico
-    useLayoutEffect(() => {
-        if (isVisible && btnRef.current && dropdownRef.current) {
-            requestAnimationFrame(() => {
-                const btnRect = btnRef.current!.getBoundingClientRect();
-                const dropdown = dropdownRef.current!;
-
-                const dropdownHeight = dropdown.offsetHeight;
-                const spaceBelow = window.innerHeight - btnRect.bottom;
-                const spaceAbove = btnRect.top;
-                const shouldOpenUpwards = dropdownHeight > spaceBelow && spaceAbove > spaceBelow;
-
-                dropdown.style.top = shouldOpenUpwards
-                    ? `${btnRect.top - dropdownHeight - 8}px`
-                    : `${btnRect.bottom + 8}px`;
-
-                dropdown.style.left = `${btnRect.left}px`;
-                dropdown.style.minWidth = `${btnRect.width}px`;
-                dropdown.style.zIndex = "999";
-            });
-        }
-    }, [isVisible]);
 
     return {
         isVisible,
@@ -77,5 +124,7 @@ export function useDropdown({ ...props }: DropDownAllTypes = {}) {
         btnRef,
         dropdownRef,
         toggle,
+        openDirection,
     };
+
 }

@@ -5,7 +5,9 @@ import { Toaster } from "@Components/Toast";
 import { Dialoger } from "@Components/Dialoger";
 import { CardLoading } from "@Components/Loading";
 import { DarkmodeIcon } from "@Components/Darkmode";
-import Test from "@Apps/Test";
+import Wasa from "@Apps/wasa";
+import { Dropdown } from "@Components/Dropdown";
+
 
 interface Props {
     title: string;
@@ -16,24 +18,26 @@ const { title, description } = Astro.props;
 ---
 
 <script>
-    const setDarkMode = (document: Document) => {
-        const isDark = window.matchMedia(
+    const setDarkMode = (doc: Document) => {
+        const prefersDark = window.matchMedia(
             "(prefers-color-scheme: dark)",
         ).matches;
-        const theme =
-            localStorage.getItem("F-Theme") || (isDark ? "dark" : "light");
+        const savedTheme = localStorage.getItem("F-Theme"); //DM on localStorage
 
-        const applyTheme = (mode: string) => {
-            document.documentElement.classList.toggle("dark", mode === "dark");
-            document.documentElement.style.colorScheme = mode;
-        };
+        const mode =
+            savedTheme === "system" || !savedTheme
+                ? prefersDark
+                    ? "dark"
+                    : "light"
+                : savedTheme;
 
-        theme === "system"
-            ? applyTheme(isDark ? "dark" : "light")
-            : applyTheme(theme);
+        doc.documentElement.classList.toggle("dark", mode === "dark");
+        doc.documentElement.classList.toggle("light", mode === "light");
+        doc.documentElement.style.colorScheme = mode;
     };
 
     setDarkMode(document);
+
     document.addEventListener("astro:before-swap", (e) =>
         setDarkMode(e.newDocument),
     );
@@ -54,39 +58,80 @@ const { title, description } = Astro.props;
             content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
-            rel="stylesheet"
-        />
     </head>
-    <body class="f-col f-align-center">
+    <body class="f-col f-align-center mx-auto w-100 px-3">
         <Toaster client:only="react" />
         <Dialoger client:only="react" />
         <CardLoading client:only="react" />
+        <header class="f-row w-100 f-justify-between f-align-center">
+            <div class="f-row g-2 f-center pointer">
+                <span>Logo</span>
+                <span class="head-h1 text-center fs-3 fw-500"
+                    >Firebase Studio</span
+                >
+            </div>
+            <div class="f-row g-3 f-center">
+                <DarkmodeIcon client:only="react" />
+                <span>PFP</span>
+                <Dropdown
+                    client:only="react"
+                    
+                    items={[
+                        [
+                            { text: "Hello" },
+                            {
+                                text: "World",
+                            },
+                        ],
+                        [
+                            { text: "Other" },
+                            {
+                                text: "Thing",
+                            },
+                        ],
+                        [{ text: "Log out", icon: "setting" }],
+                    ]}
+                />
+            </div>
+        </header>
 
-        <h1 class="text-center mt-6 title">Lifo Library</h1>
-        <h2>Subtitle</h2>
-        <p class="d-flex text-small">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-            aliquid expedita fugit porro asperiores! Ratione expedita
-            praesentium assumenda placeat consectetur!
-        </p>
-        <DarkmodeIcon client:only="react" />
-        <div class="f-row g-2 mt-5">
-            <span class="btn btn-primary br-6 d-flex">Primary</span>
-            <span class="btn btn-secondary br-6 d-flex">Secondary</span>
-            <span class="btn btn-third br-6 d-flex">Third</span>
-            <span class="btn btn-fourth br-6 d-flex">Fourth</span>
-        </div>
-        <Test client:only="react" />
-        <p class="mt-6">wadawda</p>
-        <p class="mt-6">wadawda</p>
-        <p class="mt-6">wadawda</p>
-        <p class="mt-6">wadawda</p>
-        <p class="mt-6">wadawda</p>
-        <p class="mt-6">wadawda</p>
-        <p class="mt-6">wadawda</p>
+        <main class="columns f-col mt-10 px-5">
+            <div class="f-col my-5">
+                <span class="fs-9 fw-500">Hello, Lifo</span>
+                <span
+                    class="fs-6 fw-500"
+                    style="color: var(--vscode-description-foreground)"
+                    >Welcome back</span
+                >
+            </div>
+            <section class="f-row f-justify-between mt-3 g-9">
+                <div class="f-col g-2 mt-3">
+                    <span
+                        class="fs-2 fw-500 mt-1"
+                        style="color: var(--vscode-description-foreground);"
+                        >Prototype an app with AI</span
+                    >
+                    <div class="input-area br-12 p-3" style="width: 460px;">
+                        An app that helps you prototype an app with AI
+                    </div>
+                </div>
+                <Wasa client:only="react" />
+            </section>
+        </main>
     </body>
 </html>
+
+<style>
+    header {
+        height: 48px;
+        color: var(--vscode-description-foreground);
+    }
+    .head-h1:hover {
+        color: var(--vscode-foreground);
+    }
+
+    main {
+        width: 100%;
+        max-width: 1300px;
+    }
+</style>

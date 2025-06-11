@@ -4,7 +4,7 @@ import type { CustomFunctionProps, ShowProps, ToastCustomProps, ToastFunctionPro
 import { Flifo } from '../../utils/General.Utils.js'
 
 export const $firstToast = atom<ToastItemProps>({ id: 0 })
-const $selectToast = atom<ToastItemProps>({ id: 0 })
+export const $selectToast = atom<ToastItemProps>({ id: 0 })
 export const $currentToast = atom<ToastItemProps>({ id: 0 })
 export const $toast = deepMap<ToastProps>()
 

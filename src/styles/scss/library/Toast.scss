@@ -18,11 +18,3 @@
     height: 24px;
     aspect-ratio: 1/1;
 }
-
-.card-loading {
-    background-color: rgba(var(--lb-br));
-    pointer-events: visible;
-    min-height: 50px;
-    min-width: 80px;
-    z-index: 1500;
-}

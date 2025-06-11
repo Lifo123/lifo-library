@@ -10,20 +10,17 @@ interface TabItemProps extends BaseComponentProps {
 }
 
 export default function TabItem(props: TabItemProps) {
-    const {
-        select, setSelect,
-        activeClassName, activeStyle,
-    } = React.useContext(TabContext);
+    const { select, setSelect, customize } = React.useContext(TabContext);
 
     const isActive = select === props.id;
     const defaultClass = "tab-item d-flex btn-fourth br-8 pointer fs-2 o-hidden";
 
     const finalClass = isActive
-        ? activeClassName || props.className || `${defaultClass} active-tab`
+        ? customize?.activeItem?.className || props.className || `${defaultClass} active-tab`
         : props.className || defaultClass;
 
     const finalStyle = isActive
-        ? activeStyle || props.style
+        ? customize?.activeItem?.style || props.style
         : props.style;
 
     return (

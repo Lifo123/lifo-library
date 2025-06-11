@@ -4,6 +4,7 @@
     --flifo-bg-secondary: 245, 244, 244;
 
 
+
 }
 
 .light {
@@ -14,7 +15,10 @@
 
 .dark {
 
-    --border-color: 38, 38, 38;
+    --border-color: 40, 40, 40;
     --flifo-bg-primary: 23, 23, 23;
     --flifo-bg-secondary: 28, 28, 29;
+
+
+    --flifo-container-section-bg-color: #1f1f1f;
 }

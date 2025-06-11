@@ -1,12 +1,12 @@
 'use client'
 import { useStore } from "@nanostores/react";
-import Dialog, { DialogDev } from "./Dialoger.Store.js";
+import { Dialog, $Dialoger } from "./Dialoger.Store.js";
 import type { DialogerPropsTypes } from "./Dialoger.Types.js";
 import { ButtonPromise, CloseBtn } from '../General/index.js';
 
 
 export default function Dialoger({ ...props }: DialogerPropsTypes) {
-    const Store = useStore(DialogDev.$Dialoger)
+    const Store = useStore($Dialoger)
     const AllOffsets = {
         '--custom-start-top': Store.animate?.start?.top || '-1.8rem',
         '--custom-end-top': Store.animate?.end?.top || '-2rem',

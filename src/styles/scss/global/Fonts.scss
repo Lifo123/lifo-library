@@ -207,19 +207,15 @@ p {
 
 
 .title {
-    line-height: 46px;
-    font-weight: 575;
+    line-height: 56px;
     font-size: calc(var(--fs-multiplier) * 36px);
-    letter-spacing: -.025em;
     margin-bottom: 1.5rem;
     color: rgb(var(--fc-title));
 }
 
 .subtitle {
     line-height: 1.75rem;
-    font-weight: 500;
     font-size: calc(var(--fs-multiplier) * 24px);
-    letter-spacing: -.025em;
     margin-bottom: .8rem;
     color: rgb(var(--fc-subtitle));
 }
@@ -229,17 +225,24 @@ p {
     color: rgb(var(--fc-subtitley));
 }
 
-.text {
-    font-size: calc(var(--fs-multiplier) * 15.5px);
+.text,
+.text-sm,
+.text-xsm {
     line-height: 1.25;
     color: rgb(var(--fc-text));
+    letter-spacing: 0.005em;
+}
+
+.text {
+    font-size: calc(var(--fs-multiplier) * 15.5px);
 }
 
 .text-sm {
-    font-size: calc(var(--fs-multiplier) * 13px);
-    line-height: 1rem;
-    letter-spacing: 0.015em;
-    color: rgb(var(--fc-text));
+    font-size: calc(var(--fs-multiplier) * 14px);
+}
+
+.text-xsm {
+    font-size: calc(var(--fs-multiplier) * 12px);
 }
 
 .text-white {
