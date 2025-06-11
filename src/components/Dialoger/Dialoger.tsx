@@ -50,7 +50,7 @@ export default function Dialoger({ ...props }: DialogerPropsTypes) {
                             <div className='f-row f-justify-between f-align-start g-3'>
                                 <div className="f-col g-1 text-left">
                                     {Store.title && <h4 className="fs-4 m-0 fw-600 mb-2">{Store.title}</h4>}
-                                    {Store.message && <p className="fs-2 m-0 fw-400 mb-2">{Store.message} <span className="text-success">que onda perros</span> wasa</p>}
+                                    {Store.message && <p className="fs-2 m-0 fw-400 mb-2">{Store.message} </p>}
                                 </div>
                                 {Store.closeBtn && (
                                     <span className='pb-5'>

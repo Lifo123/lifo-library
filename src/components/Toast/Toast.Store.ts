@@ -4,13 +4,15 @@ import type { CustomFunctionProps, ShowProps, ToastCustomProps, ToastFunctionPro
 import { Flifo } from '../../utils/General.Utils.js'
 
 export const $firstToast = atom<ToastItemProps>({ id: 0 })
-export const $selectToast = atom<ToastItemProps>({ id: 0 })
-export const $currentToast = atom<ToastItemProps>({ id: 0 })
 export const $toast = deepMap<ToastProps>()
 
-const set = (props: ToastItemProps) => {
+const set = ({ ...props }: ToastItemProps) => {
     const toastID = props.toastID || 'init';
     const updatedToasts = $toast.get()[toastID] || [];
+
+    //Dismiss first toast if maxToasts is reached
+
+
     const newToast = { ...props, toastID, state: true, id: props.id };
     $toast.setKey(toastID, [...updatedToasts, newToast]);
     $firstToast.set(updatedToasts[0] || newToast)
@@ -119,6 +121,13 @@ const dismiss = (toastID?: string, id?: number) => {
     });
 };
 
+const dismissFirst = (toastID?: string) => {
+    const first = $firstToast.get();
+    if (first.id) {
+        dismiss(toastID || 'init', first.id);
+    }
+};
+
 const remove = (toastID: string, id: number) => {
     const data = $toast.get()[toastID]
     if (data) {
@@ -169,11 +178,12 @@ export const toast = {
     delay,
     custom,
     dismiss,
+    dismissFirst,
     remove,
     promise
 }
 
 export const DevToast = {
     ...toast, ...LocalToast,
-    $currentToast, $firstToast, $toast, $selectToast
+    $firstToast, $toast,
 };

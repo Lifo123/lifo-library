@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { Scroll } from "../../utils/Scroll.Utils.js";
+import { Scroll } from "../utils/Scroll.Utils";
 
 interface Props {
     margin?: number;
@@ -98,7 +98,7 @@ export function useDropdown({
         return () => {
             window.removeEventListener("scroll", handleScrollOrResize, true);
             window.removeEventListener("resize", handleScrollOrResize);
-            resizeObserver.disconnect();
+            resizeObserver.disconnect(); 
         };
     }, [isVisible]);
 

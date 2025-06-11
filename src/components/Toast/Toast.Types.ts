@@ -1,5 +1,6 @@
+'use client'
 import type React from "react";
-import type { AnimationTypes, BaseComponentProps, DirTypes, AnimationProps, ThemeTypes } from "../../Types/GeneralTypes.js";
+import type { AnimationTypes, BaseComponentProps, DirTypes, ThemeTypes, AnimationPropsTypes } from "../../Types/GeneralTypes.js";
 
 export type ToastTypes = "success" | "error" | "warning" | "info" | "loading";
 export type PositionTypes = "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right";
@@ -9,10 +10,9 @@ export type ScaleOffsetTypes = "left" | "center" | "right";
 export interface ToastBasicProps {
   position?: PositionTypes;
   duration?: number;
-  animate?: AnimationTypes;
+  animation?: AnimationTypes;
   scaleOffset?: ScaleOffsetTypes;
-  startAnim?: AnimationProps;
-  endAnim?: AnimationProps;
+  animate?: AnimationPropsTypes;
   theme?: ThemeTypes;
 }
 
@@ -43,6 +43,7 @@ export interface ToastItemProps extends ToastBasicProps {
   actionText?: string;
   customAction?: React.ReactNode;
   noDissapear?: boolean;
+  settings?: ToasterProps;
 }
 
 export interface ToastPromiseProps extends ToastBasicProps {

@@ -3,7 +3,7 @@ export type DirTypes = 'rtl' | 'ltr' | 'ttb' | 'btt' | 'auto'
 export type OffsetTypes = 'top' | 'bottom' | 'left' | 'right'
 export type ThemeTypes = 'light' | 'dark';
 
-export interface AnimationPropsTypes  {
+export interface AnimationPropsTypes {
     start: AnimationProps;
     end: AnimationProps;
     duration?: number;

@@ -1,45 +1,46 @@
-//This component depent of Dropdown
-
 'use client'
-import React from "react";
-import Dropdown from "../Dropdown/Dropdown.js";
+import { SelectAllProps } from "./Select.Types.js";
+import { useDropdown } from "../../hooks/useDropdown.js";
 
-interface SelectProps {
-    className?: string;
-    title?: string;
-    text?: string;
-    options?: string[];
-    onChange?: (value: any) => void;
-}
 
-export default function SelectOptions({ className, title, text = "Select", options = [], ...props }: SelectProps) {
-    const dropdownRef = React.useRef<any>(null); // Ref para manejar el Dropdown
-    const [selected, setSelected] = React.useState(text);
+export default function Select({ ...props }: SelectAllProps) {
+    const {
+        isVisible,
+        isAnim,
+        btnRef,
+        dropdownRef,
+        toggle,
+        openDirection,
+    } = useDropdown({ ...props });
 
-    React.useEffect(() => {
-        setSelected(text);
-    }, [text]);
 
     return (
         <>
-            <Dropdown text={selected} className={`${className} mt-1`}>
-                {title ? <h4 className="dropdown-title">{title}</h4> : null}
-                <div className="f-col w-100">
-                    {options.map((option, index) => (
-                        <div
-                            key={index}
-                            className="dropdown-option w-100 px-2 py-2"
-                            onClick={async () => {
-                                setSelected(option);
-                                await props.onChange?.(option);
-                                dropdownRef.current?.close();
-                            }}
-                        >
-                            {option}
-                        </div>
-                    ))}
-                </div>
-            </Dropdown>
+            <span className="d-flex w-max" onClick={() => toggle(!isVisible)}
+                ref={btnRef}>
+                {
+                    props.custom || <span
+                        className="d-flex relative br-6 btn btn-secondary pointer"
+                    >
+                        {props.text || "Open Dropdown"}
+                    </span>
+                }
+            </span>
+
+            {isVisible && (
+                <div
+                    className={`dropdown-content absolute ${props.className || `f-col o-hidden br-10`} ${isAnim ? " visible" : " delete"}`}
+                    ref={dropdownRef}
+                    style={{
+                        ...props.style,
+                        transformOrigin: `${openDirection !== "up" ? "top" : "bottom"} center`
+                    }}
+                >
+                    {props.title && <p className="dropdown-head fs-2 fw-600 m-0">{props.title}</p>}
+                    wasa
+                </div >
+            )
+            }
         </>
     );
 }

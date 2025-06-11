@@ -18,8 +18,8 @@
     width: 100%;
     min-width: 340px;
     max-width: 480px;
-    background-color: rgb(var(--lb-bg));
-    border: solid 1px rgba(var(--lb-bg-4));
+    background-color: var(--vscode-side-bar-background);
+    border: solid 1px var(--vscode-title-bar-border);
     top: var(--custom-start-top);
     left: var(--custom-start-left);
     transition: all var(--custom-duration, 0.25s) ease;

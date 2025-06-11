@@ -30,7 +30,7 @@ export default function ButtonPromise({ id = 'G_Fetch', text, className, style, 
     };
 
     return (
-        <span className={`d-flex f-center relative ${className || 'btn-primary btn-promise br-6 btn pointer fw-400 fs-2'}`} onClick={handleClick} style={style} data-btn-promise={id}>
+        <span className={`d-flex f-center relative ${className || 'btn-primary btn-promise br-6 btn pointer fs-2'}`} onClick={handleClick} style={style} data-btn-promise={id}>
             {
                 LOADING[id] && <CircleLoading size={size || 20} stroke={stroke || 'rgb(var(--lb-black))'} />
             }

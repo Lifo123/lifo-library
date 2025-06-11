@@ -30,3 +30,10 @@
     min-width: 100px;
     z-index: 1500;
 }
+
+.page-load {
+    background-color: var(--vscode-panel-background);
+    top: 0px;
+    left: 0px;
+    z-index: 110000;
+}

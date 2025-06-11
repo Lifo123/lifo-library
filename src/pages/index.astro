@@ -3,11 +3,9 @@ import "../styles/output/Global.css";
 import "../styles/output/Flifo.css";
 import { Toaster } from "@Components/Toast";
 import { Dialoger } from "@Components/Dialoger";
-import { CardLoading } from "@Components/Loading";
+import { CardLoading, PageLoading } from "@Components/Loading";
 import { DarkmodeIcon } from "@Components/Darkmode";
 import Wasa from "@Apps/wasa";
-import { Dropdown } from "@Components/Dropdown";
-
 
 interface Props {
     title: string;
@@ -60,7 +58,9 @@ const { title, description } = Astro.props;
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
     <body class="f-col f-align-center mx-auto w-100 px-3">
-        <Toaster client:only="react" />
+        <PageLoading />
+
+        <Toaster client:only="react" maxToasts={5} />
         <Dialoger client:only="react" />
         <CardLoading client:only="react" />
         <header class="f-row w-100 f-justify-between f-align-center">
@@ -73,25 +73,6 @@ const { title, description } = Astro.props;
             <div class="f-row g-3 f-center">
                 <DarkmodeIcon client:only="react" />
                 <span>PFP</span>
-                <Dropdown
-                    client:only="react"
-                    
-                    items={[
-                        [
-                            { text: "Hello" },
-                            {
-                                text: "World",
-                            },
-                        ],
-                        [
-                            { text: "Other" },
-                            {
-                                text: "Thing",
-                            },
-                        ],
-                        [{ text: "Log out", icon: "setting" }],
-                    ]}
-                />
             </div>
         </header>
 
@@ -118,6 +99,7 @@ const { title, description } = Astro.props;
                 <Wasa client:only="react" />
             </section>
         </main>
+        
     </body>
 </html>
 

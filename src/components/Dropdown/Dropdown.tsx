@@ -1,7 +1,7 @@
 'use client'
 import { DropDownAllTypes } from "./Dropdown.Types.js";
 import DropdownSection from "./DropdownSection.js";
-import { useDropdown } from "./useDropdown.js";
+import { useDropdown } from "../../hooks/useDropdown.js";
 
 
 export default function Dropdown({ ...props }: DropDownAllTypes) {

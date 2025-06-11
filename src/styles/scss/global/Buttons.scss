@@ -27,13 +27,11 @@
   text-align: center;
   line-height: 1.4rem;
   font-weight: 500;
-  color: var(--lb-title);
 }
 
 .btn-primary {
-  background-color: rgb(var(--lb-btn-primary));
-  color: rgb(var(--lb-bg));
-  transition: opacity .17s ease-out;
+  background-color: var(--project-btn-bg, var(--vscode-button-background));
+  color: var(--vscode-editor-background);
 }
 
 .btn-primary .lb-circular-root svg {
@@ -41,36 +39,35 @@
 }
 
 .btn-primary:hover {
-  opacity: .9;
+  background-color: var(--project-btn-bg-hover, var(--vscode-button-hover-foreground));
 }
 
+
 .btn-secondary {
-  background-color: rgba(var(--lb-btn-secondary));
-  color: #FAFAFA;
-  transition: background-color .17s ease-out;
+  background-color: var(--vscode-button-secondary-background);
+  font-weight: 475;
 }
 
 .btn-secondary:hover {
-  background-color: rgba(var(--lb-btn-hover));
+  background-color: var(--vscode-button-secondary-hover-background);
 }
 
 .btn-third {
-  border: solid 1px rgba(var(--lb-br), .6);
-  transition: background-color .17s ease-out;
+  border: solid 1px var(--vscode-panel-border);
+  font-weight: 475;
 }
 
 .btn-third:hover {
-  background-color: rgba(var(--lb-bg-4), .9);
+  background-color: var(--vscode-button-secondary-background);
 }
 
 .btn-fourth {
-  color: rgba(var(--lb-tittle), .8);
-  transition: background-color .17s ease-out;
+  background-color: transparent;
+  font-weight: 400;
 }
 
 .btn-fourth:hover {
-  color: rgba(var(--lb-title));
-  background-color: rgba(var(--lb-bg-4));
+  background-color: var(--vscode-button-secondary-background);
 }
 
 .btn-br {
@@ -117,13 +114,13 @@
 
 
 .close-btn {
-  aspect-ratio: 1/1;
-  cursor: pointer;
-  outline: solid 1px rgba(var(--lb-br), 0.25);
-  background-color: transparent;
-  transition: background-color .15s ease;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+    outline: solid 1px var(--vscode-panel-border);
+    background-color: transparent;
+    transition: background-color .15s ease;
 }
 
 .close-btn:hover {
-  background-color: rgba(var(--lb-bg-4));
+    background-color: var(--vscode-button-secondary-hover-background);
 }

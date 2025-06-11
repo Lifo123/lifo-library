@@ -16,7 +16,7 @@ const create = ({ ...props }) => {
         ...props,
         isVisible: true,
     })
-    
+
     setTimeout(() => {
         $Dialoger.setKey("isAnimate", true);
     }, 10);
@@ -37,7 +37,7 @@ const hide = async () => {
     });
 };
 
-const normal = ({ ...props }: DialogPropsTypes) => {
+const show = ({ ...props }: DialogPropsTypes) => {
     create({
         ...props,
         children: null
@@ -52,7 +52,7 @@ const custom = (node: React.ReactNode, props?: DialogPropsCustomTypes) => {
 }
 
 export const Dialog = {
-    normal,
+    show,
     custom,
     hide
 }

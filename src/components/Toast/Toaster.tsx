@@ -1,10 +1,12 @@
+//Fix animation on max Toasts
 'use client'
 import React from "react";
 import { useStore } from "@nanostores/react"
 import type { ToasterItemProps, ToasterProps } from "./Toast.Types.js"
-import { $firstToast, $toast, LocalToast, toast } from "./Toast.Store.js"
+import { $toast, LocalToast, toast } from "./Toast.Store.js"
 import { ToastIcons } from "./ToastAssets.js";
-import { ButtonPromise, CloseBtn } from '../index.js'
+import ButtonPromise from '../General/ButtonPromise.js'
+import CloseBtn from '../General/CloseBtn.js'
 
 export default function Toaster({
     toastID = 'init',
@@ -14,11 +16,11 @@ export default function Toaster({
     maxToasts = 3,
     ...props
 }: ToasterProps) {
-    const ToastData = useStore($toast)
+    const ToastData = useStore($toast);
 
     if (!ToastData[toastID]) return
 
-    const AvailableToast = ToastData[toastID].slice(-maxToasts - 1);
+    const AvailableToast = ToastData[toastID];
 
     return (
         <span className="flifo-portal fixed no-select" data-toaster-id={toastID}>
@@ -29,8 +31,9 @@ export default function Toaster({
                     toastID={toastID}
                     position={position}
                     duration={duration}
-                    animate={animation}
+                    animation={animation}
                     maxToasts={maxToasts}
+                    avalibleToasts={AvailableToast.length}
                     {...toast}
                 />
             ))}
@@ -38,63 +41,79 @@ export default function Toaster({
     )
 }
 
+interface SolutionRow extends ToasterItemProps {
+    maxToasts: number;
+    index: number;
+    avalibleToasts: number;
+}
+
 const ToastRow = ({
     scaleOffset = 'center',
-    startAnim,
-    endAnim,
+    maxToasts,
+    index,
     ...props
-}: ToasterItemProps) => {
-    const first = useStore($firstToast)
+}: SolutionRow) => {
     const [isVisible, setIsVisible] = React.useState<boolean>(false);
     const [isHovered, setIsHovered] = React.useState<boolean>(false);
+
+    const generateCSSVariables = (
+        prefix: '--custom-start-' | '--custom-end-',
+        styles: React.CSSProperties | undefined
+    ): Record<string, string> => {
+        if (!styles) return {};
+        return Object.entries(styles).reduce((vars, [key, value]) => {
+            vars[`${prefix}${key}`] = String(value);
+            return vars;
+        }, {} as Record<string, string>);
+    };
+
     const AllOffsets = {
-        '--custom-start-top': startAnim?.top,
-        '--custom-start-bottom': startAnim?.bottom,
-        '--custom-start-left': startAnim?.left,
-        '--custom-start-right': startAnim?.right,
-        '--custom-end-top': endAnim?.top,
-        '--custom-end-bottom': endAnim?.bottom,
-        '--custom-end-left': endAnim?.left,
-        '--custom-end-right': endAnim?.right,
+        ...generateCSSVariables('--custom-start-', props.animate?.start),
+        ...generateCSSVariables('--custom-end-', props.animate?.end),
     };
 
     React.useEffect(() => {
+        if (props.avalibleToasts > maxToasts && index === 0) {
+            setIsVisible(false);
+        }
+    }, [index, maxToasts, props.avalibleToasts]);
 
-        setIsVisible(props.state !== undefined ? props.state : true);
-        if (props.state === false) {
-            LocalToast.removeDelay(props.toastID, props.id, props.animate === 'none' ? 0 : 350);
+    React.useEffect(() => {
+        const visible = props.state !== false;
+        if (!visible) {
+            setIsVisible(false);
         } else {
-            setTimeout(() => {
-                setIsVisible(true);
-            }, 50)
+            const timeout = setTimeout(() => setIsVisible(true), 50);
+            return () => clearTimeout(timeout);
         }
     }, [props.state]);
 
     React.useEffect(() => {
-        if (props.index !== undefined && props.maxToasts !== undefined) {
-            if (props.index + 1 > props.maxToasts) {
-                toast.dismiss(first.toastID, first.id);
-            }
-        }
-    }, [first, props.index, props.maxToasts]);
-
-    React.useEffect(() => {
         if (props.noDissapear) return;
-        if (props.noDissapear && isHovered) return;
 
-        const hideTimeout = setTimeout(() => {
-            toast.dismiss(props.toastID, props.id);
+        const timeout = setTimeout(() => {
+            setIsVisible(false); // inicia animación de salida
         }, props.duration);
 
-        return () => clearTimeout(hideTimeout);
-    }, [isHovered, props.duration, props.noDissapear]);
+        return () => clearTimeout(timeout);
+    }, [props.duration, props.noDissapear]);
+
+    React.useEffect(() => {
+        if (!isVisible) {
+            const timeout = setTimeout(() => {
+                LocalToast.removeDelay(props.toastID, props.id, 0);
+            }, 350); // espera que la animación termine
+
+            return () => clearTimeout(timeout);
+        }
+    }, [isVisible, props.toastID, props.id]);
 
     return (
-        <div className={`toast-container d-flex f-center w-max h-max${isVisible ? ' visible' : ' delete'} ${props.theme || ''} absolute`}
+        <div className={`toast-container d-flex f-center w-max h-max select ${isVisible ? 'visible' : 'delete'} ${props.theme || ''} absolute`}
             data-axis-y={props.position?.split('-')[0]}
             data-axis-x={props.position?.split('-')[1]}
             data-scale-offset={scaleOffset}
-            data-animate={props?.animate}
+            data-animation={props?.animation}
             style={{
                 zIndex: isHovered ? 'inherit' : 0,
                 ...AllOffsets
