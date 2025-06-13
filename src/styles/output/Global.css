@@ -10,15 +10,3 @@
     border: solid 1px var(--vscode-panel-border) !important;
 }
 
-
-.close-btn {
-    aspect-ratio: 1/1;
-    cursor: pointer;
-    outline: solid 1px var(--vscode-panel-border);
-    background-color: transparent;
-    transition: background-color .15s ease;
-}
-
-.close-btn:hover {
-    background-color: var(--vscode-editor-background);
-}

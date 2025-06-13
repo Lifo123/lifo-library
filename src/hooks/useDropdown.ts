@@ -1,14 +1,15 @@
 'use client';
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { Scroll } from "../utils/Scroll.Utils";
+import { hasVisibleVerticalScrollbar, Scroll } from "../utils/Scroll.Utils.js";
 
 interface Props {
     margin?: number;
+    horizontalMargin?: number;
     frezzeScroll?: boolean;
 }
 
 export function useDropdown({
-    frezzeScroll = true,
+    frezzeScroll = false,
     ...props
 }: Props = {}) {
     const [isVisible, setIsVisible] = useState(false);
@@ -24,10 +25,13 @@ export function useDropdown({
     const updatePosition = () => {
         const btn = btnRef.current;
         const dropdown = dropdownRef.current;
+        const hasScroll = hasVisibleVerticalScrollbar(document.documentElement);
+
         if (!btn || !dropdown) return;
 
         const btnRect = btn.getBoundingClientRect();
         const dropdownHeight = dropdown.offsetHeight;
+        const dropdownWidth = dropdown.offsetWidth;
 
         const spaceBelow = window.innerHeight - btnRect.bottom;
         const spaceAbove = btnRect.top;
@@ -42,16 +46,38 @@ export function useDropdown({
             ? Math.max(margin, btnRect.top - dropdownHeight - margin)
             : Math.min(btnRect.bottom + margin, window.innerHeight - dropdownHeight - margin);
 
+
+        // 🧠 Posicionamiento horizontal con margen respecto a los bordes del viewport
+        let left = btnRect.left + window.scrollX;
+        const rightEdge = left + dropdownWidth;
+        const viewportWidth = window.innerWidth;
+        const horizontalMargin = (props.horizontalMargin ?? 8) + (hasScroll ? 8 : 0);
+
+
+        // Si se sale por la derecha, empújalo hacia la izquierda
+        if (rightEdge + horizontalMargin > viewportWidth) {
+            left = viewportWidth - dropdownWidth - horizontalMargin;
+        }
+
+        // Si se va muy a la izquierda, empújalo hacia la derecha
+        if (left < horizontalMargin) {
+            left = horizontalMargin;
+        }
+
+        const maxWidth = viewportWidth - horizontalMargin * 2;
+
         Object.assign(dropdown.style, {
             top: `${top + window.scrollY}px`,
-            left: `${btnRect.left + window.scrollX}px`,
+            left: `${left}px`,
             minWidth: `${btnRect.width}px`,
+            maxWidth: `${maxWidth}px`,
             maxHeight: `${maxHeight}px`,
             overflowY: "auto",
             zIndex: "999",
         });
-
     };
+
+
 
     const toggle = (state: boolean) => {
         state ? setIsVisible(true) : setIsAnim(false);
@@ -98,7 +124,7 @@ export function useDropdown({
         return () => {
             window.removeEventListener("scroll", handleScrollOrResize, true);
             window.removeEventListener("resize", handleScrollOrResize);
-            resizeObserver.disconnect(); 
+            resizeObserver.disconnect();
         };
     }, [isVisible]);
 

@@ -1,11 +1,18 @@
 ---
 import "../styles/output/Global.css";
 import "../styles/output/Flifo.css";
-import { Toaster } from "@Components/Toast";
-import { Dialoger } from "@Components/Dialoger";
-import { CardLoading, PageLoading } from "@Components/Loading";
-import { DarkmodeIcon } from "@Components/Darkmode";
-import Wasa from "@Apps/wasa";
+
+import {
+    CardLoading,
+    DarkmodeDrop,
+    DarkmodeIcon,
+    DarkmodeToggle,
+    Dialoger,
+    Dropdown,
+    PageLoading,
+    Toaster,
+} from "../components/index";
+import Test from "../apps/Test";
 
 interface Props {
     title: string;
@@ -16,22 +23,38 @@ const { title, description } = Astro.props;
 ---
 
 <script>
+    const BASE_STORAGE_KEY =
+        (import.meta.env.PUBLIC_BASE_STORAGE_KEY ??
+            (import.meta.env.MODE === "production"
+                ? "F-Preferences"
+                : "F-Preferences-DEV")) + "-preferences";
+
+    let savedPrefs = JSON.parse(localStorage.getItem(BASE_STORAGE_KEY) || "{}");
+
     const setDarkMode = (doc: Document) => {
         const prefersDark = window.matchMedia(
             "(prefers-color-scheme: dark)",
         ).matches;
-        const savedTheme = localStorage.getItem("F-Theme"); //DM on localStorage
 
         const mode =
-            savedTheme === "system" || !savedTheme
-                ? prefersDark
-                    ? "dark"
-                    : "light"
-                : savedTheme;
+            savedPrefs.theme === "dark" || savedPrefs.theme === "light"
+                ? savedPrefs.theme
+                : prefersDark
+                  ? "dark"
+                  : "light";
 
         doc.documentElement.classList.toggle("dark", mode === "dark");
         doc.documentElement.classList.toggle("light", mode === "light");
         doc.documentElement.style.colorScheme = mode;
+
+        localStorage.setItem(
+            BASE_STORAGE_KEY,
+            JSON.stringify({
+                ...savedPrefs,
+                theme: savedPrefs.theme || "system",
+                isDark: mode === "dark",
+            }),
+        );
     };
 
     setDarkMode(document);
@@ -57,13 +80,13 @@ const { title, description } = Astro.props;
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
-    <body class="f-col f-align-center mx-auto w-100 px-3">
+    <body class="f-col f-align-center ">
         <PageLoading />
 
-        <Toaster client:only="react" maxToasts={5} />
+        <Toaster client:only="react" maxToasts={3} />
         <Dialoger client:only="react" />
         <CardLoading client:only="react" />
-        <header class="f-row w-100 f-justify-between f-align-center">
+        <header class="f-row w-100 f-justify-between f-align-center px-3">
             <div class="f-row g-2 f-center pointer">
                 <span>Logo</span>
                 <span class="head-h1 text-center fs-3 fw-500"
@@ -72,7 +95,13 @@ const { title, description } = Astro.props;
             </div>
             <div class="f-row g-3 f-center">
                 <DarkmodeIcon client:only="react" />
-                <span>PFP</span>
+                <DarkmodeDrop client:only="react" />
+                <DarkmodeToggle client:only="react" />
+                <Dropdown
+                    text="pfp"
+                    items={[[{ text: "Log out" }]]}
+                    client:only="react"
+                />
             </div>
         </header>
 
@@ -96,10 +125,20 @@ const { title, description } = Astro.props;
                         An app that helps you prototype an app with AI
                     </div>
                 </div>
-                <Wasa client:only="react" />
+                <Test client:only="react" />
             </section>
         </main>
-        
+        <p>131</p>
+        <p>131</p>
+        <p>131</p>
+        <p>131</p>
+        <p>131</p>
+        <p>131</p>
+        <p>131</p>
+        <p>131</p>
+        <p>131</p>
+        <p>131</p>
+        <p>131</p>
     </body>
 </html>
 

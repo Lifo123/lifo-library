@@ -7,10 +7,8 @@
 .toast-item {
     width: max-content;
     min-width: 330px;
-    max-width: 470px;
+    max-width: 90dvw;
     padding: .6rem 1rem;
-    background-color: var(--vscode-editor-background);
-    border: solid 1px var(--vscode-panel-border);
     color: var(--vscode-description-foreground);
     user-select: auto;
 }
@@ -18,4 +16,66 @@
 .toast-icon {
     height: 24px;
     aspect-ratio: 1/1;
+}
+
+.toast-item[data-toast-type="success"][data-iscolor="true"] {
+    outline: solid 1px var(--lifo-toast-success) !important;
+    background-color: var(--lifo-toast-success-bg) !important;
+}
+
+.toast-item[data-toast-type="error"][data-iscolor="true"] {
+    outline: solid 1px var(--lifo-toast-error) !important;
+    background-color: var(--lifo-toast-error-bg) !important;
+}
+
+.toast-item[data-toast-type="warning"][data-iscolor="true"] {
+    outline: solid 1px var(--lifo-toast-warning) !important;
+    background-color: var(--lifo-toast-warning-bg) !important;
+}
+
+.toast-item[data-toast-type="info"][data-iscolor="true"] {
+    outline: solid 1px var(--lifo-toast-info) !important;
+    background-color: var(--lifo-toast-info-bg) !important;
+}
+
+.toast-item>.f-row {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+
+    -webkit-mask-image: linear-gradient(to right, black 85%, transparent);
+    mask-image: linear-gradient(to right, black 85%, transparent);
+}
+
+
+
+.toast-icon {
+    height: 24px;
+    aspect-ratio: 1/1;
+}
+
+.toast-detail span,
+.toast-detail p {
+    line-height: 1.1rem;
+}
+
+.toast-icon svg {
+    fill: var(--lifo-toast-title);
+}
+
+.toast-item[data-iscolor="true"][data-toast-type="success"] svg {
+    fill: var(--lifo-toast-success);
+}
+
+.toast-item[data-iscolor="true"][data-toast-type="warning"] svg {
+    fill: var(--lifo-toast-warning);
+}
+
+.toast-item[data-iscolor="true"][data-toast-type="error"] svg {
+    fill: var(--lifo-toast-error);
+}
+
+.toast-item[data-iscolor="true"][data-toast-type="info"] svg {
+    fill: var(--lifo-toast-info);
 }

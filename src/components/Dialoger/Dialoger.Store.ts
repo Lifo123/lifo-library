@@ -12,8 +12,14 @@ export const $Dialoger = map<DialogTypes>({
 
 const create = ({ ...props }) => {
     Scroll.hide();
+
     $Dialoger.set({
         ...props,
+        animate: {
+            start: { ...props.animate?.start },
+            end: { ...props.animate?.end },
+            duration: props.animate?.duration / 1000,
+        },
         isVisible: true,
     })
 
@@ -27,14 +33,11 @@ const hide = async () => {
     const DATA = $Dialoger.get();
 
     $Dialoger.setKey("isAnimate", false);
-    await new Promise(() => {
-        setTimeout(() => {
-            $Dialoger.set({
-                isVisible: false,
-            });
-            Scroll.show();
-        }, DATA.animate?.duration || 300)
-    });
+
+
+    await new Promise((res) => setTimeout(res, (DATA.animate?.duration || .25) * 1000));
+    $Dialoger.setKey("isVisible", false);
+    Scroll.show();
 };
 
 const show = ({ ...props }: DialogPropsTypes) => {
@@ -44,10 +47,10 @@ const show = ({ ...props }: DialogPropsTypes) => {
     })
 }
 
-const custom = (node: React.ReactNode, props?: DialogPropsCustomTypes) => {
+const custom = (children: React.ReactNode, props?: DialogPropsCustomTypes) => {
     create({
         ...props,
-        children: node
+        children: children
     })
 }
 

@@ -1,17 +1,10 @@
 .dialoger-container {
-    top: 50%;
-    left: 50%;
-    transform: var(--custom-start-transform, translate(-50%, -50%));
-    opacity: var(--custom-start-opacity, 0);
     pointer-events: all;
     backface-visibility: hidden;
-    transition: all var(--custom-duration, 0.25s) ease;
     transform-origin: center center;
-}
-
-.dialoger-container[data-anim="true"] {
-    transform: var(--custom-end-transform, translate(-50%, -50%) scale(1));
-    opacity: var(--custom-end-opacity, 1);
+    top: var(--custom-start-top);
+    left: var(--custom-start-left);
+    transition: all var(--custom-duration, 0.25s) ease;
 }
 
 .dialoger-content {
@@ -20,14 +13,13 @@
     max-width: 480px;
     background-color: var(--vscode-side-bar-background);
     border: solid 1px var(--vscode-title-bar-border);
-    top: var(--custom-start-top);
-    left: var(--custom-start-left);
-    transition: all var(--custom-duration, 0.25s) ease;
 }
 
-.dialoger-container[data-anim="true"] .dialoger-content {
+.dialoger-container[data-anim="true"] {
     top: var(--custom-end-top);
     left: var(--custom-end-left);
+    opacity: var(--custom-end-opacity);
+    transform: var(--custom-end-transform);
 }
 
 

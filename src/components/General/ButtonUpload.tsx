@@ -5,7 +5,7 @@ import CircleLoading from "../Loading/CircleLoading.js";
 
 interface Props {
     className?: string;
-    text: string;
+    text?: string;
     textCharge?: string;
     fileType?: string;
     onUpload?: (file: File) => void | Promise<void>;
@@ -23,20 +23,18 @@ export default function UploadBtn({
     const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
 
-        // Validar si el archivo existe
         if (!file) {
             toast.error(`Error al cargar el archivo`, { position: 'bottom-left' });
             return;
         }
 
         if (props.fileType) {
-            // Crear regex para las extensiones permitidas
             const allowedExtensions = Array.isArray(props.fileType)
-                ? props.fileType.join('|') // Convertir el array en un patrón regex
+                ? props.fileType.join('|')
                 : props.fileType;
 
-            const fileExtension = file.name.split('.').pop()?.toLowerCase(); // Extensión en minúsculas
-            const regex = new RegExp(`^(${allowedExtensions})$`, 'i'); // Crear regex para validar
+            const fileExtension = file.name.split('.').pop()?.toLowerCase();
+            const regex = new RegExp(`^(${allowedExtensions})$`, 'i');
 
             if (!fileExtension || !regex.test(fileExtension)) {
                 toast.error(`Archivo no permitido.`, { position: 'bottom-left' });
@@ -45,14 +43,12 @@ export default function UploadBtn({
         }
         try {
             setIsUploading(true);
-            // Ejecutar el callback si está definido
             if (props.onUpload) {
-                await props.onUpload(file); // Pasar el archivo al callback
+                await props.onUpload(file);
             } else {
                 toast.show(`Archivo cargado`, { position: 'bottom-left' });
             }
 
-            // Cambiar el estado a "cargado"
             setIsUploading(false);
             setIsUploaded(true);
         } catch (error) {
@@ -61,6 +57,11 @@ export default function UploadBtn({
         }
     };
 
+    React.useEffect(() => {
+        setTimeout(() => {
+            setIsUploaded(false)
+        }, 3000)
+    }, [isUploaded])
 
     return (
         <>

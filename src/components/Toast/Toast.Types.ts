@@ -14,6 +14,7 @@ export interface ToastBasicProps {
   scaleOffset?: ScaleOffsetTypes;
   animate?: AnimationPropsTypes;
   theme?: ThemeTypes;
+  richColors?: boolean;
 }
 
 
@@ -21,7 +22,7 @@ export interface ToastProps {
   [key: string]: ToastItemProps[]
 }
 
-export interface ToastItemProps extends ToastBasicProps {
+export interface ToastItemProps<T = any> extends ToastBasicProps {
   index?: number;
   id: number;
   type?: ToastTypes;
@@ -35,8 +36,8 @@ export interface ToastItemProps extends ToastBasicProps {
   children?: React.ReactNode;
   theme?: ThemeTypes;
   loading?: string;
-  success?: string;
-  error?: string;
+  success?: string | ((data: T) => string);
+  error?: string | ((error: any) => string);
   state?: boolean,
   maxToasts?: number;
   action?: () => void;
@@ -46,11 +47,11 @@ export interface ToastItemProps extends ToastBasicProps {
   settings?: ToasterProps;
 }
 
-export interface ToastPromiseProps extends ToastBasicProps {
+export interface ToastPromiseProps<T = any> extends ToastBasicProps {
   toastID?: string;
   loading?: string;
-  success?: string;
-  error?: string;
+  success?: string | ((data: any) => string);
+  error?: string | ((error: any) => string);
 }
 
 export interface ToastCustomProps extends ToastBasicProps {

@@ -10,7 +10,7 @@ export interface InterfaceItemProp {
     [key: string]: any
 }
 
-export const $Interface = deepMap<InterfaceStore>({
+export const $interface = deepMap<InterfaceStore>({
     asideRight: {
         isVisible: false,
         isAnim: false
@@ -21,17 +21,7 @@ export const $Interface = deepMap<InterfaceStore>({
     }
 })
 
-
-const set = (key: string, value: InterfaceItemProp) => {
-    const current = $Interface.get()[key] || {};
-    $Interface.setKey(key, {
-        ...current,
-        ...value,
-    });
-}
-
-
-
 export const Interface = {
-    setKey: (key: string, value: InterfaceItemProp) => set(key, value),
+    setKey: (key: string, value: InterfaceItemProp) => $interface.setKey(key, value),
+    get: () => $interface.get(),
 }

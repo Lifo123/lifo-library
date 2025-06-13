@@ -1,43 +1,49 @@
 'use client'
-import { atom } from "nanostores";
-import type { DarkmodeAllTypes } from './Darkmode.types.js';
-
-const isBrowser = typeof window !== "undefined";
-
-export const $theme = atom<DarkmodeAllTypes>(isBrowser ? localStorage.getItem('F-Theme') as DarkmodeAllTypes || 'system' : 'system');
+import { $preferences } from "../../Stores/Preferences.Store.js";
+import { ThemeTypes } from "../../Types/GeneralTypes.js";
 
 
-const toggle = (storage: string) => {
-    const currentData = $theme.get()
+
+const toggle = () => {
+    const currentData = $preferences.get().theme;
     if (currentData === 'system') {
         const isDark = preferTheme()
-        change(storage, isDark ? 'light' : 'dark')
+        change(isDark ? 'light' : 'dark')
         return;
     }
 
-    change(storage, currentData === 'dark' ? 'light' : 'dark')
+    change(currentData === 'dark' ? 'light' : 'dark')
 }
 
-const change = (storage: string, newTheme: DarkmodeAllTypes | 'system') => {
-    localStorage.setItem(storage, newTheme);
-    $theme.set(newTheme)
+const change = (newTheme: ThemeTypes) => {
+    $preferences.setKey('theme', newTheme);
+
+    let isDark = preferTheme();
+
     if (newTheme === 'system') {
-        const isDark = preferTheme();
         document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
         document.documentElement.classList[isDark ? 'remove' : 'add']('light');
         document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+        $preferences.setKey('isDark', isDark);
         return;
     }
-    const isDark = newTheme === 'dark';
+
+    isDark = newTheme === 'dark';
     document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
     document.documentElement.classList[isDark ? 'remove' : 'add']('light');
     document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+
+    $preferences.setKey('isDark', isDark);
 }
 
 const preferTheme = () => {
     return window.matchMedia('(prefers-color-scheme: dark)').matches;
 }
 
+const setTheme = (theme: 'light' | 'dark', target: HTMLElement) => {
+    remove(target);
+    target.classList.add(theme);
+}
 
 const remove = (target: HTMLElement) => {
     target.classList.remove('light', 'dark')
@@ -49,5 +55,8 @@ export const Darkmode = {
     remove,
     toggle,
     change,
-    preferTheme
+    preferTheme,
+    setTheme,
+    setDark: (target: HTMLElement) => setTheme('dark', target),
+    setLight: (target: HTMLElement) => setTheme('light', target),
 };

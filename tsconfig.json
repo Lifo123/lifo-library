@@ -22,7 +22,7 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "verbatimModuleSyntax": false,
-    "baseUrl": ".",
+    "baseUrl": ".src",
     "paths": {
       "@Components/*": [
         "src/components/*"
@@ -58,7 +58,8 @@
         "src/stores/*"
       ]
     },
-    "jsxImportSource": "react"
+    "jsxImportSource": "react",
+    "types": ["astro/client"]
   },
   "include": [
     "src/**/*",

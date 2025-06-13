@@ -1,11 +1,11 @@
 export type AnimationTypes = 'slide' | 'fade' | "scale" | 'none' | 'custom';
 export type DirTypes = 'rtl' | 'ltr' | 'ttb' | 'btt' | 'auto'
 export type OffsetTypes = 'top' | 'bottom' | 'left' | 'right'
-export type ThemeTypes = 'light' | 'dark';
+export type ThemeTypes = 'light' | 'dark' | 'system';
 
 export interface AnimationPropsTypes {
-    start: AnimationProps;
-    end: AnimationProps;
+    start?: AnimationProps;
+    end?: AnimationProps;
     duration?: number;
 }
 

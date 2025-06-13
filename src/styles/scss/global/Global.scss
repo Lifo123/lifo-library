@@ -5,7 +5,7 @@
     left: 0%;
     z-index: 1100;
     pointer-events: none;
-    transition: background-color .2s ease, opacity .2s ease;
+    transition: background-color var(--custom-duration, 0.25s) ease, opacity var(--custom-duration, 0.25s) ease;
 }
 
 .flifo-portal.visible {
@@ -41,7 +41,7 @@ html[data-scroll-lock="true"] {
 
 body {
     scrollbar-gutter: stable;
-    background-color: var(--vscode-panel-background);
+    background: var(--vscode-side-bar-background);
 }
 
 * {
@@ -105,4 +105,8 @@ p {
 
 .icon svg {
     pointer-events: none;
+}
+
+input[type="file"] {
+    display: none;
 }

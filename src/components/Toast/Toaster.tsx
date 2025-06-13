@@ -126,18 +126,20 @@ const ToastRow = ({
                     props.children
                 ) || (
                     <span
-                        className={`toast-item f-row f-justify-between f-align-center br-6 sd-1`}
+                        className={`toast-item f-row f-nowrap f-justify-between f-align-center br-6 g-3 o-hidden`}
+                        data-toast-type={props.type}
+                        data-iscolor={props.richColors}
                     >
-                        <div className="f-row g-1 f-center">
+                        <div className="f-row g-1 f-align-center f-justify-start">
                             {props.customIcon || props.icon || props.type && (
                                 <span className="toast-icon mr-2 d-flex f-center">
-                                    {props.customIcon ? props.customIcon : ToastIcons[props.type]}
+                                    {props.type ? ToastIcons[props.type] : props.customIcon ? props.customIcon : props.icon}
                                 </span>
                             )}
 
-                            <div className="f-col f-justify-center">
-                                {props.title && <h3 className="fs-custom-14-5" style={{ color: 'rgb(var(--lb-title))' }}>{props?.title}</h3>}
-                                <p className="fs-2 m-0" style={{ fontWeight: '450' }}>{props?.message}</p>
+                            <div className="toast-detail f-col f-justify-center">
+                                {props.title && <span className="fs-2 fw-500" style={{ color: `var(--lifo-toast-${props.richColors ? props.type : 'title'})`, fontWeight: 550 }}>{props?.title}</span>}
+                                <p className="fs-2 m-0" style={{ textWrap: 'nowrap', color: `var(--lifo-toast-${props.richColors ? props.type : 'description'})`, fontWeight: 450 }}>{props?.message}</p>
                                 {props.href && <a className="info fs-custom-13 br-6 w-max" href={props.href}>More</a>}
 
                             </div>
@@ -148,7 +150,7 @@ const ToastRow = ({
                                     <ButtonPromise className="fs-custom-12-5 pointer btn-secondary br-6"
                                         text={props.actionText || 'Continue'}
                                         size={16}
-                                        style={{ padding: '.3rem .65rem' }}
+                                        style={{ padding: '.3rem .65rem', color: 'rgb(var(--lb-title))' }}
                                         stroke="rgb(var(--lb-white))"
                                         onClick={async () => {
                                             setIsHovered(true);

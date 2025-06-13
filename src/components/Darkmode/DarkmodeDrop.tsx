@@ -1,19 +1,20 @@
 import { useStore } from "@nanostores/react";
-import type { DarkmodeAllTypes, DarkmodeProps } from "./Darkmode.types.js";
-import { $theme, Darkmode } from "./Darkmode.Store.js";
+import { Darkmode } from "./Darkmode.Store.js";
+import { $preferences } from "../../Stores/Preferences.Store.js";
+import { ThemeTypes } from "../../Types/GeneralTypes.js";
 
-export default function DarkmodeDrop(props: DarkmodeProps) {
-  const theme = useStore($theme);
+export default function DarkmodeDrop() {
+  const PREFERENCES = useStore($preferences);
 
-  const handleSelect = (value: DarkmodeAllTypes) => {
-    Darkmode.change(props.storage || "F-Theme", value);
+  const handleSelect = (value: ThemeTypes) => {
+    Darkmode.change(value);
   };
 
   return (
     <select
       className="lb-dm-dropdown"
-      value={theme}
-      onChange={(e) => handleSelect(e.target.value as DarkmodeAllTypes)}
+      value={PREFERENCES.theme}
+      onChange={(e) => handleSelect(e.target.value as ThemeTypes)}
     >
       <option value="light">Light</option>
       <option value="dark">Dark</option>

@@ -1,5 +1,5 @@
 'use client';
-import CircleLoading from "./CircleLoading";
+import CircleLoading from "./CircleLoading.js";
 
 export default function PageLoading() {
     return (

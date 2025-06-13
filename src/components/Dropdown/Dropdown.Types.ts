@@ -6,6 +6,7 @@ export interface DropDownAllTypes extends BaseComponentProps {
     custom?: React.ReactNode;
     items?: DropdownItems[][];
     margin?: number;
+    horizontalMargin?: number;
     frezzeScroll?: boolean;
 }
 

@@ -1,14 +1,14 @@
 'use client'
 import { useStore } from "@nanostores/react";
-import type { DarkmodeProps } from "./Darkmode.types.js";
-import { $theme, Darkmode, } from "./Darkmode.Store.js";
+import { Darkmode } from "./Darkmode.Store.js";
+import { $preferences } from "../../Stores/Preferences.Store.js";
+import { BaseComponentProps } from "../../Types/GeneralTypes.js";
 
-export default function DarkmodeToggle({ storage = 'F-Theme', className, style }: DarkmodeProps) {
-    const theme = useStore($theme);
-    const isDark = theme === 'system' ? Darkmode.preferTheme() : theme === 'dark';
+export default function DarkmodeToggle({ className, style }: BaseComponentProps) {
+    const PREFERENCES = useStore($preferences);
 
     return (
-        <span className={`lb-dm-togle ${isDark ? 'active' : ''} ${className || ''}`} onClick={() => Darkmode.toggle(storage)} style={style}>
+        <span className={`lb-dm-togle ${PREFERENCES.isDark ? 'active' : ''} ${className || ''}`} onClick={() => Darkmode.toggle()} style={style}>
             <span className='no-select'></span>
         </span>
     );

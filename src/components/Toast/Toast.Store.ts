@@ -10,9 +10,6 @@ const set = ({ ...props }: ToastItemProps) => {
     const toastID = props.toastID || 'init';
     const updatedToasts = $toast.get()[toastID] || [];
 
-    //Dismiss first toast if maxToasts is reached
-
-
     const newToast = { ...props, toastID, state: true, id: props.id };
     $toast.setKey(toastID, [...updatedToasts, newToast]);
     $firstToast.set(updatedToasts[0] || newToast)
@@ -23,20 +20,18 @@ const render = (message: string, props?: ToastFunctionProps) => {
     return set({ ...props, message, id: Flifo.IDnumber() })
 }
 
-const delay = async (message: string, props?: ToastFunctionProps) => {
-    setTimeout(() => {
-        return render(message, props)
-    }, props?.delay || 350);
-}
-
 const custom = (children: React.ReactNode, props?: ToastCustomProps) => {
     return set({ ...props, children, id: Flifo.IDnumber() });
 }
 
-const promise = async (funct: () => Promise<void>, props?: ToastPromiseProps): Promise<void> => {
+const promise = async <T>(
+    funct: () => Promise<T>,
+    props?: ToastPromiseProps<T>
+): Promise<void> => {
     const toastID = props?.toastID || 'init';
-    const id = Flifo.IDnumber()
+    const id = Flifo.IDnumber();
     let localID;
+
     if (props?.loading) {
         localID = set({
             ...props,
@@ -49,18 +44,18 @@ const promise = async (funct: () => Promise<void>, props?: ToastPromiseProps): P
     }
 
     try {
-        await funct();
+        const data = await funct();
         if (props?.success) {
             if (localID) {
                 updateToast(toastID, id, {
-                    message: props.success,
+                    message: typeof props.success === 'string' ? props.success : props.success?.(data),
                     type: 'success',
                     noDissapear: false,
                 });
             } else {
                 set({
                     ...props,
-                    message: props.success,
+                    message: typeof props.success === 'string' ? props.success : props.success?.(data),
                     type: 'success',
                     toastID,
                     id: id,
@@ -68,17 +63,19 @@ const promise = async (funct: () => Promise<void>, props?: ToastPromiseProps): P
             }
         }
     } catch (error) {
+        const err =
+            typeof props?.error === 'string' ? props.error : props?.error?.(error);
         if (props?.error) {
             if (localID) {
                 updateToast(toastID, localID, {
-                    message: props.error,
+                    message: err,
                     type: 'error',
                     noDissapear: false,
                 });
             } else {
                 set({
                     ...props,
-                    message: props.error,
+                    message: err,
                     type: 'error',
                     toastID,
                     id: id,
@@ -175,7 +172,6 @@ export const toast = {
     info: (message: string, props?: CustomFunctionProps) => {
         return render(message, { ...props, type: 'info' })
     },
-    delay,
     custom,
     dismiss,
     dismissFirst,
