@@ -1,15 +1,22 @@
+.tab-list {
+    background-color: var(--vscode-side-bar-background);
+}
 
 .tab-item {
     color: rgb(var(--fc-text))
 }
+
 .tab-item.active-tab {
-    background-color: rgb(var(--border-color), .2);
     color: rgb(var(--fc-title));
-    outline: solid 1px rgb(var(--border-color));
+    background-color: var(--vscode-editor-background);
+    outline: solid 1px var(--vscode-panel-border);
 }
 
-.tab-content {
-    border: solid 1px rgb(var(--border-color));
+.tab-content {}
+
+.tab-content-item {
+    background: var(--vscode-editor-background);
+    border: solid 1px var(--vscode-panel-border);
     min-width: 340px;
     min-height: 200px;
 }

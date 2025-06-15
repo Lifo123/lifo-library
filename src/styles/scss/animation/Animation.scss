@@ -214,8 +214,8 @@
 
 
 [data-animation="custom"] {
-    transition: opacity .17s ease, transform .17s ease,
-        top .17s ease, left .17s ease, right .17s ease, bottom .17s ease;
+    transition: opacity var(--custom-duration, .17s) ease, transform var(--custom-duration, .17s) ease,
+        top var(--custom-duration, .17s) ease, left var(--custom-duration, .17s) ease, right var(--custom-duration, .17s) ease, bottom var(--custom-duration, .17s) ease;
 }
 
 [data-animation="custom"].delete {

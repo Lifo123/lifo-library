@@ -3,8 +3,8 @@ import React from "react";
 import { BaseComponentProps } from "../../Types/GeneralTypes.js";
 
 interface TabMenuProps extends BaseComponentProps {
+    defaultTab?: string;
     children?: React.ReactNode;
-    default?: string;
     customize?: {
         item?: BaseComponentProps;
         activeItem?: BaseComponentProps;
@@ -15,28 +15,38 @@ interface TabMenuProps extends BaseComponentProps {
 export const TabContext = React.createContext<{
     select: string;
     setSelect: (id: string) => void;
+    isOpen: boolean;
+    setIsOpen: (value: boolean) => void;
     customize?: {
-        content?: BaseComponentProps;
         item?: BaseComponentProps;
         activeItem?: BaseComponentProps;
+        content?: BaseComponentProps;
     };
 }>({
     select: "",
+    isOpen: false,
+    setIsOpen: () => { },
     setSelect: () => { },
 });
 
 
 export default function TabMenu({ children, ...props }: TabMenuProps) {
-    const [select, setSelect] = React.useState<string>(props.default || "");
+    const [select, setSelect] = React.useState<string>(props.defaultTab || "");
+    const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
     return (
         <TabContext.Provider value={{
             select, setSelect,
+            isOpen, setIsOpen,
             customize: props.customize
         }}>
-            <section className={props.className || `tab-container f-col mt-4 g-2`} style={props.style}>
+            <section
+                className={(props.className || 'tab-container f-col mt-4 g-2') + ' relative'}
+                style={props.style}
+                data-tabmenu={'true'}
+            >
                 {children}
             </section>
-        </TabContext.Provider>
+        </TabContext.Provider >
     )
 }

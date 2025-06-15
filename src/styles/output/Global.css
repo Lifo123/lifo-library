@@ -5,8 +5,14 @@
     color: var(--vscode-description-foreground);
 }
 
-.tab-content {
-    background: var(--vscode-editor-background);
-    border: solid 1px var(--vscode-panel-border) !important;
+.tab-list {
+    
+}
+
+.tab-item.active-tab {
+    
+}
+.tab-content-item {
+   
 }
 

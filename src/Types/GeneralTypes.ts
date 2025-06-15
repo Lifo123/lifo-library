@@ -14,7 +14,7 @@ export interface AnimationProps {
     left?: string;
     right?: string;
     bottom?: string;
-    opacity?: string;
+    opacity?: number;
     transform?: string;
 }
 
