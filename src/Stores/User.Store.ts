@@ -1,22 +1,30 @@
 import { deepMap } from "nanostores";
+import { UserStoreTypes } from "../Types/User.Types.js";
+import { Local } from "../utils/Local.Utils.js";
+import { isBrowser, localUserKey } from "./config.js";
 
-//This will updated when i finish FV project
+export const $user = deepMap<UserStoreTypes>();
 
+if (isBrowser) {
+    const saved = Local.get(localUserKey);
+    if (saved) {
+        $user.set(saved);
+    }
 
-const BASE_STORAGE_KEY =
-    (import.meta.env.PUBLIC_BASE_STORAGE_KEY ??
-        (import.meta.env.MODE === 'production'
-            ? 'F-Preferences'
-            : 'F-Preferences-DEV')) + '-user'
-
-
-interface UserProps {
-    baseStorageKey: string
-    [key: string]: any
+    // Persistencia automática
+    $user.subscribe((value) => {
+        Local.set(localUserKey, value);
+    });
 }
 
-export const $user = deepMap<UserProps>({
-    baseStorageKey: BASE_STORAGE_KEY,
-});
+// Función para cerrar sesión
+const logOut = async ({ href, execute }: { href?: string, execute?: Promise<void> } = {}): Promise<void> => {
+    if (execute) await execute;
+    Local.remove(localUserKey);
+    href ? window.location.href = href : window.location.reload();
+};
 
-
+export const User = {
+    logOut,
+    get: () => $user.get()
+};

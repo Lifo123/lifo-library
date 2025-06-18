@@ -24,16 +24,27 @@
 
 
 .card-loading {
-    background-color: var(--vscode-panel-background);
-    pointer-events: visible;
-    min-height: 66px;
-    min-width: 100px;
-    z-index: 1500;
+  background-color: var(--vscode-panel-background);
+  pointer-events: visible;
+  min-height: 66px;
+  min-width: 100px;
+  z-index: 1500;
 }
 
 .page-load {
-    background-color: var(--vscode-panel-background);
-    top: 0px;
-    left: 0px;
-    z-index: 110000;
+  background-color: var(--vscode-panel-background);
+  top: 0px;
+  left: 0px;
+  z-index: 110000;
+  transition: visibility 0.15s ease, opacity 0.15s ease;
+  pointer-events: visible;
+  visibility: visible;
+  opacity: 1;
+}
+
+.page-load.hidden {
+  visibility: hidden;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0;
 }

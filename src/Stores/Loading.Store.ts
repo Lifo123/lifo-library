@@ -7,7 +7,7 @@ export interface loadingProps {
 export const $loading = map<loadingProps>({
     G_fetch: false,
     card_loading: false,
-    page_load: false,
+    page_load: true,
 })
 
 
@@ -31,9 +31,26 @@ const promise = async (funct: () => void | Promise<void>, id: string) => {
     }
 };
 
-$loading.subscribe((value) => {
-    if (value.page_load) document.getElementById('page-load')?.remove()
-})
+
+if (typeof window !== "undefined") {
+    let timeout: NodeJS.Timeout | undefined;
+
+    $loading.subscribe((value) => {
+        const loader = document.getElementById('page-load');
+        if (!loader) return;
+
+        const isLoading = value.page_load;
+
+        if (isLoading) {
+            loader.classList.remove('hidden');
+            if (timeout) clearTimeout(timeout);
+        } else {
+            timeout = setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 150);
+        }
+    });
+}
 
 
 

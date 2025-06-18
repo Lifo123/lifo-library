@@ -7,8 +7,8 @@ interface TabMenuProps extends BaseComponentProps {
     children?: React.ReactNode;
     customize?: {
         item?: BaseComponentProps;
-        activeItem?: BaseComponentProps;
-        content?: BaseComponentProps;
+        contentItem?: BaseComponentProps;
+        indicator?: BaseComponentProps;
     }
 }
 
@@ -19,8 +19,8 @@ export const TabContext = React.createContext<{
     setIsOpen: (value: boolean) => void;
     customize?: {
         item?: BaseComponentProps;
-        activeItem?: BaseComponentProps;
         content?: BaseComponentProps;
+        indicator?: BaseComponentProps;
     };
 }>({
     select: "",
@@ -41,7 +41,7 @@ export default function TabMenu({ children, ...props }: TabMenuProps) {
             customize: props.customize
         }}>
             <section
-                className={(props.className || 'tab-container f-col mt-4 g-2') + ' relative'}
+                className={'tab-menu ' + (props.className || 'tab-container f-col mt-4 g-2') + ' relative'}
                 style={props.style}
                 data-tabmenu={'true'}
             >

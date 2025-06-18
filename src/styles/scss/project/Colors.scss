@@ -1,0 +1,17 @@
+.pr-primary {
+    background-color: var(--pr-primary, var(--lifo-primary));
+}
+
+.pr-btn {
+    user-select: none;
+    cursor: pointer;
+    color: var(--pr-foreground, var(--vscode-foreground));
+    background-color: var(--pr-button-background, var(--vscode-side-bar-background));
+}
+.pr-btn.active {
+    background-color: var(--pr-button-active-background, var(--vscode-button-secondary-background));
+}
+
+.pr-btn:hover {
+    background-color: var(--pr-button-hover-background, var(--vscode-button-secondary-background));
+}

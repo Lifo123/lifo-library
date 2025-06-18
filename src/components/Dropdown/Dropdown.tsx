@@ -14,13 +14,18 @@ export default function Dropdown({ ...props }: DropDownAllTypes) {
         openDirection,
     } = useDropdown({ ...props });
 
+    if (typeof window === "undefined") {
+        console.error("DropDown: Is only available in the browser (Client Side)");
+        return null;
+    };
+
 
     return (
         <>
-            <span className="d-flex w-max" onClick={() => toggle(!isVisible)}
+            <span onClick={() => toggle(!isVisible)}
                 ref={btnRef}>
                 {
-                    props.custom || <span
+                    props.children || <span
                         className="d-flex relative br-6 btn btn-secondary pointer"
                     >
                         {props.text || "Open Dropdown"}

@@ -1,36 +1,22 @@
 import { deepMap } from 'nanostores'
 import { ThemeTypes } from '../Types/GeneralTypes.js'
-
-const isBrowser = typeof window !== "undefined";
-
-const BASE_STORAGE_KEY =
-    (import.meta.env.PUBLIC_BASE_STORAGE_KEY ??
-        (import.meta.env.MODE === 'production'
-            ? 'F-Preferences'
-            : 'F-Preferences-DEV')) + '-preferences'
+import { Local } from '../utils/Local.Utils.js';
+import { isBrowser, localPrefsKey } from './config.js';
 
 
 interface PreferencesProps {
     theme?: ThemeTypes
-    baseStorageKey: string
     [key: string]: any
 }
 
-export const $preferences = deepMap<PreferencesProps>({
-    baseStorageKey: BASE_STORAGE_KEY,
-})
+export const $preferences = deepMap<PreferencesProps>() //Store
 
 if (isBrowser) {
-    const saved = localStorage.getItem(BASE_STORAGE_KEY)
-    if (saved) {
-        try {
-            $preferences.set(JSON.parse(saved))
-        } catch (err) {
-            console.error('[Preferences] Invalid localStorage data', err)
-        }
-    }
+    const saved = Local.get(localPrefsKey)
+    if (saved) $preferences.set(saved);
+
 
     $preferences.subscribe((value) => {
-        localStorage.setItem(BASE_STORAGE_KEY, JSON.stringify(value))
+        Local.set(localPrefsKey, value)
     })
 }

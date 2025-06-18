@@ -14,44 +14,24 @@ export default function Test() {
 
     React.useEffect(() => {
         setTimeout(() => {
-            UI.Loading.setKey("page_load", true)
-        }, 10)
+            UI.Loading.setKey("page_load", false)
+        }, 500)
     }, [])
 
     return (
         <main className="f-row g-3 w-100 f-center">
-            <TabMenu className="f-row g-2">
-                <div className="f-col g-2">
-                    <TabList className="f-col g-2 p-3" style={{ zIndex: 1501}}>
-                        <TabItem id="first">
-                            <span>icon</span>
-                            First
-                        </TabItem>
-                        <TabItem id="second">Second</TabItem>
-                    </TabList>
-                    <TabContent animate={{
-                        start: {
-                            left: '-15rem',
-                        },
-                        end: {
-                            left: '85.44px',
-                        },
-                        duration: 350
-                    }} style={{ zIndex: 1500 }}>
-
-                        <TabContentItem id="first"></TabContentItem>
-                        <TabContentItem id="second" ></TabContentItem>
-                    </TabContent>
-                </div>
-            </TabMenu>
-
             <section className="f-col ">
                 <div>
                     Info of User
                 </div>
-                <TabMenu defaultTab="first" className="f-col g-2">
-                    <TabList className="f-row g-2" style={{ zIndex: 1000}}>
-                        <TabItem id="first" disabled>
+                <TabMenu defaultTab="first" className="f-col g-2" customize={{
+
+                    indicator: {
+                        className: 'pr-btn active br-6'
+                    }
+                }}> 
+                    <TabList className="f-row" style={{ zIndex: 1000}} indicatorTransition={0}>
+                        <TabItem id="first">
                             <span>icon</span>
                             First
                         </TabItem>
@@ -59,7 +39,13 @@ export default function Test() {
                         <TabItem id="third">Third</TabItem>
                     </TabList>
                     <TabContent style={{ zIndex: 999 }}>
-                        <TabContentItem id="first"></TabContentItem>
+                        <TabContentItem id="first">
+                            <span className="btn btn-third br-6" onClick={() => {
+                                UI.toast.success("Clicked", {
+                                    
+                                })
+                            }}>top-center</span>
+                        </TabContentItem>
                         <TabContentItem id="second" ></TabContentItem>
                         <TabContentItem id="third" ></TabContentItem>
                     </TabContent>

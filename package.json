@@ -1,6 +1,6 @@
 {
   "name": "@lifo123/library",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "description": "Lifo library",
   "type": "module",
   "repository": {
@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "astro dev --host",
+    "dev": "pnpm run sass && astro dev --host",
     "sass": "sass --style=compressed src/styles/scss/Main.scss src/styles/output/Flifo.css",
     "deploy": "pnpm run build && pnpm run sass && npm publish --access public"
   },
@@ -41,7 +41,8 @@
     ".": "./dist/index.js",
     "./Stores": "./dist/Stores/index.js",
     "./utils": "./dist/utils/index.js",
-    "./UI": "./dist/UI/index.js"
+    "./UI": "./dist/UI/index.js",
+    "./User": "./dist/Stores/User.Store.js"
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",

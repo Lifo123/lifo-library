@@ -10,6 +10,8 @@
     max-width: 90dvw;
     padding: .6rem 1rem;
     color: var(--vscode-description-foreground);
+    background-color: var(--vscode-editor-background);
+    outline: solid 1px var(--vscode-panel-border);
     user-select: auto;
 }
 

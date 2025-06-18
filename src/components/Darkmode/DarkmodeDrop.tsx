@@ -12,7 +12,7 @@ export default function DarkmodeDrop() {
 
   return (
     <select
-      className="lb-dm-dropdown"
+      className="lb-dm-dropdown" style={{userSelect: 'none'}}
       value={PREFERENCES.theme}
       onChange={(e) => handleSelect(e.target.value as ThemeTypes)}
     >

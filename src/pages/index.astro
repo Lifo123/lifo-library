@@ -24,11 +24,8 @@ const { title, description } = Astro.props;
 
 <script>
     const BASE_STORAGE_KEY =
-        (import.meta.env.PUBLIC_BASE_STORAGE_KEY ??
-            (import.meta.env.MODE === "production"
-                ? "F-Preferences"
-                : "F-Preferences-DEV")) + "-preferences";
-
+        (window.location.pathname.split("/").filter(Boolean)[0] || "lifo/lib") +
+        "-preferences";
     let savedPrefs = JSON.parse(localStorage.getItem(BASE_STORAGE_KEY) || "{}");
 
     const setDarkMode = (doc: Document) => {
@@ -103,8 +100,11 @@ const { title, description } = Astro.props;
                     client:only="react"
                 />
             </div>
+            <span class="pr-btn d-flex f-center py-2 px-3 br-6">Hello</span>
         </header>
-
+        <Dropdown client:only="react">
+            <span class="btn btn-fourth br-4 d-flex f-center">BTN</span>
+        </Dropdown>
         <Test client:only="react" />
     </body>
 </html>
