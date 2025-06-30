@@ -11,12 +11,16 @@ interface PreferencesProps {
 
 export const $preferences = deepMap<PreferencesProps>() //Store
 
+
 if (isBrowser) {
-    const saved = Local.get(localPrefsKey)
+    const Prefs = Local(localPrefsKey)
+    const saved = Prefs.get()
+    
     if (saved) $preferences.set(saved);
 
-
     $preferences.subscribe((value) => {
-        Local.set(localPrefsKey, value)
+        Prefs.set(value)
+        console.log(value);
+        
     })
 }

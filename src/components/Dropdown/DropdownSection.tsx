@@ -1,3 +1,4 @@
+'use strict'
 import { DropdownItems } from "./Dropdown.Types.js";
 import Dropdownitem from "./Dropdownitem.js";
 

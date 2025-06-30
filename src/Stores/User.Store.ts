@@ -6,21 +6,23 @@ import { isBrowser, localUserKey } from "./config.js";
 export const $user = deepMap<UserStoreTypes>();
 
 if (isBrowser) {
-    const saved = Local.get(localUserKey);
+    const UserStorage = Local(localUserKey);
+    const saved = UserStorage.get();
     if (saved) {
         $user.set(saved);
     }
-
+    
     // Persistencia automática
     $user.subscribe((value) => {
-        Local.set(localUserKey, value);
+        UserStorage.set(value);
     });
 }
 
 // Función para cerrar sesión
 const logOut = async ({ href, execute }: { href?: string, execute?: Promise<void> } = {}): Promise<void> => {
+    const UserStorage = Local(localUserKey);
     if (execute) await execute;
-    Local.remove(localUserKey);
+    UserStorage.remove();
     href ? window.location.href = href : window.location.reload();
 };
 

@@ -1,3 +1,5 @@
+import { isMobile } from "./Scroll.Utils";
+
 const IDnumber = (): number => {
     return Date.now() + Math.random();
 };
@@ -32,5 +34,5 @@ const delay = async (time: number) => {
 
 
 export const Flifo = {
-    IDnumber, IDstring, timeTracker, delay
+    IDnumber, IDstring, timeTracker, delay, isMobile,
 };

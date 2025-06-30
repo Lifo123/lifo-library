@@ -1,14 +1,6 @@
 'use client';
-export interface IconProps {
-    size?: number | string;
-    stroke?: string | 'none';
-    fill?: string | 'none';
-    className?: string;
-    style?: React.CSSProperties;
-    onClick?: (data: any) => void;
-}
 
-const typeIcons: Record<string, React.ReactNode> = {
+const typeIcons = {
     redirect: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>,
     refresh: <svg viewBox="0 0 24 24" fill="none"><g> <path d="M12 21C16.9706 21 21 16.9706 21 12C21 9.69494 20.1334 7.59227 18.7083 6L16 3M12 3C7.02944 3 3 7.02944 3 12C3 14.3051 3.86656 16.4077 5.29168 18L8 21M21 3H16M16 3V8M3 21H8M8 21V16" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>,
     bell: <svg viewBox="0 0 24 24" fill="none"><g><path d="M9.00195 17H5.60636C4.34793 17 3.71872 17 3.58633 16.9023C3.4376 16.7925 3.40126 16.7277 3.38515 16.5436C3.37082 16.3797 3.75646 15.7486 4.52776 14.4866C5.32411 13.1835 6.00031 11.2862 6.00031 8.6C6.00031 7.11479 6.63245 5.69041 7.75766 4.6402C8.88288 3.59 10.409 3 12.0003 3C13.5916 3 15.1177 3.59 16.2429 4.6402C17.3682 5.69041 18.0003 7.11479 18.0003 8.6C18.0003 11.2862 18.6765 13.1835 19.4729 14.4866C20.2441 15.7486 20.6298 16.3797 20.6155 16.5436C20.5994 16.7277 20.563 16.7925 20.4143 16.9023C20.2819 17 19.6527 17 18.3943 17H15.0003M9.00195 17L9.00031 18C9.00031 19.6569 10.3435 21 12.0003 21C13.6572 21 15.0003 19.6569 15.0003 18V17M9.00195 17H15.0003" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>,
@@ -44,19 +36,29 @@ const typeIcons: Record<string, React.ReactNode> = {
     pumpkinHallowen: <svg viewBox="0 0 24 24" fill="none"><g> <path d="M7 10L9.5 11L8.5 12M16.5 10L14 11L15 12M7 15L8 16.5L9.5 15.5L10.5 17L12 15.5L13.5 17L14.5 15.5L16 16.5L17 15M14 6.42676V4.30278C14 3.58327 13.4167 3 12.6972 3C12.2616 3 11.8549 3.2177 11.6132 3.58013L9.7778 6.3347M14 6.42676C14.6256 6.15039 15.2987 6 16 6C19.3137 6 22 9.35786 22 13.5C22 17.6421 19.3137 21 16 21C15.2987 21 14.6256 20.8496 14 20.5732C13.3744 20.8496 12.7013 21 12 21C11.2987 21 10.6256 20.8496 10 20.5732C9.37444 20.8496 8.70127 21 8 21C4.68629 21 2 17.6421 2 13.5C2 9.35786 4.68629 6 8 6C8.70127 6 9.37444 6.15039 10 6.42676C10.6256 6.15039 11.2987 6 12 6C12.7013 6 13.3744 6.15039 14 6.42676Z" strokeWidth="1.56" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>,
 }
 
-interface SocialIconsProps extends IconProps {
+interface IconProps extends BaseProps {
     icon: keyof typeof typeIcons;
 }
 
+export interface BaseProps {
+    size?: number | string;
+    stroke?: string | 'none';
+    fill?: string | 'none';
+    className?: string;
+    style?: React.CSSProperties;
+    onClick?: (data: any) => void;
+
+}
+
 export default function Icons({
-    icon = 'linkedin',
+    icon = 'linkAlt',
     size = 24,
     style,
     stroke,
     fill,
     className,
     onClick = () => console.log('No function'),
-}: SocialIconsProps) {
+}: IconProps) {
     const selectedIcon = typeIcons[icon] || null;
 
     return (
