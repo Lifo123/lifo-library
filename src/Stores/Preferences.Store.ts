@@ -19,8 +19,6 @@ if (isBrowser) {
     if (saved) $preferences.set(saved);
 
     $preferences.subscribe((value) => {
-        Prefs.set(value)
-        console.log(value);
-        
+        Prefs.set(value)    
     })
 }

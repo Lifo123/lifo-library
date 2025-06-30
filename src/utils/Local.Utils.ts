@@ -51,7 +51,20 @@ export const Local = (key: string) => {
         localStorage.removeItem(key)
     }
 
-    const update = (path: string, value: any) => {
+    const update = (pathOrValue: string | Record<string, any>, maybeValue?: any) => {
+        if (typeof pathOrValue !== 'string') {
+            const value = pathOrValue;
+            if (value === undefined || value === null) return;
+
+            const existing = get() || {};
+            const merged = { ...existing, ...value };
+            set(merged);
+            return;
+        }
+        
+        const path = pathOrValue;
+        const value = maybeValue;
+
         const data = get() || {};
         const keys = path.split("/");
         let current = data;
@@ -64,10 +77,10 @@ export const Local = (key: string) => {
             current = current[k];
         }
 
-        current[keys[keys.length - 1]] = value;
-
+        current[keys.at(-1)!] = value;
         set(data);
     };
+
 
     return {
         set,
