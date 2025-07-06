@@ -83,7 +83,7 @@ const { title, description } = Astro.props;
         <Dialoger client:only="react" />
         <CardLoading client:only="react" />
 
-        <header class="f-row w-100 f-justify-between f-align-center px-3">
+        <header class="f-row w-100 f-justify-between f-align-center px-3 mb-8">
             <div class="f-row g-2 f-center pointer">
                 <span>Logo</span>
                 <span class="head-h1 text-center fs-3 fw-500"
@@ -102,17 +102,7 @@ const { title, description } = Astro.props;
             </div>
             <span class="pr-btn d-flex f-center py-2 px-3 br-6">Hello</span>
         </header>
-        <Dropdown client:only="react">
-            <span class="btn btn-fourth br-4 d-flex f-center">BTN</span>
-        </Dropdown>
-        <Test client:only="react">
-            <img
-                alt=""
-                draggable="false"
-                src="https://media-lim1-1.cdn.whatsapp.net/v/t61.24694-24/505993423_1018251543423827_7568233153762603599_n.jpg?ccb=11-4&oh=01_Q5Aa1wHD4IU1vj2oqfQnbfHN4w9Q9NXyt1_t-nmEbrbBJyarJQ&oe=686CE59B&_nc_sid=5e03e0&_nc_cat=100"
-                style="visibility: visible;"
-            />
-        </Test>
+        <Test client:only="react"/>
     </body>
 </html>
 

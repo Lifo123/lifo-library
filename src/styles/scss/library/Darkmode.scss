@@ -50,16 +50,18 @@
 }
 
 .lb-dm-icon-toggle {
+    cursor: pointer;
+    user-select: none;
     border: solid 1px var(--vscode-panel-border);
     padding: .26rem;
     aspect-ratio: 1 / 1;
+    width: max-content;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .lb-dm-icon-toggle:hover {
     background-color: var(--vscode-button-secondary-background);
-}
-
-.lb-dm-icon-toggle svg {
-    height: 100%;
-    width: 100%;
 }

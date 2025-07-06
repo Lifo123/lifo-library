@@ -27,7 +27,7 @@ export default function Dialoger({ ...props }: DialogerPropsTypes) {
 
     return (
         Store.isVisible && (
-            <span className={`flifo-portal d-flex f-center fixed dialog ${Store.isAnimate ? "visible" : "delete"}`}
+            <span className={`flifo-portal dialog ${Store.isAnimate ? "visible" : "delete"}`}
                 style={{
                     backgroundColor: Store.bgColor || '#0000003b',
                     pointerEvents: 'visible',

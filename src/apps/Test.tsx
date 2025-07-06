@@ -1,10 +1,10 @@
 import Icons from "../components/Icons/Icons";
-import SocialIcons from "../components/Icons/SocialIcon";
+import SocialIcons from "../components/Icons/SocialIcons";
 import { UI } from "../UI/index"
 import React from "react"
 
 interface Props {
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 
 export default function Test({ children }: Props) {
@@ -16,22 +16,15 @@ export default function Test({ children }: Props) {
         }, 100)
     }, [])
 
-    const onClick = (e: React.MouseEvent) => {
-        setIsClick(true)
-        console.log(e.target, e.currentTarget);
-        if (e.target === e.currentTarget) {
-            
-            setIsClick(false)
-        }
-    }
 
     return (
-        <span
-            className={`test d-flex f-center ${isClick ? "active" : ""}`}
-            onClick={onClick}
-        >
-            {children}
- 
-        </span>
+        <div className="f-col f-center g-2">
+
+            <Icons icon="search" className="pointer" size={24} onClick={() => {
+                console.log('clicked')
+            }}/>
+            <p className="m-0">pedro</p>
+            <SocialIcons icon="reddit" size={24} />
+        </div>
     )
 }

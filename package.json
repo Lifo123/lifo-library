@@ -1,6 +1,6 @@
 {
   "name": "@lifo123/library",
-  "version": "1.6.5",
+  "version": "1.6.7",
   "description": "Lifo library",
   "type": "module",
   "repository": {
@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "pnpm run sass && astro dev --host",
-    "sass": "sass --style=compressed src/styles/scss/Main.scss src/styles/output/Flifo.css",
+    "sass": "sass --style=compressed src/styles/scss/Main.scss src/styles/output/Flifo.css && sass --style=compressed src/styles/scss/library/Library.scss src/styles/output/Library.css",
     "deploy": "pnpm run build && pnpm run sass && npm publish --access public"
   },
   "files": [

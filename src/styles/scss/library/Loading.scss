@@ -33,8 +33,15 @@
 
 .page-load {
   background-color: var(--vscode-panel-background);
+  position: absolute;
+  padding-bottom: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: 0px;
   left: 0px;
+  height: 100%;
+  width: 100%;
   z-index: 110000;
   transition: visibility 0.15s ease, opacity 0.15s ease;
   pointer-events: visible;
