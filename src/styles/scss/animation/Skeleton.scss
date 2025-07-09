@@ -1,18 +1,10 @@
 .skeleton {
-    background-color: var(--vscode-editor-background, var(--custom-skeleton-bg));
+    background-color: var(var(--color-skeleton-bg), #000);
     animation: pulse 2s cubic-bezier(.4, 0, .6, 1)infinite;
 }
 
 @keyframes pulse {
-    0% {
-        opacity: 1;
-    }
-
     50% {
         opacity: .5;
-    }
-
-    100% {
-        opacity: 1;
     }
 }

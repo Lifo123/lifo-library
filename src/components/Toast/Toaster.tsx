@@ -6,7 +6,7 @@ import type { ToasterItemProps, ToasterProps } from "./Toast.Types.js"
 import { $toast, LocalToast, toast } from "./Toast.Store.js"
 import { ToastIcons } from "./ToastAssets.js";
 import ButtonPromise from '../General/ButtonPromise.js'
-import CloseBtn from '../General/CloseBtn.js'
+import Icons from "../Icons/Icons.js";
 
 export default function Toaster({
     toastID = 'init',
@@ -89,14 +89,14 @@ const ToastRow = ({
     }, [props.state]);
 
     React.useEffect(() => {
-        if (props.noDissapear) return;
+        if (props.noDissapear || props.action) return;
 
         const timeout = setTimeout(() => {
             setIsVisible(false); // inicia animación de salida
         }, props.duration);
 
         return () => clearTimeout(timeout);
-    }, [props.duration, props.noDissapear]);
+    }, [props.duration, props.noDissapear, props.action]);
 
     React.useEffect(() => {
         if (!isVisible) {
@@ -122,45 +122,42 @@ const ToastRow = ({
             onMouseLeave={() => setIsHovered(false)}
         >
             {
-                props?.children && (
-                    props.children
-                ) || (
+                props?.children ?? (
                     <span
-                        className={`toast-item f-row f-nowrap f-justify-between f-align-center br-6 g-3 o-hidden`}
+                        className={`toast-item f-row f-nowrap justify-between items-center rounded-md gap-2 o-hidden`}
                         data-toast-type={props.type}
                         data-iscolor={props.richColors}
                     >
-                        <div className="f-row g-1 f-align-center f-justify-start">
+                        <div className="f-row gap-2 items-center justify-start">
                             {props.customIcon || props.icon || props.type && (
-                                <span className="toast-icon mr-2 d-flex f-center">
-                                    {props.type ? ToastIcons[props.type] : props.customIcon ? props.customIcon : props.icon}
+                                <span className="toast-icon mr-1 d-flex f-center">
+                                    {props.type ? ToastIcons[props.type] : props.customIcon ?? props.icon}
                                 </span>
                             )}
 
-                            <div className="toast-detail f-col f-justify-center">
+                            <div className="toast-detail f-col justify-center leading-tight gap-0.5">
                                 {props.title && <span className="fs-2 fw-500" style={{ color: `var(--lifo-toast-${props.richColors ? props.type : 'title'})`, fontWeight: 550 }}>{props?.title}</span>}
                                 <p className="fs-2 m-0" style={{ textWrap: 'nowrap', color: `var(--lifo-toast-${props.richColors ? props.type : 'description'})`, fontWeight: 450 }}>{props?.message}</p>
-                                {props.href && <a className="info fs-custom-13 br-6 w-max" href={props.href}>More</a>}
+                                {props.href && <a className="info fs-custom-12-5 rounded-md w-max fw-500" href={props.href}>More</a>}
 
                             </div>
                         </div>
                         {
-                            props.customAction ? props.customAction :
+                            props.customAction ??
                                 props.action ?
-                                    <ButtonPromise className="fs-custom-12-5 pointer btn-secondary br-6"
-                                        text={props.actionText || 'Continue'}
-                                        size={16}
-                                        style={{ padding: '.3rem .65rem', color: 'rgb(var(--lb-title))' }}
-                                        stroke="rgb(var(--lb-white))"
-                                        onClick={async () => {
-                                            setIsHovered(true);
-                                            await props.action!()
-                                            toast.dismiss(props.toastID, props.id)
-                                        }}
-                                    />
-                                    : props.closeBtn ? <span className="ml-3 d-block" onClick={() => { toast.dismiss(props.toastID, props.id) }}>
-                                        <CloseBtn size={24} />
-                                    </span> : null
+                                <ButtonPromise className="pointer btn-primary rounded-sm fw-500 text-lifo-title"
+                                    text={props.actionText || 'Continue'}
+                                    size={18}
+                                    style={{ padding: '.3rem .65rem', fontSize: 12.5 }}
+                                    onClick={async () => {
+                                        setIsHovered(true);
+                                        await props.action!()
+                                        toast.dismiss(props.toastID, props.id)
+                                    }}
+                                />
+                                : props.closeBtn ? <Icons icon="close" size={26} onClick={() => {
+                                    toast.dismiss(props.toastID, props.id)
+                                }} /> : null
                         }
                     </span>
                 )

@@ -7,6 +7,7 @@
 .d-block {
   display: block;
 }
+
 .d-none{
   display: none;
 }
@@ -24,54 +25,6 @@
 .f-center {
   justify-content: center;
   align-items: center;
-}
-
-.f-align-start {
-  align-items: start;
-}
-
-.f-justify-start {
-  justify-content: start;
-}
-
-.f-align-center {
-  align-items: center;
-}
-
-.f-justify-center {
-  justify-content: center;
-}
-
-.f-align-end {
-  align-items: end;
-}
-
-.f-justify-end {
-  justify-content: end;
-}
-
-.f-justify-between {
-  justify-content: space-between;
-}
-
-.f-justify-around {
-  justify-content: space-around;
-}
-
-.f-align-self-start {
-  align-self: self-start;
-}
-
-.f-align-self-end {
-  align-self: self-end;
-}
-
-.f-justify-self-start {
-  justify-self: start;
-}
-
-.f-justify-self-end {
-  justify-self: end;
 }
 
 .f-wrap {

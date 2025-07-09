@@ -2,7 +2,7 @@
 import { useStore } from '@nanostores/react';
 import { $loading, Loading } from '../../Stores/Loading.Store.js';
 import { BaseComponentProps } from '../../Types/GeneralTypes.js';
-import CircleLoading from '../Loading/CircleLoading.js';
+import Icons from '../Icons/Icons.js';
 
 //test
 
@@ -28,11 +28,13 @@ export default function ButtonPromise({ loadingId = 'G_Fetch', text, className, 
     };
 
     return (
-        <span className={`d-flex f-center relative ${className || 'btn-primary btn-promise br-6 btn pointer fs-2'}`} onClick={handleClick} style={style} data-btn-promise={loadingId}>
+        <span className={`d-flex f-center relative ${className || 'btn-primary rounded-md btn pointer fs-2'}`} onClick={handleClick} style={style} data-btn-promise={loadingId}>
             {
-                LOADING[loadingId] && <CircleLoading size={size || 20} stroke={stroke || 'rgb(var(--lb-black))'} />
+                LOADING[loadingId] && <span className='absolute' style={{marginTop: '1px'}}>
+                    <Icons icon='loading' size={size || 22} />
+                </span>
             }
-            <p className={`m-0 opacity-${LOADING[loadingId] && '0'}`}>
+            <p className={`m-0 ${LOADING[loadingId] && 'opacity-0'}`}>
                 {text || 'Button'}
             </p>
         </span >

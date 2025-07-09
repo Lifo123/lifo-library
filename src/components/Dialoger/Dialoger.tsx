@@ -2,7 +2,8 @@
 import { useStore } from "@nanostores/react";
 import { Dialog, $Dialoger } from "./Dialoger.Store.js";
 import type { DialogerPropsTypes } from "./Dialoger.Types.js";
-import { ButtonPromise, CloseBtn } from '../General/index.js';
+import { ButtonPromise } from '../General/index.js';
+import Icons from "../Icons/Icons.js";
 
 
 export default function Dialoger({ ...props }: DialogerPropsTypes) {
@@ -21,7 +22,7 @@ export default function Dialoger({ ...props }: DialogerPropsTypes) {
         '--custom-start-transform': Store.animate?.start?.transform || 'scale(0.9)',
         '--custom-end-transform': Store.animate?.end?.transform || 'scale(1)',
 
-        '--custom-duration': `${Store.animate?.duration || 0.25}s`,
+        '--custom-duration': `${Store.animate?.duration ?? 0.25}s`,
 
     };
 
@@ -47,30 +48,27 @@ export default function Dialoger({ ...props }: DialogerPropsTypes) {
                     }}
                 >
                     {Store.children || (
-                        <div className="dialoger-content f-col g-1 f-justify-center p-4 br-10 mx-auto">
-                            <div className='f-col g-1 f-justify-between f-align-start'>
-                                <div className="f-row f-justify-between f-align-center w-100">
+                        <div className="dialoger-content f-col gap-1 justify-center p-4 rounded-lg mx-auto">
+                            <div className='f-col gap-1 justify-between items-start'>
+                                <div className="f-row justify-between items-center w-100">
                                     {Store.title && <h4 className="fs-4 m-0 fw-600">{Store.title}</h4>}
-                                    {Store.closeBtn && (
-                                        <span >
-                                            <CloseBtn size={25} onClick={() => {
-                                                Dialog.hide()
-                                            }} />
-                                        </span>
-                                    )}
+                                    {Store.closeBtn &&
+                                        <Icons icon="close" size={26} onClick={() => {
+                                            Dialog.hide()
+                                        }} />}
                                 </div>
                                 {
-                                    Store.custom || Store.message && <p className="fs-2 m-0 fw-400 mb-2" style={{color: 'var(--vscode-description-foreground)'}}>{Store.message} </p>
+                                    Store.custom || Store.message && <p className="fs-2 m-0 fw-400 mb-2" style={{ color: 'var(--vscode-description-foreground)' }}>{Store.message} </p>
                                 }
 
                             </div>
-                            <div className="f-row g-2 f-wrap f-justify-between mt-1">
-                                <span className="btn btn-third br-6 fs-2 pointer" onPointerDown={() => {
+                            <div className="f-row gap-2 f-wrap justify-between mt-1">
+                                <span className="btn btn-third rounded-md fs-2 pointer" onPointerDown={() => {
                                     Dialog.hide()
                                 }}>
                                     Cancel
                                 </span>
-                                <ButtonPromise className="btn-primary btn br-6" text="Continue" onClick={async () => {
+                                <ButtonPromise loadingId="wasa" className="btn btn-primary rounded-md fs-2 pointer h-100" text="Continue" onClick={async () => {
                                     if (Store.onClick) {
                                         await Store.onClick?.()
                                     } else {

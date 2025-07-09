@@ -1,8 +1,4 @@
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
     font-family: Inter, Geist, Google Sans, Segoe UI, system-ui, -apple-system, sans-serif, sans-serif;
     -webkit-tap-highlight-color: transparent;
 }
@@ -19,11 +15,6 @@ html[data-scroll-lock="true"] {
     html {
         scroll-behavior: auto;
     }
-}
-
-body {
-    scrollbar-gutter: stable;
-    background: var(--vscode-side-bar-background);
 }
 
 * {
@@ -74,20 +65,6 @@ svg {
     pointer-events: none;
 }
 
-p {
-    line-height: 1.65;
-}
-
-.icon {
-    background-color: transparent;
-    stroke: var(--lb-icon);
-    fill: var(--lb-icon);
-    transition: stroke .2s ease, fill .2s ease;
-}
-
-.icon svg {
-    pointer-events: none;
-}
 
 input[type="file"] {
     display: none;

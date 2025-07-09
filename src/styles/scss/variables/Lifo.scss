@@ -23,7 +23,7 @@
 
     --lifo-toast-warning: #e99724;
     --lifo-toast-success: #3ecc41;
-    --lifo-toast-error: #ff2d2d;
+    --lifo-toast-error: #ff3636;
     --lifo-toast-info: #0f84f9;
 
     --lifo-toast-success-bg: #1e241f;
@@ -57,7 +57,7 @@
 }
 
 .note-default {
-    border: solid 1px var(--vscode-panel-border);
-    background-color: var(--vscode-panel-background);
-    color: --vscode-toast-title;
+    border: solid 1px var(--color-lifo-border);
+    background-color: var(--color-lifo-bg);
+    color: var(--color-lifo-title);
 }

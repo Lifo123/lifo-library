@@ -1,5 +1,5 @@
 'use client';
-import CircleLoading from "./CircleLoading.js";
+import Icons from "../Icons/Icons.js";
 
 interface PageLoadingProps {
     children?: React.ReactNode;
@@ -11,7 +11,7 @@ export default function PageLoading({ children }: PageLoadingProps) {
             id="page-load"
             className="page-load absolute d-flex f-center h-100 w-100 pb-10"
         >
-            {children || <CircleLoading size={40} />}
+            {children || <Icons size={60} icon="loading" style={{strokeWidth: 1.35}} />}
         </div>
     )
 }

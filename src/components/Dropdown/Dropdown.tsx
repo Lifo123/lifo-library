@@ -22,11 +22,11 @@ export default function Dropdown({ ...props }: DropDownAllTypes) {
 
     return (
         <>
-            <span onClick={() => toggle(!isVisible)}
+            <span className="w-max" onClick={() => toggle(!isVisible)}
                 ref={btnRef}>
                 {
                     props.children || <span
-                        className="d-flex relative br-6 btn btn-secondary pointer"
+                        className="d-flex relative rounded-md btn btn-secondary w-max pointer"
                     >
                         {props.text || "Open Dropdown"}
                     </span>
@@ -35,16 +35,16 @@ export default function Dropdown({ ...props }: DropDownAllTypes) {
 
             {isVisible && (
                 <div
-                    className={`dropdown-content absolute ${props.className || `f-col o-hidden br-10`} ${isAnim ? " visible" : " delete"}`}
+                    className={`dropdown-content absolute ${props.className || `f-col o-hidden rounded-md`} ${isAnim ? " visible" : " delete"}`}
                     ref={dropdownRef}
                     style={{
                         ...props.style,
                         transformOrigin: `${openDirection !== "up" ? "top" : "bottom"} center`
                     }}
                 >
-                    {props.title && <p className="dropdown-head fs-2 fw-600 m-0">{props.title}</p>}
+                    {props.title && <p className="dropdown-head fs-2 fw-500 m-0">{props.title}</p>}
                     {props.items?.map((data, i) => (
-                        <DropdownSection key={i} items={data} close={toggle} />
+                        <DropdownSection key={i} items={data} close={toggle} index={i} />
                     ))}
                 </div >
             )

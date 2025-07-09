@@ -1,6 +1,6 @@
 {
   "name": "@lifo123/library",
-  "version": "1.6.7",
+  "version": "1.6.9",
   "description": "Lifo library",
   "type": "module",
   "repository": {
@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "pnpm run sass && astro dev --host",
-    "sass": "sass --style=compressed src/styles/scss/Main.scss src/styles/output/Flifo.css && sass --style=compressed src/styles/scss/library/Library.scss src/styles/output/Library.css",
+    "sass": "sass --style=compressed src/styles/scss/Main.scss src/styles/output/Flifo.css",
     "deploy": "pnpm run build && pnpm run sass && npm publish --access public"
   },
   "files": [
@@ -21,15 +21,19 @@
   "author": "Lifo",
   "license": "ISC",
   "devDependencies": {
+    "@tailwindcss/vite": "^4.1.11",
     "@types/node": "^22.9.0",
     "@types/react": "^19.1.6",
     "astro": "^5.9.0",
     "sass": "1.77.0",
+    "tailwindcss": "^4.1.11",
     "typescript": "^5.6.3"
   },
   "peerDependencies": {
-    "@nanostores/react": "^0.8.0",
+    "tailwindcss": "^4.1.11",
+    "@tailwindcss/vite": "^4.1.11",
     "@nanostores/persistent": "^1.0.0",
+    "@nanostores/react": "^0.8.0",
     "nanostores": "^0.11.3",
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0"

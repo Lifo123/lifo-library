@@ -3,16 +3,15 @@
 }
 
 .tab-item {
-    color: rgb(var(--fc-text))
+    color: var(--color-lifo-text)
 }
 
 .tab-item.active-tab {
-    color: rgb(var(--fc-title));
+    color: var(--color-lifo-title);
     background-color: var(--vscode-editor-background);
     outline: solid 1px var(--vscode-panel-border);
 }
 
-.tab-content {}
 
 .tab-content-item {
     background: var(--vscode-editor-background);

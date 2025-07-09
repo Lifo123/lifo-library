@@ -1,4 +1,4 @@
-import { isMobile } from "./Scroll.Utils";
+import { isMobile } from "./Scroll.Utils.js";
 
 const IDnumber = (): number => {
     return Date.now() + Math.random();

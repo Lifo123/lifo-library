@@ -1,24 +1,9 @@
-@import '../animation/Animation.scss';
-@import '../variables/RootVariables.scss';
-@import '../project/index.scss';
-
 @import './Darkmode.scss';
 @import './Dialog.scss';
 @import './Dropdown.scss';
 @import './Loading.scss';
 @import './Tabs.scss';
 @import './Toast.scss';
-
-@import '../global/Buttons.scss';
-
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Inter, Geist, Google Sans, Segoe UI, system-ui, -apple-system, sans-serif, sans-serif;
-    -webkit-tap-highlight-color: transparent;
-}
 
 .flifo-portal {
     height: 100%;
@@ -42,22 +27,11 @@
     opacity: 0;
 }
 
-.icon {
-    background-color: transparent;
-    stroke: var(--lb-icon);
-    fill: var(--lb-icon);
-    transition: stroke .2s ease, fill .2s ease;
+.action-icon{
+    border: none !important;
 }
-
-.icon svg,
-.flifo-icon svg {
-    pointer-events: none;
-}
-
-.flifo-icon{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.action-icon:hover{
+    background-color: var(--color-lifo-bg-third);
 }
 
 input[type="file"] {

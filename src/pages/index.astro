@@ -1,5 +1,4 @@
 ---
-import "../styles/output/Flifo.css";
 import "../styles/output/Global.css";
 
 import {
@@ -42,7 +41,6 @@ const { title, description } = Astro.props;
 
         doc.documentElement.classList.toggle("dark", mode === "dark");
         doc.documentElement.classList.toggle("light", mode === "light");
-        doc.documentElement.style.colorScheme = mode;
 
         localStorage.setItem(
             BASE_STORAGE_KEY,
@@ -79,18 +77,18 @@ const { title, description } = Astro.props;
     </head>
     <body class="f-col f-align-center">
         <PageLoading />
-        <Toaster client:only="react" maxToasts={3} />
+        <Toaster client:only="react" />
         <Dialoger client:only="react" />
         <CardLoading client:only="react" />
 
-        <header class="f-row w-100 f-justify-between f-align-center px-3 mb-8">
-            <div class="f-row g-2 f-center pointer">
+        <header class="f-row w-100 justify-between items-center px-3 mb-8">
+            <div class="f-row gap-2.5 f-center pointer">
                 <span>Logo</span>
                 <span class="head-h1 text-center fs-3 fw-500"
                     >Firebase Studio</span
                 >
             </div>
-            <div class="f-row g-3 f-center">
+            <div class="f-row gap-2 f-center">
                 <DarkmodeIcon client:only="react" />
                 <DarkmodeDrop client:only="react" />
                 <DarkmodeToggle client:only="react" />
@@ -100,7 +98,7 @@ const { title, description } = Astro.props;
                     client:only="react"
                 />
             </div>
-            <span class="pr-btn d-flex f-center py-2 px-3 br-6">Hello</span>
+            <span class="btn btn-third d-flex f-center py-2 px-3">Hello</span>
         </header>
         <Test client:only="react"/>
     </body>

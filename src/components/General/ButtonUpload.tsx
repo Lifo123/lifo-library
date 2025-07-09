@@ -1,7 +1,7 @@
 'use client'
 import React from "react";
 import { toast } from "../Toast/Toast.Store.js";
-import CircleLoading from "../Loading/CircleLoading.js";
+import Icons from "../Icons/Icons.js";
 
 interface Props {
     className?: string;
@@ -46,7 +46,7 @@ export default function UploadBtn({
             if (props.onUpload) {
                 await props.onUpload(file);
             } else {
-                toast.show(`Archivo cargado`, { position: 'bottom-left' });
+                toast.success(`Archivo cargado`, { position: 'bottom-left' });
             }
 
             setIsUploading(false);
@@ -67,7 +67,7 @@ export default function UploadBtn({
         <>
             <label className={`uploadbtn btn d-flex f-center relative ${props.className || 'btn-secondary br-6 w-max mx-auto'}`}>
                 {
-                    isUploading && <CircleLoading size={20} stroke={'rgb(var(--lb-black))'} />
+                    isUploading && <Icons icon="loading" size={20} />
                 }
                 <p className={`m-0 opacity-${isUploading && '0'}`}>
                     {isUploaded ? textCharge : text}

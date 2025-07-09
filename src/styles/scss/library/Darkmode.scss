@@ -4,25 +4,23 @@
     width: 90px;
     padding: 6px 13px;
     border-radius: 6px;
-    background-color: var(--vscode-side-bar-background);
-    border: solid 1px var(--vscode-panel-border);
+    background-color: var(--color-lifo-bg-secondary);
+    border: solid 1px var(--color-lifo-border);
     outline: none;
-    color: var(--lb-lowtext);
+    color: var(--color-lifo-title);
     font-size: 14px;
 }
 
 .lb-dm-dropdown:focus {
-    border: solid 1px var(--vscode-activity-bar-badge-background);
+    border: solid 1px var(--color-lifo-border-high);
 }
 
 
 .lb-dm-togle {
-    cursor: pointer;
+    position: relative;
     border-radius: 999px;
-    display: flex;
     height: 22px;
     width: 38px;
-    position: relative;
     background-color: #7b7b7b;
 }
 
@@ -41,7 +39,6 @@
     position: absolute;
     background-color: #fff;
     transition: left .1s ease;
-    box-shadow: 1px 1px 6px #0000009e;
 }
 
 .lb-dm-togle.active span {
@@ -50,18 +47,12 @@
 }
 
 .lb-dm-icon-toggle {
-    cursor: pointer;
-    user-select: none;
-    border: solid 1px var(--vscode-panel-border);
+    border: solid 1px var(--color-lifo-border);
     padding: .26rem;
     aspect-ratio: 1 / 1;
     width: max-content;
-    border-radius: 6px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .lb-dm-icon-toggle:hover {
-    background-color: var(--vscode-button-secondary-background);
+    background-color: var(--color-lifo-bg-third);
 }

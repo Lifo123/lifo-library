@@ -23,7 +23,6 @@ const change = (newTheme: ThemeTypes) => {
     if (newTheme === 'system') {
         document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
         document.documentElement.classList[isDark ? 'remove' : 'add']('light');
-        document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
         $preferences.setKey('isDark', isDark);
         return;
     }
@@ -31,7 +30,6 @@ const change = (newTheme: ThemeTypes) => {
     isDark = newTheme === 'dark';
     document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
     document.documentElement.classList[isDark ? 'remove' : 'add']('light');
-    document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
 
     $preferences.setKey('isDark', isDark);
 }

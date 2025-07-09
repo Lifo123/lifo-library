@@ -1,6 +1,7 @@
-.input-area {
-    min-height: 154px;
-    background: var(--vscode-editor-background);
-    border: solid 1px var(--vscode-panel-border);
-    color: var(--vscode-description-foreground);
+@import 'tailwindcss';
+@import './Flifo.css';
+
+
+html {
+  @apply bg-lifo-bg;
 }

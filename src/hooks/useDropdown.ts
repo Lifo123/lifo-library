@@ -80,15 +80,17 @@ export function useDropdown({
 
 
     const toggle = (state: boolean) => {
-        state ? setIsVisible(true) : setIsAnim(false);
-        const timeout = setTimeout(() => {
-            state ? setIsAnim(true) : setIsVisible(false);
-        },);
+        if (state) {
+            setIsVisible(true);
+            setTimeout(() => setIsAnim(true), 10);
+        } else {
+            setIsAnim(false);
+            setTimeout(() => setIsVisible(false), 100);
+        }
 
         frezzeScroll ? Scroll[state ? "hide" : "show"]() : null;
-
-        return () => clearTimeout(timeout);
     };
+
 
     // Cierre al hacer clic fuera
     useEffect(() => {

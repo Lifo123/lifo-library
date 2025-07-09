@@ -61,6 +61,8 @@ const promise = async <T>(
                     id: id,
                 });
             }
+        }else{
+            dismiss(toastID, id);
         }
     } catch (error) {
         const err =

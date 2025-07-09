@@ -6,11 +6,12 @@ interface Props {
 
 export default function Dropdownitem(props: DropdownItems & Props) {
     return (
-        <span className="dropdown-item pointer br-6 fs-2" onClick={async () => {
+        <span className="dropdown-item pointer rounded-md fs-2 f-row f-nowrap justify-between items-center" onClick={async () => {
             await props.onClick?.();
             props.close?.(false);
         }}>
             {props.text}
+            {props.icon ?? null}
         </span>
     )
 }

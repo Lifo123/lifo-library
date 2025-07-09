@@ -1,4 +1,9 @@
 @import './Skeleton.scss';
+@import './Scale.scss';
+
+:root {
+    --fw-duration: var(--custom-duration, 0.18s);
+}
 
 [data-animation="none"] {
     transition: none;
@@ -52,22 +57,16 @@
     opacity: 0;
 }
 
-[data-animation="scale"] {
-    transition: scale 0.2s ease, opacity 0.2s ease;
-}
-
-.delete[data-animation="scale"] {
-    scale: .7;
-}
-
-.visible[data-animation="scale"] {
-    scale: 1;
-}
 
 
 
 [data-animation="slide"] {
-    transition: top 0.15s ease, left 0.15s ease, right 0.15s ease, bottom 0.15s ease, opacity 0.15s ease;
+    transition:
+        top 0.15s ease,
+        left 0.15s ease,
+        right 0.15s ease,
+        bottom 0.15s ease,
+        opacity 0.15s ease;
 }
 
 [data-animation="slide"].delete,

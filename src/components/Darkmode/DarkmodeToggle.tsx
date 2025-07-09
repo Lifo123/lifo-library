@@ -8,7 +8,7 @@ export default function DarkmodeToggle({ className, style }: BaseComponentProps)
     const PREFERENCES = useStore($preferences);
 
     return (
-        <span className={`lb-dm-togle ${PREFERENCES.isDark ? 'active' : ''} ${className || ''}`} onClick={() => Darkmode.toggle()} style={style}>
+        <span className={`lb-dm-togle pointer d-flex ${PREFERENCES.isDark ? 'active' : ''} ${className || ''}`} onClick={() => Darkmode.toggle()} style={style}>
             <span className='no-select'></span>
         </span>
     );
