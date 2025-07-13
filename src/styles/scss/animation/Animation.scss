@@ -25,23 +25,23 @@
 
 
 [data-animation='none'][data-axis-y='top'] {
-    --slide-start-top: 1.2rem;
-    --slide-end-top: 1.2rem;
+    --slide-start-top: 1.5rem;
+    --slide-end-top: 1.5rem;
 }
 
 [data-animation='none'][data-axis-y='bottom'] {
-    --slide-start-bottom: 1.2rem;
-    --slide-end-bottom: 1.2rem;
+    --slide-start-bottom: 1.5rem;
+    --slide-end-bottom: 1.5rem;
 }
 
 [data-animation="none"][data-axis-x="left"] {
-    --slide-start-left: 1.2rem;
-    --slide-end-left: 1.2rem;
+    --slide-start-left: 1.5rem;
+    --slide-end-left: 1.5rem;
 }
 
 [data-animation="none"][data-axis-x="right"] {
-    --slide-start-right: 1.2rem;
-    --slide-end-right: 1.2rem;
+    --slide-start-right: 1.5rem;
+    --slide-end-right: 1.5rem;
 }
 
 
@@ -91,23 +91,23 @@
 }
 
 [data-animation="slide"][data-axis-x="left"] {
-    --slide-start-left: 1.2rem;
-    --slide-end-left: 1.2rem;
+    --slide-start-left: 1.4rem;
+    --slide-end-left: 1.4rem;
 }
 
 [data-animation="slide"][data-axis-x="right"] {
-    --slide-start-right: 1.2rem;
-    --slide-end-right: 1.2rem;
+    --slide-start-right: 1.4rem;
+    --slide-end-right: 1.4rem;
 }
 
 [data-animation="slide"][data-axis-y="top"] {
     --slide-start-top: -2rem;
-    --slide-end-top: 1.2rem;
+    --slide-end-top: 1.5rem;
 }
 
 [data-animation="slide"][data-axis-y="bottom"] {
     --slide-start-bottom: -2rem;
-    --slide-end-bottom: 1.2rem;
+    --slide-end-bottom: 1.5rem;
 }
 
 
@@ -148,23 +148,23 @@
 
 
 [data-animation="scale"][data-axis-x="left"] {
-    --slide-start-left: 1.2rem;
-    --slide-end-left: 1.2rem;
+    --slide-start-left: 1.5rem;
+    --slide-end-left: 1.5rem;
 }
 
 [data-animation="scale"][data-axis-x="right"] {
-    --slide-start-right: 1.2rem;
-    --slide-end-right: 1.2rem;
+    --slide-start-right: 1.5rem;
+    --slide-end-right: 1.5rem;
 }
 
 [data-animation="scale"][data-axis-y="top"] {
-    --slide-start-top: 1.2rem;
-    --slide-end-top: 1.2rem;
+    --slide-start-top: 1.5rem;
+    --slide-end-top: 1.5rem;
 }
 
 [data-animation="scale"][data-axis-y="bottom"] {
     --slide-start-bottom: 1.22rem;
-    --slide-end-bottom: 1.2rem;
+    --slide-end-bottom: 1.5rem;
 }
 
 
@@ -189,23 +189,23 @@
 }
 
 [data-animation='fade'][data-axis-y='top'] {
-    --fade-start-top: 1.2rem;
-    --fade-end-top: 1.2rem;
+    --fade-start-top: 1.5rem;
+    --fade-end-top: 1.5rem;
 }
 
 [data-animation='fade'][data-axis-y='bottom'] {
-    --fade-start-bottom: 1.2rem;
-    --fade-end-bottom: 1.2rem;
+    --fade-start-bottom: 1.5rem;
+    --fade-end-bottom: 1.5rem;
 }
 
 [data-animation="fade"][data-axis-x="left"] {
-    --fade-start-left: 1.2rem;
-    --fade-end-left: 1.2rem;
+    --fade-start-left: 1.5rem;
+    --fade-end-left: 1.5rem;
 }
 
 [data-animation="fade"][data-axis-x="right"] {
-    --fade-start-right: 1.2rem;
-    --fade-end-right: 1.2rem;
+    --fade-start-right: 1.5rem;
+    --fade-end-right: 1.5rem;
 }
 
 

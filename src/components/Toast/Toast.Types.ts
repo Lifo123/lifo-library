@@ -8,6 +8,7 @@ export type ScaleOffsetTypes = "left" | "center" | "right";
 
 
 export interface ToastBasicProps {
+  id?: string ;
   position?: PositionTypes;
   duration?: number;
   animation?: AnimationTypes;
@@ -24,7 +25,6 @@ export interface ToastProps {
 
 export interface ToastItemProps<T = any> extends ToastBasicProps {
   index?: number;
-  id: number;
   type?: ToastTypes;
   toastID?: string;
   title?: string;
@@ -34,6 +34,7 @@ export interface ToastItemProps<T = any> extends ToastBasicProps {
   href?: string;
   closeBtn?: boolean;
   children?: React.ReactNode;
+  details?: React.ReactNode | string;
   theme?: ThemeTypes;
   loading?: string;
   success?: string | ((data: T) => string);
@@ -85,10 +86,10 @@ export interface ToasterProps extends BaseComponentProps {
 
 export interface ToasterItemProps extends ToastItemProps {
   toastID: string;
-  id: number;
+  id?: string ;
 }
 
 export interface ShowProps extends ToastFunctionProps { }
 export interface CustomFunctionProps extends Omit<ToastFunctionProps, 'type'> {
-  id?: number;
+  id?: string ;
 }

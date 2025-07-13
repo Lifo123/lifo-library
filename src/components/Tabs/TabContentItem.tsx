@@ -17,8 +17,8 @@ export default function TabContentItem(props: TabContentItemProps) {
 
     return (
         <div
-            className={customize?.content?.className || `tab-content-item p-3 f-col h-full w-full rounded-lg`}
-            style={customize?.content?.style}
+            className={customize?.content?.className || props.className || `tab-content-item p-3 f-col h-full w-full rounded-lg`}
+            style={customize?.content?.style || props.style}
             data-contentab-id={props.id}
             ref={contentitem}
         >

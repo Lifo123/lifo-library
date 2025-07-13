@@ -5,13 +5,11 @@ import {
     CardLoading,
     DarkmodeDrop,
     DarkmodeIcon,
-    DarkmodeToggle,
     Dialoger,
-    Dropdown,
     PageLoading,
     Toaster,
 } from "../components/index";
-import Test from "../apps/Test";
+import Test from "../apps/Main";
 
 interface Props {
     title: string;
@@ -75,13 +73,13 @@ const { title, description } = Astro.props;
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
-    <body class="f-col f-align-center">
+    <body class="f-col f-align-center w-screen oy-auto">
         <PageLoading />
-        <Toaster client:only="react" />
+        <Toaster client:only="react" maxToasts={6}/>
         <Dialoger client:only="react" />
-        <CardLoading/>
+        <CardLoading client:only="react" />
 
-        <header class="f-row w-100 justify-between items-center px-3 mb-8">
+        <header class="f-row w-full justify-between items-center px-3 mb-8">
             <div class="f-row gap-2.5 f-center pointer">
                 <span>Logo</span>
                 <span class="head-h1 text-center fs-3 fw-500"
@@ -91,30 +89,24 @@ const { title, description } = Astro.props;
             <div class="f-row gap-2 f-center">
                 <DarkmodeIcon client:only="react" />
                 <DarkmodeDrop client:only="react" />
-                <DarkmodeToggle client:only="react" />
-                <Dropdown
-                    text="pfp"
-                    items={[[{ text: "Log out" }]]}
-                    client:only="react"
-                />
             </div>
-            <span class="btn btn-third d-flex f-center py-2 px-3">Hello</span>
         </header>
-        <Test client:only="react"/>
+
+        <Test client:only="react" />
     </body>
+
+    <style>
+        header {
+            height: 48px;
+            color: var(--vscode-description-foreground);
+        }
+        .head-h1:hover {
+            color: var(--vscode-foreground);
+        }
+
+        main {
+            width: 100%;
+            max-width: 1300px;
+        }
+    </style>
 </html>
-
-<style>
-    header {
-        height: 48px;
-        color: var(--vscode-description-foreground);
-    }
-    .head-h1:hover {
-        color: var(--vscode-foreground);
-    }
-
-    main {
-        width: 100%;
-        max-width: 1300px;
-    }
-</style>

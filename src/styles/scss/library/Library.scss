@@ -29,6 +29,7 @@
 
 .action-icon{
     border: none !important;
+    transition: rotate var(--custom-duration, 0.25s) ease;
 }
 .action-icon:hover{
     background-color: var(--color-lifo-bg-third);

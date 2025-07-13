@@ -14,14 +14,15 @@ export const hasVisibleVerticalScrollbar = (el: HTMLElement) => {
         overflowY === "auto" ||
         (overflowY === "visible" && isOverflowing);
 
-    return !(allowsScroll && isOverflowing);
+    return (allowsScroll && isOverflowing);
 };
 
 const set = (state: boolean, target?: HTMLElement) => {
     if (typeof window === 'undefined' || typeof document === 'undefined') return;
 
-    const TARGET = target instanceof HTMLElement ? target : document.body;
+    const TARGET = target instanceof HTMLElement ? target : document.documentElement;
     const scrollbarWidth = window.innerWidth - TARGET.clientWidth;
+
     const shouldAdjustPadding = !Flifo.isMobile() && hasVisibleVerticalScrollbar(TARGET);
 
     let scrollLockCount = $scrollcount.get();
@@ -54,7 +55,7 @@ const set = (state: boolean, target?: HTMLElement) => {
 
 const reset = (target?: HTMLElement) => {
     $scrollcount.set(0);
-    const TARGET = target instanceof HTMLElement ? target : document.body;
+    const TARGET = target instanceof HTMLElement ? target : document.documentElement;
     TARGET.style.overflow = "";
     TARGET.style.paddingRight = "";
     document.documentElement.style.removeProperty('--padding-cut');

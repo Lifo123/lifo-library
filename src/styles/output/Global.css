@@ -1,8 +1,21 @@
 @import './local.css';
-@import 'tailwindcss';
 
+@import 'tailwindcss';
 
 html {
   @apply bg-lifo-bg;
 }
 
+.noti-container {
+  width: 90dvw;
+  min-width: 340px;
+  max-width: 520px;
+  color: inherit;
+  background-color: var(--color-lifo-bg-secondary);
+}
+
+
+.noti-details{
+  max-height: 0;
+  transition: max-height var(--custom-duration, 0.18s) ease-out;
+}

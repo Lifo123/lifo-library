@@ -106,7 +106,7 @@ const ToastRow = ({
     React.useEffect(() => {
         if (!isVisible) {
             const timeout = setTimeout(() => {
-                LocalToast.removeDelay(props.toastID, props.id, 0);
+                LocalToast.removeDelay(props.toastID, props.id || 'wasa', 0);
             }, 350); // espera que la animación termine
 
             return () => clearTimeout(timeout);
@@ -114,7 +114,7 @@ const ToastRow = ({
     }, [isVisible, props.toastID, props.id]);
 
     return (
-        <div className={`toast-container d-flex f-center w-max h-max select ${isVisible ? 'visible' : 'delete'} ${props.theme || ''} absolute`}
+        <div className={`toast-container d-flex f-center h-max w-max select ${isVisible ? 'visible' : 'delete'} ${props.theme || ''} absolute`}
             data-axis-y={props.position?.split('-')[0]}
             data-axis-x={props.position?.split('-')[1]}
             data-scale-offset={scaleOffset}
@@ -123,7 +123,7 @@ const ToastRow = ({
                 zIndex: isHovered ? 'inherit' : 0,
                 ...AllOffsets
             }}
-            onMouseEnter={() => props.noDissapear ? null : setIsHovered(true)}
+            onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
             {
@@ -141,14 +141,16 @@ const ToastRow = ({
                             )}
 
                             <div className="toast-detail f-col justify-center gap-0.5">
-                                {props.title && <span className="fs-2 fw-500" style={{ color: `var(--lifo-toast-${props.richColors ? props.type : 'title'})`, fontWeight: 550 }}>{props?.title}</span>}
+                                {props.title && <span className="fs-2 fw-500" style={{ color: `var(--lifo-toast-${props.richColors ? props.type : 'title'})`, fontWeight: 550 }}>
+                                    {props?.title}
+                                </span>}
                                 <p className="fs-2 m-0 leading-tight" style={{ textWrap: 'nowrap', color: `var(--lifo-toast-${props.richColors ? props.type : 'description'})`, fontWeight: 450 }}>{props?.message}</p>
-                                {props.href && <a className="info fs-custom-12-5 rounded-md w-max fw-500" href={props.href}>More</a>}
+                                {props.href && <a className="info fs-custom-12-5 rounded-md w-max fw-500" href={props.href} target="_blank">More</a>}
 
                             </div>
                         </div>
                         {
-                            props.customAction ??
+                            props.customAction ||
                                 props.action ?
                                 <ButtonPromise className="pointer btn-primary rounded-sm fw-500"
                                     text={props.actionText || 'Continue'}

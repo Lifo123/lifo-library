@@ -24,6 +24,7 @@ export default function TabList({
       const offsetWidth = activeEl.offsetWidth;
       indicatorRef.current.style.transform = `translateX(${offsetLeft}px)`;
       indicatorRef.current.style.width = `${offsetWidth}px`;
+      indicatorRef.current.style.height = `${activeEl.offsetHeight}px`;
     }
   }, [select]);
 
@@ -38,7 +39,7 @@ export default function TabList({
     >
       <div
         ref={indicatorRef}
-        className={`h-full absolute  ${indicatorClass || 'tab-indicator rounded-md'}`}
+        className={`absolute  ${indicatorClass || 'tab-indicator rounded-md'}`}
         style={{
           ...indicatorStyle,
           ...(indicatorTransition > 0 && {
