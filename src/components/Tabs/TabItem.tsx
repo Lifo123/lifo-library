@@ -18,9 +18,9 @@ export default function TabItem(props: TabItemProps) {
 
   const isActive = select === props.id;
 
-  const defaultClass = "tab-item d-flex br-6 pointer fs-2 o-hidden px-3 py-2";
+  const defaultClass = `tab-item d-flex rounded-md pointer fs-2 o-hidden px-3 py-2`;
   const baseClass = customize?.item?.className || defaultClass;
-  const defaultColor = isActive ? 'var(--vscode-foreground)' : 'var(--vscode-description-foreground)';
+  const defaultColor = isActive ? 'var(--color-lifo-title)' : 'var(--color-lifo-text)';
   const styleColor = customize?.item?.style?.color ?? defaultColor;
 
 

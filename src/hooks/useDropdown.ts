@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { hasVisibleVerticalScrollbar, Scroll } from "../utils/Scroll.Utils.js";
+import { $interface } from "../UI/Interface.Store.js";
 
 interface Props {
     margin?: number;
@@ -87,8 +88,9 @@ export function useDropdown({
             setIsAnim(false);
             setTimeout(() => setIsVisible(false), 100);
         }
-
-        frezzeScroll ? Scroll[state ? "hide" : "show"]() : null;
+        if (frezzeScroll) {
+            Scroll[state ? "hide" : "show"]()
+        }
     };
 
 

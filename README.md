@@ -4,13 +4,6 @@ Lifo Library is a library of components and utilities for React and Astro projec
 for more information visit ...
 
 
-### IMPORTANT !
-First of all, you need define .env in your project for save localStorage data.
-
-```
-PUBLIC_BASE_STORAGE_KEY="FV"
-```
-
 ### Installation
 
 ```bash

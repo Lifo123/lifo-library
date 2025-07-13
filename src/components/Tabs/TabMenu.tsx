@@ -41,7 +41,7 @@ export default function TabMenu({ children, ...props }: TabMenuProps) {
             customize: props.customize
         }}>
             <section
-                className={'tab-menu ' + (props.className || 'tab-container f-col mt-4 g-2') + ' relative'}
+                className={'tab-menu' + (props.className || 'tab-container f-col mt-4 gap-1.5') + ' relative'}
                 style={props.style}
                 data-tabmenu={'true'}
             >

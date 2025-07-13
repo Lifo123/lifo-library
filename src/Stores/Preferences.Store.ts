@@ -4,19 +4,18 @@ import { isBrowser, LocalPrefs } from './config.js';
 
 
 interface PreferencesProps {
-    theme?: ThemeTypes
+    theme?: ThemeTypes,
     [key: string]: any
 }
 
-export const $preferences = deepMap<PreferencesProps>() //Store
+export const $preferences = deepMap<PreferencesProps>()
 
 
 if (isBrowser) {
     const saved = LocalPrefs.get()
-    
-    if (saved) $preferences.set(saved);
 
+    if (saved) $preferences.set(saved);
     $preferences.subscribe((value) => {
-        LocalPrefs.set(value)    
+        LocalPrefs.set(value)
     })
 }

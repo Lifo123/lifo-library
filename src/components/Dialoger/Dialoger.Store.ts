@@ -1,61 +1,92 @@
 import { map } from "nanostores";
-import type { DialogPropsCustomTypes, DialogPropsTypes, DialogTypes } from "./Dialoger.Types.js";
+import type { DialogPropsCustomTypes, DialogPropsTypes, ALLDialogTypes } from "./Dialoger.Types.js";
 import { Scroll } from "../../utils/Scroll.Utils.js";
 
-
-export const $Dialoger = map<DialogTypes>({
+export const $Dialoger = map<Record<string, ALLDialogTypes>>()
+export const $currentDialog = map<ALLDialogTypes>({
     bgColor: '#0000003b',
-    isVisible: false,
-    isAnimate: false,
 })
 
 
-const create = ({ ...props }) => {
-    Scroll.hide();
+const create = (props: ALLDialogTypes) => {
+    const id = props.id || props.title || 'dialog';
+    const all = $Dialoger.get();
+    if (all[id]) return;
 
-    $Dialoger.set({
+    const newDialog = {
         ...props,
-        animate: {
-            start: { ...props.animate?.start },
-            end: { ...props.animate?.end },
-            duration: props.animate?.duration / 1000,
-        },
+        id,
+        isAnimate: false,
         isVisible: true,
-    })
+        idNumber: `${id}-${Date.now()}-${Math.random()}`
+    };
+
+    const isFirstDialog = Object.keys(all).length === 0;
+    if (isFirstDialog) Scroll.hide();
+
+    $Dialoger.set({ ...all, [id]: newDialog });
+    $currentDialog.set(newDialog);
 
     setTimeout(() => {
-        $Dialoger.setKey("isAnimate", true);
+        const updated = $Dialoger.get();
+        if (updated[id]) {
+            updated[id].isAnimate = true;
+            $Dialoger.set({ ...updated });
+        }
     }, 10);
 
-}
-
-const hide = async () => {
-    const DATA = $Dialoger.get();
-
-    $Dialoger.setKey("isAnimate", false);
-
-
-    await new Promise((res) => setTimeout(res, (DATA.animate?.duration || .25) * 1000));
-    $Dialoger.setKey("isVisible", false);
-    Scroll.show();
+    return id;
 };
 
-const show = ({ ...props }: DialogPropsTypes) => {
-    create({
-        ...props,
-        children: null
-    })
+
+const show = (props: DialogPropsTypes) => {
+    create(props);
 }
 
-const custom = (children: React.ReactNode, props?: DialogPropsCustomTypes) => {
-    create({
-        ...props,
-        children: children
-    })
-}
+const hide = async (id?: string) => {
+    const all = { ...$Dialoger.get() };
+
+    if (id) {
+        const dialog = all[id];
+        if (!dialog) return;
+
+        dialog.isAnimate = false;
+        $Dialoger.set({ ...all });
+
+        await new Promise(res => setTimeout(res, (dialog.animate?.duration ?? 0.25) * 1000));
+
+        delete all[id];
+        $Dialoger.set(all);
+
+        const remainingVisible = Object.values(all).some(d => d.isVisible);
+        if (!remainingVisible) {
+            Scroll.show();
+        }
+
+    } else {
+        const updated = { ...all };
+
+        Object.entries(updated).forEach(([key, dialog]) => {
+            dialog.isAnimate = false;
+        });
+
+        $Dialoger.set(updated);
+
+        const maxDuration = Math.max(
+            ...Object.values(updated).map(d => d.animate?.duration ?? 0.25)
+        );
+
+        await new Promise(res => setTimeout(res, maxDuration * 1000));
+
+        $Dialoger.set({});
+        Scroll.reset();
+    }
+};
+
 
 export const Dialog = {
     show,
-    custom,
-    hide
-}
+    custom: (children: React.ReactNode, props: DialogPropsCustomTypes) =>
+        create({ ...props, children }),
+    hide,
+};

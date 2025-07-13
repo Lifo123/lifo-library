@@ -1,6 +1,6 @@
 {
   "name": "@lifo123/library",
-  "version": "1.6.9",
+  "version": "1.7.0",
   "description": "Lifo library",
   "type": "module",
   "repository": {
@@ -8,10 +8,13 @@
     "url": "git+https://github.com/Lifo123/lifo-library.git"
   },
   "scripts": {
-    "build": "tsc",
+    "sass": "sass --style=compressed src/styles/scss/Main.scss src/styles/output/local.css",
+    "build:styles": "tailwindcss -i src/styles/output/Global.css -o src/styles/Flifo.css --minify",
+    "build": "pnpm run sass && pnpm run build:styles && tsc && pnpm run copy:styles",
+    "copy:styles": "shx mkdir -p dist/styles && shx cp src/styles/Flifo.css dist/styles/Flifo.css",
     "dev": "pnpm run sass && astro dev --host",
-    "sass": "sass --style=compressed src/styles/scss/Main.scss src/styles/output/Flifo.css",
-    "deploy": "pnpm run build && pnpm run sass && npm publish --access public"
+    "preview": "astro build && astro preview",
+    "deploy": "pnpm run build && npm publish --access public"
   },
   "files": [
     "dist"
@@ -21,22 +24,25 @@
   "author": "Lifo",
   "license": "ISC",
   "devDependencies": {
+    "@astrojs/tailwind": "^6.0.2",
+    "@tailwindcss/cli": "^4.1.11",
     "@tailwindcss/vite": "^4.1.11",
     "@types/node": "^22.9.0",
     "@types/react": "^19.1.6",
-    "astro": "^5.9.0",
+    "astro": "^5.11.0",
     "sass": "1.77.0",
+    "shx": "^0.4.0",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.6.3"
   },
   "peerDependencies": {
-    "tailwindcss": "^4.1.11",
-    "@tailwindcss/vite": "^4.1.11",
     "@nanostores/persistent": "^1.0.0",
     "@nanostores/react": "^0.8.0",
+    "@tailwindcss/vite": "^4.1.11",
     "nanostores": "^0.11.3",
     "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0"
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "tailwindcss": "^4.1.11"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -46,7 +52,8 @@
     "./Stores": "./dist/Stores/index.js",
     "./utils": "./dist/utils/index.js",
     "./UI": "./dist/UI/index.js",
-    "./User": "./dist/Stores/User.Store.js"
+    "./User": "./dist/Stores/User.Store.js",
+    "./Styles": "./dist/styles/Flifo.css"
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",

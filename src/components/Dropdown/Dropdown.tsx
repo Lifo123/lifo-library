@@ -26,7 +26,8 @@ export default function Dropdown({ ...props }: DropDownAllTypes) {
                 ref={btnRef}>
                 {
                     props.children || <span
-                        className="d-flex relative rounded-md btn btn-secondary w-max pointer"
+                        className={`d-flex relative ${props.className || ''} pointer`}
+                        style={props.style}
                     >
                         {props.text || "Open Dropdown"}
                     </span>
@@ -35,10 +36,10 @@ export default function Dropdown({ ...props }: DropDownAllTypes) {
 
             {isVisible && (
                 <div
-                    className={`dropdown-content absolute ${props.className || `f-col o-hidden rounded-md`} ${isAnim ? " visible" : " delete"}`}
+                    className={`dropdown-content absolute ${props?.dropdown?.className || `f-col o-hidden rounded-md`} ${isAnim ? " visible" : " delete"}`}
                     ref={dropdownRef}
                     style={{
-                        ...props.style,
+                        ...props?.dropdown?.style,
                         transformOrigin: `${openDirection !== "up" ? "top" : "bottom"} center`
                     }}
                 >

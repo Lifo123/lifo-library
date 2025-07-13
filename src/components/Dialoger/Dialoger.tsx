@@ -1,87 +1,105 @@
 'use client'
 import { useStore } from "@nanostores/react";
-import { Dialog, $Dialoger } from "./Dialoger.Store.js";
-import type { DialogerPropsTypes } from "./Dialoger.Types.js";
+import { Dialog, $Dialoger, $currentDialog } from "./Dialoger.Store.js";
+import type { ALLDialogTypes } from "./Dialoger.Types.js";
 import { ButtonPromise } from '../General/index.js';
 import Icons from "../Icons/Icons.js";
+import { Scroll } from "../../utils/Scroll.Utils.js";
 
 
-export default function Dialoger({ ...props }: DialogerPropsTypes) {
-    const Store = useStore($Dialoger)
+export default function Dialoger() {
+    const dialogs = useStore($Dialoger);
+    const currentDialog = useStore($currentDialog);
+    const hasVisibleDialog = Object.values(dialogs).some(dialog => dialog.isVisible);
 
-    const AllOffsets = {
-        '--custom-start-top': Store.animate?.start?.top || '1.5rem',
-        '--custom-end-top': Store.animate?.end?.top || '-2rem',
 
-        '--custom-start-left': Store.animate?.start?.left,
-        '--custom-end-left': Store.animate?.end?.left,
-
-        '--custom-start-opacity': Store.animate?.start?.opacity || 0,
-        '--custom-end-opacity': Store.animate?.end?.opacity || 1,
-
-        '--custom-start-transform': Store.animate?.start?.transform || 'scale(0.9)',
-        '--custom-end-transform': Store.animate?.end?.transform || 'scale(1)',
-
-        '--custom-duration': `${Store.animate?.duration ?? 0.25}s`,
-
-    };
 
     return (
-        Store.isVisible && (
-            <span className={`flifo-portal dialog ${Store.isAnimate ? "visible" : "delete"}`}
-                style={{
-                    backgroundColor: Store.bgColor || '#0000003b',
-                    pointerEvents: 'visible',
-                    ...AllOffsets
-                }}
-                onClick={() => {
-                    Dialog.hide()
-                }}
-                data-anim={Store.isAnimate ? "true" : "false"}
-            >
-                <span className="dialoger-container f-col relative" style={{
-                    overflow: 'visible',
-                }}
-                    data-anim={Store.isAnimate ? "true" : "false"}
-                    onClick={(e) => {
-                        e.stopPropagation();
-                    }}
-                >
-                    {Store.children || (
-                        <div className="dialoger-content f-col gap-1 justify-center p-4 rounded-lg mx-auto">
-                            <div className='f-col gap-1 justify-between items-start'>
-                                <div className="f-row justify-between items-center w-100">
-                                    {Store.title && <h4 className="fs-4 m-0 fw-600">{Store.title}</h4>}
-                                    {Store.closeBtn &&
-                                        <Icons icon="close" size={26} onClick={() => {
-                                            Dialog.hide()
-                                        }} />}
-                                </div>
-                                {
-                                    Store.custom || Store.message && <p className="fs-2 m-0 fw-400 mb-2" style={{ color: 'var(--vscode-description-foreground)' }}>{Store.message} </p>
-                                }
+        <span className={`flifo-portal dialoger ${hasVisibleDialog ? 'visible' : 'delete'}`} onClick={() => {
+            Dialog.hide()
+        }}
+            style={{
+                backgroundColor: currentDialog?.bgColor || '#0000003b',
+                pointerEvents: hasVisibleDialog ? 'auto' : 'none',
+            }}
+        >
+            {Object.entries(dialogs).map(([id, dialog]) => (
+                <DailogContainer key={dialog.idNumber} {...dialog} />
+            ))}
+        </span>
+    );
+}
 
-                            </div>
-                            <div className="f-row gap-2 f-wrap justify-between mt-1">
-                                <span className="btn btn-third rounded-md fs-2 pointer" onPointerDown={() => {
-                                    Dialog.hide()
-                                }}>
-                                    Cancel
-                                </span>
-                                <ButtonPromise loadingId="wasa" className="btn btn-primary rounded-md fs-2 pointer h-100" text="Continue" onClick={async () => {
-                                    if (Store.onClick) {
-                                        await Store.onClick?.()
-                                    } else {
-                                        console.warn('No onClick function defined');
 
-                                    }
-                                    Dialog.hide()
-                                }} />
-                            </div>
+const DailogContainer = ({
+    animation = 'slide',
+    ...props
+}: ALLDialogTypes) => {
+
+    const AllOffsets = {
+        '--custom-start-top': `calc(50% + ${props.animate?.start?.top || '1.5rem'})`,
+        '--custom-end-top': `calc(50% + ${props.animate?.end?.top || '-2.5rem'})`,
+
+        '--custom-start-left': `calc(50% + ${props.animate?.start?.left || '0rem'})`,
+        '--custom-end-left': `calc(50% + ${props.animate?.end?.left || '0rem'})`,
+
+        '--custom-start-opacity': props.animate?.start?.opacity || 0,
+        '--custom-end-opacity': props.animate?.end?.opacity || 1,
+
+        '--custom-start-scale': props.animate?.start?.scale || 'scale(0.9)',
+        '--custom-end-scale': props.animate?.end?.scale || 'scale(1)',
+
+        '--custom-duration': `${props.animate?.duration != 0 ? (props.animate?.duration || 0.25) : 0}s`,
+
+    };
+    const id = props.id ?? props.title ?? 'dialog';
+
+    return (
+        <span className="dialoger-container f-col absolute" style={{
+            overflow: 'visible',
+            ...AllOffsets
+        }}
+            data-anim={props.isAnimate ? "true" : "false"}
+            data-animation={animation}
+            data-id={props.idNumber}
+            onClick={(e) => {
+                e.stopPropagation();
+            }}
+        >
+            {props.children || (
+                <div className="dialoger-content f-col gap-1 justify-center p-4 rounded-lg mx-auto">
+                    <div className='f-col gap-1 justify-between items-start'>
+                        <div className="f-row justify-between items-center w-100">
+                            {props.title && <h4 className="fs-4 m-0 fw-600">{props.title}</h4>}
+                            {props.closeBtn &&
+                                <Icons icon="close" size={26} onClick={() => {
+                                    Dialog.hide(id)
+                                }} />}
                         </div>
-                    )}
-                </span>
-            </span>
-        )
+                        {
+                            props.custom || props.description && <p className="fs-2 m-0 fw-400 mb-2">{props.description} </p>
+                        }
+
+                    </div>
+                    <div className="f-row gap-2 f-wrap justify-between mt-1">
+                        <span className="btn btn-third rounded-md fs-2 pointer" onPointerDown={() => {
+                            Dialog.hide(id)
+                        }}>
+                            Cancel
+                        </span>
+                        <ButtonPromise className="btn btn-primary rounded-md fs-2 pointer" text="Continue" onClick={async () => {
+                            Scroll.show();
+                            if (props.onClick) {
+                                await props.onClick?.()
+                            } else {
+                                console.warn('No onClick function defined');
+
+                            }
+                            Dialog.hide(id)
+                        }} />
+                    </div>
+                </div>
+            )}
+        </span>
     )
 }

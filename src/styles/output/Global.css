@@ -1,7 +1,8 @@
+@import './local.css';
 @import 'tailwindcss';
-@import './Flifo.css';
 
 
 html {
   @apply bg-lifo-bg;
 }
+

@@ -1,13 +1,16 @@
-@import './animation/Animation.scss';
-@import './variables/RootVariables.scss';
 
-//Global
-@import './global/Buttons.scss';
-@import './global/Display.scss';
-@import './global/Fonts.scss';
-@import './global/Global.scss';
-@import './global/HeightWitdh.scss';
-@import './global/Position.scss';
+@layer base{
+    @import './animation/Animation.scss';
+    @import './variables/RootVariables.scss';
+    
+    @import './global/Buttons.scss';
+    @import './global/Display.scss';
+    @import './global/Fonts.scss';
+    @import './global/Global.scss';
+    @import './global/HeightWitdh.scss';
+    @import './global/Position.scss';
+}
 
-//Library
-@import './library/Library.scss';
+@layer components{
+    @import './library/Library.scss';
+}

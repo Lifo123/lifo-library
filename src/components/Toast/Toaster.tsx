@@ -91,12 +91,17 @@ const ToastRow = ({
     React.useEffect(() => {
         if (props.noDissapear || props.action) return;
 
-        const timeout = setTimeout(() => {
-            setIsVisible(false); // inicia animación de salida
-        }, props.duration);
+        let timeout: NodeJS.Timeout;
+
+        if (!isHovered) {
+            timeout = setTimeout(() => {
+                setIsVisible(false); // inicia animación de salida
+            }, props.duration);
+        }
 
         return () => clearTimeout(timeout);
-    }, [props.duration, props.noDissapear, props.action]);
+    }, [props.duration, props.noDissapear, props.action, isHovered]);
+
 
     React.useEffect(() => {
         if (!isVisible) {
@@ -135,9 +140,9 @@ const ToastRow = ({
                                 </span>
                             )}
 
-                            <div className="toast-detail f-col justify-center leading-tight gap-0.5">
+                            <div className="toast-detail f-col justify-center gap-0.5">
                                 {props.title && <span className="fs-2 fw-500" style={{ color: `var(--lifo-toast-${props.richColors ? props.type : 'title'})`, fontWeight: 550 }}>{props?.title}</span>}
-                                <p className="fs-2 m-0" style={{ textWrap: 'nowrap', color: `var(--lifo-toast-${props.richColors ? props.type : 'description'})`, fontWeight: 450 }}>{props?.message}</p>
+                                <p className="fs-2 m-0 leading-tight" style={{ textWrap: 'nowrap', color: `var(--lifo-toast-${props.richColors ? props.type : 'description'})`, fontWeight: 450 }}>{props?.message}</p>
                                 {props.href && <a className="info fs-custom-12-5 rounded-md w-max fw-500" href={props.href}>More</a>}
 
                             </div>
@@ -145,7 +150,7 @@ const ToastRow = ({
                         {
                             props.customAction ??
                                 props.action ?
-                                <ButtonPromise className="pointer btn-primary rounded-sm fw-500 text-lifo-title"
+                                <ButtonPromise className="pointer btn-primary rounded-sm fw-500"
                                     text={props.actionText || 'Continue'}
                                     size={18}
                                     style={{ padding: '.3rem .65rem', fontSize: 12.5 }}

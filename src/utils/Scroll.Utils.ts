@@ -1,8 +1,7 @@
-export const isMobile = () => {
-    const isSmallScreen = window.matchMedia("(max-width: 768px)").matches;
-    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    return isSmallScreen || isTouch;
-};
+import { atom } from "nanostores";
+import { Flifo } from "./General.Utils.js";
+
+export const $scrollcount = atom(0);
 
 export const hasVisibleVerticalScrollbar = (el: HTMLElement) => {
     const style = getComputedStyle(el);
@@ -13,40 +12,58 @@ export const hasVisibleVerticalScrollbar = (el: HTMLElement) => {
     const allowsScroll =
         overflowY === "scroll" ||
         overflowY === "auto" ||
-        (overflowY === "visible" && el.scrollHeight > el.clientHeight);
+        (overflowY === "visible" && isOverflowing);
 
     return !(allowsScroll && isOverflowing);
 };
 
+const set = (state: boolean, target?: HTMLElement) => {
+    if (typeof window === 'undefined' || typeof document === 'undefined') return;
 
-const set = (state: boolean, target?: HTMLElement | React.ReactNode) => {
     const TARGET = target instanceof HTMLElement ? target : document.body;
-
     const scrollbarWidth = window.innerWidth - TARGET.clientWidth;
-    const shouldAdjustPadding = !isMobile() && hasVisibleVerticalScrollbar(TARGET);
+    const shouldAdjustPadding = !Flifo.isMobile() && hasVisibleVerticalScrollbar(TARGET);
+
+    let scrollLockCount = $scrollcount.get();
 
     if (!state) {
-        // Ocultar scroll
-        if (shouldAdjustPadding) {
-            TARGET.style.paddingRight = `${scrollbarWidth}px`;
-            document.documentElement.style.setProperty('--padding-cut', `${scrollbarWidth}px`);
-        } else {
-            document.documentElement.style.removeProperty('--padding-cut');
+        const nextCount = scrollLockCount + 1;
+        $scrollcount.set(nextCount);
+
+        if (nextCount === 1) {
+            if (shouldAdjustPadding) {
+                TARGET.style.paddingRight = `${scrollbarWidth}px`;
+                document.documentElement.style.setProperty('--padding-cut', `${scrollbarWidth}px`);
+            }
+            TARGET.style.overflow = "hidden";
         }
-        TARGET.style.overflow = "hidden";
     } else {
-        // Mostrar scroll
-        TARGET.style.overflow = "";
-        if (shouldAdjustPadding) {
+        const nextCount = Math.max(0, scrollLockCount - 1);
+        $scrollcount.set(nextCount);
+
+        if (nextCount === 0) {
+            TARGET.style.overflow = "";
             TARGET.style.paddingRight = "";
             document.documentElement.style.removeProperty('--padding-cut');
         }
     }
+
+    return $scrollcount.get();
 };
+
+
+const reset = (target?: HTMLElement) => {
+    $scrollcount.set(0);
+    const TARGET = target instanceof HTMLElement ? target : document.body;
+    TARGET.style.overflow = "";
+    TARGET.style.paddingRight = "";
+    document.documentElement.style.removeProperty('--padding-cut');
+}
 
 
 export const Scroll = {
     set,
-    show: (target?: HTMLElement | React.ReactNode) => set(true, target),
-    hide: (target?: HTMLElement | React.ReactNode) => set(false, target),
+    show: (target?: HTMLElement) => set(true, target),
+    hide: (target?: HTMLElement) => set(false, target),
+    reset
 };

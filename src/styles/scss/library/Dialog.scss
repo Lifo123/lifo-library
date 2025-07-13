@@ -4,8 +4,19 @@
     transform-origin: center center;
     top: var(--custom-start-top);
     left: var(--custom-start-left);
+    opacity: 0;
+    scale: var(--custom-start-scale, 0.9);
+    transform: translate(-50%, -50%);
     transition: all var(--custom-duration, 0.25s) ease;
 }
+
+.dialoger-container[data-anim="true"] {
+    top: var(--custom-end-top);
+    left: var(--custom-end-left);
+    opacity: var(--custom-end-opacity, 1);
+    scale: var(--custom-end-scale, 1);
+}
+
 
 .dialoger-content {
     width: 100%;
@@ -14,15 +25,6 @@
     background-color: var(--color-lifo-bg-secondary);
     border: solid 1px var(--color-lifo-border);
 }
-
-.dialoger-container[data-anim="true"] {
-    top: var(--custom-end-top);
-    left: var(--custom-end-left);
-    opacity: var(--custom-end-opacity);
-    transform: var(--custom-end-transform);
-}
-
-
 
 .dialoger-content .btn {
     min-width: 140px;

@@ -1,7 +1,7 @@
 import { deepMap } from "nanostores";
 
 export interface InterfaceStore {
-    [key: string]: InterfaceItemProp;
+    [key: string]: any;
 }
 
 export interface InterfaceItemProp {
@@ -18,7 +18,7 @@ export const $interface = deepMap<InterfaceStore>({
     asideLeft: {
         isVisible: false,
         isAnim: false
-    }
+    },
 })
 
 export const Interface = {

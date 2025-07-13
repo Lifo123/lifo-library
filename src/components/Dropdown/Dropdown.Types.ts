@@ -8,6 +8,7 @@ export interface DropDownAllTypes extends BaseComponentProps {
     margin?: number;
     horizontalMargin?: number;
     frezzeScroll?: boolean;
+    dropdown?: BaseComponentProps;
 }
 
 

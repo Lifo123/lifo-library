@@ -1,5 +1,3 @@
-import { isMobile } from "./Scroll.Utils.js";
-
 const IDnumber = (): number => {
     return Date.now() + Math.random();
 };
@@ -28,11 +26,14 @@ const timeTracker = async <T extends any[], R>(
     }
 };
 
-const delay = async (time: number) => {
-    return new Promise((res) => setTimeout(res, time || 0));
-}
+export const isMobile = () => {
+    const isSmallScreen = window.matchMedia("(max-width: 768px)").matches;
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    return isSmallScreen || isTouch;
+};
+
 
 
 export const Flifo = {
-    IDnumber, IDstring, timeTracker, delay, isMobile,
+    IDnumber, IDstring, timeTracker, isMobile,
 };

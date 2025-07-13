@@ -10,7 +10,7 @@ interface TabListProps {
 }
 
 export default function TabList({
-  className, style, children, indicatorTransition = 300
+  className, style, children, indicatorTransition = 150
 }: TabListProps) {
   const { select, customize } = React.useContext(TabContext);
   const containerRef = React.useRef<HTMLDivElement>(null);
@@ -33,12 +33,12 @@ export default function TabList({
   return (
     <div
       ref={containerRef}
-      className={`relative overflow-hidden ${className || ''}`}
+      className={`tab-list relative overflow-hidden ${className || 'f-row'}`}
       style={style}
     >
       <div
         ref={indicatorRef}
-        className={`tab-indicator h-100 absolute  ${indicatorClass}`}
+        className={`h-full absolute  ${indicatorClass || 'tab-indicator rounded-md'}`}
         style={{
           ...indicatorStyle,
           ...(indicatorTransition > 0 && {

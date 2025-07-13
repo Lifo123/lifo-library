@@ -34,7 +34,7 @@ export default function ButtonPromise({ loadingId = 'G_Fetch', text, className, 
                     <Icons icon='loading' size={size || 22} />
                 </span>
             }
-            <p className={`m-0 ${LOADING[loadingId] && 'opacity-0'}`}>
+            <p className={`m-0 ${LOADING[loadingId] ? 'opacity-0' : ''}`}>
                 {text || 'Button'}
             </p>
         </span >
