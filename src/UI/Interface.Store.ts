@@ -7,6 +7,8 @@ export interface InterfaceStore {
 export interface InterfaceItemProp {
     isVisible?: boolean;
     isAnim?: boolean;
+    accordionAllClose?: boolean;
+
     [key: string]: any
 }
 
@@ -19,9 +21,5 @@ export const $interface = deepMap<InterfaceStore>({
         isVisible: false,
         isAnim: false
     },
+    accordionAllClose: false,
 })
-
-export const Interface = {
-    setKey: (key: string, value: InterfaceItemProp) => $interface.setKey(key, value),
-    get: () => $interface.get(),
-}

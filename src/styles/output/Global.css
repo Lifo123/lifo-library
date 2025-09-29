@@ -1,4 +1,4 @@
-@import './local.css';
+@import './Flifo.css';
 
 @import 'tailwindcss';
 
@@ -6,16 +6,19 @@ html {
   @apply bg-lifo-bg;
 }
 
-.noti-container {
-  width: 90dvw;
-  min-width: 340px;
-  max-width: 520px;
-  color: inherit;
-  background-color: var(--color-lifo-bg-secondary);
+input:active,
+  input:focus-visible {
+  border: none;
+  outline: none;
 }
 
-
-.noti-details{
-  max-height: 0;
-  transition: max-height var(--custom-duration, 0.18s) ease-out;
+.input-wrapper:focus-within,
+  button:focus-visible {
+  @apply border-lifo-border-high;
+  outline: 1px solid var(--color-lifo-border-low);
 }
+
+.input-wrapper svg {
+  color: var(--color-lifo-text);
+}
+

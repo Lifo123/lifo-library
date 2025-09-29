@@ -158,7 +158,7 @@ const ToastRow = ({
                                     style={{ padding: '.3rem .65rem', fontSize: 12.5 }}
                                     onClick={async () => {
                                         setIsHovered(true);
-                                        await props.action!()
+                                        await props.action?.()
                                         toast.dismiss(props.toastID, props.id)
                                     }}
                                 />

@@ -1,6 +1,6 @@
 
 
-export { projectName, LocalPrefs, LocalUser } from './config.js'
+export * from './config.js'
 export { $firstToast, $toast } from '../components/Toast/Toast.Store.js'
 
 export { $loading } from './Loading.Store.js'

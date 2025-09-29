@@ -15,8 +15,10 @@ export default function Dialoger() {
 
 
     return (
-        <span className={`flifo-portal dialoger ${hasVisibleDialog ? 'visible' : 'delete'}`} onClick={() => {
-            Dialog.hide()
+        <span className={`flifo-portal dialoger ${hasVisibleDialog ? 'visible' : 'delete'}`} onMouseDown={(e) => {
+            if (e.target === e.currentTarget) {
+                Dialog.hide();
+            }
         }}
             style={{
                 backgroundColor: currentDialog?.bgColor || '#0000003b',
@@ -38,7 +40,7 @@ const DailogContainer = ({
 
     const AllOffsets = {
         '--custom-start-top': `calc(50% + ${props.animate?.start?.top || '1.5rem'})`,
-        '--custom-end-top': `calc(50% + ${props.animate?.end?.top || '-2.5rem'})`,
+        '--custom-end-top': `calc(50% + ${props.animate?.end?.top || '-3rem'})`,
 
         '--custom-start-left': `calc(50% + ${props.animate?.start?.left || '0rem'})`,
         '--custom-end-left': `calc(50% + ${props.animate?.end?.left || '0rem'})`,
@@ -49,7 +51,7 @@ const DailogContainer = ({
         '--custom-start-scale': props.animate?.start?.scale || 'scale(0.9)',
         '--custom-end-scale': props.animate?.end?.scale || 'scale(1)',
 
-        '--custom-duration': `${props.animate?.duration != 0 ? (props.animate?.duration || 0.25) : 0}s`,
+        '--custom-duration': `${props.animate?.duration != 0 ? (props.animate?.duration || 0.2) : 0}s`,
 
     };
     const id = props.id ?? props.title ?? 'dialog';
@@ -82,11 +84,11 @@ const DailogContainer = ({
 
                     </div>
                     <div className="f-row gap-2 f-wrap justify-between mt-1">
-                        <span className="btn btn-third rounded-md fs-2 pointer" onPointerDown={() => {
+                        <button className="btn btn-third rounded-md fs-2 pointer" onClick={() => {
                             Dialog.hide(id)
                         }}>
                             Cancel
-                        </span>
+                        </button>
                         <ButtonPromise className="btn btn-primary rounded-md fs-2 pointer" text="Continue" onClick={async () => {
                             Scroll.show();
                             if (props.onClick) {

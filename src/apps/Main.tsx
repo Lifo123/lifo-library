@@ -1,9 +1,14 @@
 import React from "react"
 import { UI } from "../UI/index"
-import ToastShow from "./comps/ToastShow";
-import DarkmodeShow from "./comps/DarkmodeShow";
-import { TabContent, TabContentItem, TabItem, TabList, TabMenu } from "../components";
-import Icons, { typeIcons } from "../components/Icons/Icons";
+import { DarkmodeDrop, DarkmodeIcon, DarkmodeToggle, Dropdown, Icons, Notification } from "../components";
+import { Accordion } from "../components/Accordion";
+import DropdownSection from "../components/Dropdown/DropdownSection";
+import { ManageLocal } from "../utils";
+import { useStore } from "@nanostores/react";
+import { $preferences } from "../Stores";
+import { Darkmode } from "../components/Darkmode/Darkmode.Store";
+import UploadBtn from "../components/General/ButtonUpload";
+import { $files } from "../Stores/File.Store";
 
 
 interface Props {
@@ -11,7 +16,7 @@ interface Props {
 }
 
 export default function Test({ children }: Props) {
-
+    const PREFS = useStore($preferences);
 
     React.useEffect(() => {
         setTimeout(() => {
@@ -22,36 +27,58 @@ export default function Test({ children }: Props) {
 
     return (
         <div className="f-col f-center gap-2 ">
-            <TabMenu defaultTab="darkmode" className="f-col gap-4 w-full max-w-5xl">
-                <TabList className="f-row">
-                    <TabItem id="darkmode">Darkmode</TabItem>
-                    <TabItem id="toast">Toast</TabItem>
-                    <TabItem id="dialoger">Dialoger</TabItem>
-                    <TabItem id="dropdown">Dropdown</TabItem>
-                    <TabItem id="general">General</TabItem>
-                    <TabItem id="icons">Icons</TabItem>
-                    <TabItem id="loading">Loading</TabItem>
-                    <TabItem id="tabs">Tabs</TabItem>
-                    <TabItem id="select">Select</TabItem>
-                </TabList>
-                <TabContent className="f-col f-center">
-                    <TabContentItem id="darkmode" children={<DarkmodeShow />} />
-                    <TabContentItem id="toast" children={<ToastShow />} />
-                    <TabContentItem id="dialoger" />
-                    <TabContentItem id="dropdown" />
-                    <TabContentItem id="general" />
-                    <TabContentItem id="icons" className="tab-content-item p-3 f-row f-wrap gap-3 f-center h-full w-full rounded-lg" >
-                        {
-                            Object.keys(typeIcons).map(icon => (
-                                <Icons key={icon} icon={icon as keyof typeof typeIcons} size={28} />
-                            ))
-                        }
-                    </TabContentItem>
-                    <TabContentItem id="loading" />
-                    <TabContentItem id="tabs" />
-                    <TabContentItem id="select" />
-                </TabContent>
-            </TabMenu>
+
+            <UploadBtn />
+
+            <div className="f-row gap-4 mt-2">
+                <button className="btn btn-third rounded-md" onClick={() => {
+
+                }}>
+                    Set new value
+                </button>
+                <button className="btn btn-third rounded-md" onClick={() => {
+
+                }}>
+                    Get value
+                </button>
+                <button className="btn btn-third rounded-md" onClick={() => ManageLocal.prefs.remove()}>
+                    Delete store
+                </button>
+                <button className="btn btn-third rounded-md" onClick={() => {
+
+                }}>
+                    Update data
+                </button>
+            </div>
+
+            <div className="mt-2">
+                <div className="px-3 py-2 rounded-md input-wrapper f-row gap-3 f-center border border-lifo-border bg-lifo-bg-secondary w-max min-w-2xs">
+                    <Icons icon="search" size={20} />
+                    <input type="search" className="fs-2 fw-300 f-grow" placeholder="Search..." />
+                </div>
+            </div>
+
+            <div className="mt-2 w-xl">
+                <Accordion description="Pregunta 1" title="Pregunta 1" />
+                <Accordion description="wasa dawd" title="Pregunta 2" closeAll />
+                <Accordion description="Perro toad " title="Pregunta 3" />
+            </div>
+
+            <p className="mt-10">daw</p>
+            <p className="mt-10">daw</p>
+            <p className="mt-10">daw</p>
+            <p className="mt-10">daw</p>
+            <p className="mt-10">daw</p>
+            <p className="mt-10">daw</p>
+            <p className="mt-10">daw</p>
+            <p className="mt-10">daw</p>
+            <p className="mt-10">daw</p>
+            <p className="mt-10">daw</p>
+            <p className="mt-10">daw</p>
+            <p className="mt-10">daw</p>
+            <p className="mt-10">daw</p>
+            <p className="mt-10">daw</p>
+            <p className="mt-10">daw</p>
         </div >
     )
 }

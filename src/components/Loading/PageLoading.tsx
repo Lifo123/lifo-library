@@ -11,7 +11,7 @@ export default function PageLoading({ children }: PageLoadingProps) {
             id="page-load"
             className="page-load absolute d-flex f-center h-screen w-screen pb-10"
         >
-            {children || <Icons size={60} icon="loading" style={{strokeWidth: 1.35}} />}
+            {children || <Icons size={48} icon="loading" style={{strokeWidth: 1.35}} />}
         </div>
     )
 }

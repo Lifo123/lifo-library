@@ -104,9 +104,10 @@ const dismiss = (arg1?: string, arg2?: string) => {
             );
 
             const isMatch = data[toastID].some(toast => toast.id === arg1);
+
             if (isMatch) {
                 $toast.setKey(toastID, updated);
-                LocalToast.removeDelay(toastID, arg1, 300);
+                LocalToast.removeDelay(toastID, arg1, 350);
                 matched = true;
             }
         }
@@ -168,9 +169,10 @@ const remove = (toastID: string, id: string) => {
 };
 
 const removeDelay = (toastID: string, id: string, delay?: number) => {
+    const toast = $toast.get()[toastID]?.find(toast => toast.id === id);
     setTimeout(() => {
         remove(toastID, id);
-    }, delay || 0);
+    }, toast?.animation === 'none' ? 0 : delay || 0);
 };
 
 const updateToast = (toastID: string, id: string, changes: Partial<ToastItemProps>): void => {

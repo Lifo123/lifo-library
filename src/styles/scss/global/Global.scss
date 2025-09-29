@@ -65,6 +65,14 @@ svg {
     pointer-events: none;
 }
 
+button:active {
+    transform: scale(0.97);
+    transition-property: background-color, transform;
+    transition-timing-function:
+        cubic-bezier(.4, 0, .2, 1);
+    transition-duration: .15s;
+}
+
 
 input[type="file"] {
     display: none;

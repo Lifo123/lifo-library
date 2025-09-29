@@ -1,6 +1,6 @@
 import { deepMap } from 'nanostores'
 import { ThemeTypes } from '../Types/GeneralTypes.js'
-import { isBrowser, LocalPrefs } from './config.js';
+import { ManageLocal } from '../utils/Local.Utils.js';
 
 
 interface PreferencesProps {
@@ -11,11 +11,11 @@ interface PreferencesProps {
 export const $preferences = deepMap<PreferencesProps>()
 
 
-if (isBrowser) {
-    const saved = LocalPrefs.get()
+if (typeof window !== "undefined") {
+    const saved = ManageLocal.prefs.get()
 
     if (saved) $preferences.set(saved);
     $preferences.subscribe((value) => {
-        LocalPrefs.set(value)
+        ManageLocal.prefs.set(value)
     })
 }

@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { hasVisibleVerticalScrollbar, Scroll } from "../utils/Scroll.Utils.js";
-import { $interface } from "../UI/Interface.Store.js";
 
 interface Props {
     margin?: number;
@@ -21,8 +20,9 @@ export function useDropdown({
     const btnRef = useRef<HTMLSpanElement>(null);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
-    const margin = props.margin !== undefined ? props.margin : 8;
+    const margin = props.margin !== undefined ? props.margin : 10;
 
+    //UPDATE POSICION
     const updatePosition = () => {
         const btn = btnRef.current;
         const dropdown = dropdownRef.current;
@@ -68,7 +68,7 @@ export function useDropdown({
         const maxWidth = viewportWidth - horizontalMargin * 2;
 
         Object.assign(dropdown.style, {
-            top: `${top + window.scrollY}px`,
+            top: `${top}px`,
             left: `${left}px`,
             minWidth: `${btnRect.width}px`,
             maxWidth: `${maxWidth}px`,
@@ -121,12 +121,12 @@ export function useDropdown({
         const handleScrollOrResize = () => updatePosition();
         const resizeObserver = new ResizeObserver(() => updatePosition());
 
-        window.addEventListener("scroll", handleScrollOrResize, true);
+        window.addEventListener("scroll", handleScrollOrResize);
         window.addEventListener("resize", handleScrollOrResize);
         btnRef.current && resizeObserver.observe(btnRef.current);
 
         return () => {
-            window.removeEventListener("scroll", handleScrollOrResize, true);
+            window.removeEventListener("scroll", handleScrollOrResize);
             window.removeEventListener("resize", handleScrollOrResize);
             resizeObserver.disconnect();
         };

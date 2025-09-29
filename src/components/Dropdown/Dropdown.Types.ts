@@ -9,6 +9,7 @@ export interface DropDownAllTypes extends BaseComponentProps {
     horizontalMargin?: number;
     frezzeScroll?: boolean;
     dropdown?: BaseComponentProps;
+    direction?: "up" | "down";
 }
 
 

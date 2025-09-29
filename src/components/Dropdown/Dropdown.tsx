@@ -21,7 +21,7 @@ export default function Dropdown({ ...props }: DropDownAllTypes) {
 
 
     return (
-        <>
+        <span className="">
             <span className="w-max" onClick={() => toggle(!isVisible)}
                 ref={btnRef}>
                 {
@@ -36,7 +36,7 @@ export default function Dropdown({ ...props }: DropDownAllTypes) {
 
             {isVisible && (
                 <div
-                    className={`dropdown-content absolute ${props?.dropdown?.className || `f-col o-hidden rounded-md`} ${isAnim ? " visible" : " delete"}`}
+                    className={`dropdown-content fixed ${props?.dropdown?.className || `f-col o-hidden rounded-md`} ${isAnim ? " visible" : " delete"}`}
                     ref={dropdownRef}
                     style={{
                         ...props?.dropdown?.style,
@@ -50,6 +50,6 @@ export default function Dropdown({ ...props }: DropDownAllTypes) {
                 </div >
             )
             }
-        </>
+        </span>
     );
 }

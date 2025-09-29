@@ -21,8 +21,8 @@ const { title, description } = Astro.props;
 
 <script>
     const BASE_STORAGE_KEY =
-        (window.location.pathname.split("/").filter(Boolean)[0] || "lifo/lib") +
-        "-preferences";
+        (window.location.pathname.split("/").filter(Boolean)[0] || "lifo/lib-") +
+        "-prefs";
     let savedPrefs = JSON.parse(localStorage.getItem(BASE_STORAGE_KEY) || "{}");
 
     const setDarkMode = (doc: Document) => {
@@ -73,13 +73,12 @@ const { title, description } = Astro.props;
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
-    <body class="f-col f-align-center w-screen oy-auto">
+    <body class="f-col f-align-center">
         <PageLoading />
         <Toaster client:only="react" maxToasts={6}/>
         <Dialoger client:only="react" />
         <CardLoading client:only="react" />
-
-        <header class="f-row w-full justify-between items-center px-3 mb-8">
+        <header class="f-row w-full justify-between items-center px-4 mb-8 py-2">
             <div class="f-row gap-2.5 f-center pointer">
                 <span>Logo</span>
                 <span class="head-h1 text-center fs-3 fw-500"
@@ -91,7 +90,6 @@ const { title, description } = Astro.props;
                 <DarkmodeDrop client:only="react" />
             </div>
         </header>
-
         <Test client:only="react" />
     </body>
 

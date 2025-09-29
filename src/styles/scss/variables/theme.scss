@@ -10,6 +10,7 @@
 
   --color-lifo-title: #000;
   --color-lifo-title-inverse: #fff;
+  --color-lifo-text-high: #242424;
   --color-lifo-text: #000000;
   --color-lifo-text-inverse: #b3b3b3;
 
@@ -29,7 +30,7 @@
 .dark {
   color-scheme: dark;
   --color-lifo-bg: #000;
-  --color-lifo-bg-secondary: #101010;
+  --color-lifo-bg-secondary: #121212;
   --color-lifo-bg-third: rgb(39, 39, 40);
   --color-lifo-bg-fourth: rgb(70 70 72);
 
@@ -39,6 +40,7 @@
 
   --color-lifo-title: #fff;
   --color-lifo-title-inverse: #000;
+  --color-lifo-text-high: #cbcbcb; 
   --color-lifo-text: #b3b3b3;
   --color-lifo-text-inverse: #000;
 

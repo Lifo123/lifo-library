@@ -1,6 +1,7 @@
 {
+  "homepage": "https://lifo123.github.io/lifo-library/",
   "name": "@lifo123/library",
-  "version": "1.7.0",
+  "version": "1.7.4",
   "description": "Lifo library",
   "type": "module",
   "repository": {
@@ -8,13 +9,14 @@
     "url": "git+https://github.com/Lifo123/lifo-library.git"
   },
   "scripts": {
-    "sass": "sass --style=compressed src/styles/scss/Main.scss src/styles/output/local.css",
+    "sass": "sass --style=compressed src/styles/scss/Main.scss src/styles/output/Flifo.css",
     "build:styles": "tailwindcss -i src/styles/output/Global.css -o src/styles/Flifo.css --minify",
     "build": "pnpm run sass && pnpm run build:styles && tsc && pnpm run copy:styles",
     "copy:styles": "shx mkdir -p dist/styles && shx cp src/styles/Flifo.css dist/styles/Flifo.css",
     "dev": "pnpm run sass && astro dev --host",
     "preview": "astro build && astro preview",
-    "deploy": "pnpm run build && npm publish --access public"
+    "deploy": "pnpm run build && npm publish --access public",
+    "deploy:pages": "astro check && astro build && gh-pages -d Build --dotfiles"
   },
   "files": [
     "dist"
@@ -29,7 +31,8 @@
     "@tailwindcss/vite": "^4.1.11",
     "@types/node": "^22.9.0",
     "@types/react": "^19.1.6",
-    "astro": "^5.11.0",
+    "astro": "^5.14.1",
+    "gh-pages": "^6.3.0",
     "sass": "1.77.0",
     "shx": "^0.4.0",
     "tailwindcss": "^4.1.11",
@@ -56,7 +59,10 @@
     "./Styles": "./dist/styles/Flifo.css"
   },
   "dependencies": {
-    "@astrojs/react": "^4.3.0",
-    "@types/react-dom": "^19.1.6"
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/react": "^4.4.0",
+    "@google/genai": "^1.16.0",
+    "@types/react-dom": "^19.1.6",
+    "framer-motion": "^12.23.3"
   }
 }

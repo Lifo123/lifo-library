@@ -7,7 +7,7 @@
     opacity: 0;
     scale: var(--custom-start-scale, 0.9);
     transform: translate(-50%, -50%);
-    transition: all var(--custom-duration, 0.25s) ease;
+    transition: all var(--custom-duration, 0.2s) ease;
 }
 
 .dialoger-container[data-anim="true"] {
