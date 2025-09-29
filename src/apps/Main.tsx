@@ -58,6 +58,8 @@ export default function Test({ children }: Props) {
                 </div>
             </div>
 
+                <button className="btn p-3 bg-lifo-bg-fourth">dawdwa</button>
+
             <div className="mt-2 w-xl">
                 <Accordion description="Pregunta 1" title="Pregunta 1" />
                 <Accordion description="wasa dawd" title="Pregunta 2" closeAll />

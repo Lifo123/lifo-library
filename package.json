@@ -9,10 +9,17 @@
     "url": "git+https://github.com/Lifo123/lifo-library.git"
   },
   "scripts": {
-    "sass": "sass --style=compressed src/styles/scss/Main.scss src/styles/output/Flifo.css",
-    "build:styles": "tailwindcss -i src/styles/output/Global.css -o src/styles/Flifo.css --minify",
-    "build": "pnpm run sass && pnpm run build:styles && tsc && pnpm run copy:styles",
+    "sass:main": "sass src/styles/scss/Main.scss src/styles/output/Library.pre.css",
+    "sass:theme": "sass src/styles/scss/variables/theme.scss src/styles/output/theme.pre.css",
+    "sass": "pnpm run sass:main && pnpm run sass:theme",
+
+    "build:styles": "tailwindcss -i src/styles/output/Library.pre.css -o src/styles/output/Flifo.pre.css --minify",
+    "build": "pnpm run sass && pnpm run build:styles && pnpm run merge:styles && tsc && pnpm run copy:styles",
+
+    "merge:styles": "copy /b src\\styles\\output\\Flifo.pre.css+src\\styles\\output\\theme.pre.css src\\styles\\Flifo.css"
+,
     "copy:styles": "shx mkdir -p dist/styles && shx cp src/styles/Flifo.css dist/styles/Flifo.css",
+
     "dev": "pnpm run sass && astro dev --host",
     "preview": "astro build && astro preview",
     "deploy": "pnpm run build && npm publish --access public",

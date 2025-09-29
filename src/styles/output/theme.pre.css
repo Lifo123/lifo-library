@@ -1,30 +1,35 @@
-@mixin lifo-light-vars {
+@theme {
   --color-lifo-bg: #fff;
   --color-lifo-bg-secondary: #f5f5f5;
   --color-lifo-bg-third: #f5f5f5;
   --color-lifo-bg-fourth: #f5f5f5;
-
   --color-lifo-border: #e1dfdf;
   --color-lifo-border-low: #e1dfdf;
   --color-lifo-border-high: #e1dfdf;
-
   --color-lifo-title: #000;
   --color-lifo-title-inverse: #fff;
   --color-lifo-text-high: #242424;
   --color-lifo-text: #000000;
   --color-lifo-text-inverse: #b3b3b3;
-
   --color-lifo-button-primary-bg: #000;
   --color-lifo-button-primary-bg-hover: #0e0e0e;
 }
-
-@theme {
-  @include lifo-light-vars;
-}
-
 .light {
   color-scheme: light;
-  @include lifo-light-vars;
+  --color-lifo-bg: #fff;
+  --color-lifo-bg-secondary: #f5f5f5;
+  --color-lifo-bg-third: #f5f5f5;
+  --color-lifo-bg-fourth: #f5f5f5;
+  --color-lifo-border: #e1dfdf;
+  --color-lifo-border-low: #e1dfdf;
+  --color-lifo-border-high: #e1dfdf;
+  --color-lifo-title: #000;
+  --color-lifo-title-inverse: #fff;
+  --color-lifo-text-high: #242424;
+  --color-lifo-text: #000000;
+  --color-lifo-text-inverse: #b3b3b3;
+  --color-lifo-button-primary-bg: #000;
+  --color-lifo-button-primary-bg-hover: #0e0e0e;
 }
 
 .dark {
@@ -33,17 +38,16 @@
   --color-lifo-bg-secondary: #121212;
   --color-lifo-bg-third: rgb(39, 39, 40);
   --color-lifo-bg-fourth: rgb(70 70 72);
-
   --color-lifo-border: #303030;
   --color-lifo-border-low: #282828;
   --color-lifo-border-high: #555555;
-
   --color-lifo-title: #fff;
   --color-lifo-title-inverse: #000;
   --color-lifo-text-high: #cbcbcb;
   --color-lifo-text: #b3b3b3;
   --color-lifo-text-inverse: #000;
-
   --color-lifo-button-primary-bg: #ffffff;
   --color-lifo-button-primary-bg-hover: #ececec;
 }
+
+/*# sourceMappingURL=theme.pre.css.map */

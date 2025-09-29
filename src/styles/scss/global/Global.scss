@@ -7,6 +7,7 @@ html {
     scroll-behavior: smooth;
 }
 
+
 html[data-scroll-lock="true"] {
     overflow: hidden;
 }
@@ -63,6 +64,23 @@ a {
 
 svg {
     pointer-events: none;
+}
+
+
+input:active,
+input:focus-visible {
+    border: none;
+    outline: none;
+}
+
+.input-wrapper:focus-within,
+button:focus-visible {
+    border : 1px solid var(--color-lifo-border-high);
+    outline: 1px solid var(--color-lifo-border-low);
+}
+
+.input-wrapper svg {
+    color: var(--color-lifo-text);
 }
 
 button:active {

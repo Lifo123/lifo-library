@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+@import './Flifo.css';
+
+html {
+    @apply bg-lifo-bg;
+}
