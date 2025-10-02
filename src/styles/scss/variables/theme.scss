@@ -14,8 +14,6 @@
   --color-lifo-text: #000000;
   --color-lifo-text-inverse: #b3b3b3;
 
-  --color-lifo-button-primary-bg: #000;
-  --color-lifo-button-primary-bg-hover: #0e0e0e;
 }
 
 @theme {
@@ -31,7 +29,7 @@
   color-scheme: dark;
   --color-lifo-bg: #000;
   --color-lifo-bg-secondary: #121212;
-  --color-lifo-bg-third: rgb(39, 39, 40);
+  --color-lifo-bg-third: #222222;
   --color-lifo-bg-fourth: rgb(70 70 72);
 
   --color-lifo-border: #303030;
@@ -44,6 +42,4 @@
   --color-lifo-text: #b3b3b3;
   --color-lifo-text-inverse: #000;
 
-  --color-lifo-button-primary-bg: #ffffff;
-  --color-lifo-button-primary-bg-hover: #ececec;
 }

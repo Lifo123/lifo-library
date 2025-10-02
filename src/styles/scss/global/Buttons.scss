@@ -17,8 +17,7 @@
 //*Buttons*/
 
 .btn {
-  padding: 9px 12px;
-  min-height: 32px;
+  padding: 8px 12px;
   font-size: var(--lb-fs-2);
   min-width: max-content;
   height: max-content;
@@ -31,7 +30,7 @@
 
 
 .btn-primary {
-  background-color: var(--project-btn-bg, var(--color-lifo-button-primary-bg));
+  background-color: var(--color-lifo-button-primary-bg);
   color: var(--color-lifo-title-inverse);
   font-weight: 500;
   letter-spacing: normal;
@@ -42,7 +41,7 @@
 }
 
 .btn-primary:hover {
-  background-color: var(--project-btn-bg-hover, var(--color-lifo-button-primary-bg-hover));
+  background-color: var(--color-lifo-button-primary-bg-hover);
 }
 
 

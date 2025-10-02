@@ -8,7 +8,9 @@ const typeIcons = {
     dark: <>
         <path fill="currentColor" d="M3.69995 11.3301C3.69995 7.93576 5.72056 5.0133 8.62457 3.7L9.61571 4.69115C9.17717 5.59033 8.9311 6.6006 8.9311 7.66834C8.9311 11.4241 11.9758 14.4688 15.7316 14.4688C16.7994 14.4688 17.8097 14.2227 18.7088 13.7843L19.7 14.7754C18.3867 17.6794 15.4642 19.7 12.0698 19.7C7.44725 19.7 3.69995 15.9527 3.69995 11.3301Z"></path>
         <path fill="currentColor" d="M15.7316 10.2839L13.116 7.66833L15.7316 5.05276L18.3472 7.66833L15.7316 10.2839Z"></path>
-    </>
+    </>,
+    system: <path fillRule="evenodd" clipRule="evenodd" fill="currentColor" d="M2 5C2 3.89543 2.89543 3 4 3H20C21.1046 3 22 3.89543 22 5V16C22 17.1046 21.1046 18 20 18H13V20H16C16.5523 20 17 20.4477 17 21C17 21.5523 16.5523 22 16 22H8C7.44772 22 7 21.5523 7 21C7 20.4477 7.44772 20 8 20H11V18H4C2.89543 18 2 17.1046 2 16V5ZM20 16V5H4V16H20Z" />
+
 }
 
 export default function DarkmodeIcon({ size = 22 }) {
@@ -18,9 +20,11 @@ export default function DarkmodeIcon({ size = 22 }) {
         <span className="lb-dm-icon-toggle action-icon d-flex f-center pointer rounded-md" onClick={() => Darkmode.toggle()}>
             <svg height={size} width={size} viewBox="0 0 24 24" fill="none" stroke="none">
                 {
-                    !PREFERENCES.isDark ?
-                        typeIcons.light :
+                    PREFERENCES.theme === 'dark' ?
                         typeIcons.dark
+                        : PREFERENCES.theme === 'system' ?
+                            typeIcons.system
+                            : typeIcons.light
                 }
             </svg>
         </span>

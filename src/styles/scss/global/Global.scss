@@ -18,14 +18,9 @@ html[data-scroll-lock="true"] {
     }
 }
 
-* {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(var(--lb-br), 0.45) transparent;
-}
-
 *::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    border-width: 2px;
 }
 
 *::-webkit-scrollbar-track {
@@ -33,15 +28,11 @@ html[data-scroll-lock="true"] {
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: #5b21b6;
+    background-color: var(--color-lifo-border-high);
     border-radius: 10px;
-    border: 2px solid transparent;
     background-clip: padding-box;
 }
 
-*::-webkit-scrollbar-thumb:hover {
-    background-color: #7c3aed;
-}
 
 @media (hover: none) {
     *::-webkit-scrollbar {
@@ -65,6 +56,7 @@ a {
 svg {
     pointer-events: none;
 }
+
 
 
 input:active,

@@ -1,55 +1,58 @@
-'use client'
-import { DropDownAllTypes } from "./Dropdown.Types.js";
-import DropdownSection from "./DropdownSection.js";
-import { useDropdown } from "../../hooks/useDropdown.js";
+'use client';
+import React from "react";
+import { DropdownPropsTypes } from "./Drop.types.js";
+import { DropDownContext } from "./Drop.Context.js";
+import { Scroll } from "../../utils/Scroll.Utils.js";
+
+export interface DropdownProps extends Omit<DropdownPropsTypes, 'maxHeight' | 'minHeight'> { }
+
+export default function Dropdown(props: DropdownProps) {
+
+    const [isOpen, setIsOpen] = React.useState(false);
+    const [isAnim, setIsAnim] = React.useState(false);
+
+    const dropRef = React.useRef<any>(null);
+    const btnRef = React.useRef<any>(null);
 
 
-export default function Dropdown({ ...props }: DropDownAllTypes) {
-    const {
-        isVisible,
-        isAnim,
-        btnRef,
-        dropdownRef,
-        toggle,
-        openDirection,
-    } = useDropdown({ ...props });
-
-    if (typeof window === "undefined") {
-        console.error("DropDown: Is only available in the browser (Client Side)");
-        return null;
+    const handleOpen = (state: boolean) => {
+        if (state) {
+            props.frezzeScroll && Scroll.hide();
+            setIsOpen(true);
+            requestAnimationFrame(() => setIsAnim(true));
+        } else {
+            props.frezzeScroll && Scroll.show();
+            setIsAnim(false);
+            setTimeout(() => setIsOpen(false), 120);
+        }
     };
 
 
-    return (
-        <span className="">
-            <span className="w-max" onClick={() => toggle(!isVisible)}
-                ref={btnRef}>
-                {
-                    props.children || <span
-                        className={`d-flex relative ${props.className || ''} pointer`}
-                        style={props.style}
-                    >
-                        {props.text || "Open Dropdown"}
-                    </span>
-                }
-            </span>
+    React.useEffect(() => {
+        if (!isOpen) return;
 
-            {isVisible && (
-                <div
-                    className={`dropdown-content fixed ${props?.dropdown?.className || `f-col o-hidden rounded-md`} ${isAnim ? " visible" : " delete"}`}
-                    ref={dropdownRef}
-                    style={{
-                        ...props?.dropdown?.style,
-                        transformOrigin: `${openDirection !== "up" ? "top" : "bottom"} center`
-                    }}
-                >
-                    {props.title && <p className="dropdown-head fs-2 fw-500 m-0">{props.title}</p>}
-                    {props.items?.map((data, i) => (
-                        <DropdownSection key={i} items={data} close={toggle} index={i} />
-                    ))}
-                </div >
-            )
+        const handleClickOutside = (event: MouseEvent) => {
+            const target = event.target as Node;
+            if (
+                !dropRef.current?.contains(target) &&
+                !btnRef.current?.contains(target)
+            ) {
+                handleOpen(false);
             }
-        </span>
-    );
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, [isOpen]);
+
+    return (
+        <DropDownContext.Provider value={{
+            isOpen, isAnim, handleOpen,
+            btnRef, dropRef, duration: props.duration ?? '120ms'
+        }}>
+            <div className="drop-all relative">
+                {props.children}
+            </div>
+        </DropDownContext.Provider>
+    )
 }

@@ -2,9 +2,12 @@ import { BaseComponentProps } from "../../Types/GeneralTypes.js";
 
 
 export interface SelectAllProps extends BaseComponentProps {
-    text?: string;
-    title?: string;
-    custom?: React.ReactNode;
-    margin?: number;
-    frezzeScroll?: boolean;
+    children?: React.ReactNode;
+    
+    defaultValue?: string;
+    value?: string;
+
+    onChange?: (value: string) => void;
+    offset?: string;
+    margin?: string;
 }

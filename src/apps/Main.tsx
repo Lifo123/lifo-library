@@ -1,14 +1,12 @@
 import React from "react"
 import { UI } from "../UI/index"
-import { DarkmodeDrop, DarkmodeIcon, DarkmodeToggle, Dropdown, Icons, Notification } from "../components";
+import { Dropdown, DropdownContent, DropdownItem, DropdownTrigger, Icons } from "../components";
 import { Accordion } from "../components/Accordion";
-import DropdownSection from "../components/Dropdown/DropdownSection";
-import { ManageLocal } from "../utils";
 import { useStore } from "@nanostores/react";
 import { $preferences } from "../Stores";
-import { Darkmode } from "../components/Darkmode/Darkmode.Store";
 import UploadBtn from "../components/General/ButtonUpload";
-import { $files } from "../Stores/File.Store";
+import Select from "../components/Select/Select";
+import SelectOption from "../components/Select/SelectOption";
 
 
 interface Props {
@@ -27,43 +25,11 @@ export default function Test({ children }: Props) {
 
     return (
         <div className="f-col f-center gap-2 ">
-
-            <UploadBtn />
-
-            <div className="f-row gap-4 mt-2">
-                <button className="btn btn-third rounded-md" onClick={() => {
-
-                }}>
-                    Set new value
-                </button>
-                <button className="btn btn-third rounded-md" onClick={() => {
-
-                }}>
-                    Get value
-                </button>
-                <button className="btn btn-third rounded-md" onClick={() => ManageLocal.prefs.remove()}>
-                    Delete store
-                </button>
-                <button className="btn btn-third rounded-md" onClick={() => {
-
-                }}>
-                    Update data
-                </button>
-            </div>
-
-            <div className="mt-2">
-                <div className="px-3 py-2 rounded-md input-wrapper f-row gap-3 f-center border border-lifo-border bg-lifo-bg-secondary w-max min-w-2xs">
+            <div className="mt-5">
+                <label className="px-3 rounded-md input-wrapper f-row gap-3 f-center border border-lifo-border bg-lifo-bg-secondary w-max min-w-2xs">
                     <Icons icon="search" size={20} />
-                    <input type="search" className="fs-2 fw-300 f-grow" placeholder="Search..." />
-                </div>
-            </div>
-
-                <button className="btn p-3 bg-lifo-bg-fourth">dawdwa</button>
-
-            <div className="mt-2 w-xl">
-                <Accordion description="Pregunta 1" title="Pregunta 1" />
-                <Accordion description="wasa dawd" title="Pregunta 2" closeAll />
-                <Accordion description="Perro toad " title="Pregunta 3" />
+                    <input type="search" className="fs-2 fw-300 f-grow py-2" placeholder="Search..." />
+                </label>
             </div>
 
             <p className="mt-10">daw</p>
@@ -71,6 +37,58 @@ export default function Test({ children }: Props) {
             <p className="mt-10">daw</p>
             <p className="mt-10">daw</p>
             <p className="mt-10">daw</p>
+            <div className="f-row gap-4 f-center">
+                <Dropdown frezzeScroll>
+                    <DropdownTrigger text="Hola mundo">
+                        <span className="f-row select-none gap-2 fw-500 f-center py-1 px-3 rounded-md bg-lifo-bg-third border border-lifo-border fs-2">
+                            Normal
+                            <Icons icon="arrow" size={16} />
+                        </span>
+                    </DropdownTrigger>
+
+                    <DropdownContent dir="btr" >
+                        <ul className="f-col w-full border-b border-lifo-border fs-1  py-1 px-1 fw-400 text-lifo-text">
+                            <DropdownItem text="Normal" disabled />
+                        </ul>
+                        <ul className="f-col w-full fs-2 py-1 px-1 fw-400 text-lifo-text border-b border-lifo-border">
+                            <DropdownItem text="Darken" />
+                            <DropdownItem text="Multiply" />
+                            <DropdownItem text="Color Burn" />
+                            <DropdownItem text="Linear Burn" />
+                            <DropdownItem text="Darker Color" />
+                        </ul>
+                        <ul className="f-col w-full fs-2 py-1 px-1 fw-400 text-lifo-text border-b border-lifo-border">
+                            <DropdownItem text="Lighten" />
+                            <DropdownItem text="Screen" />
+                            <DropdownItem text="Color Dodge" />
+                            <DropdownItem text="Linear Dodge" />
+                            <DropdownItem text="Lighter Color dawd awd aw aw daw daw d" />
+                        </ul>
+                        <ul className="f-col w-full fs-2 py-1 px-1 fw-400 text-lifo-text border-b border-lifo-border">
+                            <DropdownItem text="Overlay" />
+                            <DropdownItem text="Soft Light" />
+                            <DropdownItem text="Hard Light" />
+                            <DropdownItem text="Vivid Light" />
+                            <DropdownItem text="Linear Light" />
+                            <DropdownItem text="Pin Light" />
+                            <DropdownItem text="Hard Mix" />
+                        </ul>
+                        <ul className="f-col w-full fs-2 py-1 px-1 fw-400 text-lifo-text border-b border-lifo-border">
+                            <DropdownItem text="Difference" />
+                            <DropdownItem text="Exclusion" />
+                            <DropdownItem text="Subtract" />
+                            <DropdownItem text="Divide" />
+                        </ul>
+                        <ul className="f-col w-full fs-2 py-1 px-1 fw-400 text-lifo-text">
+                            <DropdownItem text="Hue" />
+                            <DropdownItem text="Saturation" />
+                            <DropdownItem text="Color" />
+                            <DropdownItem text="Luminosity" />
+                        </ul>
+                    </DropdownContent>
+                </Dropdown>
+
+            </div>
             <p className="mt-10">daw</p>
             <p className="mt-10">daw</p>
             <p className="mt-10">daw</p>

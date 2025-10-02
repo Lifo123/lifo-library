@@ -1,6 +1,92 @@
 @import 'tailwindcss';
-@import './Flifo.css';
+
+@import './output/Library.pre.css';
+
+@import './output/theme.pre.css';
 
 html {
-    @apply bg-lifo-bg;
+  @apply bg-lifo-bg;
+}
+
+.drop-content {
+  border: solid 0.5px var(--color-lifo-border);
+  
+  top: inherit;
+  right: inherit;
+  left: inherit;
+  bottom: inherit;
+
+  transition: opacity var(--duration) cubic-bezier(.25, .46, .45, .94),
+    scale var(--duration) cubic-bezier(.25, .46, .45, .94);
+  user-select: none;
+  opacity: 0;
+  scale: 0.95;
+  pointer-events: none;
+  overflow-y: auto;
+}
+
+.drop-content.active::-webkit-scrollbar {
+  width: 6px;
+}
+
+.drop-content.active {
+  opacity: 1;
+  scale: 1;
+  pointer-events: auto;
+}
+
+.drop-content[data-dir='btl'] {
+  top: calc(100% + var(--margin));
+  right: calc(0px + var(--offset));
+  transform-origin: top right;
+}
+
+.drop-content[data-dir='btr'] {
+  top: calc(100% + var(--margin));
+  left: calc(0px + var(--offset));
+  transform-origin: top left;
+}
+
+.drop-content[data-dir='ttl'] {
+  bottom: calc(100% + var(--margin));
+  right: calc(0px + var(--offset));
+  transform-origin: bottom right;
+}
+
+.drop-content[data-dir='ttr'] {
+  bottom: calc(100% + var(--margin));
+  left: calc(0px + var(--offset));
+  transform-origin: bottom left;
+}
+
+.drop-content[data-dir='rtt'] {
+  left: calc(100% + var(--margin));
+  bottom: calc(0px + var(--offset));
+  transform-origin: bottom left;
+}
+
+.drop-content[data-dir='rtb'] {
+  left: calc(100% + var(--margin));
+  top: calc(0px + var(--offset));
+  transform-origin: top left;
+}
+
+.drop-content[data-dir='ltt'] {
+  right: calc(100% + var(--margin));
+  bottom: calc(0px + var(--offset));
+  transform-origin: bottom right;
+}
+
+.drop-content[data-dir='ltb'] {
+  right: calc(100% + var(--margin));
+  top: calc(0px + var(--offset));
+  transform-origin: top right;
+}
+
+.input-wrapper {
+  transition: outline-width 0.1s ease;
+}
+
+.input-wrapper:focus-within {
+  outline: solid 2px var(--color-lifo-border-high);
 }
