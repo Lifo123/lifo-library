@@ -1,0 +1,52 @@
+@layer components {
+  .card-loading {
+    background-color: var(--color-project-bg, var(--color-lifo-bg));
+    pointer-events: visible;
+    min-height: 66px;
+    min-width: 100px;
+    z-index: 1500;
+  }
+
+  .page-load {
+    background-color: var(--color-project-bg, var(--color-lifo-bg));
+    position: absolute;
+    padding-bottom: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: 110000;
+    transition: visibility 0.15s ease, opacity 0.15s ease;
+    pointer-events: visible;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .page-load.hidden {
+    visibility: hidden;
+    pointer-events: none;
+    user-select: none;
+    opacity: 0;
+  }
+
+  .action-icon {
+    background-color: var(--color-project-bg-secondary, var(--color-lifo-bg-secondary));
+  }
+
+  .animate-spin {
+    animation: spin .8s linear infinite;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

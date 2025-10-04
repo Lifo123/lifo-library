@@ -1,0 +1,22 @@
+@layer components {
+  .tab-list {
+    background-color: var(--color-lifo-bg);
+  }
+  
+  .tab-item {
+    color: var(--color-lifo-text);
+  }
+  
+  .tab-indicator {
+    color: var(--color-lifo-title);
+    background-color: var(--color-lifo-bg-secondary);
+    border: solid 1px var(--color-lifo-border);
+  }
+  
+  .tab-content-item {
+    background: var(--color-lifo-bg-secondary);
+    border: solid 1px var(--color-lifo-border);
+    min-width: 340px;
+    min-height: 200px;
+  }
+}

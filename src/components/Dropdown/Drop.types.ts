@@ -1,7 +1,17 @@
 import { BaseComponentProps } from "../../Types/GeneralTypes.js";
+import { IconsType } from "../Icons/Icons.js";
+
+export interface DropdownContextProps {
+    dropRef: React.RefObject<HTMLDivElement> | null;
+    btnRef: React.RefObject<HTMLDivElement> | null;
+    isOpen: boolean;
+    isAnim: boolean;
+    duration: string;
+    handleOpen: (state: boolean) => void;
+}
 
 export interface DropdownPropsTypes {
-    children?: React.ReactNode
+    children?: React.ReactNode;
     maxHeight?: string;
     minHeight?: string;
     duration?: string;
@@ -11,7 +21,6 @@ export interface DropdownPropsTypes {
 export interface DropdownContentPropsTypes extends BaseComponentProps {
     children?: React.ReactNode;
     margin?: string;
-    offset?: string;
     popover?: boolean;
     dir?: 'btl' | 'btr' | 'ttb' | 'ttr' | 'rtt' | 'rtb' | 'ltt' | 'ltb' | string;
 }
@@ -19,7 +28,8 @@ export interface DropdownContentPropsTypes extends BaseComponentProps {
 export interface DropdownItemPropsTypes extends BaseComponentProps {
     children?: React.ReactNode;
     text?: string;
-    icon?: string;
+    shortCut?: string;
+    icon?: IconsType;
     disabled?: boolean;
     onClick?: () => void | Promise<void>;
 }

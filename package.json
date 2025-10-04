@@ -1,7 +1,7 @@
 {
   "homepage": "https://lifo123.github.io/lifo-library/",
   "name": "@lifo123/library",
-  "version": "1.7.4",
+  "version": "1.7.6",
   "description": "Lifo library",
   "type": "module",
   "repository": {
@@ -9,18 +9,11 @@
     "url": "git+https://github.com/Lifo123/lifo-library.git"
   },
   "scripts": {
-    "sass:main": "sass src/styles/scss/Main.scss src/styles/output/Library.pre.css",
-    "sass:theme": "sass src/styles/scss/variables/theme.scss src/styles/output/theme.pre.css",
-    "sass": "pnpm run sass:main && pnpm run sass:theme",
+    "flifo:utilities": "npx postcss src/styles/Main.css -o src/styles/output/Flifo.css --no-map",
+    "noTailwind:styles": "tailwindcss -i src/styles/noTailwind.css -o src/styles/output/Flifo.noTailwind.pre.css --minify",
+    "build": "pnpm run flifo:utilities && tsc",
 
-    "build:styles": "tailwindcss -i src/styles/output/Library.pre.css -o src/styles/output/Flifo.pre.css --minify",
-    "build": "pnpm run sass && pnpm run build:styles && pnpm run merge:styles && tsc && pnpm run copy:styles",
-
-    "merge:styles": "copy /b src\\styles\\output\\Flifo.pre.css+src\\styles\\output\\theme.pre.css src\\styles\\Flifo.css"
-,
-    "copy:styles": "shx mkdir -p dist/styles && shx cp src/styles/Flifo.css dist/styles/Flifo.css",
-
-    "dev": "pnpm run sass && astro dev --host",
+    "dev": "astro dev --host",
     "preview": "astro build && astro preview",
     "deploy": "pnpm run build && npm publish --access public",
     "deploy:pages": "astro check && astro build && gh-pages -d Build --dotfiles"
@@ -40,7 +33,9 @@
     "@types/react": "^19.1.6",
     "astro": "^5.14.1",
     "gh-pages": "^6.3.0",
-    "sass": "1.77.0",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "postcss-import": "^16.1.1",
     "shx": "^0.4.0",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.6.3"
@@ -69,6 +64,7 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/react": "^4.4.0",
     "@google/genai": "^1.16.0",
+    "@tailwindcss/postcss": "^4.1.14",
     "@types/react-dom": "^19.1.6",
     "framer-motion": "^12.23.3"
   }

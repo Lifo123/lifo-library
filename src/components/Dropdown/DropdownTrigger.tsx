@@ -1,6 +1,6 @@
 import React from "react"
-import { DropDownContext } from "./Drop.Context.js"
 import { BaseComponentProps } from "../../Types/GeneralTypes.js";
+import { DropdownContext } from "./Dropdown.js";
 
 interface DropTriggerProps extends BaseComponentProps {
     text?: string;
@@ -8,7 +8,7 @@ interface DropTriggerProps extends BaseComponentProps {
 }
 
 export default function DropdownTrigger(props: DropTriggerProps) {
-    const ctx = React.useContext(DropDownContext)
+    const ctx = React.useContext(DropdownContext)
 
     return (
         <div className="drop-trigger flex"

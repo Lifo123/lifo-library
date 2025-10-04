@@ -1,0 +1,21 @@
+@import './animation/Animation.css';
+
+@import './global/Buttons.css';
+@import './global/Display.css';
+@import './global/Fonts.css';
+@import './global/Global.css';
+@import './global/Position.css';
+
+@import './library/DarkMode.css';
+@import './library/Dialog.css';
+@import './library/Dropdown.css';
+@import './library/Library.css';
+@import './library/Loading.css';
+@import './library/Notifications.css';
+@import './library/Tabs.css';
+@import './library/Toast.css';
+
+@import './variables/Color.css';
+@import './variables/Lifo.css';
+@import './variables/theme.css';
+

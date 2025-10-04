@@ -1,0 +1,10 @@
+@utility skeleton {
+    background-color: var(var(--color-skeleton-bg), #000);
+    animation: pulse 2s cubic-bezier(.4, 0, .6, 1)infinite;
+}
+
+@keyframes pulse {
+    50% {
+        opacity: .5;
+    }
+}

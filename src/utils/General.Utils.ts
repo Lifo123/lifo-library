@@ -26,6 +26,18 @@ const timeTracker = async <T extends any[], R>(
     }
 };
 
+const toPx = (value: string) => {
+    if (/^\d+px$/.test(value)) return parseFloat(value);
+    const el = document.createElement("div");
+    el.style.width = value;
+    el.style.visibility = "hidden";
+    document.body.appendChild(el);
+    const pixels = el.getBoundingClientRect().width;
+    document.body.removeChild(el);
+    return pixels;
+}
+
+
 export const isMobile = () => {
     const isSmallScreen = window.matchMedia("(max-width: 768px)").matches;
     const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
@@ -35,5 +47,5 @@ export const isMobile = () => {
 
 
 export const Flifo = {
-    IDnumber, IDstring, timeTracker, isMobile,
+    IDnumber, IDstring, timeTracker, isMobile, toPx
 };

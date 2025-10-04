@@ -1,0 +1,55 @@
+@layer components {
+  .drop-content {
+    border: solid 0.5px var(--color-lifo-border);
+
+    transition: opacity var(--duration) cubic-bezier(.25, .46, .45, .94),
+      scale var(--duration) cubic-bezier(.25, .46, .45, .94);
+    user-select: none;
+    opacity: 0;
+    scale: 0.95;
+    pointer-events: none;
+    overflow-y: auto;
+  }
+  
+  .drop-content.active::-webkit-scrollbar {
+    width: 3px;
+  }
+  
+  .drop-content.active {
+    opacity: 1;
+    scale: 1;
+    pointer-events: auto;
+  }
+  
+  .drop-content[data-dir='btl'] {
+    transform-origin: top right;
+  }
+  
+  .drop-content[data-dir='btr'] {
+    transform-origin: top left;
+  }
+  
+  .drop-content[data-dir='ttl'] {
+    transform-origin: bottom right;
+  }
+  
+  .drop-content[data-dir='ttr'] {
+    transform-origin: bottom left;
+  }
+  
+  .drop-content[data-dir='rtt'] {
+    transform-origin: bottom left;
+  }
+  
+  .drop-content[data-dir='rtb'] {
+    transform-origin: top left;
+  }
+  
+  .drop-content[data-dir='ltt'] {
+    transform-origin: bottom right;
+  }
+  
+  .drop-content[data-dir='ltb'] {
+    transform-origin: top right;
+  }
+}

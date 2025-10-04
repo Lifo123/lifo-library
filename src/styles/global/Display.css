@@ -1,0 +1,42 @@
+@utility d-flex {
+  display: flex;
+}
+
+@utility d-none{
+  display: none;
+}
+
+@utility f-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@utility f-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@utility f-center {
+  justify-content: center;
+  align-items: center;
+}
+
+@utility f-wrap {
+  flex-wrap: wrap;
+}
+
+@utility f-nowrap {
+  flex-wrap: nowrap !important;
+}
+
+@utility f-grow{
+  flex-grow: 1;
+}
+
+
+@utility d-grid{
+  display: grid;
+}
+@utility place-center{
+  place-content: center;
+}

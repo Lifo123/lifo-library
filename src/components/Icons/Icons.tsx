@@ -65,6 +65,7 @@ export const typeIcons = {
 
 }
 export type IconsType = keyof typeof typeIcons
+
 interface IconProps extends BaseIconProps, BaseComponentProps {
   icon: keyof typeof typeIcons
 }
@@ -109,7 +110,7 @@ export const CreateIcon = ({
             fill="none"
             stroke="none"
             style={{
-              transition: 'all .12s ease-in-out',
+              transition: 'transform .12s ease-in-out',
               ...style
             }}
           >

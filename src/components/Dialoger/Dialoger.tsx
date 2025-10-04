@@ -71,7 +71,7 @@ const DailogContainer = ({
             {props.children || (
                 <div className="dialoger-content f-col gap-1 justify-center p-4 rounded-lg mx-auto">
                     <div className='f-col gap-1 justify-between items-start'>
-                        <div className="f-row justify-between items-center w-100">
+                        <div className="f-row justify-between items-center w-full">
                             {props.title && <h4 className="fs-4 m-0 fw-600">{props.title}</h4>}
                             {props.closeBtn &&
                                 <Icons icon="close" size={26} onClick={() => {
@@ -79,7 +79,7 @@ const DailogContainer = ({
                                 }} />}
                         </div>
                         {
-                            props.custom || props.description && <p className="fs-2 m-0 fw-400 mb-2">{props.description} </p>
+                            props.custom || props.description && <p className="fs-2 m-0 fw-400 mb-2 text-lifo-text">{props.description} </p>
                         }
 
                     </div>

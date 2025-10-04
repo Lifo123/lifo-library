@@ -1,0 +1,50 @@
+@utility o-auto {
+  overflow: auto;
+}
+
+@utility o-hidden {
+  overflow: hidden;
+}
+
+@utility o-scroll {
+  overflow: scroll;
+}
+
+@utility o-visible {
+  overflow: visible;
+}
+
+
+@utility ox-hidden {
+  overflow-x: hidden;
+}
+
+@utility ox-visible {
+  overflow-x: visible;
+}
+
+@utility ox-scroll {
+  overflow-x: scroll;
+}
+
+@utility ox-auto {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+@utility oy-hidden {
+  overflow-y: hidden;
+}
+
+@utility oy-visible {
+  overflow-y: visible;
+}
+
+@utility oy-scroll {
+  overflow-y: scroll;
+}
+
+@utility oy-auto {
+  overflow-y: auto;
+  overflow-x: hidden;
+}

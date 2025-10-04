@@ -1,12 +1,13 @@
 'use client';
 import React from "react";
 import { DropdownItemPropsTypes } from "./Drop.types.js";
-import { DropDownContext } from "./Drop.Context.js";
+import Icons from "../Icons/Icons.js";
+import { DropdownContext } from "./Dropdown.js";
 
 export default function DropdownItem({
     children, disabled, ...props
 }: DropdownItemPropsTypes) {
-    const ctx = React.useContext(DropDownContext)
+    const ctx = React.useContext(DropdownContext)
 
     const handleClick = async () => {
         if (disabled) return;
@@ -18,9 +19,13 @@ export default function DropdownItem({
     return (
         <li onClick={handleClick} aria-disabled={disabled}>
             {
-                children || 
-                <div className={`fs-2 fw-500 pr-6 pl-1.5 py-1  rounded-md ${disabled ? 'no-select text-lifo-text' : 'hover:bg-lifo-bg-third pointer hover:text-lifo-title'}`}>
-                    {props.text || 'none'}
+                children ||
+                <div className={`f-row gap-2 fs-2 fw-500 px-1.5 py-1.5  rounded-md ${disabled ? 'no-select text-lifo-text' : 'hover:bg-lifo-bg-third pointer hover:text-lifo-title'}`}>
+                    {props.icon && <span className="aspect-square flex f-center"><Icons icon={props.icon} /></span>}
+                    <div className="f-row gap-12 justify-between f-grow items-center pr-2 f-nowrap text-nowrap">
+                        {props.text || 'none'}
+                        {props.shortCut && <span className="fw-400 fs-2 flex f-center">{props.shortCut}</span>}
+                    </div>
                 </div>
             }
         </li>
