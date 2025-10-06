@@ -17,10 +17,11 @@ export default function DarkmodeDrop() {
       <Select
         value={PREFERENCES.theme!.charAt(0).toUpperCase() + PREFERENCES.theme!.slice(1)}
         onChange={(value) => handleSelect(value as ThemeTypes)}
-        dir="btl"
+        dir="btr"
+        popover
       >
         <ul className="f-col w-full fs-2 py-1.5 px-1.5 fw-400 text-lifo-text">
-          <SelectOption text="Light" value="light"  />
+          <SelectOption text="Light" value="light" />
           <SelectOption text="Dark" value="dark" />
           <SelectOption text="System" value="system" />
         </ul>

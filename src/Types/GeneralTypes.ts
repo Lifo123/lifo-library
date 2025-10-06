@@ -17,6 +17,7 @@ export interface AnimationProps {
     opacity?: number;
     scale?: string;
     transform?: string;
+    [key: string]: any;
 }
 
 export interface BaseComponentProps {

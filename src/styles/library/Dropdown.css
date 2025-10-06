@@ -52,4 +52,16 @@
   .drop-content[data-dir='ltb'] {
     transform-origin: top right;
   }
+  .drop-content[data-dir='tb'] {
+    transform-origin: top center;
+  }
+  .drop-content[data-dir='bt'] {
+    transform-origin: bottom center;
+  }
+  .drop-content[data-dir='rl'] {
+    transform-origin: right center;
+  }
+  .drop-content[data-dir='lr'] {
+    transform-origin: left center;
+  }
 }

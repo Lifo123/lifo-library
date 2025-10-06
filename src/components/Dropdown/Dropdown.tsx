@@ -1,56 +1,34 @@
 // Dropdown.tsx
 'use client';
-import React, { createContext, useRef, useState } from "react";
-import { DropdownContextProps, DropdownPropsTypes } from "./Drop.types.js";
-import { Scroll } from "../../utils/Scroll.Utils.js";
+import React from "react";
+import { DropdownProvider } from "./DropdownProvider.js";
 
-export const DropdownContext = createContext<DropdownContextProps>({
-    dropRef: null,
-    btnRef: null,
+interface DropdownProps {
+    children?: React.ReactNode;
+    els?: string[];
 
-    isOpen: false,
-    isAnim: false,
-    duration: '10ms',
+    frezzeScroll?: boolean;
+    overlap?: boolean;
+    popover?: boolean;
 
-    handleOpen: () => { },
-});
+    offset?: string;
+    margin?: string;
+    duration?: string;
 
-export default function Dropdown(props: Omit<DropdownPropsTypes, 'maxHeight' | 'minHeight'>) {
-    const [isOpen, setIsOpen] = useState(false);
-    const [isAnim, setIsAnim] = useState(false);
+    minSpaceY?: number;
+    minSpaceX?: number;
 
-    const dropRef = useRef<HTMLDivElement | any>(null);
-    const btnRef = useRef<HTMLDivElement | any>(null);
+    autoAdjust?: boolean;
+    dir?: 'btl' | 'btr' | 'ttl' | 'ttr' | 'rtt' | 'rtb' | 'ltt' | 'ltb';
+}
 
-    const handleOpen = (state: boolean) => {
-        if (state) {
-            props.frezzeScroll && Scroll.hide();
-            setIsOpen(true); requestAnimationFrame(() => setIsAnim(true));
-        } else {
-            props.frezzeScroll && Scroll.show();
-            setIsAnim(false); setTimeout(() => setIsOpen(false), 120);
-        }
-    };
-
-    React.useEffect(() => {
-        if (!isOpen) return;
-        const handleClickOutside = (event: MouseEvent) => {
-            const target = event.target as Node;
-            if (!dropRef.current?.contains(target) && !btnRef.current?.contains(target)) {
-                handleOpen(false);
-            }
-        };
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
-    }, [isOpen]);
-
+export default function Dropdown(props: DropdownProps) {
+    
     return (
-        <DropdownContext.Provider value={{
-            dropRef, btnRef, isOpen, isAnim, duration: props.duration || '90ms', handleOpen
-        }}>
-            <div className="drop-all relative">
+        <DropdownProvider dir={props.dir || 'btr'} {...props}>
+            <div className="drop-all relative select">
                 {props.children}
             </div>
-        </DropdownContext.Provider>
+        </DropdownProvider>
     );
 }

@@ -9,5 +9,7 @@ export interface SelectAllProps extends BaseComponentProps {
 
     onChange?: (value: string) => void;
     margin?: string;
+    popover?: boolean;
+    
     dir?: 'btl' | 'btr' | 'ttb' | 'ttr' | 'rtt' | 'rtb' | 'ltt' | 'ltb' | string;
 }

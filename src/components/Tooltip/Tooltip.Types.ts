@@ -1,7 +1,13 @@
-export interface TooltipProps {
-    text?: string;
-    custom?: React.ReactNode;
+import { AnimationPropsTypes, BaseComponentProps } from "../../Types/GeneralTypes.js";
+
+export interface TooltipProps extends BaseComponentProps {
     children: React.ReactNode;
-    margin?: string;
-    dir?: 'btl' | 'btr' | 'ttb' | 'ttr' | 'rtt' | 'rtb' | 'ltt' | 'ltb' | string;
+    custom?: React.ReactNode;
+
+    label: string;
+    offset?: string;
+    dir?: 'bt' | 'tb' | 'lr' | 'rl'; //4 axis
+
+    duration?: string;
+    animate?: AnimationPropsTypes
 }

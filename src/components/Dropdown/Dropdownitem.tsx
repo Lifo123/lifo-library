@@ -2,7 +2,7 @@
 import React from "react";
 import { DropdownItemPropsTypes } from "./Drop.types.js";
 import Icons from "../Icons/Icons.js";
-import { DropdownContext } from "./Dropdown.js";
+import { DropdownContext } from "./DropdownProvider.js";
 
 export default function DropdownItem({
     children, disabled, ...props

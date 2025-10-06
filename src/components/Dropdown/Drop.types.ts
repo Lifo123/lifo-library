@@ -5,24 +5,29 @@ export interface DropdownContextProps {
     dropRef: React.RefObject<HTMLDivElement> | null;
     btnRef: React.RefObject<HTMLDivElement> | null;
     isOpen: boolean;
-    isAnim: boolean;
     duration: string;
-    handleOpen: (state: boolean) => void;
+    handleOpen: (onClick: () => void) => void;
 }
 
 export interface DropdownPropsTypes {
     children?: React.ReactNode;
-    maxHeight?: string;
-    minHeight?: string;
     duration?: string;
+    margin?: string;
+    popover?: boolean;
+    els?: string[];
     frezzeScroll?: boolean;
+    overlap?: boolean;
+    offset?: string;
+
+    minSpaceY?: number;
+    minSpaceX?: number;
+
+    autoAdjust?: boolean;
+    dir: 'btl' | 'btr' | 'ttl' | 'ttr' | 'rtt' | 'rtb' | 'ltt' | 'ltb';
 }
 
 export interface DropdownContentPropsTypes extends BaseComponentProps {
     children?: React.ReactNode;
-    margin?: string;
-    popover?: boolean;
-    dir?: 'btl' | 'btr' | 'ttb' | 'ttr' | 'rtt' | 'rtb' | 'ltt' | 'ltb' | string;
 }
 
 export interface DropdownItemPropsTypes extends BaseComponentProps {

@@ -37,8 +37,31 @@ const toPx = (value: string) => {
     return pixels;
 }
 
+const getRect = (el: HTMLElement) => {
+    const elRect = el.getBoundingClientRect();
+    return {
+        top: elRect.top,
+        bottom: elRect.bottom,
+        left: elRect.left,
+        right: elRect.right,
+        height: el.offsetHeight,
+        width: el.offsetWidth,
 
-export const isMobile = () => {
+        margin: {
+            top: elRect.top,
+            bottom: window.innerHeight - elRect.bottom,
+            left: elRect.left,
+            right: window.innerWidth - elRect.right,
+        },
+        center: {
+            x: elRect.left + el.offsetWidth / 2,
+            y: elRect.top + el.offsetHeight / 2,
+        }
+    }
+}
+
+
+const isMobile = () => {
     const isSmallScreen = window.matchMedia("(max-width: 768px)").matches;
     const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     return isSmallScreen || isTouch;
@@ -47,5 +70,5 @@ export const isMobile = () => {
 
 
 export const Flifo = {
-    IDnumber, IDstring, timeTracker, isMobile, toPx
+    IDnumber, IDstring, timeTracker, isMobile, toPx, getRect
 };

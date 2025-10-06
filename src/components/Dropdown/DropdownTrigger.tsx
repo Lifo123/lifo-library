@@ -1,6 +1,6 @@
 import React from "react"
 import { BaseComponentProps } from "../../Types/GeneralTypes.js";
-import { DropdownContext } from "./Dropdown.js";
+import { DropdownContext } from "./DropdownProvider.js";
 
 interface DropTriggerProps extends BaseComponentProps {
     text?: string;
