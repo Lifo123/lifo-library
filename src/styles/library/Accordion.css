@@ -1,0 +1,29 @@
+@layer components {
+  .accordion {
+    transition: padding var(--custom-duration, .15s) ease-in-out;
+    padding-bottom: 0px;
+  }
+  
+  .accordion.expanded {
+    padding-bottom: 16px;
+  }
+  
+  .accordion-trigger:focus-visible {
+    border: none;
+    outline: 2px solid dodgerblue;
+  }
+  
+  .accordion-panel {
+    transition: height var(--custom-duration, .12s) ease-in-out,
+      margin-top var(--custom-duration, .15s) ease-in-out,
+      opacity var(--custom-duration, .15s) ease-in-out;
+    height: var(--disclosure-panel-height);
+    margin-top: 0px;
+    opacity: 0;
+  }
+  
+  .accordion-panel.expanded {
+    margin-top: 6px;
+    opacity: 1;
+  }
+}

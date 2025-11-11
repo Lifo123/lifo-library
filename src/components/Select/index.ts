@@ -1,2 +1,2 @@
-export { default as Select } from './Select.js'
-export { default as SelectOption } from './SelectOption.js'
+export { ListBoxItem as SelectItem } from 'react-aria-components';
+export { default as SelectMenu } from './SelectMenu.js';

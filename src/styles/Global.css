@@ -1,8 +1,7 @@
+@import './Main.css';
 @import 'tailwindcss';
 
 
-@import './Main.css';
-
 html {
-  @apply bg-lifo-bg;
+  @apply bg-gray-1;
 }

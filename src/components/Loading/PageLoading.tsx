@@ -1,5 +1,5 @@
 'use client';
-import Icons from "../Icons/Icons.js";
+import { Icon } from "public-icons";
 
 interface PageLoadingProps {
     children?: React.ReactNode;
@@ -11,7 +11,8 @@ export default function PageLoading({ children }: PageLoadingProps) {
             id="page-load"
             className="page-load absolute d-flex f-center h-screen w-screen pb-10"
         >
-            {children || <Icons size={48} icon="loading" style={{strokeWidth: 1.35}} />}
+            {children || <span className="custom-spin"><Icon size={40} icon="loader-circle" strokeWidth={1.65} /></span>}
         </div>
+
     )
 }

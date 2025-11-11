@@ -1,18 +1,17 @@
 import React from "react"
-import { UI } from "../UI/index"
-import { useStore } from "@nanostores/react";
-import { $preferences } from "../Stores";
-import Test from "./Test";
-import { DarkmodeDrop, Dropdown, DropdownContent, DropdownTrigger } from "../components";
+import UI, { toast } from "../UI"
+import { Button, Modal, ModalOverlay, RenderProps } from "react-aria-components"
+import { Dialoger, $dialogStore, dialog } from "../components/Dialog/index.js";
+import { useEnterAnimation, useExitAnimation, uuid } from "../utils";
+import { Tooltip } from "../components/General/Tooltip";
+
+import { Toaster } from "../components/Toast/Toaster";
+import { DarkmodeToggle } from "../components";
+import { Icon } from "public-icons";
 
 
-interface Props {
-    children?: React.ReactNode;
-}
-
-export default function Main({ children }: Props) {
-    const PREFS = useStore($preferences);
-
+export default function Main({ children }: any) {
+    const [isOpen, setIsOpen] = React.useState(false);
 
     React.useEffect(() => {
         setTimeout(() => {
@@ -20,24 +19,24 @@ export default function Main({ children }: Props) {
         }, 100)
     }, [])
 
+    const asyncFunct = async () => {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+    }
+
     return (
-        <div className="f-col f-center gap-2 oy-hidden">
-            <Test />
-            <Test />
-            <DarkmodeDrop />
-            <p className="mt-40">dawdwa</p>
-            <p className="mt-40">dawdwa</p>
-            <p className="mt-40">dawdwa</p>
-            <p className="mt-40">dawdwa</p>
-            <p className="mt-40">dawdwa</p>
-            <p className="mt-40">dawdwa</p>
-            <p className="mt-40">dawdwa</p>
-            <p className="mt-40">dawdwa</p>
-            <p className="mt-40">dawdwa</p>
-            <p className="mt-40">dawdwa</p>
-            <p className="mt-40">dawdwa</p>
-            <p className="mt-40">dawdwa</p>
-            <p className="mt-40">dawdwa</p>
+        <div className="f-col f-center gap-2 fs-[15px]">
+            <Toaster />
+            <Dialoger />
+            <Tooltip text="Testing tooltip">
+                <Button className="btn btn-primary rounded-md" onPress={() => {
+                    dialog.open({
+                        title: 'Dialog title',
+                        description: 'Dialog description',
+                    })
+                }}>
+                    Primary
+                </Button>
+            </Tooltip>
         </div >
     )
 }

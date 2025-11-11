@@ -6,6 +6,7 @@ type LocalManager = {
 
 const normalizePath = (path: string) => path.replace(/\[(\d+)\]/g, ".$1");
 const isIndex = (key: string) => !isNaN(Number(key));
+
 function deepMerge(target: any, source: any): any {
   if (typeof target !== "object" || target === null) return source;
   if (typeof source !== "object" || source === null) return source;

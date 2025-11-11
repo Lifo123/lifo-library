@@ -1,48 +1,15 @@
 @layer components {
-  .dialoger-container {
-    pointer-events: all;
-    backface-visibility: hidden;
-    transform-origin: center center;
-    top: var(--custom-start-top);
-    left: var(--custom-start-left);
-    opacity: 0;
-    scale: var(--custom-start-scale, 0.9);
-    transform: translate(-50%, -50%);
-    transition: all var(--custom-duration, 0.2s) ease;
-  }
-  
-  .dialoger-container[data-anim="true"] {
-    top: var(--custom-end-top);
-    left: var(--custom-end-left);
-    opacity: var(--custom-end-opacity, 1);
-    scale: var(--custom-end-scale, 1);
-  }
-  
-  .dialoger-content {
-    width: 100%;
-    min-width: 340px;
-    max-width: 480px;
-    background-color: var(--color-lifo-bg-secondary);
-    border: solid 1px var(--color-lifo-border);
-  }
-  
-  .dialoger-content .btn {
-    min-width: 140px;
-  }
-}
-
-@media(550px > width) {
-  .dialoger-content {
-    width: 96%;
-    text-align: center;
-  }
-  
-  .dialoger-content .close-btn {
-    display: none;
-  }
-  
-  .dialoger-content a {
-    margin-inline: auto;
-    margin-top: .25rem;
+  .react-aria-Dialog {
+    max-height: var(--visual-viewport-height);
+    background-color: var(--color-gray-2);
+    width: max-content;
+    min-width: 420px;
+    border-radius: 6px;
+    outline: none;
+    border: 1px solid var(--color-gray-5);
+    padding: 36px;
+    color: var(--color-gray-12);
+    font-size: 14px;
+    transition: all 0.25s ease;
   }
 }

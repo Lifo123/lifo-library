@@ -1,10 +1,9 @@
-//DEVELOP THIS MADAFAKA
-
 'use client'
 import React from "react";
-import { toast } from "../Toast/Toast.Store.js";
-import Icons from "../Icons/Icons.js";
+import { toast } from "../Toast/Toaster.store.js";
 import { $files } from "../../Stores/File.Store.js";
+import { Button } from "react-aria-components";
+import { Icon } from "public-icons";
 
 interface Props {
     className?: string;
@@ -19,7 +18,6 @@ interface Props {
     onUpload?: (file: File) => void | Promise<void>;
 
 }
-
 
 export default function UploadBtn({
     text = 'Upload',
@@ -41,9 +39,9 @@ export default function UploadBtn({
     };
 
     const handleFileChange = async (file: File) => {
-
+        // ... (toda tu lógica de handleFileChange sigue igual)
         if (!file) {
-            toast.error(props.error || 'Error al cargar el archivo', { position: 'bottom-left' });
+            toast.error(props.error || 'Error al cargar el archivo', { placement: 'bottom-left' });
             return;
         }
 
@@ -51,17 +49,21 @@ export default function UploadBtn({
             const allowedExtensions = Array.isArray(props.accept)
                 ? props.accept.join('|')
                 : props.accept;
+
+            // Corregí un pequeño bug aquí: 
+            // 1. Asegurarse que todo sea minúscula para comparar
+            // 2. Normalizar las extensiones de 'accept' (quitar el punto)
+            const normalizedAllowed = allowedExtensions.replace(/\./g, '').split('|').join('|');
             const fileExtension = file.name.split('.').pop()?.toLowerCase();
-            const regex = new RegExp(`^(${allowedExtensions})$`, 'i');
+            const regex = new RegExp(`^(${normalizedAllowed})$`, 'i');
 
             if (!fileExtension || !regex.test(fileExtension)) {
-                toast.error(`Archivo no permitido.`, { position: 'bottom-left' });
+                toast.error(`Archivo no permitido. Solo: ${normalizedAllowed.split('|').join(', ')}`, { placement: 'bottom-left' });
                 return;
             }
         }
 
         try {
-            setIsUploading(true);
             await new Promise(res => setTimeout(res, props.delay ?? 850));
 
             const nameWithoutExt = file.name.split('.').slice(0, -1).join('.');
@@ -71,41 +73,66 @@ export default function UploadBtn({
             if (props.onUpload) {
                 await props.onUpload(file);
             } else {
-                toast.success(props.success || 'Archivo cargado', { position: 'bottom-left' });
+                toast.success(props.success || 'Archivo cargado', { placement: 'bottom-left' });
             }
 
-            setIsUploading(false);
             setIsUploaded(true);
         } catch (error) {
             console.error("Error:", error);
-            toast.error(`Error: ${error}`, { position: 'bottom-left' });
+            toast.error(`Error: ${error}`, { placement: 'bottom-left' });
         }
     };
 
     React.useEffect(() => {
-        setTimeout(() => {
-            setIsUploaded(false)
-        }, 2500)
-    }, [isUploaded])
+        if (isUploaded) {
+            const timer = setTimeout(() => {
+                setIsUploaded(false)
+            }, 2500);
+            return () => clearTimeout(timer);
+        }
+    }, [isUploaded]);
 
     return (
         <>
-            <button className={`uploadbtn btn d-flex f-center relative ${props.className || 'btn-third rounded-md w-max mx-auto'}`} onClick={() => {
-                var input = document.createElement('input');
-                input.type = 'file';
-                input.accept = normalizeAccept();
-                input.click();
-                input.onchange = async (e: any) => {
-                    handleFileChange(e.target.files[0]);
-                }
-            }}>
+            <Button
+                className={`uploadbtn btn d-flex f-center relative ${props.className || 'btn-third rounded-sm w-max'}`}
+                onPress={() => {
+                    if (isUploading) return;
+                    setIsUploading(true);
+
+                    const input = document.createElement('input');
+                    input.type = 'file';
+                    input.accept = normalizeAccept();
+
+                    const handleCancel = () => {
+                        setTimeout(() => {
+                            if (!input.files || input.files.length === 0) {
+                                setIsUploading(false);
+                            }
+                        }, 300);
+
+                        window.removeEventListener('focus', handleCancel);
+                    };
+
+                    window.addEventListener('focus', handleCancel);
+
+                    input.onchange = async (e: any) => {
+                        window.removeEventListener('focus', handleCancel);
+
+                        await handleFileChange(e.target.files[0]);
+                        setIsUploading(false);
+                    };
+
+                    input.click();
+                }}
+            >
                 {
-                    isUploading && <span className="absolute top-1/2 left-1/2 -translate-1/2"><Icons icon="loading" size={20} /></span>
+                    isUploading && <span className="absolute top-1/2 left-1/2 -translate-1/2 custom-spin"><Icon icon="loader-circle" size={20} /></span>
                 }
                 <p className={`m-0 ${isUploading ? 'opacity-0' : 'opacity-100'}`}>
                     {isUploaded ? textCharge : text}
                 </p>
-            </button>
+            </Button>
         </>
     )
 }

@@ -1,7 +1,7 @@
 
 
 export * from './config.js'
-export { $firstToast, $toast } from '../components/Toast/Toast.Store.js'
+export { $toaster, $lastToast } from '../components/Toast/Toaster.store.js'
 
 export { $loading } from './Loading.Store.js'
 

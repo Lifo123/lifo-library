@@ -1,5 +1,5 @@
 import { atom } from "nanostores";
-import { Flifo } from "./General.Utils.js";
+import { isMobile } from "./General.Utils.js";
 
 export const $scrollcount = atom(0);
 
@@ -23,7 +23,7 @@ const set = (state: boolean, target?: HTMLElement) => {
     const TARGET = target instanceof HTMLElement ? target : document.documentElement;
     const scrollbarWidth = window.innerWidth - TARGET.clientWidth;
 
-    const shouldAdjustPadding = !Flifo.isMobile() && hasVisibleVerticalScrollbar(TARGET);
+    const shouldAdjustPadding = !isMobile() && hasVisibleVerticalScrollbar(TARGET);
 
     let scrollLockCount = $scrollcount.get();
 

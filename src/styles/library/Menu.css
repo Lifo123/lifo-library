@@ -1,0 +1,46 @@
+.react-aria-Menu {
+  background-color: var(--color-gray-3);
+  border-radius: 6px;
+  outline: none;
+  border: solid 1px var(--color-gray-6);
+  padding: 4px;
+  font-size: 14px;
+  min-width: 190px;
+  width: max-content;
+}
+
+[data-trigger="SubmenuTrigger"] .react-aria-Menu {
+  min-width: 120px;
+}
+
+.react-aria-MenuItem {
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-weight: 400;
+  outline: none;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  user-select: none;
+}
+
+.react-aria-MenuItem[data-focused="true"] {
+  background-color: var(--color-gray-6);
+}
+
+.light .react-aria-MenuItem[data-focused="true"] {
+  background-color: var(--color-gray-4);
+}
+
+.react-aria-MenuItem[data-open="true"] {
+  background-color: var(--color-gray-8);
+}
+
+.react-aria-MenuItem[data-disabled="true"] {
+  color: var(--color-gray-10);
+  font-weight: 500;
+}

@@ -1,1 +1,1 @@
-export { default as Toaster } from './Toaster.js'
+export { Toaster } from './Toaster.js'

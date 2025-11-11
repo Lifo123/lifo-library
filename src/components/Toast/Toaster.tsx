@@ -1,174 +1,189 @@
-//Fix animation on max Toasts
 'use client'
-import React from "react";
-import { useStore } from "@nanostores/react"
-import type { ToasterItemProps, ToasterProps } from "./Toast.Types.js"
-import { $toast, LocalToast, toast } from "./Toast.Store.js"
-import { ToastIcons } from "./ToastAssets.js";
-import ButtonPromise from '../General/ButtonPromise.js'
-import Icons from "../Icons/Icons.js";
+import React from 'react'
+import { useStore } from '@nanostores/react'
+import { OverlayContainer } from 'react-aria'
+import { $toaster, ToastAllProps, ToasterSettingProps, toast } from './Toaster.store.js'
+import { customUUID } from '../../utils/uuid.js'
+import { Button, ButtonPromise } from '../General/index.js'
+import { ToastIcons } from './ToastAssets.js'
+import { Icon } from 'public-icons'
+import { useEnterAnimation, useExitAnimation } from '@react-aria/utils'
 
-export default function Toaster({
-    toastID = 'init',
-    position = 'top-center',
-    duration = 2500,
-    animation = 'slide',
-    maxToasts = 3,
-    ...props
-}: ToasterProps) {
-    const ToastData = useStore($toast);
 
-    if (!ToastData[toastID]) return
+export function Toaster(props: ToasterSettingProps) {
+    const {
+        toasterId = 'default',
+        maxToasts = 6,
+        placement = 'bottom-right',
+        duration = 3200,
+        richColors = false,
+        noDissapear = false,
+    } = props;
 
-    const AvailableToast = ToastData[toastID];
+    const [toasterGeneralId] = React.useState(customUUID({ prefix: 'toaster=' }));
+    const TOASTER = useStore($toaster)
+
+    const settings = React.useMemo(() => {
+        const s: Partial<ToasterSettingProps> = {
+            maxToasts,
+            placement,
+            duration,
+            richColors,
+            noDissapear
+        };
+
+        (Object.keys(s) as (keyof typeof s)[]).forEach(key => {
+            if (s[key] === undefined) {
+                delete s[key];
+            }
+        });
+
+        return s;
+    }, [maxToasts, placement, duration, richColors, noDissapear]);
+
+    React.useEffect(() => {
+        $toaster.setKey(`${toasterId}.settings`, settings);
+    }, [toasterId, settings]);
+
+    const toasts = TOASTER[toasterId]?.toasts
+    if (!toasts) return null;
+
+    const validToasts = toasts.filter(Boolean);
+    const availableToast = validToasts.slice(-maxToasts);
 
     return (
-        <span className="flifo-portal fixed no-select" data-toaster-id={toastID}>
-            {AvailableToast.map((toast, i) => (
-                <ToastRow
-                    key={toast.id}
-                    index={i}
-                    toastID={toastID}
-                    position={position}
-                    duration={duration}
-                    animation={animation}
-                    maxToasts={maxToasts}
-                    avalibleToasts={AvailableToast.length}
-                    {...toast}
-                />
-            ))}
-        </span>
-    )
-}
-
-interface SolutionRow extends ToasterItemProps {
-    maxToasts: number;
-    index: number;
-    avalibleToasts: number;
-}
-
-const ToastRow = ({
-    scaleOffset = 'center',
-    maxToasts,
-    index,
-    ...props
-}: SolutionRow) => {
-    const [isVisible, setIsVisible] = React.useState<boolean>(false);
-    const [isHovered, setIsHovered] = React.useState<boolean>(false);
-
-    const generateCSSVariables = (
-        prefix: '--custom-start-' | '--custom-end-',
-        styles: React.CSSProperties | undefined
-    ): Record<string, string> => {
-        if (!styles) return {};
-        return Object.entries(styles).reduce((vars, [key, value]) => {
-            vars[`${prefix}${key}`] = String(value);
-            return vars;
-        }, {} as Record<string, string>);
-    };
-
-    const AllOffsets = {
-        ...generateCSSVariables('--custom-start-', props.animate?.start),
-        ...generateCSSVariables('--custom-end-', props.animate?.end),
-    };
-
-    React.useEffect(() => {
-        if (props.avalibleToasts > maxToasts && index === 0) {
-            setIsVisible(false);
-        }
-    }, [index, maxToasts, props.avalibleToasts]);
-
-    React.useEffect(() => {
-        const visible = props.state !== false;
-        if (!visible) {
-            setIsVisible(false);
-        } else {
-            const timeout = setTimeout(() => setIsVisible(true), 50);
-            return () => clearTimeout(timeout);
-        }
-    }, [props.state]);
-
-    React.useEffect(() => {
-        if (props.noDissapear || props.action) return;
-
-        let timeout: NodeJS.Timeout;
-
-        if (!isHovered) {
-            timeout = setTimeout(() => {
-                setIsVisible(false); // inicia animación de salida
-            }, props.duration);
-        }
-
-        return () => clearTimeout(timeout);
-    }, [props.duration, props.noDissapear, props.action, isHovered]);
-
-
-    React.useEffect(() => {
-        if (!isVisible) {
-            const timeout = setTimeout(() => {
-                LocalToast.removeDelay(props.toastID, props.id || 'wasa', 0);
-            }, 350); // espera que la animación termine
-
-            return () => clearTimeout(timeout);
-        }
-    }, [isVisible, props.toastID, props.id]);
-
-    return (
-        <div className={`toast-container d-flex f-center h-max w-max select ${isVisible ? 'visible' : 'delete'} ${props.theme || ''} absolute`}
-            data-axis-y={props.position?.split('-')[0]}
-            data-axis-x={props.position?.split('-')[1]}
-            data-scale-offset={scaleOffset}
-            data-animation={props?.animation}
-            style={{
-                zIndex: isHovered ? 'inherit' : 0,
-                ...AllOffsets
-            }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+        <OverlayContainer
+            className='toast-overlay no-select h-full w-full '
+            id={toasterGeneralId}
         >
             {
-                props?.children ?? (
-                    <span
-                        className={`toast-item f-row f-nowrap justify-between items-center rounded-md gap-2 o-hidden`}
-                        data-toast-type={props.type}
-                        data-iscolor={props.richColors}
-                    >
-                        <div className="f-row gap-2 items-center justify-start">
-                            {props.customIcon || props.icon || props.type && (
-                                <span className="toast-icon mr-1 d-flex f-center">
-                                    {props.type ? ToastIcons[props.type] : props.customIcon ?? props.icon}
-                                </span>
-                            )}
-
-                            <div className="toast-detail f-col justify-center gap-0.5">
-                                {props.title && <span className="fs-2 fw-500" style={{ color: `var(--lifo-toast-${props.richColors ? props.type : 'title'})`, fontWeight: 550 }}>
-                                    {props?.title}
-                                </span>}
-                                <p className="fs-2 m-0 leading-tight" style={{ textWrap: 'nowrap', color: `var(--lifo-toast-${props.richColors ? props.type : 'description'})`, fontWeight: 450 }}>{props?.message}</p>
-                                {props.href && <a className="info fs-custom-12-5 rounded-md w-max fw-500" href={props.href} target="_blank">More</a>}
-
-                            </div>
-                        </div>
-                        {
-                            props.customAction ||
-                                props.action ?
-                                <ButtonPromise className="pointer btn-primary rounded-sm fw-500"
-                                    text={props.actionText || 'Continue'}
-                                    size={18}
-                                    style={{ padding: '.3rem .65rem', fontSize: 12.5 }}
-                                    onClick={async () => {
-                                        setIsHovered(true);
-                                        await props.action?.()
-                                        toast.dismiss(props.toastID, props.id)
-                                    }}
-                                />
-                                : props.closeBtn ? <Icons icon="close" size={26} onClick={() => {
-                                    toast.dismiss(props.toastID, props.id)
-                                }} /> : null
-                        }
-                    </span>
-                )
+                availableToast.map((toast) => (
+                    <ToastItem key={toast.id} {...toast} />
+                ))
             }
-        </div>
+        </OverlayContainer>
     )
 }
+
+function ToastItem(props: ToastAllProps) {
+    const {
+        id,
+        toasterId,
+        isHovered,
+        isOpen,
+        noDissapear,
+        duration,
+    } = props;
+
+    const ref = React.useRef<HTMLDivElement>(null);
+
+    const isExiting = useExitAnimation(ref, isOpen as boolean);
+
+    React.useEffect(() => {
+        if (!id || noDissapear || isHovered) {
+            return;
+        }
+
+        let timeout: NodeJS.Timeout;
+        timeout = setTimeout(() => {
+            toast.dismiss(id, toasterId);
+        }, duration);
+
+        return () => clearTimeout(timeout);
+    }, [id, isHovered, noDissapear, duration, toasterId]);
+
+    React.useEffect(() => {
+        if (!isOpen && !isExiting && id) {
+            toast.remove(id, toasterId);
+        }
+    }, [isOpen, isExiting, id, toasterId]);
+
+    if (!isOpen && !isExiting) {
+        return null;
+    }
+
+    return (
+        <ToastItemInner
+            {...props}
+            isExiting={isExiting}
+            ref={ref}
+        />
+    )
+
+}
+
+const ToastItemInner = React.forwardRef<HTMLDivElement, ToastAllProps & { isExiting: boolean }>(
+    (props, ref) => {
+        const {
+            id,
+            toasterId,
+            isHovered,
+            isOpen,
+            placement,
+            isExiting,
+
+            // Props de renderizado
+            title,
+            description,
+            type = 'none',
+            customIcon,
+            hasCloseButton,
+            action,
+            actionLabel,
+            richColors,
+            custom
+        } = props;
+
+        const isEntering = useEnterAnimation(ref as React.RefObject<HTMLDivElement>) || false;
+        const [axisY, axisX] = placement?.split('-') as [string, string];
+
+        return (
+            <div
+                ref={ref}
+                data-open={isOpen}
+                data-hovered={isHovered}
+
+                data-entering={isEntering || undefined}
+                data-exiting={isExiting || undefined}
+                data-axis-y={axisY}
+                data-axis-x={axisX}
+
+                className='toast-wrapper select'
+                onMouseEnter={() => toast.update(id as string, { isHovered: true }, toasterId)}
+                onMouseLeave={() => toast.update(id as string, { isHovered: false }, toasterId)}
+            >
+                {
+                    custom ?? <>
+                        <div
+                            className='toast-item f-row gap-9 justify-between items-center rounded-lg'
+                            data-toast-type={type}
+                            data-richcolors={richColors}
+                        >
+                            <div className='f-row gap-1 items-center'>
+                                <span className='f-col f-center h-6 aspect-square'>{customIcon || ToastIcons[type]}</span>
+                                <div className='f-col text-start ml-1'>
+                                    {title && <p className='fs-15 fw-475'>{title}</p>}
+                                    {description && <p className='text-p2 fw-475 text-gray-11'>{description}</p>}
+                                </div>
+                            </div>
+                            <span className='text-gray-11'>
+                                {
+                                    action ? <ButtonPromise onPress={async () => {
+                                        await action();
+                                        toast.dismiss(id, toasterId)
+                                    }}>
+                                        {actionLabel || 'Continue'}
+                                    </ButtonPromise> : hasCloseButton && <Button className={'pointer rounded-full hover:bg-gray-5 p-1 mt-1'}
+                                        onPress={() => toast.dismiss(id, toasterId)}
+                                    >
+                                        <Icon icon='close' size={22}/>
+                                    </Button>
+
+                                }
+                            </span>
+                        </div>
+                    </>
+                }
+            </div>
+        )
+    })

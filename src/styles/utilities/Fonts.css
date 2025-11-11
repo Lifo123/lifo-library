@@ -1,0 +1,121 @@
+@layer base {
+  @font-face {
+    font-family: 'Inter';
+    src: url('/src/assets/fonts/Inter.ttf');
+  }
+  @font-face {
+    font-family: 'Geist';
+    src: url('/src/assets/fonts/Geist.ttf');
+  }
+}
+
+@theme {
+  --font-multiplier: 1;
+  --ff: Inter, Geist, Google Sans, Segoe UI, system-ui, -apple-system, sans-serif, sans-serif;
+  
+  --text-h1: 18px;
+  --text-p: 16px ;
+  --text-p2: 14px;
+  --text-span: 12px;
+
+}
+
+@utility fw-100 {
+  font-weight: 100;
+}
+
+@utility fw-200 {
+  font-weight: 200;
+}
+
+@utility fw-300 {
+  font-weight: 300;
+}
+
+@utility fw-400 {
+  font-weight: 400;
+}
+
+@utility fw-475 {
+  font-weight: 475;
+}
+
+@utility fw-500 {
+  font-weight: 500;
+}
+
+@utility fw-600 {
+  font-weight: 600;
+}
+
+@utility fw-700 {
+  font-weight: 700;
+}
+
+@utility fw-800 {
+  font-weight: 800;
+}
+
+@utility fw-900 {
+  font-weight: 900;
+}
+
+@utility fs-10 {
+  font-size: calc(var(--font-multiplier) * 10px);
+}
+
+@utility fs-11 {
+  font-size: calc(var(--font-multiplier) * 11px);
+}
+
+@utility fs-12 {
+  font-size: calc(var(--font-multiplier) * 12px);
+}
+
+@utility fs-13 {
+  font-size: calc(var(--font-multiplier) * 13px);
+}
+
+@utility fs-14 {
+  font-size: calc(var(--font-multiplier) * 14px);
+}
+
+@utility fs-15 {
+  font-size: calc(var(--font-multiplier) * 15px);
+}
+
+@utility fs-16 {
+  font-size: calc(var(--font-multiplier) * 16px);
+}
+
+@utility fs-17 {
+  font-size: calc(var(--font-multiplier) * 17px);
+}
+
+@utility fs-18 {
+  font-size: calc(var(--font-multiplier) * 18px);
+}
+
+@utility fs-19 {
+  font-size: calc(var(--font-multiplier) * 19px);
+}
+
+@utility fs-20 {
+  font-size: calc(var(--font-multiplier) * 20px);
+}
+
+@utility fs-21 {
+  font-size: calc(var(--font-multiplier) * 21px);
+}
+
+@utility fs-22 {
+  font-size: calc(var(--font-multiplier) * 22px);
+}
+
+@utility fs-23 {
+  font-size: calc(var(--font-multiplier) * 23px);
+}
+
+@utility fs-24 {
+  font-size: calc(var(--font-multiplier) * 24px);
+}

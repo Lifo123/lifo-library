@@ -1,0 +1,52 @@
+@layer components {
+  .react-aria-ModalOverlay {
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    background: #00000051;
+    position: absolute;
+    top: 0;
+    outline: none;
+    left: 0;
+    transition: opacity 0.18s ease;
+  }
+  
+  .react-aria-Modal {
+    position: fixed;
+    top: 46%;
+    left: 50%;
+    translate: -50% -50%;
+    transition: all 0.3s ease;
+  }
+  
+  .react-aria-Modal[data-entering],
+  .react-aria-Modal[data-exiting],
+  .react-aria-ModalOverlay[data-entering],
+  .react-aria-ModalOverlay[data-exiting] {
+    opacity: 0;
+  }
+  
+  .react-aria-Modal[data-entering] {
+    top: 50%;
+  }
+  
+  .react-aria-Modal[data-exiting] {
+    top: 46%;
+  }
+  
+  .react-aria-Popover {
+    opacity: 1;
+    min-width: var(--trigger-width);
+    transform-origin: var(--trigger-anchor-point);
+    transition-property: transform, scale, opacity;
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    transition-duration: .15s;
+    overflow: hidden;
+  }
+  
+  .react-aria-Popover[data-entering="true"],
+  .react-aria-Popover[data-exiting="true"] {
+    scale: .96;
+    opacity: 0;
+  }
+}

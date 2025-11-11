@@ -1,0 +1,15 @@
+
+@utility custom-spin {
+    animation: rotate .75s linear forwards infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    height: max-content;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+} 

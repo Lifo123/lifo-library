@@ -1,5 +1,5 @@
 @layer components {
-    .lb-dm-togle {
+    .lb-dm-toggle {
         position: relative;
         border-radius: 999px;
         height: 22px;
@@ -30,14 +30,15 @@
     }
 
     .lb-dm-icon-toggle {
-        border: solid 1px var(--color-lifo-border);
-        padding: .26rem;
+        border: solid 1px var(--color-gray-6);
+        padding: .35rem;
         aspect-ratio: 1 / 1;
         width: max-content;
+        color: var(--color-gray-12);
     }
 
     .lb-dm-icon-toggle:hover {
-        background-color: var(--color-lifo-bg-third);
+        background-color: var(--color-gray-4);
     }
 
 }

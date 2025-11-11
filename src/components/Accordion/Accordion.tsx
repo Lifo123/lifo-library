@@ -1,63 +1,61 @@
-'use strict';
-import React, { createContext } from "react";
-import { useStore } from "@nanostores/react";
+'use client'
 
-import { BaseComponentProps } from "../../Types/GeneralTypes.js";
-import { $interface } from "../../UI/Interface.Store.js";
+import React from 'react';
 
-interface AccordionContextProps {
-    isOpen: boolean;
-    handleClick: () => void;
-    dropRef: React.RefObject<HTMLDivElement> | null;
+import { useButton, useDisclosure } from 'react-aria';
+import { useDisclosureState, DisclosureProps } from 'react-stately';
+import { mergeProps, useFocusRing } from 'react-aria';
+
+import type { BaseComponentProps } from '../../Types/GeneralTypes.js';
+import { Icon } from 'public-icons';
+
+interface Props extends DisclosureProps {
+    title: string;
+    children: React.ReactNode;
+    styling?: {
+        content?: BaseComponentProps;
+        trigger?: BaseComponentProps;
+        panel?: BaseComponentProps;
+    }
 }
 
-export const AccordionContext = createContext<AccordionContextProps>({
-    isOpen: false,
-    handleClick: () => { },
-    dropRef: null,
-})
-
-interface AccordionProps extends BaseComponentProps {
-    children?: React.ReactNode;
-    closeAll?: boolean;
-}
-
-export default function Accordion(props: AccordionProps) {
-    const INTERFACE = useStore($interface);
-
-    const [isOpen, setIsOpen] = React.useState(false);
-    const dropRef = React.useRef<HTMLDivElement | any>(null);
-
-    const handleClick = () => {
-        if (props.closeAll) {
-            $interface.setKey("accordionAllClose", true);
-
-            setTimeout(() => {
-                $interface.setKey("accordionAllClose", false);
-            }, 0);
-        }
-
-        return setIsOpen(prev => !prev);
-    };
-
-
-    React.useEffect(() => {
-        if (INTERFACE.accordionAllClose && !props.closeAll) {
-            setIsOpen(false);
-        }
-    }, [INTERFACE.accordionAllClose]);
-
+export function Accordion(props: Props) {
+    let state = useDisclosureState(props);
+    let panelRef = React.useRef<HTMLDivElement | null>(null);
+    let triggerRef = React.useRef<HTMLButtonElement | null>(null);
+    let { buttonProps: triggerProps, panelProps } = useDisclosure(
+        { ...props, },
+        state,
+        panelRef,
+    );
+    let { buttonProps } = useButton(triggerProps, triggerRef);
+    let { isFocusVisible, focusProps } = useFocusRing();
 
     return (
-        <AccordionContext.Provider value={{
-            isOpen, handleClick, dropRef
-        }}>
-            <div
-                className={`f-col o-hidden w-full ${props.className || 'border-b border-lifo-border fs-2 text-lifo-text-high'}`}
-                style={props.style}
+        <div className={`accordion ${state.isExpanded ? 'expanded' : ''} f-col o-hidden w-full border-b border-lifo-border fs-2 text-lifo-text-high`}
+        >
+            <button
+                className={"accordion-trigger pt-4 pb-3 fw-500 f-row items-center justify-between pointer select-none"}
+                style={{ outline: isFocusVisible ? '2px solid dodgerblue' : 'none' }}
+                {...mergeProps(buttonProps, focusProps)}
+                ref={triggerRef}
             >
-                {props.children}
+                {props.title || 'No title provided'}
+                <span className="mr-1">
+                    <Icon icon="arrow" size={20} rotate={state.isExpanded ? 0 : -180}
+                        style={{
+                            transition: 'rotate .15s ease',
+                        }}
+                       />
+                </span>
+            </button>
+            <div
+                className={`accordion-panel ${state.isExpanded && 'expanded'} f-col gap-4 max-w-3xl fw-400 w-full leading-relaxed`}
+                {...mergeProps(panelProps, focusProps)}
+                ref={panelRef}
+            >
+                {props.children || 'No content provided'}
             </div>
-        </AccordionContext.Provider>
+        </div>
     );
 }

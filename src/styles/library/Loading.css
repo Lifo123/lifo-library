@@ -6,9 +6,9 @@
     min-width: 100px;
     z-index: 1500;
   }
-
+  
   .page-load {
-    background-color: var(--color-project-bg, var(--color-lifo-bg));
+    background-color: var(--color-project-bg, var(--color-gray-1));
     position: absolute;
     padding-bottom: 5rem;
     display: flex;
@@ -24,20 +24,20 @@
     visibility: visible;
     opacity: 1;
   }
-
+  
   .page-load.hidden {
     visibility: hidden;
     pointer-events: none;
     user-select: none;
     opacity: 0;
   }
-
+  
   .action-icon {
-    background-color: var(--color-project-bg-secondary, var(--color-lifo-bg-secondary));
+    background-color: var(--color-project-bg-secondary, var(--color-gray-2));
   }
-
-  .animate-spin {
-    animation: spin .8s linear infinite;
+  
+  .custom-spin {
+    animation: rotate .75s linear forwards infinite;
   }
 }
 
@@ -45,7 +45,7 @@
   0% {
     transform: rotate(0deg);
   }
-
+  
   100% {
     transform: rotate(360deg);
   }

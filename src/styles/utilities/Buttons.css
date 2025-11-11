@@ -1,0 +1,95 @@
+@utility pointer {
+  cursor: pointer;
+  user-select: none;
+  pointer-events: visible !important;
+}
+
+@utility no-select {
+  user-select: none;
+  pointer-events: none;
+}
+
+@utility select {
+  user-select: text;
+  pointer-events: visible;
+}
+
+/*Buttons*/
+
+@utility btn {
+  min-height: 32px;
+  line-height: 1.6;
+  padding: 8px 16px;
+  font-size: calc(var(--font-multiplier) * 14px );
+  min-width: max-content;
+  height: max-content;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  font-weight: 450;
+}
+
+.btn:active {
+  transform: scale(0.97);
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  transition-duration: .15s;
+}
+
+.btn,
+button {
+  outline: 0px solid transparent;
+  transition: outline  0.1s;
+}
+
+.btn[data-focus-visible],
+button[data-focus-visible] {
+  outline: 2px solid dodgerblue;
+  outline-offset: 2px;
+}
+
+@utility btn-primary {
+  background-color: var(--color-accent-10);
+  color: var(--color-accent-contrast);
+  font-weight: 500;
+  letter-spacing: normal;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-9);
+}
+
+@utility btn-secondary {
+  background-color: var(--color-gray-6);
+  color: var(--color-gray-12);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-gray-7);
+}
+
+@utility btn-third {
+  border: solid 1px var(--color-gray-7);
+  color: var(--color-gray-12);
+}
+
+.btn-third:hover {
+  background-color: var(--color-gray-5);
+}
+
+@utility btn-fourth {
+  background-color: transparent;
+  color: var(--color-gray-12);
+}
+
+.btn-fourth:hover {
+  background-color: var(--color-gray-5);
+}
+
+@media (550px > width) {
+  .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

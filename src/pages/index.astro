@@ -2,12 +2,9 @@
 import "../styles/Global.css";
 
 import {
-    CardLoading,
     DarkmodeDrop,
     DarkmodeIcon,
-    Dialoger,
     PageLoading,
-    Toaster,
 } from "../components/index";
 import Test from "../apps/Main";
 
@@ -74,10 +71,7 @@ const { title, description } = Astro.props;
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
     <body class="f-col f-align-center w-full ox-hidden">
-        <PageLoading />
-        <Toaster client:only="react" maxToasts={6}/>
-        <Dialoger client:only="react" />
-        <CardLoading client:only="react" />
+        <PageLoading  />
         <header class="f-row w-full justify-between items-center px-4 py-2 " data-wasa='hi'>
             <div class="f-row gap-2.5 f-center pointer">
                 <span>Logo</span>
@@ -90,16 +84,17 @@ const { title, description } = Astro.props;
                 <DarkmodeDrop client:only="react" />
             </div>
         </header>
+
         <Test client:only="react" />
     </body>
 
     <style>
         header {
             height: 48px;
-            color: var(--vscode-description-foreground);
+            color: var(--color-gray-11);
         }
         .head-h1:hover {
-            color: var(--vscode-foreground);
+            color: var(--color-gray-12);
         }
 
         main {
