@@ -16,7 +16,7 @@ export default function DarkmodeIcon({ size = 20 }) {
     const PREFERENCES = useStore($preferences);
 
     return (
-        <span className="lb-dm-icon-toggle action-icon d-flex f-center pointer rounded-md" onClick={() => Darkmode.toggle()}>
+        <span className="lb-dm-icon-toggle" onClick={() => Darkmode.toggle()}>
             {
                 PREFERENCES.theme === 'system' ? <Icon icon='laptop-minimal' size={20} /> :
 

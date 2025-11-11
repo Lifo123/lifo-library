@@ -1,44 +1,68 @@
 @layer components {
-    .lb-dm-toggle {
-        position: relative;
-        border-radius: 999px;
-        height: 22px;
-        width: 38px;
-        background-color: #7b7b7b;
-    }
-
-    .lb-dm-togle.active {
-        background-color: #1f6feb;
-    }
-
-    .lb-dm-togle span {
-        border-radius: 50%;
-        display: flex;
-        height: 70%;
-        top: 50%;
-        left: 4px;
-        transform: translateY(-50%);
-        aspect-ratio: 1;
-        position: absolute;
-        background-color: #fff;
-        transition: left .1s ease;
-    }
-
-    .lb-dm-togle.active span {
-        left: calc(100% - 19px);
-        right: 4px;
-    }
-
-    .lb-dm-icon-toggle {
-        border: solid 1px var(--color-gray-6);
-        padding: .35rem;
-        aspect-ratio: 1 / 1;
-        width: max-content;
-        color: var(--color-gray-12);
-    }
-
-    .lb-dm-icon-toggle:hover {
-        background-color: var(--color-gray-4);
-    }
-
+  .lb-dm-toggle {
+    position: relative;
+    border-radius: 999px;
+    height: 22px;
+    width: 38px;
+    background-color: #7b7b7b;
+    cursor: pointer;
+    display: flex;
+  }
+  
+  .lb-dm-togle.active {
+    background-color: #1f6feb;
+  }
+  
+  .lb-dm-togle span {
+    border-radius: 50%;
+    display: flex;
+    height: 70%;
+    top: 50%;
+    left: 4px;
+    transform: translateY(-50%);
+    aspect-ratio: 1;
+    position: absolute;
+    background-color: #fff;
+    transition: left .1s ease;
+    user-select: none;
+    pointer-events: none;
+  }
+  
+  .lb-dm-togle.active span {
+    left: calc(100% - 19px);
+    right: 4px;
+  }
+  
+  .lb-dm-icon-toggle {
+    border: solid 1px var(--color-gray-6);
+    padding: .35rem;
+    aspect-ratio: 1 / 1;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--color-gray-12);
+    border-radius: 6px;
+  }
+  
+  .lb-dm-icon-toggle:hover {
+    background-color: var(--color-gray-4);
+  }
+  
+  .dm-select {
+    font-weight: 400;
+    border: solid 1px var(--color-gray-7);
+    color: var(--color-gray-12);
+    border-radius: var(--radius-sm);
+    gap: calc(var(--spacing) * 2);
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding-block: calc(var(--spacing) * 1.5);
+    padding-inline: calc(var(--spacing) * 3);
+    font-size: var(--text-p2);
+    padding-right: calc(var(--spacing) * 2.5);
+    display: flex;
+  }
 }

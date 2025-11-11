@@ -42,19 +42,19 @@
 // export const $dialoger = deepMap()
 
 
-// // function createDialog(props: DialogAllProps): string {
-// //     const id = props.id || customUUID();
-// //     return id;
-// // }
+// function createDialog(props: DialogAllProps): string {
+//     const id = props.id || customUUID();
+//     return id;
+// }
 
-// // function show() {
+// function show() {
 
-// // }
+// }
 
-// // function custom() {
+// function custom() {
 
-// // }
+// }
 
-// // function hide(id: string, index?: number) {
+// function hide(id: string, index?: number) {
 
-// // }
+// }

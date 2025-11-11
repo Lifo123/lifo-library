@@ -71,16 +71,3 @@
 //         </ModalOverlay>
 //     )
 // }
-
-// function DialogItem(props: any){
-//     const {
-//         //state
-//     } = props
-
-//     const ref = React.useRef<HTMLDivElement>(null)
-//     //const isExiting = useExitAnimation(ref, isOpen as boolean);
-// }
-
-// function DialogItemInner() {
-
-// }

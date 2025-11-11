@@ -4,6 +4,7 @@ import { toast } from "../Toast/Toaster.store.js";
 import { $files } from "../../Stores/File.Store.js";
 import { Button } from "react-aria-components";
 import { Icon } from "public-icons";
+import { LoadingButton } from "./LoadingButton.js";
 
 interface Props {
     className?: string;
@@ -39,7 +40,6 @@ export default function UploadBtn({
     };
 
     const handleFileChange = async (file: File) => {
-        // ... (toda tu lógica de handleFileChange sigue igual)
         if (!file) {
             toast.error(props.error || 'Error al cargar el archivo', { placement: 'bottom-left' });
             return;
@@ -50,15 +50,12 @@ export default function UploadBtn({
                 ? props.accept.join('|')
                 : props.accept;
 
-            // Corregí un pequeño bug aquí: 
-            // 1. Asegurarse que todo sea minúscula para comparar
-            // 2. Normalizar las extensiones de 'accept' (quitar el punto)
             const normalizedAllowed = allowedExtensions.replace(/\./g, '').split('|').join('|');
             const fileExtension = file.name.split('.').pop()?.toLowerCase();
             const regex = new RegExp(`^(${normalizedAllowed})$`, 'i');
 
             if (!fileExtension || !regex.test(fileExtension)) {
-                toast.error(`Archivo no permitido. Solo: ${normalizedAllowed.split('|').join(', ')}`, { placement: 'bottom-left' });
+                toast.error(`File not supported. Only: ${normalizedAllowed.split('|').join(', ')}`, { placement: 'bottom-left' });
                 return;
             }
         }
@@ -73,7 +70,7 @@ export default function UploadBtn({
             if (props.onUpload) {
                 await props.onUpload(file);
             } else {
-                toast.success(props.success || 'Archivo cargado', { placement: 'bottom-left' });
+                toast.success(props.success || 'File uploaded', { placement: 'bottom-left' });
             }
 
             setIsUploaded(true);
@@ -92,12 +89,8 @@ export default function UploadBtn({
         }
     }, [isUploaded]);
 
-    return (
-        <>
-            <Button
-                className={`uploadbtn btn d-flex f-center relative ${props.className || 'btn-third rounded-sm w-max'}`}
-                onPress={() => {
-                    if (isUploading) return;
+    const triggerFileInput = () => {
+        if (isUploading) return;
                     setIsUploading(true);
 
                     const input = document.createElement('input');
@@ -124,15 +117,15 @@ export default function UploadBtn({
                     };
 
                     input.click();
-                }}
-            >
-                {
-                    isUploading && <span className="absolute top-1/2 left-1/2 -translate-1/2 custom-spin"><Icon icon="loader-circle" size={20} /></span>
-                }
-                <p className={`m-0 ${isUploading ? 'opacity-0' : 'opacity-100'}`}>
-                    {isUploaded ? textCharge : text}
-                </p>
-            </Button>
-        </>
-    )
+    };
+
+    return (
+        <LoadingButton
+            isLoading={isUploading}
+            onPress={triggerFileInput}
+            {...props}
+        >
+            {isUploaded ? textCharge : text}
+        </LoadingButton>
+    );
 }

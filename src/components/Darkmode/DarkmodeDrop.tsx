@@ -19,7 +19,7 @@ export default function DarkmodeDrop() {
       <SelectMenu
         value={PREFERENCES.theme}
         customize={{
-          trigger: { className: 'btn-third rounded-sm f-row gap-2 items-center justify-between pointer py-1.5 px-3 fs-14 pr-2.5 fw-400' }
+          trigger: { className: 'dm-select' }
         }}
         ref={ref}
       >

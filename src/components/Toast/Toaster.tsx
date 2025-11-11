@@ -4,7 +4,7 @@ import { useStore } from '@nanostores/react'
 import { OverlayContainer } from 'react-aria'
 import { $toaster, ToastAllProps, ToasterSettingProps, toast } from './Toaster.store.js'
 import { customUUID } from '../../utils/uuid.js'
-import { Button, ButtonPromise } from '../General/index.js'
+import { Button, ButtonPromise } from '../Buttons/index.js'
 import { ToastIcons } from './ToastAssets.js'
 import { Icon } from 'public-icons'
 import { useEnterAnimation, useExitAnimation } from '@react-aria/utils'
@@ -176,7 +176,7 @@ const ToastItemInner = React.forwardRef<HTMLDivElement, ToastAllProps & { isExit
                                     </ButtonPromise> : hasCloseButton && <Button className={'pointer rounded-full hover:bg-gray-5 p-1 mt-1'}
                                         onPress={() => toast.dismiss(id, toasterId)}
                                     >
-                                        <Icon icon='close' size={22}/>
+                                        <Icon icon='close' size={22} />
                                     </Button>
 
                                 }

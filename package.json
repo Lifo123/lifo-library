@@ -9,9 +9,9 @@
     "url": "git+https://github.com/Lifo123/lifo-library.git"
   },
   "scripts": {
-    "flifo:utils": "npx postcss src/styles/Main.css -o src/styles/output/test.css --no-map",
+    "flifo:utils": "npx postcss src/styles/Main.css -o src/styles/output/Flifo.css --no-map",
     "noTailwind:styles": "tailwindcss -i src/styles/noTailwind.css -o src/styles/output/Flifo.noTailwind.pre.css --minify",
-    "build": "pnpm run flifo:utilities && tsc",
+    "build": "pnpm run flifo:utils && tsc",
     "dev": "astro dev --host",
     "preview": "astro build && astro preview",
     "deploy": "pnpm run build && npm publish --access public",
@@ -56,9 +56,7 @@
     ".": "./dist/index.js",
     "./Stores": "./dist/Stores/index.js",
     "./utils": "./dist/utils/index.js",
-    "./UI": "./dist/UI/index.js",
-    "./User": "./dist/Stores/User.Store.js",
-    "./Styles": "./dist/styles/Flifo.css"
+    "./User": "./dist/Stores/User.Store.js"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

@@ -1,1 +1,1 @@
-export { default as SocialIcon } from './SocialIcons.js';
+//export { default as SocialIcon } from './SocialIcons.js';

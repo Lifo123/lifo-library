@@ -1,7 +1,5 @@
 'use client'
-
 import React from 'react';
-
 import { useButton, useDisclosure } from 'react-aria';
 import { useDisclosureState, DisclosureProps } from 'react-stately';
 import { mergeProps, useFocusRing } from 'react-aria';
@@ -32,10 +30,10 @@ export function Accordion(props: Props) {
     let { isFocusVisible, focusProps } = useFocusRing();
 
     return (
-        <div className={`accordion ${state.isExpanded ? 'expanded' : ''} f-col o-hidden w-full border-b border-lifo-border fs-2 text-lifo-text-high`}
+        <div className={`accordion ${state.isExpanded ? 'expanded' : ''}`}
         >
             <button
-                className={"accordion-trigger pt-4 pb-3 fw-500 f-row items-center justify-between pointer select-none"}
+                className={"accordion-trigger"}
                 style={{ outline: isFocusVisible ? '2px solid dodgerblue' : 'none' }}
                 {...mergeProps(buttonProps, focusProps)}
                 ref={triggerRef}
@@ -46,11 +44,11 @@ export function Accordion(props: Props) {
                         style={{
                             transition: 'rotate .15s ease',
                         }}
-                       />
+                    />
                 </span>
             </button>
             <div
-                className={`accordion-panel ${state.isExpanded && 'expanded'} f-col gap-4 max-w-3xl fw-400 w-full leading-relaxed`}
+                className={`accordion-panel ${state.isExpanded && 'expanded'}`}
                 {...mergeProps(panelProps, focusProps)}
                 ref={panelRef}
             >
