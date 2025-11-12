@@ -1,6 +1,6 @@
 @theme {
-  --accent-hue: 195;
-  --accent-saturation: var(--saturation, 25%);
+  --accent-hue: 210;
+  --accent-saturation: var(--saturation, 60%);
   --accent-contrast: var(--contrast, #fff);
 
 

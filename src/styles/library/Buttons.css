@@ -31,9 +31,9 @@
     align-items: center;
     width: max-content;
     height: max-content;
-    transition: opacity .15s ease, filter .125s ease;
+    transition: opacity .1s ease, filter .125s ease;
     opacity: 0;
-    filter: blur(4px);
+    filter: blur(2px);
   }
   
   .loading-btn span.style {
@@ -43,13 +43,13 @@
   
   .loading-btn p {
     margin: 0;
-    transition: opacity .15s ease, filter .125s ease;
+    transition: opacity .1s ease, filter .125s ease;
     opacity: 1;
     filter: blur(0);
   }
   
   .loading-btn p.style {
     opacity: 0;
-    filter: blur(4px);
+    filter: blur(2px);
   }
 }

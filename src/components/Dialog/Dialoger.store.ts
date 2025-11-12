@@ -1,60 +1,60 @@
-// import { deepMap } from "nanostores";
-// import { customUUID } from "../../utils/index.js";
+import { deepMap } from "nanostores";
+import { customUUID } from "../../utils/index.js";
 
-// type DialogBaseProps = {
-//     id?: string;
-//     isOpen: boolean;
-//     isDismissable?: boolean;
-//     isKeyboardDismissDisabled?: boolean;
-// }
+type DialogBaseProps = {
+    id?: string;
+    isOpen: boolean;
+    isDismissable?: boolean;
+    isKeyboardDismissDisabled?: boolean;
+}
 
-// type DialogShowProps = {
-//     title?: string;
-//     description?: string;
+type DialogShowProps = {
+    title?: string;
+    description?: string;
 
-//     variant?: 'info' | 'warning' | 'error' | 'success';
-//     customIcon?: React.ReactNode;
+    variant?: 'info' | 'warning' | 'error' | 'success';
+    customIcon?: React.ReactNode;
 
-//     cancelAction?: () => Promise<void> | void;
-//     cancelActionLabel?: string;
+    cancelAction?: () => Promise<void> | void;
+    cancelActionLabel?: string;
 
-//     PrimaryAction?: () => Promise<void> | void;
-//     PrimaryActionLabel?: string;
-//     isPrimaryActionDisabled?: boolean;
+    PrimaryAction?: () => Promise<void> | void;
+    PrimaryActionLabel?: string;
+    isPrimaryActionDisabled?: boolean;
 
-//     SecondaryAction?: () => Promise<void> | void;
-//     SecondaryActionLabel?: string;
-//     isSecondaryActionDisabled?: boolean;
+    SecondaryAction?: () => Promise<void> | void;
+    SecondaryActionLabel?: string;
+    isSecondaryActionDisabled?: boolean;
 
-//     className?: string;
-//     style?: React.CSSProperties;
-// }
-
-
-
-// type DialogAllProps = {
-//     custom?: React.ReactNode;
-// } & DialogBaseProps & DialogShowProps
+    className?: string;
+    style?: React.CSSProperties;
+}
 
 
 
-// //Will update with @nanostores/deep-map
-// export const $dialoger = deepMap()
+type DialogAllProps = {
+    custom?: React.ReactNode;
+} & DialogBaseProps & DialogShowProps
 
 
-// function createDialog(props: DialogAllProps): string {
-//     const id = props.id || customUUID();
-//     return id;
-// }
 
-// function show() {
+//Will update with @nanostores/deep-map
+export const $dialoger = deepMap()
 
-// }
 
-// function custom() {
+function createDialog(props: DialogAllProps): string {
+    const id = props.id || customUUID();
+    return id;
+}
 
-// }
+function show() {
 
-// function hide(id: string, index?: number) {
+}
 
-// }
+function custom() {
+
+}
+
+function hide(id: string, index?: number) {
+
+}

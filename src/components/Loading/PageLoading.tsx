@@ -9,9 +9,9 @@ export default function PageLoading({ children }: PageLoadingProps) {
     return (
         <div
             id="page-load"
-            className="page-load absolute d-flex f-center h-screen w-screen pb-10"
+            className="page-load"
         >
-            {children || <span className="custom-spin"><Icon size={40} icon="loader-circle" strokeWidth={1.65} /></span>}
+            {children || <span><Icon size={40} icon="loader-circle" strokeWidth={1.8} /></span>}
         </div>
 
     )

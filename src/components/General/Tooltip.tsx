@@ -7,9 +7,7 @@ interface TooltipLibProps extends TooltipTriggerProps {
     children?: React.ReactNode
     custom?: React.ReactNode
     text?: string
-
     offset?: number
-
     focusableProps?: FocusableOptions
     tooltipProps?: TooltipProps
 }

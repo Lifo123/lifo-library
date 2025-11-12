@@ -1,2 +1,7 @@
 @import './Neutral.css';
 @import './Accent.css';
+
+@import './Success.css';
+@import './Error.css';
+@import './Warning.css';
+@import './Info.css';

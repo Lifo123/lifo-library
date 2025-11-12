@@ -5,19 +5,20 @@
     border-radius: 4px;
     padding: 8px 12px;
     overflow: hidden;
-    font-size: 13px;
-    font-weight: 480;
-    line-height: 1.5;
+    font-size: var(--text-p2);
+    font-weight: 500;
+    line-height: 1.6;
     user-select: none;
     pointer-events: none;
     color: var(--color-gray-12);
     
-    transition: transform .15s, opacity .175s;
+    transition: transform .15s, opacity .175s, filter .125s;
     transform-origin: var(--trigger-anchor-point);
 
     &[data-entering],
     &[data-exiting] {
       transform: var(--origin) scale(.8);
+      filter: blur(2px);
       opacity: 0
     }
     

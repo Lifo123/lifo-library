@@ -2,22 +2,20 @@
 import { AllIconsType, Icon, IconTypeProps } from 'public-icons'
 import { Button, ButtonProps } from 'react-aria-components';
 
-//Importing IconTypeprops
-
-
-interface PressableIconProps extends ButtonProps {
+type PressableIconProps = {
     icon: AllIconsType;
-    className?: string;
-    style?: React.CSSProperties;
-    iconProps?: IconTypeProps
-}
+    triggerProps?: {
+        className?: string;
+        style?: React.CSSProperties;
+    } & ButtonProps
+} & IconTypeProps
 
 export function PressableIcon({
-    icon, className, style, iconProps, ...props
+    icon, triggerProps, ...iconProps
 }: PressableIconProps) {
 
     return (
-        <Button {...props}>
+        <Button {...triggerProps}>
             <Icon icon={icon} {...iconProps} />
         </Button>
     )

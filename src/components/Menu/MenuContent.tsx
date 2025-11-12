@@ -9,7 +9,7 @@ interface MenuContentProps<T>
 
 }
 
-export default function MenuContent<T extends object>({ popover, children, ...props }: MenuContentProps<T>) {
+export function MenuContent<T extends object>({ popover, children, ...props }: MenuContentProps<T>) {
     return (
         <Popover {...popover} offset={popover?.offset || 5}>
             <Menu {...props}>
@@ -21,7 +21,7 @@ export default function MenuContent<T extends object>({ popover, children, ...pr
 
 export function SubMenuContent<T extends object>({ popover, children, ...props }: MenuContentProps<T>) {
     return (
-        <Popover {...popover} offset={2}>
+        <Popover {...popover} offset={8} crossOffset={popover?.crossOffset || -4}>
             <Menu {...props}>
                 {children}
             </Menu>

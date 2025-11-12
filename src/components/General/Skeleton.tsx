@@ -7,7 +7,7 @@ interface Props extends BaseComponentProps {
 }
 
 export default function Skeleton({ ...props }: Props) {
-    return <span className={`skeleton f-col ${props.className}`} style={{
+    return <span className={`skeleton ${props.className}`} style={{
         height: props?.style?.height || '18px',
         ...props.style
     }}>

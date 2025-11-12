@@ -103,7 +103,6 @@ const Local = (key: string) => {
   };
 
   const set = (value: any) => {
-    // set duro → reemplaza todo
     if (
       value === undefined ||
       value === null ||

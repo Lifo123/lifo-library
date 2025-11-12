@@ -1,6 +1,6 @@
 'use client';
 import { useStore } from '@nanostores/react';
-import { $loading, Loading } from '../../Stores/Loading.Store.js';
+import { $loading, Loading } from '../Loading/Loading.Store.js';
 import { ButtonProps } from 'react-aria-components';
 import { LoadingButton } from './LoadingButton.js'; // 👈 Importamos el nuevo botón
 

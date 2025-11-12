@@ -1,0 +1,95 @@
+@theme {
+  --color-warn-1: #fefcfb;
+  --color-warn-2: #fff7ed;
+  --color-warn-3: #ffefd6;
+  --color-warn-4: #ffdfb5;
+  --color-warn-5: #ffd19a;
+  --color-warn-6: #ffc182;
+  --color-warn-7: #f5ae73;
+  --color-warn-8: #ec9455;
+  --color-warn-9: #f76b15;
+  --color-warn-10: #ef5f00;
+  --color-warn-11: #cc4e00;
+  --color-warn-12: #582d1d;
+  --color-warn-a1: #c0400004;
+  --color-warn-a2: #ff8e0012;
+  --color-warn-a3: #ff9c0029;
+  --color-warn-a4: #ff91014a;
+  --color-warn-a5: #ff8b0065;
+  --color-warn-a6: #ff81007d;
+  --color-warn-a7: #ed6c008c;
+  --color-warn-a8: #e35f00aa;
+  --color-warn-a9: #f65e00ea;
+  --color-warn-a10: #ef5f00;
+  --color-warn-a11: #cc4e00;
+  --color-warn-a12: #431200e2;
+  --color-warn-contrast: #fff;
+  --color-warn-inverse: #000;
+  --color-warn-surface: #ffffffcc;
+  --color-warn-indicator: #9b7e99;
+  --color-warn-track: #9b7e99;
+}
+
+.light {
+  --color-warn-1: #fefcfb;
+  --color-warn-2: #fff7ed;
+  --color-warn-3: #ffefd6;
+  --color-warn-4: #ffdfb5;
+  --color-warn-5: #ffd19a;
+  --color-warn-6: #ffc182;
+  --color-warn-7: #f5ae73;
+  --color-warn-8: #ec9455;
+  --color-warn-9: #f76b15;
+  --color-warn-10: #ef5f00;
+  --color-warn-11: #cc4e00;
+  --color-warn-12: #582d1d;
+  --color-warn-a1: #c0400004;
+  --color-warn-a2: #ff8e0012;
+  --color-warn-a3: #ff9c0029;
+  --color-warn-a4: #ff91014a;
+  --color-warn-a5: #ff8b0065;
+  --color-warn-a6: #ff81007d;
+  --color-warn-a7: #ed6c008c;
+  --color-warn-a8: #e35f00aa;
+  --color-warn-a9: #f65e00ea;
+  --color-warn-a10: #ef5f00;
+  --color-warn-a11: #cc4e00;
+  --color-warn-a12: #431200e2;
+  --color-warn-contrast: #fff;
+  --color-warn-inverse: #000;
+  --color-warn-surface: #ffffffcc;
+  --color-warn-indicator: #9b7e99;
+  --color-warn-track: #9b7e99;
+}
+
+.dark {
+  --color-warn-1: #17120e;
+  --color-warn-2: #1e160f;
+  --color-warn-3: #331e0b;
+  --color-warn-4: #462100;
+  --color-warn-5: #562800;
+  --color-warn-6: #66350c;
+  --color-warn-7: #7e451d;
+  --color-warn-8: #a35829;
+  --color-warn-9: #f76b15;
+  --color-warn-10: #ff801f;
+  --color-warn-11: #ffa057;
+  --color-warn-12: #ffe0c2;
+  --color-warn-a1: #ec360007;
+  --color-warn-a2: #fe6d000e;
+  --color-warn-a3: #fb6a0025;
+  --color-warn-a4: #ff590039;
+  --color-warn-a5: #ff61004a;
+  --color-warn-a6: #fd75045c;
+  --color-warn-a7: #ff832c75;
+  --color-warn-a8: #fe84389d;
+  --color-warn-a9: #fe6d15f7;
+  --color-warn-a10: #ff801f;
+  --color-warn-a11: #ffa057;
+  --color-warn-a12: #ffe0c2;
+  --color-warn-contrast: #fff;
+  --color-warn-inverse: #fff;
+  --color-warn-surface: rgba(0, 0, 0, 0.05);
+  --color-warn-indicator: #6e6e6e;
+  --color-warn-track: #6e6e6e;
+}

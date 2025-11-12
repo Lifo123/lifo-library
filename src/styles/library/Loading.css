@@ -9,7 +9,7 @@
   
   .page-load {
     background-color: var(--color-project-bg, var(--color-gray-1));
-    position: absolute;
+    position: fixed;
     padding-bottom: 5rem;
     display: flex;
     align-items: center;
@@ -31,22 +31,14 @@
     user-select: none;
     opacity: 0;
   }
-  
-  .action-icon {
-    background-color: var(--color-project-bg-secondary, var(--color-gray-2));
-  }
-  
-  .custom-spin {
-    animation: rotate .75s linear forwards infinite;
-  }
-}
 
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  
-  100% {
-    transform: rotate(360deg);
+  .page-load span {
+    animation: rotate .75s linear forwards infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    height: max-content;
+    color: var(--color-gray-12);
   }
 }

@@ -1,6 +1,6 @@
 @layer base {
   * {
-    font-family: Geist, Inter, Google Sans, Segoe UI, system-ui, -apple-system, sans-serif, sans-serif;
+    font-family: var(--ff);
     -webkit-tap-highlight-color: transparent;
   }
   

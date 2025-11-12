@@ -1,8 +1,8 @@
 @layer base {
-  @font-face {
+  /* @font-face {
     font-family: 'Inter';
     src: url('/src/assets/fonts/Inter.ttf');
-  }
+  } */
   @font-face {
     font-family: 'Geist';
     src: url('/src/assets/fonts/Geist.ttf');
@@ -11,7 +11,7 @@
 
 @theme {
   --font-multiplier: 1;
-  --ff: Inter, Geist, Google Sans, Segoe UI, system-ui, -apple-system, sans-serif, sans-serif;
+  --ff: Geist, Google Sans, Segoe UI, system-ui, -apple-system, sans-serif, sans-serif;
   
   --text-h1: 18px;
   --text-p: 16px ;

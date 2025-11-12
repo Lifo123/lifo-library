@@ -1,11 +1,10 @@
 import { deepMap } from "nanostores";
 
-interface FileStore {
+type FileStore = {
     uploads: Record<string, File>;
-    [key: string]: any;
 }
 
 
 export const $files = deepMap<FileStore>({
-    uploads: { }
+    uploads: {}
 })

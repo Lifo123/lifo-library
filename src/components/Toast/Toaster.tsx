@@ -53,7 +53,7 @@ export function Toaster(props: ToasterSettingProps) {
 
     return (
         <OverlayContainer
-            className='toast-overlay no-select h-full w-full '
+            className='toast-overlay'
             id={toasterGeneralId}
         >
             {
@@ -148,35 +148,35 @@ const ToastItemInner = React.forwardRef<HTMLDivElement, ToastAllProps & { isExit
                 data-axis-y={axisY}
                 data-axis-x={axisX}
 
-                className='toast-wrapper select'
+                className='toast-wrapper'
                 onMouseEnter={() => toast.update(id as string, { isHovered: true }, toasterId)}
                 onMouseLeave={() => toast.update(id as string, { isHovered: false }, toasterId)}
             >
                 {
                     custom ?? <>
                         <div
-                            className='toast-item f-row gap-9 justify-between items-center rounded-lg'
+                            className='toast-item'
                             data-toast-type={type}
                             data-richcolors={richColors}
                         >
-                            <div className='f-row gap-1 items-center'>
-                                <span className='f-col f-center h-6 aspect-square'>{customIcon || ToastIcons[type]}</span>
-                                <div className='f-col text-start ml-1'>
-                                    {title && <p className='fs-15 fw-475'>{title}</p>}
-                                    {description && <p className='text-p2 fw-475 text-gray-11'>{description}</p>}
+                            <div>
+                                {customIcon || ToastIcons[type] ? <span>{customIcon || ToastIcons[type]}</span> : null}
+                                <div>
+                                    {title && <p>{title}</p>}
+                                    {description && <p>{description}</p>}
                                 </div>
                             </div>
-                            <span className='text-gray-11'>
+                            <span>
                                 {
                                     action ? <ButtonPromise onPress={async () => {
                                         await action();
                                         toast.dismiss(id, toasterId)
                                     }}>
                                         {actionLabel || 'Continue'}
-                                    </ButtonPromise> : hasCloseButton && <Button className={'pointer rounded-full hover:bg-gray-5 p-1 mt-1'}
+                                    </ButtonPromise> : hasCloseButton && <Button className={'icon-btn'}
                                         onPress={() => toast.dismiss(id, toasterId)}
                                     >
-                                        <Icon icon='close' size={22} />
+                                        <Icon icon='close' size={22} strokeWidth={2.35} />
                                     </Button>
 
                                 }

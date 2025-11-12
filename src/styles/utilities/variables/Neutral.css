@@ -89,9 +89,9 @@
   --color-gray-a10: hsla(0, 0%, 100%, 0.447);
   --color-gray-a11: hsla(0, 0%, 100%, 0.686);
   --color-gray-a12: hsla(0, 0%, 100%, 0.929);
-  --color-contrast: #fff;
-  --color-inverse: #fff;
-  --color-surface: rgba(0, 0, 0, 0.05);
-  --color-indicator: #6e6e6e;
-  --color-track: #6e6e6e;
+  --color-gray-contrast: #fff;
+  --color-gray-inverse: #fff;
+  --color-gray-surface: rgba(0, 0, 0, 0.05);
+  --color-gray-indicator: #6e6e6e;
+  --color-gray-track: #6e6e6e;
 }

@@ -14,7 +14,7 @@ export default function MenuItem({
     return (
         <MenuItemAria {...props} >
             {children}
-            {kbd && <kbd className="fs-1 text-lifo-text-low">{kbd}</kbd>}
+            {kbd && <kbd>{kbd}</kbd>}
         </MenuItemAria>
     )
 }

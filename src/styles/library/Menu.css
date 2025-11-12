@@ -7,6 +7,7 @@
   font-size: 14px;
   min-width: 190px;
   width: max-content;
+  color: var(--color-gray-12);
 }
 
 [data-trigger="SubmenuTrigger"] .react-aria-Menu {
@@ -27,6 +28,10 @@
 
   user-select: none;
 }
+.react-aria-MenuItem kbd{
+  font-size: 13px;
+  color: var(--color-gray-a10);
+}
 
 .react-aria-MenuItem[data-focused="true"] {
   background-color: var(--color-gray-6);
@@ -37,7 +42,7 @@
 }
 
 .react-aria-MenuItem[data-open="true"] {
-  background-color: var(--color-gray-8);
+  background-color: var(--color-gray-6);
 }
 
 .react-aria-MenuItem[data-disabled="true"] {
