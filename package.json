@@ -1,7 +1,7 @@
 {
   "homepage": "https://lifo123.github.io/lifo-library/",
   "name": "@lifo123/library",
-  "version": "1.7.7",
+  "version": "1.8.0",
   "description": "Lifo library",
   "type": "module",
   "repository": {
@@ -25,11 +25,14 @@
   "author": "Lifo",
   "license": "ISC",
   "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/react": "^4.4.0",
     "@astrojs/tailwind": "^6.0.2",
     "@tailwindcss/cli": "^4.1.11",
     "@tailwindcss/vite": "^4.1.11",
     "@types/node": "^22.9.0",
     "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.6",
     "astro": "^5.14.1",
     "gh-pages": "^6.3.0",
     "postcss": "^8.5.6",
@@ -39,33 +42,25 @@
     "tailwindcss": "^4.1.11",
     "typescript": "^5.6.3"
   },
-  "peerDependencies": {
-    "@nanostores/persistent": "^1.0.0",
-    "@nanostores/react": "^0.8.0",
-    "@tailwindcss/vite": "^4.1.11",
-    "nanostores": "^0.11.3",
-    "public-icons": ">=0.0.7",
-    "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0",
-    "tailwindcss": "^4.1.11"
-  },
   "engines": {
     "node": ">=20.0.0"
   },
   "exports": {
     ".": "./dist/index.js",
     "./Stores": "./dist/Stores/index.js",
-    "./utils": "./dist/utils/index.js",
-    "./User": "./dist/Stores/User.Store.js"
+    "./utils": "./dist/utils/index.js"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/react": "^4.4.0",
+    "@nanostores/react": "^1.0.0",
+    "nanostores": "^1.0.1",
+    "public-icons": "0.0.8"
+  },
+  "peerDependencies": {
     "@react-aria/utils": "^3.31.0",
-    "@types/react-dom": "^19.1.6",
-    "public-icons": "0.0.8",
+    "react": "^18.2.0",
     "react-aria": "^3.44.0",
     "react-aria-components": "^1.13.0",
+    "react-dom": "^18.2.0",
     "react-stately": "^3.42.0"
   }
 }

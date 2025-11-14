@@ -1,6 +1,6 @@
 import { deepMap } from 'nanostores'
 import { ThemeTypes } from '../Types/GeneralTypes.js'
-import { ManageLocal } from '../utils/Local.Utils.js';
+import { ManageLocal } from '../utils/Storage/LocalStorage.Utils.js';
 
 
 interface PreferencesProps {
@@ -16,6 +16,6 @@ if (typeof window !== "undefined") {
 
     if (saved) $preferences.set(saved);
     $preferences.subscribe((value) => {
-        ManageLocal.prefs.set(value)
+        ManageLocal.prefs.set({ ...value, ...saved })
     })
 }

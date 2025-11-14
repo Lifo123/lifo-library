@@ -3,7 +3,6 @@ import React from 'react';
 import { Button, ButtonProps } from 'react-aria-components';
 import { Icon } from 'public-icons';
 
-// Definimos las props que necesita nuestro botón de carga
 interface LoadingButtonProps extends ButtonProps {
     isLoading: boolean;
     children: React.ReactNode;
@@ -17,7 +16,6 @@ export function LoadingButton({
     className,
     ...props
 }: LoadingButtonProps) {
-    // Deshabilitamos el botón si está cargando
     const isDisabled = props.isDisabled || isLoading;
 
     return (
@@ -30,8 +28,7 @@ export function LoadingButton({
             <span className={`${isLoading ? 'style' : ''}`} style={{ marginTop: '1px' }}>
                 <Icon icon='loader-circle' size={size} strokeWidth={2.5} />
             </span>
-            
-            {/* Texto del Botón */}
+
             <p className={`${isLoading ? 'style' : ''}`}>
                 {children}
             </p>

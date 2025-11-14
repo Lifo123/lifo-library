@@ -9,7 +9,6 @@ import { ToastIcons } from './ToastAssets.js'
 import { Icon } from 'public-icons'
 import { useEnterAnimation, useExitAnimation } from '@react-aria/utils'
 
-
 export function Toaster(props: ToasterSettingProps) {
     const {
         toasterId = 'default',
@@ -57,15 +56,15 @@ export function Toaster(props: ToasterSettingProps) {
             id={toasterGeneralId}
         >
             {
-                availableToast.map((toast) => (
-                    <ToastItem key={toast.id} {...toast} />
+                availableToast.map((toast, i) => (
+                    <ToastItem key={toast.id} {...toast} index={i} />
                 ))
             }
         </OverlayContainer>
     )
 }
 
-function ToastItem(props: ToastAllProps) {
+function ToastItem(props: ToastAllProps & { index: number }) {
     const {
         id,
         toasterId,
@@ -73,6 +72,7 @@ function ToastItem(props: ToastAllProps) {
         isOpen,
         noDissapear,
         duration,
+        index,
     } = props;
 
     const ref = React.useRef<HTMLDivElement>(null);
@@ -107,14 +107,16 @@ function ToastItem(props: ToastAllProps) {
             {...props}
             isExiting={isExiting}
             ref={ref}
+            index={index}
         />
     )
 
 }
 
-const ToastItemInner = React.forwardRef<HTMLDivElement, ToastAllProps & { isExiting: boolean }>(
-    (props, ref) => {
+const ToastItemInner = React.forwardRef<HTMLDivElement, ToastAllProps & { isExiting: boolean, index: number }>(
+    (props, ref: any) => {
         const {
+            index,
             id,
             toasterId,
             isHovered,
@@ -151,6 +153,11 @@ const ToastItemInner = React.forwardRef<HTMLDivElement, ToastAllProps & { isExit
                 className='toast-wrapper'
                 onMouseEnter={() => toast.update(id as string, { isHovered: true }, toasterId)}
                 onMouseLeave={() => toast.update(id as string, { isHovered: false }, toasterId)}
+                style={{
+                    '--y-start-position': axisX !== 'center' ?`calc(${ref!.current?.offsetHeight + 16}px * ${index} + 1.5rem)` :
+                        '-1.5rem',
+                    '--y-end-position' : axisX === 'center' ? `calc(${ref!.current?.offsetHeight + 16}px * ${index} + 1.5rem)` : 'var(--y-start-position)',
+                } as React.CSSProperties}
             >
                 {
                     custom ?? <>
@@ -160,7 +167,7 @@ const ToastItemInner = React.forwardRef<HTMLDivElement, ToastAllProps & { isExit
                             data-richcolors={richColors}
                         >
                             <div>
-                                {customIcon || ToastIcons[type] ? <span>{customIcon || ToastIcons[type]}</span> : null}
+                                {customIcon || ToastIcons[type] ? <span className='mr-1'>{customIcon || ToastIcons[type]}</span> : null}
                                 <div>
                                     {title && <p>{title}</p>}
                                     {description && <p>{description}</p>}

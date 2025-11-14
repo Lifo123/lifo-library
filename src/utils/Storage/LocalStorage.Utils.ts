@@ -1,11 +1,11 @@
-import { projectName } from "../Stores/config.js";
+import { projectName } from "../../Stores/config.js";
 
 type LocalManager = {
   [key: string]: ReturnType<typeof Local>;
 };
 
 const normalizePath = (path: string) => path.replace(/\[(\d+)\]/g, ".$1");
-const isIndex = (key: string) => !isNaN(Number(key));
+const isIndex = (key: string) => /^\d+$/.test(key);
 
 function deepMerge(target: any, source: any): any {
   if (typeof target !== "object" || target === null) return source;
@@ -14,8 +14,10 @@ function deepMerge(target: any, source: any): any {
   const output = Array.isArray(target) ? [...target] : { ...target };
 
   for (const key of Object.keys(source)) {
-    if (key in target) {
-      output[key] = deepMerge(target[key], source[key]);
+    if (Array.isArray(source[key])) {
+      output[key] = source[key];
+    } else if (typeof source[key] === "object" && source[key] !== null) {
+      output[key] = deepMerge(target[key] || {}, source[key]);
     } else {
       output[key] = source[key];
     }
@@ -57,7 +59,6 @@ const Local = (key: string) => {
   };
 
   const update = (pathOrValue: string | Record<string, any>, maybeValue?: any) => {
-    // Caso: merge superficial con objeto
     if (typeof pathOrValue !== "string") {
       const value = pathOrValue;
       if (value === undefined || value === null) return;
@@ -67,7 +68,6 @@ const Local = (key: string) => {
       return;
     }
 
-    // Caso: path + value
     const path = normalizePath(pathOrValue);
     const value = maybeValue;
 
@@ -77,14 +77,22 @@ const Local = (key: string) => {
 
     for (let i = 0; i < keys.length - 1; i++) {
       const k = keys[i];
+      const nextK = keys[i + 1];
+
+      let isNextKeyIndex = isIndex(nextK);
+
       if (isIndex(k)) {
         const idx = Number(k);
-        if (!Array.isArray(current)) current[k] = [];
-        if (!current[idx]) current[idx] = {};
+        if (!Array.isArray(current)) {
+          current = [];
+        }
+        if (!current[idx]) {
+          current[idx] = isNextKeyIndex ? [] : {};
+        }
         current = current[idx];
       } else {
-        if (typeof current[k] !== "object" || current[k] === null) {
-          current[k] = {};
+        if (typeof current[k] !== "object" || current[k] === null || Array.isArray(current[k])) {
+          current[k] = isNextKeyIndex ? [] : {};
         }
         current = current[k];
       }
@@ -92,23 +100,30 @@ const Local = (key: string) => {
 
     const lastKey = keys.at(-1)!;
     if (isIndex(lastKey)) {
-      const idx = Number(lastKey);
       if (!Array.isArray(current)) current = [];
-      current[idx] = value;
+      current[Number(lastKey)] = value;
     } else {
+      if (typeof current !== "object" || current === null || Array.isArray(current)) {
+        current = {};
+      }
       current[lastKey] = value;
     }
 
     localStorage.setItem(projectName + key, JSON.stringify(data));
   };
 
+
+
   const set = (value: any) => {
     if (
       value === undefined ||
       value === null ||
-      value === "" ||
       (typeof value === "object" && Object.keys(value).length === 0)
     ) {
+      if (value === "") {
+        localStorage.setItem(projectName + key, "");
+        return;
+      }
       return;
     }
     const valueToStore =

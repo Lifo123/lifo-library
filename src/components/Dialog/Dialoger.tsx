@@ -1,69 +1,135 @@
-'use client'
-import { Button, Dialog, Heading, Modal, ModalOverlay } from "react-aria-components"
-import { useStore } from "@nanostores/react";
-import { $dialogStore, dialog } from "./Dialog.store.js";
-import { ButtonPromise } from "../Buttons/index.js";
+// 'use client'
+// import { useStore } from '@nanostores/react'
+// import { $dialoger, dialog, type dialogAllProps } from './Dialoger.store.js'
+// import { Button, Dialog, Heading, Modal, ModalOverlay } from 'react-aria-components'
+// import { ButtonPromise } from '../Buttons/index.js'
+// import React from 'react'
 
-export function Dialoger() {
-    const { isOpen, custom, isDismissable, isKeyboardDismissDisabled, ...dialogData } = useStore($dialogStore);
+// export function Dialoger() {
+//     const DIALOGS = useStore($dialoger)
 
-    return (
-        <ModalOverlay
-            isOpen={isOpen}
-            onOpenChange={dialog.change}
-            isDismissable={isDismissable}
-            isKeyboardDismissDisabled={isKeyboardDismissDisabled}
-        >
-            <Modal>
-                <Dialog role="alertdialog" aria-label="alert-dialog" id={dialogData.id} data-variant={dialogData.variant}>
-                    <Heading className="f-row justify-between gap-10 text-p fw-500 text-lifo-title border-b border-gray-6 pb-3 mb-4">
-                        {dialogData.title}
-                        <span>
+//     React.useEffect(() => {
+//         if (DIALOGS.length > 1) {
+//             console.warn(
+//                 'Dialoger: 2 or more active dialogs detected. ' +
+//                 'While stacking is technically supported, ' +
+//                 'it is generally considered bad practice for UX and accessibility.'
+//             )
+//         }
+//     }, [DIALOGS.length])
 
-                        </span>
-                    </Heading>
+//     if (DIALOGS.length === 0) return null
 
-                    <section className=" leading-relaxed text-gray-11 mt-4 text-p2 " >
-                        {custom || dialogData.description || 'No description provided.'}
-                    </section>
+//     return (
+//         <>
+//             {
+//                 DIALOGS.map((item) => (
+//                     <DialogItem key={item.id} {...item} />
+//                 ))
+//             }
+//         </>
+//     )
+// }
 
-                    <div className="f-row gap-3 justify-end items-center mt-10">
-                        <Button
-                            className="btn btn-third rounded-sm"
-                            onPress={async () => {
-                                await dialogData.cancelAction?.()
-                                dialog.close()
-                            }}>
-                            {dialogData.cancelActionLabel || 'Cancel'}
-                        </Button>
+// function DialogItem(props: dialogAllProps) {
+//     const {
+//         id,
+//         variant,
+//         title,
+//         description,
+//         custom,
 
-                        {
-                            dialogData.SecondaryAction &&
-                            <ButtonPromise
-                                className="btn btn-secondary rounded-sm"
-                                isDisabled={dialogData.isSecondaryActionDisabled}
-                                loadingId={dialogData.id + '0'}
-                                onPress={async () => {
-                                    await dialogData.SecondaryAction?.()
-                                    dialog.close()
-                                }}>
-                                {dialogData.SecondaryActionLabel || 'Secondary'}
-                            </ButtonPromise>
-                        }
+//         isPrimaryActionDisabled,
+//         isSecondaryActionDisabled,
+//     } = props
 
-                        <ButtonPromise
-                            className="btn btn-primary rounded-sm"
-                            isDisabled={dialogData.isPrimaryActionDisabled}
-                            loadingId={dialogData.id + '1'}
-                            onPress={async () => {
-                                await dialogData.PrimaryAction?.()
-                                dialog.close()
-                            }}>
-                            {dialogData.PrimaryActionLabel || 'Continue'}
-                        </ButtonPromise>
-                    </div>
-                </Dialog>
-            </Modal>
-        </ModalOverlay>
-    )
-}
+//     const [isActionRunning, setIsActionRunning] = React.useState(false)
+
+//     return (
+//         <ModalOverlay
+//             isOpen={props.isOpen}
+//             onOpenChange={() => {
+//                 if (isActionRunning) return
+//                 dialog.hide(`${id}`)
+//             }}
+//             isDismissable={props.isDismissable}
+//             isKeyboardDismissDisabled={props.isKeyboardDismissDisabled}
+//         >
+//             <Modal >
+//                 <Dialog
+//                     id={id}
+//                     role="alertdialog"
+//                     aria-label="alert-dialog"
+//                     data-variant={variant}
+//                 >
+//                     {
+//                         title &&
+//                         <Heading className="f-row mb-6 justify-between gap-10 text-p fw-600 leading-none text-lifo-title border-b border-gray-6 pb-3">
+//                             {title}
+//                             <span>
+
+//                             </span>
+//                         </Heading>
+//                     }
+
+//                     <section>
+//                         {custom ? custom : (
+//                             <div className='text-p2 max-w-md leading-relaxed text-gray-11'>
+//                                 {description || 'No description provided.'}
+//                             </div>
+//                         )}
+//                     </section>
+
+//                     <div className="f-row gap-3 justify-end items-center mt-10">
+//                         <Button
+//                             className="btn btn-third rounded-sm text-2 fw-600"
+//                             isDisabled={isActionRunning}
+//                             onPress={async () => {
+//                                 await props.cancelAction?.()
+//                                 dialog.hide(`${id}`)
+//                             }}>
+//                             {props.cancelActionLabel || 'Cancel'}
+//                         </Button>
+
+//                         {
+//                             props.SecondaryAction &&
+//                             <ButtonPromise
+//                                 className="btn btn-secondary rounded-sm text-2 fw-600"
+//                                 isDisabled={isSecondaryActionDisabled || isActionRunning}
+//                                 loadingId={id + '0'}
+//                                 onPress={async () => {
+//                                     setIsActionRunning(true)
+//                                     try {
+//                                         await props.SecondaryAction?.()
+//                                         dialog.hide(`${id}`)
+//                                     } catch (e) {
+//                                         console.error("Dialog secondary action failed:", e)
+//                                         setIsActionRunning(false)
+//                                     }
+//                                 }}>
+//                                 {props.SecondaryActionLabel || 'Secondary'}
+//                             </ButtonPromise>
+//                         }
+
+//                         <ButtonPromise
+//                             className="btn btn-primary rounded-sm text-2 fw-600"
+//                             isDisabled={isPrimaryActionDisabled || isActionRunning}
+//                             loadingId={`panmconPollo1`}
+//                             onPress={async () => {
+//                                 setIsActionRunning(true)
+//                                 try {
+//                                     await props.PrimaryAction?.()
+//                                     dialog.hide(`${id}`)
+//                                 } catch (e) {
+//                                     console.error("Dialog primary action failed:", e)
+//                                     setIsActionRunning(false)
+//                                 }
+//                             }}>
+//                             {props.PrimaryActionLabel || 'Continue'}
+//                         </ButtonPromise>
+//                     </div>
+//                 </Dialog>
+//             </Modal>
+//         </ModalOverlay>
+//     )
+// }

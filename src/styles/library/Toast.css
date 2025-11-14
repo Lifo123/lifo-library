@@ -15,45 +15,61 @@
     position: absolute;
     user-select: text;
     pointer-events: visible;
-    transition: opacity 0.15s, top 0.15s, bottom 0.15s, left 0.15s, right 0.15s;
-    --end-position: 1.5rem;
-    --start-position: -1.5rem;
+    transition: opacity 0.2s,top 0.2s, bottom 0.2s,left 0.2s, right 0.2s;
+    
+    --y-start-position: -1.5rem;
+    --y-end-position: var(--y-start-position);
+
+    --x-start-position: -10rem;
+    --x-end-position: 1.5rem;
+
     &[data-exiting],
     &[data-entering] {
       opacity: 0;
     }
     
     &[data-axis-y="top"] {
-      top: var(--end-position);
+      top: var(--y-end-position);
     }
     &[data-axis-y="bottom"] {
-      bottom: var(--end-position);
+      bottom: var(--y-end-position);
     }
     &[data-axis-x="center"] {
       left: 50%;
       transform: translateX(-50%);
     }
     &[data-axis-x="left"] {
-      left: calc(var(--end-position) + -0rem);
+      left: var(--x-end-position);
     }
     &[data-axis-x="right"] {
-      right: calc(var(--end-position) + -0rem);
+      right: var(--x-end-position);
     }
     
     &[data-axis-y="top"][data-entering],
     &[data-axis-y="top"][data-exiting] {
-      top: var(--start-position);
+      top: var(--y-start-position);
     }
     
     &[data-axis-y="bottom"][data-entering],
     &[data-axis-y="bottom"][data-exiting] {
-      bottom: var(--start-position);
+      bottom: var(--y-start-position);
     }
+
+    &[data-axis-x="left"][data-entering],
+    &[data-axis-x="left"][data-exiting] {
+      left: var(--x-start-position);
+    }
+    
+    &[data-axis-x="right"][data-entering],
+    &[data-axis-x="right"][data-exiting] {
+      right: var(--x-start-position);
+    }
+
   }
   
   .toast-item {
     background-color: var(--color-gray-2);
-    outline: solid 1px var(--color-gray-6);
+    outline: solid 1px var(--color-gray-5);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -64,7 +80,32 @@
     min-width: 340px;
     max-width: 90dvw;
     min-height: 48px;
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.211);
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.137);
+    color: var(--color-gray-11);
+
+    &[data-toast-type="success"][data-richcolors="true"] {
+      background-color: var(--color-success-3);
+      outline: solid 1px var(--color-success-6);
+      color: var(--color-success-11);
+    }
+  
+    &[data-toast-type="info"][data-richcolors="true"] {
+      background-color: var(--color-info-3);
+      outline: solid 1px var(--color-info-7);
+      color: var(--color-info-11);
+    }
+  
+    &[data-toast-type="warning"][data-richcolors="true"] {
+      background-color: var(--color-warn-a2);
+      outline: solid 1px var(--color-warn-6);
+      color: var(--color-warn-11);
+    }
+  
+    &[data-toast-type="error"][data-richcolors="true"] {
+      background-color: var(--color-error-3);
+      outline: solid 1px var(--color-error-7);
+      color: var(--color-error-11);
+    }
   }
   
   .toast-item > div {
@@ -81,6 +122,25 @@
     height: 24px;
     aspect-ratio: 1/1;
   }
+
+  .toast-item > div > span > svg {
+    color: var(--color-gray-12);
+  }
+  .toast-item[data-toast-type="success"][data-richcolors="true"] > div > span > svg {
+    fill: var(--color-success-10);
+    color: var(--color-success-3);
+  }
+  .toast-item[data-toast-type="info"][data-richcolors="true"] > div > span > svg {
+    fill: var(--color-info-10);
+    color: var(--color-info-3);
+  }
+  .toast-item[data-toast-type="error"][data-richcolors="true"] > div > span > svg {
+    fill: var(--color-error-9);
+    color: var(--color-error-3);
+  }
+  .toast-item[data-toast-type="warning"][data-richcolors="true"] > div > span > svg {
+    color: var(--color-warn-10);
+  }
   
   .toast-item > div > div {
     display: flex;
@@ -94,29 +154,25 @@
   .toast-item > div > div > p:nth-child(0) {
     font-size: calc(var(--font-multiplier) * 14px);
     font-weight: 600;
-    color: var(--color-gray-12)
+    color: var(--color-gray-12);
   }
-
+  
   .toast-item > div > div > p:nth-child(1) {
     font-size: calc(var(--font-multiplier) * 14.5px);
     font-weight: 475;
-    color: var(--color-gray-11);
   }
 
-  .toast-item > span {
-    color: var(--color-gray-11);
-  }
-  
   .toast-item > span > button.icon-btn {
     cursor: pointer;
     border-radius: 100%;
     padding: 4px;
     margin-top: 4px;
   }
-  .toast-item > span > button.icon-btn:hover{
+  
+  .toast-item > span > button.icon-btn:hover {
     background-color: var(--color-gray-a5);
   }
-
+  
   @media (max-width:600px) {
     .toast-wrapper[data-axis-x="left"],
     .toast-wrapper[data-axis-x="right"] {

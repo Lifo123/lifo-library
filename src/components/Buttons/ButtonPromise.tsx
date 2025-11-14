@@ -19,7 +19,7 @@ export default function ButtonPromise({
 }: ButtonPromiseProps) {
     
     const LOADING = useStore($loading);
-    const isLoading = !!LOADING[loadingId];
+    const isLoading = LOADING[loadingId];
 
     const handleClick = async () => {
         if (onPress) {

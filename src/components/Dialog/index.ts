@@ -1,3 +1,2 @@
-
-export { Dialoger } from './Dialoger.js';
-export { $dialogStore, dialog } from './Dialog.store.js';
+// export { Dialoger } from './Dialoger.js';
+// export { $dialoger, dialog } from './Dialoger.store.js';

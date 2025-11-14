@@ -1,6 +1,6 @@
 import { deepMap } from "nanostores";
 import { UserStoreTypes } from "../Types/User.Types.js";
-import { ManageLocal } from "../utils/Local.Utils.js";
+import { ManageLocal } from "../utils/Storage/LocalStorage.Utils.js";
 
 export const $user = deepMap<UserStoreTypes>();
 

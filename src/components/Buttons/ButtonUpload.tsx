@@ -2,14 +2,12 @@
 import React from "react";
 import { toast } from "../Toast/Toaster.store.js";
 import { $files } from "../../Stores/File.Store.js";
-import { Button } from "react-aria-components";
-import { Icon } from "public-icons";
 import { LoadingButton } from "./LoadingButton.js";
 
 interface Props {
     className?: string;
-    text?: string;
-    textCharge?: string;
+    label?: string;
+    labelCharge?: string;
     accept?: string | string[];
     delay?: number;
 
@@ -21,8 +19,8 @@ interface Props {
 }
 
 export default function UploadBtn({
-    text = 'Upload',
-    textCharge = 'Uploaded',
+    label = 'Upload',
+    labelCharge = 'Uploaded',
     ...props
 }: Props) {
     const [isUploaded, setIsUploaded] = React.useState(false);
@@ -41,7 +39,7 @@ export default function UploadBtn({
 
     const handleFileChange = async (file: File) => {
         if (!file) {
-            toast.error(props.error || 'Error al cargar el archivo', { placement: 'bottom-left' });
+            toast.error(props.error || 'Error selecting file', { placement: 'bottom-left' });
             return;
         }
 
@@ -63,8 +61,12 @@ export default function UploadBtn({
         try {
             await new Promise(res => setTimeout(res, props.delay ?? 850));
 
-            const nameWithoutExt = file.name.split('.').slice(0, -1).join('.');
-            $files.setKey('uploads.' + nameWithoutExt, file);
+            const lastDotIndex = file.name.lastIndexOf('.');
+            const nameWithoutLabel = (lastDotIndex > 0)
+                ? file.name.substring(0, lastDotIndex)
+                : file.name;
+
+            $files.setKey(`uploads.${nameWithoutLabel}`, file);
 
 
             if (props.onUpload) {
@@ -76,7 +78,8 @@ export default function UploadBtn({
             setIsUploaded(true);
         } catch (error) {
             console.error("Error:", error);
-            toast.error(`Error: ${error}`, { placement: 'bottom-left' });
+            const errorMessage = error instanceof Error ? error.message : String(error);
+            toast.error(`Error: ${errorMessage} `, { placement: 'bottom-left' });
         }
     };
 
@@ -91,32 +94,35 @@ export default function UploadBtn({
 
     const triggerFileInput = () => {
         if (isUploading) return;
-                    setIsUploading(true);
+        setIsUploading(true);
 
-                    const input = document.createElement('input');
-                    input.type = 'file';
-                    input.accept = normalizeAccept();
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = normalizeAccept();
 
-                    const handleCancel = () => {
-                        setTimeout(() => {
-                            if (!input.files || input.files.length === 0) {
-                                setIsUploading(false);
-                            }
-                        }, 300);
+        const handleCancel = () => {
+            setTimeout(() => {
+                //No ejecuta
+                console.log('wasa cancelando');
 
-                        window.removeEventListener('focus', handleCancel);
-                    };
+                if (!input.files || input.files.length === 0) {
+                    setIsUploading(false);
+                }
+            }, 300);
 
-                    window.addEventListener('focus', handleCancel);
+            window.removeEventListener('focus', handleCancel);
+        };
 
-                    input.onchange = async (e: any) => {
-                        window.removeEventListener('focus', handleCancel);
+        window.addEventListener('focus', handleCancel);
 
-                        await handleFileChange(e.target.files[0]);
-                        setIsUploading(false);
-                    };
+        input.onchange = async (e: any) => {
+            window.removeEventListener('focus', handleCancel);
 
-                    input.click();
+            await handleFileChange(e.target.files[0]);
+            setIsUploading(false);
+        };
+
+        input.click();
     };
 
     return (
@@ -125,7 +131,7 @@ export default function UploadBtn({
             onPress={triggerFileInput}
             {...props}
         >
-            {isUploaded ? textCharge : text}
+            {isUploaded ? labelCharge : label}
         </LoadingButton>
     );
 }

@@ -16,14 +16,19 @@ interface SelectMenuProps<T extends object, M extends 'single' | 'multiple'>
     customize?: {
         trigger?: BaseComponentProps;
     }
-    ref: React.ForwardedRef<HTMLButtonElement>
 }
 export default function SelectMenu<
     T extends object,
     M extends 'single' | 'multiple' = 'single'
 >({
-    label, errorMessage, children, items, customize, offset, ref,
-    ...props }: SelectMenuProps<T, M>) {
+    label, 
+    errorMessage, 
+    children, 
+    items, 
+    customize, 
+    offset, 
+    ...props 
+}: SelectMenuProps<T, M>) {
 
     return (
         <Select {...props}>
