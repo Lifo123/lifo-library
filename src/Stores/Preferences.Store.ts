@@ -1,21 +1,22 @@
-import { deepMap } from 'nanostores'
-import { ThemeTypes } from '../Types/GeneralTypes.js'
-import { ManageLocal } from '../utils/Storage/LocalStorage.Utils.js';
+import { deepMap } from '@nanostores/deepmap'
+import { Local } from '../utils/index.js';
+import { getPath } from '../utils/Storage/path.js';
+import { isBrowser } from './config.js';
 
 
-interface PreferencesProps {
-    theme?: ThemeTypes,
-    [key: string]: any
+type PreferencesProps = {
+    theme?: 'dark' | 'light' | 'system'
+    isDark?: boolean
 }
 
 export const $preferences = deepMap<PreferencesProps>()
 
-
-if (typeof window !== "undefined") {
-    const saved = ManageLocal.prefs.get()
+if (isBrowser) {
+    const lsPrefs = Local('preferences')
+    const saved = lsPrefs.get();
 
     if (saved) $preferences.set(saved);
-    $preferences.subscribe((value) => {
-        ManageLocal.prefs.set({ ...value, ...saved })
+    $preferences.subscribe((value, old, changedKey) => {
+        lsPrefs.updateKey(changedKey || '', getPath(changedKey || '', value))
     })
 }

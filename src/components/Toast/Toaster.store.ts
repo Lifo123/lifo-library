@@ -1,4 +1,5 @@
-import { deepMap, map } from "nanostores";
+import { deepMap } from "@nanostores/deepmap";
+import { map } from 'nanostores';
 import { customUUID } from "../../utils/index.js";
 
 export type ToastTypes = "success" | "error" | "warning" | "info" | "loading" | 'none';
@@ -130,7 +131,7 @@ class ToastService {
     remove(id: string, toasterId: string = 'default') {
         const tId = toasterId || 'default';
         const currentToasts = $toaster.get()[tId]?.toasts || [];
-        
+
         if (!currentToasts.length) return;
 
         const newToasts = currentToasts.filter(toast => toast && toast.id !== id);

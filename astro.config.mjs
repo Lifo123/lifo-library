@@ -7,11 +7,20 @@ export default defineConfig({
   site: 'https://lifo123.github.io/lifo-library/',
   base: '/lifo-library/',
   integrations: [react()],
-  vite: {
-    plugins: [tailwindcss()],
-  },
   outDir: 'Build',
   build: {
     assets: 'assets',
   },
+  vite: {
+    plugins: [tailwindcss()],
+    build: {
+      rollupOptions: {
+        output: {
+          entryFileNames: 'assets/entry-[hash].js',
+          chunkFileNames: 'assets/chunk-[hash].js',
+          assetFileNames: 'assets/[name].[hash].[ext]',
+        }
+      }
+    }
+  }
 });

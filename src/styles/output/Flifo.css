@@ -1,50 +1,18 @@
 /* Important this file is first to set global styles and dont replace it */
 @theme {
-  --color-gray-1: hsl(0, 0%, 99%);
-  --color-gray-2: hsl(0, 0%, 98%);
-  --color-gray-3: hsl(0, 0%, 94%);
-  --color-gray-4: hsl(0, 0%, 91%);
-  --color-gray-5: hsl(0, 0%, 89%);
-  --color-gray-6: hsl(0, 0%, 85%);
-  --color-gray-7: hsl(0, 0%, 81%);
-  --color-gray-8: hsl(0, 0%, 73%);
-  --color-gray-9: hsl(0, 0%, 55%);
-  --color-gray-10: hsl(0, 0%, 51%);
+  --color-gray-1: hsl(0, 0%, 96%); 
+  --color-gray-2: hsl(0, 0%, 95%);
+  --color-gray-3: hsl(0, 0%, 92%);
+  --color-gray-4: hsl(0, 0%, 88%);
+  --color-gray-5: hsl(0, 0%, 86%);
+  --color-gray-6: hsl(0, 0%, 82%);
+  --color-gray-7: hsl(0, 0%, 78%);
+  --color-gray-8: hsl(0, 0%, 70%);
+  --color-gray-9: hsl(0, 0%, 50%);
+  --color-gray-10: hsl(0, 0%, 45%);
   --color-gray-11: hsl(0, 0%, 39%);
   --color-gray-12: hsl(0, 0%, 13%);
-  
-  --color-gray-a1: hsla(0, 0%, 0%, 0.012);
-  --color-gray-a2: hsla(0, 0%, 0%, 0.024);
-  --color-gray-a3: hsla(0, 0%, 0%, 0.059);
-  --color-gray-a4: hsla(0, 0%, 0%, 0.09);
-  --color-gray-a5: hsla(0, 0%, 0%, 0.122);
-  --color-gray-a6: hsla(0, 0%, 0%, 0.149);
-  --color-gray-a7: hsla(0, 0%, 0%, 0.192);
-  --color-gray-a8: hsla(0, 0%, 0%, 0.267);
-  --color-gray-a9: hsla(0, 0%, 0%, 0.447);
-  --color-gray-a10: #0000007c;
-  --color-gray-a11: hsla(0, 0%, 0%, 0.608);
-  --color-gray-a12: hsla(0, 0%, 0%, 0.875);
 
-  --color-gray-contrast: #fff;
-  --color-gray-inverse: #fff;
-  --color-gray-surface: #ffffffcc;
-  --color-gray-indicator: #9b7e99;
-  --color-gray-track: #9b7e99;
-}
-.light {
-  --color-gray-1: hsl(0, 0%, 99%);
-  --color-gray-2: hsl(0, 0%, 98%);
-  --color-gray-3: hsl(0, 0%, 94%);
-  --color-gray-4: hsl(0, 0%, 91%);
-  --color-gray-5: hsl(0, 0%, 89%);
-  --color-gray-6: hsl(0, 0%, 85%);
-  --color-gray-7: hsl(0, 0%, 81%);
-  --color-gray-8: hsl(0, 0%, 73%);
-  --color-gray-9: hsl(0, 0%, 55%);
-  --color-gray-10: hsl(0, 0%, 51%);
-  --color-gray-11: hsl(0, 0%, 39%);
-  --color-gray-12: hsl(0, 0%, 13%);
   --color-gray-a1: hsla(0, 0%, 0%, 0.012);
   --color-gray-a2: hsla(0, 0%, 0%, 0.024);
   --color-gray-a3: hsla(0, 0%, 0%, 0.059);
@@ -62,37 +30,85 @@
   --color-gray-surface: #ffffffcc;
   --color-gray-indicator: #9b7e99;
   --color-gray-track: #9b7e99;
+
+  --color-gray-black: #fff;
+  --color-gray-white: #000;
+}
+.light {
+  --color-gray-1: hsl(0, 0%, 96%); 
+  --color-gray-2: hsl(0, 0%, 95%);
+  --color-gray-3: hsl(0, 0%, 92%);
+  --color-gray-4: hsl(0, 0%, 88%);
+  --color-gray-5: hsl(0, 0%, 86%);
+  --color-gray-6: hsl(0, 0%, 82%);
+  --color-gray-7: hsl(0, 0%, 78%);
+  --color-gray-8: hsl(0, 0%, 70%);
+  --color-gray-9: hsl(0, 0%, 50%);
+  --color-gray-10: hsl(0, 0%, 45%);
+  --color-gray-11: hsl(0, 0%, 39%);
+  --color-gray-12: hsl(0, 0%, 13%);
+
+  --color-gray-a1: hsla(0, 0%, 0%, 0.012);
+  --color-gray-a2: hsla(0, 0%, 0%, 0.024);
+  --color-gray-a3: hsla(0, 0%, 0%, 0.059);
+  --color-gray-a4: hsla(0, 0%, 0%, 0.09);
+  --color-gray-a5: hsla(0, 0%, 0%, 0.122);
+  --color-gray-a6: hsla(0, 0%, 0%, 0.149);
+  --color-gray-a7: hsla(0, 0%, 0%, 0.192);
+  --color-gray-a8: hsla(0, 0%, 0%, 0.267);
+  --color-gray-a9: hsla(0, 0%, 0%, 0.447);
+  --color-gray-a10: hsla(0, 0%, 0%, 0.486);
+  --color-gray-a11: hsla(0, 0%, 0%, 0.608);
+  --color-gray-a12: hsla(0, 0%, 0%, 0.875);
+  --color-gray-contrast: #fff;
+  --color-gray-inverse: #000;
+  --color-gray-surface: #ffffffcc;
+  --color-gray-indicator: #9b7e99;
+  --color-gray-track: #9b7e99;
+
+  --color-gray-black: #fff;
+  --color-gray-white: #000;
 }
 .dark {
-  --color-gray-1: hsl(0, 0%, 5%);
-  --color-gray-2: hsl(0, 0%, 10%);
-  --color-gray-3: hsl(0, 0%, 13%);
-  --color-gray-4: hsl(0, 0%, 16%);
-  --color-gray-5: hsl(0, 0%, 19%);
-  --color-gray-6: #3A3A3A;
-  --color-gray-7: hsl(0, 0%, 28%);
-  --color-gray-8: hsl(0, 0%, 38%);
-  --color-gray-9: hsl(0, 0%, 43%);
-  --color-gray-10: #7a7a7a;
-  --color-gray-11: hsl(0, 0%, 71%);
-  --color-gray-12: hsl(0, 0%, 93%);
-  --color-gray-a1: hsla(0, 0%, 0%, 0);
-  --color-gray-a2: hsla(0, 0%, 100%, 0.035);
-  --color-gray-a3: hsla(0, 0%, 100%, 0.071);
-  --color-gray-a4: hsla(0, 0%, 100%, 0.106);
-  --color-gray-a5: hsla(0, 0%, 100%, 0.133);
-  --color-gray-a6: hsla(0, 0%, 100%, 0.173);
-  --color-gray-a7: hsla(0, 0%, 100%, 0.231);
-  --color-gray-a8: hsla(0, 0%, 100%, 0.333);
-  --color-gray-a9: hsla(0, 0%, 100%, 0.392);
-  --color-gray-a10: hsla(0, 0%, 100%, 0.447);
-  --color-gray-a11: hsla(0, 0%, 100%, 0.686);
-  --color-gray-a12: hsla(0, 0%, 100%, 0.929);
-  --color-gray-contrast: #fff;
-  --color-gray-inverse: #fff;
-  --color-gray-surface: rgba(0, 0, 0, 0.05);
-  --color-gray-indicator: #6e6e6e;
-  --color-gray-track: #6e6e6e;
+  --color-gray-1: hsl(240, 4%, 7%); 
+  --color-gray-2: hsl(240, 4%, 10%);
+  
+  --color-gray-3: hsl(240, 7%, 15%); 
+  --color-gray-4: hsl(232, 6%, 18%); 
+  --color-gray-5: hsl(228, 7%, 24%); 
+
+  --color-gray-6: hsl(228, 7%, 30%); 
+  --color-gray-7: hsl(228, 7%, 40%); 
+  --color-gray-8: hsl(228, 7%, 45%);
+
+  --color-gray-9: hsl(228, 8%, 50%); 
+  --color-gray-10: hsl(228, 9%, 55%);
+
+  --color-gray-11: #afafb3;
+  --color-gray-12: #EEEEF0;
+
+  --color-gray-a1: hsla(0, 0%, 100%, 0.02);
+  --color-gray-a2: hsla(0, 0%, 100%, 0.05);
+  --color-gray-a3: hsla(0, 0%, 100%, 0.09);
+  --color-gray-a4: hsla(0, 0%, 100%, 0.12);
+  --color-gray-a5: hsla(0, 0%, 100%, 0.16);
+  --color-gray-a6: hsla(0, 0%, 100%, 0.20);
+  --color-gray-a7: hsla(0, 0%, 100%, 0.27);
+  --color-gray-a8: hsla(0, 0%, 100%, 0.38);
+  --color-gray-a9: hsla(0, 0%, 100%, 0.45);
+  --color-gray-a10: hsla(0, 0%, 100%, 0.52);
+  --color-gray-a11: hsla(0, 0%, 100%, 0.70);
+  --color-gray-a12: hsla(0, 0%, 100%, 0.93);
+
+  --color-gray-contrast: var(--color-gray-12);
+  --color-gray-inverse: var(--color-gray-1); 
+
+  --color-gray-surface: var(--color-gray-a3);
+  --color-gray-indicator: var(--color-gray-8);
+  --color-gray-track: var(--color-gray-6);
+
+  --color-gray-black: #000;
+  --color-gray-white: #fff;
 }
 @theme {
   --accent-hue: 210;
@@ -580,8 +596,9 @@
 @utility btn {
   min-height: 32px;
   line-height: 1.6;
-  padding: 8px 16px;
+  padding: 6px 12px;
   font-size: calc(var(--font-multiplier) * 14px );
+  min-height: 32px;
   min-width: max-content;
   height: max-content;
   cursor: pointer;
@@ -590,7 +607,7 @@
   font-weight: 450;
 }
 .btn:active {
-  transform: scale(0.97);
+  transform: scale(0.97, .98);
   transition-property: transform;
   transition-timing-function: cubic-bezier(.4, 0, .2, 1);
   transition-duration: .15s;
@@ -606,34 +623,90 @@ button[data-focus-visible] {
   outline-offset: 2px;
 }
 @utility btn-primary {
-  background-color: var(--color-accent-10);
-  color: var(--color-accent-contrast);
-  font-weight: 500;
-  letter-spacing: normal;
+  background-color: var(--color-gray-12);
+  color: var(--color-gray-black);
+  padding: 6px 14px;
+  font-weight: 475;
 }
 .btn-primary:hover {
-  background-color: var(--color-accent-9);
+  background-color: var(--color-gray-a12);
 }
 @utility btn-secondary {
-  background-color: var(--color-gray-6);
+  background-color: var(--color-gray-3);
   color: var(--color-gray-12);
 }
 .btn-secondary:hover {
-  background-color: var(--color-gray-7);
+  background-color: var(--color-gray-4);
 }
-@utility btn-third {
-  border: solid 1px var(--color-gray-7);
+@utility btn-outline {
+  border: solid 1px var(--color-gray-6);
+  background-color: var(--color-gray-2);
   color: var(--color-gray-12);
 }
-.btn-third:hover {
-  background-color: var(--color-gray-5);
+.btn-outline:hover {
+  background-color: var(--color-gray-3);
 }
-@utility btn-fourth {
+@utility btn-ghost {
   background-color: transparent;
   color: var(--color-gray-12);
 }
-.btn-fourth:hover {
-  background-color: var(--color-gray-5);
+.btn-ghost:hover {
+  background-color: var(--color-gray-3);
+}
+@utility btn-red {
+  background-color: var(--color-red-500);
+  color: var(--color-white);
+}
+.btn-red:hover {
+  background-color: var(--color-error-9);
+}
+@utility btn-red-out {
+  background-color: var(--color-gray-2);
+  border: solid 1px var(--color-error-7);
+  color: var(--color-red-500);
+}
+.btn-red-out:hover {
+  background-color: var(--color-error-a2);
+}
+.btn-red[data-focus-visible],
+.btn-red-out[data-focus-visible] {
+  outline: 2px solid var(--color-red-500);
+}
+@utility btn-blue {
+  background-color: var(--color-blue-500);
+  color: var(--color-white);
+}
+.btn-blue:hover {
+  background-color: var(--color-info-9);
+}
+@utility btn-blue-out {
+  background-color: var(--color-gray-2);
+  border: solid 1px var(--color-info-7);
+  color: var(--color-blue-500);
+}
+.btn-blue-out:hover {
+  background-color: var(--color-info-a2);
+}
+@utility btn-green {
+  background-color: var(--color-green-700);
+  color: var(--color-white);
+}
+.btn-green:hover {
+  background-color: var(--color-success-8);
+}
+.light .btn-green {
+  background-color: var(--color-green-600);
+}
+.light .btn-green:hover {
+  background-color: var(--color-success-9);
+}
+@utility btn-green-out {
+  background-color: var(--color-gray-2);
+  border: solid 1px var(--color-success-7);
+  color: var(--color-green-600);
+}
+.btn-green-out:hover {
+  background-color: var(--color-success-a2);
 }
 @media (550px > width) {
   .btn {
@@ -1096,9 +1169,9 @@ button[data-focus-visible] {
   
   .dm-select {
     font-weight: 400;
-    border: solid 1px var(--color-gray-7);
+    border: solid 1px var(--color-gray-6);
     color: var(--color-gray-12);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
     gap: calc(var(--spacing) * 2);
     align-items: center;
     justify-content: space-between;
@@ -1116,13 +1189,41 @@ button[data-focus-visible] {
     background-color: var(--color-gray-2);
     width: max-content;
     min-width: 420px;
-    border-radius: 6px;
+    min-height: 210px;
+    border-radius: var(--radius-xl);
     outline: none;
     border: 1px solid var(--color-gray-5);
-    padding: 36px;
+    padding: 28px 26px;
     color: var(--color-gray-12);
     font-size: 14px;
     transition: all 0.25s ease;
+  }
+
+  .react-aria-Dialog > h3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 40px;
+    font-size: var(--text-p);
+    font-weight: 600;
+    color: var(--color-gray-12);
+    margin-bottom: 12px;
+  }
+
+  .react-aria-Dialog > p {
+    font-size: var(--text-p2);
+    color: var(--color-gray-11);
+    font-weight: 475;
+    max-width: var(--container-md);
+  }
+  
+  .react-aria-Dialog > div {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    justify-content: end;
+    align-items: center;
+    margin-top: 40px;
   }
 }
 @layer components {
@@ -1170,11 +1271,11 @@ button[data-focus-visible] {
   }
 }
 .react-aria-Menu {
-  background-color: var(--color-gray-3);
-  border-radius: 6px;
+  background-color: var(--color-gray-2);
+  border-radius: var(--radius-xl);
   outline: none;
-  border: solid 1px var(--color-gray-6);
-  padding: 4px;
+  border: solid 1px var(--color-gray-5);
+  padding: 8px;
   font-size: 14px;
   min-width: 190px;
   width: max-content;
@@ -1185,27 +1286,28 @@ button[data-focus-visible] {
 }
 .react-aria-MenuItem {
   padding: 6px 8px;
-  border-radius: 4px;
-  font-weight: 400;
+  border-radius: var(--radius-md);
+  min-height: 38px;
   outline: none;
-
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  color: var(--color-gray-12);
   gap: 12px;
-
   user-select: none;
 }
-.react-aria-MenuItem kbd{
+.react-aria-MenuItem kbd {
   font-size: 13px;
   color: var(--color-gray-a10);
 }
 .react-aria-MenuItem[data-focused="true"] {
-  background-color: var(--color-gray-6);
+  background-color: var(--color-gray-3);
+  color: var(--color-gray-12);
 }
 .light .react-aria-MenuItem[data-focused="true"] {
-  background-color: var(--color-gray-4);
+  background-color: var(--color-gray-3);
 }
 .react-aria-MenuItem[data-open="true"] {
   background-color: var(--color-gray-6);
@@ -1213,13 +1315,14 @@ button[data-focus-visible] {
 .react-aria-MenuItem[data-disabled="true"] {
   color: var(--color-gray-10);
   font-weight: 500;
+  cursor: not-allowed;
 }
 @layer components {
   .react-aria-ModalOverlay {
     width: 100vw;
     height: 100vh;
     z-index: 100;
-    background: #00000051;
+    background: #0000003a;
     position: absolute;
     top: 0;
     outline: none;
@@ -1232,7 +1335,7 @@ button[data-focus-visible] {
     top: 46%;
     left: 50%;
     translate: -50% -50%;
-    transition: opacity 0.3s, top 0.25s, scale 0.3s;
+    transition: opacity 0.25s, top 0.25s;
   }
   
   .react-aria-Modal[data-entering],
@@ -1242,13 +1345,9 @@ button[data-focus-visible] {
     opacity: 0;
   }
   
-  .react-aria-Modal[data-entering] {
-    top: 50%;
-  }
-  
+  .react-aria-Modal[data-entering],
   .react-aria-Modal[data-exiting] {
-    top: 46%;
-    scale: 1.08;
+    top: 50%;
   }
   
   .react-aria-Popover {
@@ -1269,28 +1368,29 @@ button[data-focus-visible] {
 }
 @layer components {
   .react-aria-ListBox {
-    border: 1px solid var(--color-gray-6);
-    background-color: var(--color-gray-3);
-    border-radius: 6px;
+    background-color: var(--color-gray-2);
+    border-radius: var(--radius-md);
     outline: none;
+    border: 1px solid var(--color-gray-5);
     flex-direction: column;
     width: var(--trigger-width, 250px);
     font-size: 14px;
     min-height: 100px;
     min-width: max-content;
     max-height: 420px;
-    padding: 4px;
+    padding: 6px;
     display: flex;
     overflow: auto;
     color: var(--color-gray-12);
   }
   
   .react-aria-ListBoxItem {
-    padding: 5px 8px;
-    border-radius: 4px;
+    padding: 6px 8px;
+    border-radius: var(--radius-sm);
     outline: none;
     display: flex;
     flex-direction: row;
+    cursor: pointer;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
@@ -1300,18 +1400,13 @@ button[data-focus-visible] {
   .react-aria-ListBoxItem[data-disabled="true"] {
     color: var(--color-gray-10);
     font-weight: 500;
+    cursor: not-allowed;
   }
   
   .react-aria-ListBoxItem[data-focused="true"],
   .react-aria-ListBoxItem[data-selected="true"][data-selection-mode="multiple"],
   .react-aria-ListBoxItem[data-hovered="true"] {
-    background-color: var(--color-gray-6);
-  }
-
-  .light .react-aria-ListBoxItem[data-focused="true"],
-  .light .react-aria-ListBoxItem[data-selected="true"][data-selection-mode="multiple"],
-  .light .react-aria-ListBoxItem[data-hovered="true"] {
-    background-color: var(--color-gray-4);
+    background-color: var(--color-gray-3);
   }
   
   [data-placeholder] {
@@ -1404,12 +1499,12 @@ button[data-focus-visible] {
     position: absolute;
     user-select: text;
     pointer-events: visible;
-    transition: opacity 0.2s,top 0.2s, bottom 0.2s,left 0.2s, right 0.2s;
+    transition: opacity 0.15s,top 0.2s, bottom 0.2s,left 0.2s, right 0.2s;
     
     --y-start-position: -1.5rem;
-    --y-end-position: var(--y-start-position);
+    --y-end-position: 1.5rem;
 
-    --x-start-position: -10rem;
+    --x-start-position: -5rem;
     --x-end-position: 1.5rem;
 
     &[data-exiting],
@@ -1417,41 +1512,36 @@ button[data-focus-visible] {
       opacity: 0;
     }
     
-    &[data-axis-y="top"] {
+
+    &[data-axis-y="top"]{
       top: var(--y-end-position);
     }
     &[data-axis-y="bottom"] {
       bottom: var(--y-end-position);
     }
-    &[data-axis-x="center"] {
-      left: 50%;
-      transform: translateX(-50%);
+    &[data-axis-x="right"] {
+      right: var(--x-end-position);
     }
     &[data-axis-x="left"] {
       left: var(--x-end-position);
     }
-    &[data-axis-x="right"] {
-      right: var(--x-end-position);
+    &[data-axis-x="center"] {
+      left: 50%;
+      transform: translateX(-50%);
     }
-    
-    &[data-axis-y="top"][data-entering],
-    &[data-axis-y="top"][data-exiting] {
+
+    &[data-axis-y="top"][data-entering]{
       top: var(--y-start-position);
     }
-    
-    &[data-axis-y="bottom"][data-entering],
-    &[data-axis-y="bottom"][data-exiting] {
+    &[data-axis-y="bottom"][data-entering]{
       bottom: var(--y-start-position);
     }
 
-    &[data-axis-x="left"][data-entering],
-    &[data-axis-x="left"][data-exiting] {
-      left: var(--x-start-position);
-    }
-    
-    &[data-axis-x="right"][data-entering],
-    &[data-axis-x="right"][data-exiting] {
+    &[data-axis-x="right"][data-exiting]{
       right: var(--x-start-position);
+    }
+    &[data-axis-x="left"][data-exiting]{
+      left: var(--x-start-position);
     }
 
   }
@@ -1461,7 +1551,6 @@ button[data-focus-visible] {
     outline: solid 1px var(--color-gray-5);
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
     gap: calc(var(--spacing) * 9);
     border-radius: var(--radius-lg);
@@ -1473,14 +1562,14 @@ button[data-focus-visible] {
     color: var(--color-gray-11);
 
     &[data-toast-type="success"][data-richcolors="true"] {
-      background-color: var(--color-success-3);
+      background-color: var(--color-success-2);
       outline: solid 1px var(--color-success-6);
       color: var(--color-success-11);
     }
   
     &[data-toast-type="info"][data-richcolors="true"] {
-      background-color: var(--color-info-3);
-      outline: solid 1px var(--color-info-7);
+      background-color: var(--color-info-2);
+      outline: solid 1px var(--color-info-6);
       color: var(--color-info-11);
     }
   
@@ -1491,8 +1580,8 @@ button[data-focus-visible] {
     }
   
     &[data-toast-type="error"][data-richcolors="true"] {
-      background-color: var(--color-error-3);
-      outline: solid 1px var(--color-error-7);
+      background-color: var(--color-error-2);
+      outline: solid 1px var(--color-error-6);
       color: var(--color-error-11);
     }
   }
@@ -1512,9 +1601,14 @@ button[data-focus-visible] {
     aspect-ratio: 1/1;
   }
 
-  .toast-item > div > span > svg {
+  .toast-item > div > span > svg{
+    color: var(--color-gray-1);
+    fill: var(--color-gray-12);
+  }
+  .toast-item > div > span > svg[aria-label="warn"] {
     color: var(--color-gray-12);
   }
+
   .toast-item[data-toast-type="success"][data-richcolors="true"] > div > span > svg {
     fill: var(--color-success-10);
     color: var(--color-success-3);
@@ -1535,20 +1629,22 @@ button[data-focus-visible] {
     display: flex;
     flex-direction: column;
     text-align: start;
-    align-items: center;
+    align-items: start;
     justify-content: start;
     margin-left: calc(var(--spacing) * 1);
   }
   
-  .toast-item > div > div > p:nth-child(0) {
-    font-size: calc(var(--font-multiplier) * 14px);
-    font-weight: 600;
+  .toast-item[data-toast-type="none"] > div > div p.title {
     color: var(--color-gray-12);
   }
+  .toast-item > div > div > p.title {
+    font-size: var(--text-p2);
+    font-weight: 500;
+  }
   
-  .toast-item > div > div > p:nth-child(1) {
-    font-size: calc(var(--font-multiplier) * 14.5px);
-    font-weight: 475;
+  .toast-item > div > div > p.description {
+    font-size: var(--text-p2);
+    font-weight: 400;
   }
 
   .toast-item > span > button.icon-btn {

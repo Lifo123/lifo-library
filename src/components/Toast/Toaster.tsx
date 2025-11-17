@@ -47,8 +47,7 @@ export function Toaster(props: ToasterSettingProps) {
     const toasts = TOASTER[toasterId]?.toasts
     if (!toasts) return null;
 
-    const validToasts = toasts.filter(Boolean);
-    const availableToast = validToasts.slice(-maxToasts);
+    const availableToast = toasts.slice(-maxToasts);
 
     return (
         <OverlayContainer
@@ -154,9 +153,7 @@ const ToastItemInner = React.forwardRef<HTMLDivElement, ToastAllProps & { isExit
                 onMouseEnter={() => toast.update(id as string, { isHovered: true }, toasterId)}
                 onMouseLeave={() => toast.update(id as string, { isHovered: false }, toasterId)}
                 style={{
-                    '--y-start-position': axisX !== 'center' ?`calc(${ref!.current?.offsetHeight + 16}px * ${index} + 1.5rem)` :
-                        '-1.5rem',
-                    '--y-end-position' : axisX === 'center' ? `calc(${ref!.current?.offsetHeight + 16}px * ${index} + 1.5rem)` : 'var(--y-start-position)',
+                    '--y-end-position' : `calc(${ref!.current?.offsetHeight + 16}px * ${index} + 1.5rem)`,
                 } as React.CSSProperties}
             >
                 {
@@ -169,8 +166,8 @@ const ToastItemInner = React.forwardRef<HTMLDivElement, ToastAllProps & { isExit
                             <div>
                                 {customIcon || ToastIcons[type] ? <span className='mr-1'>{customIcon || ToastIcons[type]}</span> : null}
                                 <div>
-                                    {title && <p>{title}</p>}
-                                    {description && <p>{description}</p>}
+                                    {title && <p className='title'>{title}</p>}
+                                    {description && <p className='description'>{description}</p>}
                                 </div>
                             </div>
                             <span>

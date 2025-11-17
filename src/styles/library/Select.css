@@ -1,27 +1,28 @@
 @layer components {
   .react-aria-ListBox {
-    border: 1px solid var(--color-gray-6);
-    background-color: var(--color-gray-3);
-    border-radius: 6px;
+    background-color: var(--color-gray-2);
+    border-radius: var(--radius-lg);
     outline: none;
+    border: 1px solid var(--color-gray-5);
     flex-direction: column;
     width: var(--trigger-width, 250px);
     font-size: 14px;
     min-height: 100px;
     min-width: max-content;
     max-height: 420px;
-    padding: 4px;
+    padding: 6px;
     display: flex;
     overflow: auto;
     color: var(--color-gray-12);
   }
   
   .react-aria-ListBoxItem {
-    padding: 5px 8px;
-    border-radius: 4px;
+    padding: 6px 8px;
+    border-radius: var(--radius-sm);
     outline: none;
     display: flex;
     flex-direction: row;
+    cursor: pointer;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
@@ -31,18 +32,13 @@
   .react-aria-ListBoxItem[data-disabled="true"] {
     color: var(--color-gray-10);
     font-weight: 500;
+    cursor: not-allowed;
   }
   
   .react-aria-ListBoxItem[data-focused="true"],
   .react-aria-ListBoxItem[data-selected="true"][data-selection-mode="multiple"],
   .react-aria-ListBoxItem[data-hovered="true"] {
-    background-color: var(--color-gray-6);
-  }
-
-  .light .react-aria-ListBoxItem[data-focused="true"],
-  .light .react-aria-ListBoxItem[data-selected="true"][data-selection-mode="multiple"],
-  .light .react-aria-ListBoxItem[data-hovered="true"] {
-    background-color: var(--color-gray-4);
+    background-color: var(--color-gray-3);
   }
   
   [data-placeholder] {

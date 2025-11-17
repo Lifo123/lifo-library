@@ -3,17 +3,15 @@ import React from 'react';
 import { useButton, useDisclosure } from 'react-aria';
 import { useDisclosureState, DisclosureProps } from 'react-stately';
 import { mergeProps, useFocusRing } from 'react-aria';
-
-import type { BaseComponentProps } from '../../Types/GeneralTypes.js';
 import { Icon } from 'public-icons';
 
 interface Props extends DisclosureProps {
     title: string;
     children: React.ReactNode;
     styling?: {
-        content?: BaseComponentProps;
-        trigger?: BaseComponentProps;
-        panel?: BaseComponentProps;
+        content?: React.HTMLAttributes<HTMLElement>;
+        trigger?: React.HTMLAttributes<HTMLElement>;
+        panel?: React.HTMLAttributes<HTMLElement>;
     }
 }
 

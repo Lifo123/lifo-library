@@ -1,7 +1,13 @@
 ---
 import "../styles/Global.css";
 
-import { DarkmodeDrop, DarkmodeIcon, PageLoading, Toaster } from "../index";
+import {
+    DarkmodeDrop,
+    DarkmodeIcon,
+    Dialoger,
+    PageLoading,
+    Toaster,
+} from "../index";
 import Test from "../apps/Main";
 
 interface Props {
@@ -13,10 +19,8 @@ const { title, description } = Astro.props;
 ---
 
 <script>
-    const BASE_STORAGE_KEY =
-        (window.location.pathname.split("/").filter(Boolean)[0] ||
-            "lifo/lib-") + "-prefs";
-    let savedPrefs = JSON.parse(localStorage.getItem(BASE_STORAGE_KEY) || "{}");
+    let storageKey = "preferences";
+    let savedPrefs = JSON.parse(localStorage.getItem(storageKey) || "{}");
 
     const setDarkMode = (doc: Document) => {
         const prefersDark = window.matchMedia(
@@ -34,7 +38,7 @@ const { title, description } = Astro.props;
         doc.documentElement.classList.toggle("light", mode === "light");
 
         localStorage.setItem(
-            BASE_STORAGE_KEY,
+            storageKey,
             JSON.stringify({
                 ...savedPrefs,
                 theme: savedPrefs.theme || "system",
@@ -62,7 +66,8 @@ const { title, description } = Astro.props;
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
     <body class="f-col f-align-center w-full ox-hidden text-gray-12">
-        <Toaster client:only="react" richColors/>
+        <Toaster client:only="react" />
+        <Dialoger client:only="react" />
         <PageLoading />
         <header
             class="f-row w-full justify-between items-center px-4 py-2"
@@ -80,7 +85,7 @@ const { title, description } = Astro.props;
             </div>
         </header>
 
-        <main>
+        <main class="mx-auto">
             <Test client:only="react" />
         </main>
     </body>

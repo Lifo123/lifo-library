@@ -35,7 +35,7 @@ export function Tooltip({
             </Focusable>
             <Too
                 {...tooltipProps}
-                offset={tooltipProps?.offset || offset}
+                offset={tooltipProps?.offset || offset || 4}
 
             >
                 {custom || text || 'tooltip'}

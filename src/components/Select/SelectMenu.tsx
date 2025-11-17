@@ -1,9 +1,7 @@
 'use client'
-import { Button, FieldError, Label, ListBox, Popover, Select, SelectValue } from "react-aria-components"
-import { SelectProps, ValidationResult } from "react-aria-components"
+import { Button, ButtonProps, FieldError, Label, ListBox, Popover, Select, SelectValue } from "react-aria-components"
+import { SelectProps, ValidationResult, PopoverProps } from "react-aria-components"
 import { Icon } from "public-icons";
-import type { BaseComponentProps } from "../../Types/GeneralTypes.js";
-
 
 interface SelectMenuProps<T extends object, M extends 'single' | 'multiple'>
     extends Omit<SelectProps<T, M>, 'children'> {
@@ -12,26 +10,28 @@ interface SelectMenuProps<T extends object, M extends 'single' | 'multiple'>
     errorMessage?: string | ((validation: ValidationResult) => string);
     items?: Iterable<T>;
     children: React.ReactNode | ((item: T) => React.ReactNode);
-
+    placement?: PopoverProps['placement'];
     customize?: {
-        trigger?: BaseComponentProps;
+        trigger?: ButtonProps;
     }
 }
+
 export default function SelectMenu<
     T extends object,
     M extends 'single' | 'multiple' = 'single'
 >({
-    label, 
-    errorMessage, 
-    children, 
-    items, 
-    customize, 
-    offset, 
-    ...props 
+    label,
+    errorMessage,
+    children,
+    items,
+    customize,
+    offset,
+    placement,
+    ...props
 }: SelectMenuProps<T, M>) {
 
     return (
-        <Select {...props}>
+        <Select {...props} >
             <Label>{label}</Label>
             <Button
                 {...customize?.trigger}
@@ -43,7 +43,10 @@ export default function SelectMenu<
                 </span>
             </Button>
             <FieldError>{errorMessage}</FieldError>
-            <Popover offset={offset || 5}>
+            <Popover
+                offset={offset || 5}
+                placement={placement || 'bottom left'}
+            >
                 <ListBox items={items}>
                     {children}
                 </ListBox>

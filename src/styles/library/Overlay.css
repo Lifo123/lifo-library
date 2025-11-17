@@ -16,7 +16,7 @@
     top: 46%;
     left: 50%;
     translate: -50% -50%;
-    transition: opacity 0.3s, top 0.25s, scale 0.3s;
+    transition: opacity 0.25s, top 0.25s;
   }
   
   .react-aria-Modal[data-entering],
@@ -26,13 +26,9 @@
     opacity: 0;
   }
   
-  .react-aria-Modal[data-entering] {
-    top: 50%;
-  }
-  
+  .react-aria-Modal[data-entering],
   .react-aria-Modal[data-exiting] {
-    top: 46%;
-    scale: 1.08;
+    top: 50%;
   }
   
   .react-aria-Popover {

@@ -15,12 +15,12 @@
     position: absolute;
     user-select: text;
     pointer-events: visible;
-    transition: opacity 0.2s,top 0.2s, bottom 0.2s,left 0.2s, right 0.2s;
+    transition: opacity 0.15s,top 0.2s, bottom 0.2s,left 0.2s, right 0.2s;
     
     --y-start-position: -1.5rem;
-    --y-end-position: var(--y-start-position);
+    --y-end-position: 1.5rem;
 
-    --x-start-position: -10rem;
+    --x-start-position: -5rem;
     --x-end-position: 1.5rem;
 
     &[data-exiting],
@@ -28,41 +28,36 @@
       opacity: 0;
     }
     
-    &[data-axis-y="top"] {
+
+    &[data-axis-y="top"]{
       top: var(--y-end-position);
     }
     &[data-axis-y="bottom"] {
       bottom: var(--y-end-position);
     }
-    &[data-axis-x="center"] {
-      left: 50%;
-      transform: translateX(-50%);
+    &[data-axis-x="right"] {
+      right: var(--x-end-position);
     }
     &[data-axis-x="left"] {
       left: var(--x-end-position);
     }
-    &[data-axis-x="right"] {
-      right: var(--x-end-position);
+    &[data-axis-x="center"] {
+      left: 50%;
+      transform: translateX(-50%);
     }
-    
-    &[data-axis-y="top"][data-entering],
-    &[data-axis-y="top"][data-exiting] {
+
+    &[data-axis-y="top"][data-entering]{
       top: var(--y-start-position);
     }
-    
-    &[data-axis-y="bottom"][data-entering],
-    &[data-axis-y="bottom"][data-exiting] {
+    &[data-axis-y="bottom"][data-entering]{
       bottom: var(--y-start-position);
     }
 
-    &[data-axis-x="left"][data-entering],
-    &[data-axis-x="left"][data-exiting] {
-      left: var(--x-start-position);
-    }
-    
-    &[data-axis-x="right"][data-entering],
-    &[data-axis-x="right"][data-exiting] {
+    &[data-axis-x="right"][data-exiting]{
       right: var(--x-start-position);
+    }
+    &[data-axis-x="left"][data-exiting]{
+      left: var(--x-start-position);
     }
 
   }
@@ -72,7 +67,6 @@
     outline: solid 1px var(--color-gray-5);
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
     gap: calc(var(--spacing) * 9);
     border-radius: var(--radius-lg);
@@ -84,14 +78,14 @@
     color: var(--color-gray-11);
 
     &[data-toast-type="success"][data-richcolors="true"] {
-      background-color: var(--color-success-3);
+      background-color: var(--color-success-2);
       outline: solid 1px var(--color-success-6);
       color: var(--color-success-11);
     }
   
     &[data-toast-type="info"][data-richcolors="true"] {
-      background-color: var(--color-info-3);
-      outline: solid 1px var(--color-info-7);
+      background-color: var(--color-info-2);
+      outline: solid 1px var(--color-info-6);
       color: var(--color-info-11);
     }
   
@@ -102,8 +96,8 @@
     }
   
     &[data-toast-type="error"][data-richcolors="true"] {
-      background-color: var(--color-error-3);
-      outline: solid 1px var(--color-error-7);
+      background-color: var(--color-error-2);
+      outline: solid 1px var(--color-error-6);
       color: var(--color-error-11);
     }
   }
@@ -123,9 +117,14 @@
     aspect-ratio: 1/1;
   }
 
-  .toast-item > div > span > svg {
+  .toast-item > div > span > svg{
+    color: var(--color-gray-1);
+    fill: var(--color-gray-12);
+  }
+  .toast-item > div > span > svg[aria-label="warn"] {
     color: var(--color-gray-12);
   }
+
   .toast-item[data-toast-type="success"][data-richcolors="true"] > div > span > svg {
     fill: var(--color-success-10);
     color: var(--color-success-3);
@@ -146,20 +145,22 @@
     display: flex;
     flex-direction: column;
     text-align: start;
-    align-items: center;
+    align-items: start;
     justify-content: start;
     margin-left: calc(var(--spacing) * 1);
   }
   
-  .toast-item > div > div > p:nth-child(0) {
-    font-size: calc(var(--font-multiplier) * 14px);
-    font-weight: 600;
+  .toast-item[data-toast-type="none"] > div > div p.title {
     color: var(--color-gray-12);
   }
+  .toast-item > div > div > p.title {
+    font-size: var(--text-p2);
+    font-weight: 500;
+  }
   
-  .toast-item > div > div > p:nth-child(1) {
-    font-size: calc(var(--font-multiplier) * 14.5px);
-    font-weight: 475;
+  .toast-item > div > div > p.description {
+    font-size: var(--text-p2);
+    font-weight: 400;
   }
 
   .toast-item > span > button.icon-btn {

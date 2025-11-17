@@ -1,4 +1,4 @@
-import { deepMap } from "nanostores";
+import { deepMap } from "@nanostores/deepmap";
 
 type FileStore = {
     uploads: Record<string, File>;

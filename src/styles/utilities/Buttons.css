@@ -19,8 +19,9 @@
 @utility btn {
   min-height: 32px;
   line-height: 1.6;
-  padding: 8px 16px;
+  padding: 6px 12px;
   font-size: calc(var(--font-multiplier) * 14px );
+  min-height: 32px;
   min-width: max-content;
   height: max-content;
   cursor: pointer;
@@ -30,7 +31,7 @@
 }
 
 .btn:active {
-  transform: scale(0.97);
+  transform: scale(0.97, .98);
   transition-property: transform;
   transition-timing-function: cubic-bezier(.4, 0, .2, 1);
   transition-duration: .15s;
@@ -49,41 +50,111 @@ button[data-focus-visible] {
 }
 
 @utility btn-primary {
-  background-color: var(--color-accent-10);
-  color: var(--color-accent-contrast);
-  font-weight: 500;
-  letter-spacing: normal;
+  background-color: var(--color-gray-12);
+  color: var(--color-gray-black);
+  padding: 6px 14px;
+  font-weight: 475;
 }
 
 .btn-primary:hover {
-  background-color: var(--color-accent-9);
+  background-color: var(--color-gray-a12);
 }
 
 @utility btn-secondary {
-  background-color: var(--color-gray-6);
+  background-color: var(--color-gray-3);
   color: var(--color-gray-12);
 }
 
 .btn-secondary:hover {
-  background-color: var(--color-gray-7);
+  background-color: var(--color-gray-4);
 }
 
-@utility btn-third {
-  border: solid 1px var(--color-gray-7);
+@utility btn-outline {
+  border: solid 1px var(--color-gray-6);
+  background-color: var(--color-gray-2);
   color: var(--color-gray-12);
 }
 
-.btn-third:hover {
-  background-color: var(--color-gray-5);
+.btn-outline:hover {
+  background-color: var(--color-gray-3);
 }
 
-@utility btn-fourth {
+@utility btn-ghost {
   background-color: transparent;
   color: var(--color-gray-12);
 }
 
-.btn-fourth:hover {
-  background-color: var(--color-gray-5);
+.btn-ghost:hover {
+  background-color: var(--color-gray-3);
+}
+
+@utility btn-red {
+  background-color: var(--color-red-500);
+  color: var(--color-white);
+}
+
+.btn-red:hover {
+  background-color: var(--color-error-9);
+}
+
+@utility btn-red-out {
+  background-color: var(--color-gray-2);
+  border: solid 1px var(--color-error-7);
+  color: var(--color-red-500);
+}
+
+.btn-red-out:hover {
+  background-color: var(--color-error-a2);
+}
+
+.btn-red[data-focus-visible],
+.btn-red-out[data-focus-visible] {
+  outline: 2px solid var(--color-red-500);
+}
+
+@utility btn-blue {
+  background-color: var(--color-blue-500);
+  color: var(--color-white);
+}
+
+.btn-blue:hover {
+  background-color: var(--color-info-9);
+}
+
+@utility btn-blue-out {
+  background-color: var(--color-gray-2);
+  border: solid 1px var(--color-info-7);
+  color: var(--color-blue-500);
+}
+
+.btn-blue-out:hover {
+  background-color: var(--color-info-a2);
+}
+
+@utility btn-green {
+  background-color: var(--color-green-700);
+  color: var(--color-white);
+}
+
+.btn-green:hover {
+  background-color: var(--color-success-8);
+}
+
+.light .btn-green {
+  background-color: var(--color-green-600);
+}
+.light .btn-green:hover {
+  background-color: var(--color-success-9);
+}
+
+@utility btn-green-out {
+  background-color: var(--color-gray-2);
+  border: solid 1px var(--color-success-7);
+  color: var(--color-green-600);
+}
+
+.btn-green-out:hover {
+  background-color: var(--color-success-a2);
 }
 
 @media (550px > width) {

@@ -1,15 +1,14 @@
 'use client';
 import { useStore } from "@nanostores/react";
-import { Darkmode } from "./Darkmode.Store.js";
+import { Darkmode, ThemeTypes } from "./Darkmode.Store.js";
 import { $preferences } from "../../Stores/Preferences.Store.js";
-import { ThemeTypes } from "../../Types/GeneralTypes.js";
 import { SelectItem, SelectMenu } from "../Select/index.js";
-//import React from "react";
+import { Icon } from "public-icons";
+import { Text } from "react-aria-components";
+
 
 export default function DarkmodeDrop() {
-  const PREFERENCES = useStore($preferences);
-  //const ref = React.useRef<HTMLElement | any>(null);
-
+  const PREFERENCES = useStore($preferences, { keys: ['theme'] });
   const handleSelect = (value: ThemeTypes) => {
     Darkmode.change(value);
   };
@@ -21,10 +20,19 @@ export default function DarkmodeDrop() {
         customize={{
           trigger: { className: 'dm-select' }
         }}
+        placement="bottom"
       >
-        <SelectItem id='light' onPress={() => handleSelect('light')}>Light</SelectItem>
-        <SelectItem id='dark' onPress={() => handleSelect('dark')}>Dark</SelectItem>
-        <SelectItem id='system' onPress={() => handleSelect('system')}>System</SelectItem>
+        <SelectItem id='light' textValue="light" onPress={() => handleSelect('light')}>
+          Light
+        </SelectItem>
+
+        <SelectItem id='dark' textValue="dark" onPress={() => handleSelect('dark')}>
+          Dark
+        </SelectItem>
+
+        <SelectItem id='system' textValue="system" onPress={() => handleSelect('system')}>
+          System
+        </SelectItem>
       </SelectMenu>
     </>
   );

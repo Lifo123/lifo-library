@@ -52,9 +52,9 @@
   
   .dm-select {
     font-weight: 400;
-    border: solid 1px var(--color-gray-7);
+    border: solid 1px var(--color-gray-6);
     color: var(--color-gray-12);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
     gap: calc(var(--spacing) * 2);
     align-items: center;
     justify-content: space-between;

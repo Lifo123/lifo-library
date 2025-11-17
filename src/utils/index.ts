@@ -1,5 +1,5 @@
 export * from './General.Utils.js'
-export { ManageLocal } from "./Storage/LocalStorage.Utils.js";
+export { Local } from "./Storage/LocalStorage.Utils.js";
 export { Scroll } from './Scroll.Utils.js';
 export { Sort } from './Sort.Utils.js';
 

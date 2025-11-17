@@ -2,7 +2,7 @@
 import { useStore } from '@nanostores/react';
 import { $loading, Loading } from '../Loading/Loading.Store.js';
 import { ButtonProps } from 'react-aria-components';
-import { LoadingButton } from './LoadingButton.js'; // 👈 Importamos el nuevo botón
+import { LoadingButton } from './LoadingButton.js';
 
 interface ButtonPromiseProps extends Omit<ButtonProps, 'onPress'> {
     loadingId?: string;

@@ -1,11 +1,11 @@
 .react-aria-Menu {
-  background-color: var(--color-gray-3);
-  border-radius: 6px;
+  background-color: var(--color-gray-2);
+  border-radius: var(--radius-xl);
   outline: none;
-  border: solid 1px var(--color-gray-6);
-  padding: 4px;
+  border: solid 1px var(--color-gray-5);
+  padding: 8px;
   font-size: 14px;
-  min-width: 190px;
+  min-width: 60px;
   width: max-content;
   color: var(--color-gray-12);
 }
@@ -15,30 +15,32 @@
 }
 
 .react-aria-MenuItem {
-  padding: 6px 8px;
-  border-radius: 4px;
-  font-weight: 400;
+  padding: 6px 18px 6px 8px;
+  border-radius: var(--radius-md);
+  min-height: 38px;
   outline: none;
-
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  color: var(--color-gray-12);
   gap: 12px;
-
   user-select: none;
 }
-.react-aria-MenuItem kbd{
+
+.react-aria-MenuItem kbd {
   font-size: 13px;
   color: var(--color-gray-a10);
 }
 
 .react-aria-MenuItem[data-focused="true"] {
-  background-color: var(--color-gray-6);
+  background-color: var(--color-gray-3);
+  color: var(--color-gray-12);
 }
 
 .light .react-aria-MenuItem[data-focused="true"] {
-  background-color: var(--color-gray-4);
+  background-color: var(--color-gray-3);
 }
 
 .react-aria-MenuItem[data-open="true"] {
@@ -48,4 +50,5 @@
 .react-aria-MenuItem[data-disabled="true"] {
   color: var(--color-gray-10);
   font-weight: 500;
+  cursor: not-allowed;
 }

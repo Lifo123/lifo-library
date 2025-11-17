@@ -1,8 +1,7 @@
 'use client'
 import { $preferences } from "../../Stores/Preferences.Store.js";
-import { ThemeTypes } from "../../Types/GeneralTypes.js";
 
-
+export type ThemeTypes = 'light' | 'dark' | 'system';
 
 const toggle = () => {
     const currentData = $preferences.get().theme;

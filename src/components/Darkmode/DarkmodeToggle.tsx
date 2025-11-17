@@ -2,14 +2,23 @@
 import { useStore } from "@nanostores/react";
 import { Darkmode } from "./Darkmode.Store.js";
 import { $preferences } from "../../Stores/Preferences.Store.js";
-import { BaseComponentProps } from "../../Types/GeneralTypes.js";
+import { Button } from "react-aria-components";
 
-export default function DarkmodeToggle({ className, style }: BaseComponentProps) {
-    const PREFERENCES = useStore($preferences);
+type Props = {
+    className?: string;
+    style?: React.CSSProperties;
+}
+
+export default function DarkmodeToggle({ className, style }: Props) {
+    const PREFERENCES = useStore($preferences, { keys: ['isDark'] });
 
     return (
-        <span className={`lb-dm-togle ${PREFERENCES.isDark ? 'active' : ''} ${className || ''}`} onClick={() => Darkmode.toggle()} style={style}>
+        <Button
+            className={`lb-dm-togle ${PREFERENCES.isDark ? 'active' : ''} ${className || ''}`}
+            onPress={() => Darkmode.toggle()}
+            style={style}
+        >
             <span></span>
-        </span>
+        </Button>
     );
 }

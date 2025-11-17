@@ -4,19 +4,34 @@ import { Button, ButtonProps } from 'react-aria-components';
 
 type PressableIconProps = {
     icon: AllIconsType;
-    triggerProps?: {
-        className?: string;
-        style?: React.CSSProperties;
-    } & ButtonProps
-} & IconTypeProps
+} & IconTypeProps & ButtonProps
 
 export function PressableIcon({
-    icon, triggerProps, ...iconProps
+    icon,
+    color,
+    size,
+    strokeWidth,
+    svgProps,
+    fill,
+    flipHorizontal,
+    flipVertical,
+    rotate,
+    ...triggerProps
 }: PressableIconProps) {
 
     return (
         <Button {...triggerProps}>
-            <Icon icon={icon} {...iconProps} />
+            <Icon
+                icon={icon}
+                color={color}
+                size={size}
+                strokeWidth={strokeWidth}
+                svgProps={svgProps}
+                fill={fill}
+                flipHorizontal={flipHorizontal}
+                flipVertical={flipVertical}
+                rotate={rotate}
+            />
         </Button>
     )
 }

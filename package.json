@@ -51,6 +51,7 @@
     "./utils": "./dist/utils/index.js"
   },
   "dependencies": {
+    "@nanostores/deepmap": "^0.0.1",
     "@nanostores/react": "^1.0.0",
     "nanostores": "^1.0.1",
     "public-icons": "0.0.8"

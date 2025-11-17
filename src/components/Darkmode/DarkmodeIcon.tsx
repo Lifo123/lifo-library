@@ -13,7 +13,7 @@ const typeIcons = {
 }
 
 export default function DarkmodeIcon({ size = 20 }) {
-    const PREFERENCES = useStore($preferences);
+    const PREFERENCES = useStore($preferences, { keys: ['theme'] });
 
     return (
         <span className="lb-dm-icon-toggle" onClick={() => Darkmode.toggle()}>
