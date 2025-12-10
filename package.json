@@ -15,34 +15,35 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
     "./store": {
       "types": "./dist/Stores/index.d.ts",
-      "import": "./dist/Stores/index.mjs",
-      "require": "./dist/Stores/index.js"
+      "import": "./dist/Stores/index.js",
+      "require": "./dist/Stores/index.cjs"
     },
     "./utils": {
       "types": "./dist/utils/index.d.ts",
-      "import": "./dist/utils/index.mjs",
-      "require": "./dist/utils/index.js"
+      "import": "./dist/utils/index.js",
+      "require": "./dist/utils/index.cjs"
     },
     "./dialog": {
       "types": "./dist/components/Dialog/index.d.ts",
-      "import": "./dist/components/Dialog/index.mjs",
-      "require": "./dist/components/Dialog/index.js"
+      "import": "./dist/components/Dialog/index.js",
+      "require": "./dist/components/Dialog/index.cjs"
     },
     "./toast": {
       "types": "./dist/components/Toast/index.d.ts",
-      "import": "./dist/components/Toast/index.mjs",
-      "require": "./dist/components/Toast/index.js"
+      "import": "./dist/components/Toast/index.js",
+      "require": "./dist/components/Toast/index.cjs"
     }
   },
   "scripts": {
