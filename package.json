@@ -1,0 +1,89 @@
+{
+  "name": "@lifo123/library",
+  "version": "1.9.0",
+  "description": "Lifo library",
+  "type": "module",
+  "author": "Lifo",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lifo123/lifo-library.git"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./store": {
+      "types": "./dist/Stores/index.d.ts",
+      "import": "./dist/Stores/index.mjs",
+      "require": "./dist/Stores/index.js"
+    },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "import": "./dist/utils/index.mjs",
+      "require": "./dist/utils/index.js"
+    },
+    "./dialog": {
+      "types": "./dist/components/Dialog/index.d.ts",
+      "import": "./dist/components/Dialog/index.mjs",
+      "require": "./dist/components/Dialog/index.js"
+    },
+    "./toast": {
+      "types": "./dist/components/Toast/index.d.ts",
+      "import": "./dist/components/Toast/index.mjs",
+      "require": "./dist/components/Toast/index.js"
+    }
+  },
+  "scripts": {
+    "flifo:css": "npx postcss src/styles/input.css -o src/styles/Flifo.css --no-map",
+    "build": "pnpm run flifo:css && tsup",
+    "deploy": "pnpm run build && npm publish --access public"
+  },
+  "dependencies": {
+    "@react-aria/utils": "^3.31.0"
+  },
+  "peerDependencies": {
+    "@nanostores/deepmap": ">=0.0.1",
+    "@nanostores/react": ">=0.0.1",
+    "nanostores": ">=1.1.0",
+    "public-icons": ">=0.0.8",
+    "react": ">=18",
+    "react-aria": ">=3.44.0",
+    "react-aria-components": ">=1.13.0",
+    "react-dom": ">=18",
+    "react-stately": ">=3.42.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@nanostores/react": "^1.0.0",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "check-dts": "^0.9.0",
+    "eslint": "^9.39.1",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "postcss-import": "^16.1.1",
+    "public-icons": "^0.0.8",
+    "react": "^18.2.0",
+    "react-aria": "^3.44.0",
+    "react-aria-components": "^1.13.0",
+    "react-dom": "^18.2.0",
+    "react-stately": "^3.42.0",
+    "shx": "^0.4.0",
+    "tsup": "^8.5.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.4"
+  }
+}
