@@ -1,7 +1,7 @@
-export * from './General.Utils'
-export { default as uuid } from './uuid'
+export * from "./General.Utils";
+export { default as uuid } from "./uuid";
 
-export { Scroll } from './scroll.util';
+export { Scroll } from "./scroll.util";
 export { LocalStorage as newLS } from "./newLS.util";
 
 export {
@@ -9,13 +9,11 @@ export {
   mergeProps,
   useExitAnimation,
   useEnterAnimation,
-  chain
-} from '@react-aria/utils'
+  chain,
+} from "@react-aria/utils";
 
-export {
-  useCollator,
-  useFilter,
+export { useCollator, useFilter, useIsSSR, SSRProvider } from "react-aria";
+export { animate } from "motion";
 
-  useIsSSR,
-  SSRProvider,
-} from 'react-aria'
+import { motion as motionComponent } from "motion/react";
+export { motionComponent as motion };

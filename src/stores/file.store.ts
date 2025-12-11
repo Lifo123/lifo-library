@@ -1,10 +1,10 @@
-'use client'
+"use client";
 import { deepMap } from "@nanostores/deepmap";
 
 type FileStore = {
-    uploads: Record<string, File>;
-}
+  uploads: Record<string, File>;
+};
 
 export const $files = deepMap<FileStore>({
-    uploads: {}
-})
+  uploads: {},
+});

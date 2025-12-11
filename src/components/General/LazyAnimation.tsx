@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React from "react";
 import { LayerAnimation } from "./index";
 
@@ -21,11 +21,8 @@ export function LazyAnimate({
   if (!isMounted || !children) return null;
 
   return (
-    <LayerAnimation
-      isOpen={isOpen}
-      {...props}
-    >
+    <LayerAnimation isOpen={isOpen} {...props}>
       {children}
     </LayerAnimation>
-  )
+  );
 }

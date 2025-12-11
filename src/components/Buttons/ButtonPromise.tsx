@@ -1,10 +1,10 @@
-'use client';
-import React from 'react';
-import { useStore } from '@nanostores/react';
-import { loading } from '@Components/index';
-import type { ButtonProps, PressEvent } from 'react-aria-components';
-import type { PromiseButtonProps } from './types';
-import { LoadingButton } from './LoadingButton';
+"use client";
+import React from "react";
+import { useStore } from "@nanostores/react";
+import { loading } from "@Components/index";
+import type { ButtonProps, PressEvent } from "react-aria-components";
+import type { PromiseButtonProps } from "./types";
+import { LoadingButton } from "./LoadingButton";
 
 interface ButtonPromiseProps extends ButtonProps {
   loadingId?: string;
@@ -12,7 +12,7 @@ interface ButtonPromiseProps extends ButtonProps {
 }
 
 export function ButtonPromise({
-  loadingId = 'global',
+  loadingId = "global",
   children,
   successLabel,
   errorLabel,
@@ -35,12 +35,10 @@ export function ButtonPromise({
 
       if (successLabel) setCurrentLabel(successLabel);
       onSuccess?.();
-
     } catch (error) {
       console.error(`Error executing action ${loadingId}:`, error);
       if (errorLabel) setCurrentLabel(errorLabel);
       onError?.();
-
     } finally {
       if (successLabel || errorLabel) {
         setTimeout(() => {
@@ -53,14 +51,8 @@ export function ButtonPromise({
   };
 
   return (
-    <LoadingButton
-      isLoading={isLoading}
-      onPress={handleClick}
-      {...props}
-    >
-      <>
-        {currentLabel || children || props.label || 'Button'}
-      </>
+    <LoadingButton isLoading={isLoading} onPress={handleClick} {...props}>
+      <>{currentLabel || children || props.label || "Button"}</>
     </LoadingButton>
   );
 }

@@ -1,2 +1,2 @@
-export * from './PageLoading';
-export * from './Loading.Store';
+export * from "./PageLoading";
+export * from "./Loading.Store";

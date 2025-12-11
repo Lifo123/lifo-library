@@ -1,2 +1,2 @@
-export * from './config'
-export * from './file.store'
+export * from "./config";
+export * from "./file.store";

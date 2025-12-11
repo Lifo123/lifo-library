@@ -3,13 +3,13 @@ export type LoadingButtonpProps<T extends object = {}> = {
   children: React.ReactNode;
   size?: number;
   strokeWidth?: number;
-} & T
+} & T;
 
 export type PromiseButtonProps<T extends object = {}> = {
   label?: string;
   loadingLabel?: string;
-  successLabel?: string,
-  onSuccess?: () => void,
-  errorLabel?: string,
-  onError?: () => void,
-} & T
+  successLabel?: string;
+  onSuccess?: () => void;
+  errorLabel?: string;
+  onError?: () => void;
+} & T;
