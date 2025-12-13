@@ -16,4 +16,6 @@ export default defineConfig({
   treeshake: true,
 
   //minify: true,
+  minifyIdentifiers: true,
+  minifySyntax: true,
 });

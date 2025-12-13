@@ -22,7 +22,7 @@ export function Accordion(props: Props) {
   let { buttonProps: triggerProps, panelProps } = useDisclosure(
     { ...props },
     state,
-    panelRef,
+    panelRef
   );
   let { buttonProps } = useButton(triggerProps, triggerRef);
   let { isFocusVisible, focusProps } = useFocusRing();
@@ -38,7 +38,7 @@ export function Accordion(props: Props) {
         {props.title || "No title provided"}
         <span className="mr-1">
           <Icon
-            icon="arrow"
+            icon="chevron"
             size={20}
             rotate={state.isExpanded ? 0 : -180}
             style={{

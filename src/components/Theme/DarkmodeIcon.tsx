@@ -30,7 +30,7 @@ export default function DarkmodeIcon({ size = 20 }) {
   return (
     <span className="lb-dm-icon-toggle" onClick={() => darkmode.toggle()}>
       {THEME === "system" ? (
-        <Icon icon="laptop-minimal" size={20} />
+        <Icon icon="scan" size={20} />
       ) : (
         <svg
           height={size}

@@ -1,36 +1,55 @@
 "use client";
 import { Button, ButtonProps } from "react-aria-components";
-import { AllIconsType, Icon, IconTypeProps } from "public-icons";
+import { GlobalIconProps, Icon, IconName } from "public-icons";
 
-type PressableIconProps = {
-  icon: AllIconsType;
-} & IconTypeProps &
-  ButtonProps;
+type PressableIconProps = ButtonProps & {
+  size?: number;
+  color?: string;
+  fill?: string;
+  flipHorizontal?: boolean;
+  flipVertical?: boolean;
+  rotate?: number;
+  strokeWidth?: number;
+  x?: number;
+  y?: number;
+  svgProps?: Omit<
+    React.SVGAttributes<SVGSVGElement>,
+    "rotate" | "strokeWidth" | "x" | "y"
+  >;
+};
 
-export function PressableIcon({
+export function PressableIcon<I extends IconName>({
   icon,
-  color,
+  variant,
+
   size,
-  strokeWidth,
-  svgProps,
+  color,
   fill,
   flipHorizontal,
   flipVertical,
   rotate,
+  strokeWidth,
+  x,
+  y,
+  svgProps,
+
   ...triggerProps
-}: PressableIconProps) {
+}: GlobalIconProps<I> & PressableIconProps) {
   return (
     <Button {...triggerProps}>
       <Icon
         icon={icon}
-        color={color}
+        variant={variant}
+        {...svgProps}
         size={size}
-        strokeWidth={strokeWidth}
-        svgProps={svgProps}
+        color={color}
         fill={fill}
         flipHorizontal={flipHorizontal}
         flipVertical={flipVertical}
         rotate={rotate}
+        strokeWidth={strokeWidth}
+        x={x}
+        y={y}
       />
     </Button>
   );

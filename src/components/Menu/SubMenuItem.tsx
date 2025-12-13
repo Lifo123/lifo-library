@@ -4,7 +4,7 @@ import {
   SubmenuTrigger,
   type SubmenuTriggerProps,
 } from "react-aria-components";
-import { Icon, IconTypeProps } from "public-icons";
+import { Icon, IconName } from "public-icons";
 import { SubMenuContent } from "./MenuContent";
 
 interface SubMenuProps extends Omit<SubmenuTriggerProps, "children"> {
@@ -12,7 +12,7 @@ interface SubMenuProps extends Omit<SubmenuTriggerProps, "children"> {
   label?: string;
   className?: string;
   style?: React.CSSProperties;
-  icon?: IconTypeProps | React.ReactNode;
+  icon?: IconName | React.ReactNode;
 }
 
 export default function SubMenuItem<T extends object>({
@@ -29,7 +29,6 @@ export default function SubMenuItem<T extends object>({
           size={20}
           strokeWidth={2.5}
           color="var(--color-gray-a10)"
-          svgProps={{ y: 4 }}
         />
       </MenuItem>
       <SubMenuContent>{children}</SubMenuContent>

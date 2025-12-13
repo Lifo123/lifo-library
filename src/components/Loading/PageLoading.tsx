@@ -10,7 +10,7 @@ export function PageLoading({ children }: PageLoadingProps) {
     <div id="page-load" className="page-load">
       {children || (
         <span>
-          <Icon size={40} icon="loader-circle" strokeWidth={1.8} />
+          <Icon size={40} icon="loader_circle" strokeWidth={1.8} />
         </span>
       )}
     </div>

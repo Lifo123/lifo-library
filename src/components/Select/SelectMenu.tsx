@@ -13,7 +13,7 @@ import { SelectMenuProps } from "./types";
 
 export default function SelectMenu<
   T extends object,
-  M extends "single" | "multiple" = "single",
+  M extends "single" | "multiple" = "single"
 >({
   label,
   errorMessage,
@@ -36,12 +36,7 @@ export default function SelectMenu<
       >
         <SelectValue />
         <span aria-hidden="true" className="flex f-center">
-          <Icon
-            icon="arrow"
-            size={18}
-            rotate={180}
-            svgProps={{ viewBox: "0 1.5 24 24" }}
-          />
+          <Icon icon="chevron" size={18} rotate={180} />
         </span>
       </Button>
       <FieldError>{errorMessage}</FieldError>
