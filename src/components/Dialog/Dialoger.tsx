@@ -106,7 +106,7 @@ function DialogItem(props: dialogAllProps) {
                     className="btn btn-outline rounded-md"
                     isDisabled={isSecondaryActionDisabled || isActionRunning}
                     loadingId={id + "0"}
-                    onPress={async () => {
+                    action={async () => {
                       setIsActionRunning(true);
                       try {
                         await props.SecondaryAction?.();
@@ -125,7 +125,7 @@ function DialogItem(props: dialogAllProps) {
                   className="btn btn-primary rounded-md"
                   isDisabled={isPrimaryActionDisabled || isActionRunning}
                   loadingId={id + "1"}
-                  onPress={async () => {
+                  action={async () => {
                     setIsActionRunning(true);
                     try {
                       await props.PrimaryAction?.();

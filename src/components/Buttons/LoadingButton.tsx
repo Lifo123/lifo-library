@@ -25,7 +25,7 @@ export function LoadingButton({
           height={size}
           width={size}
           viewBox="0 0 24 24"
-          stroke="currentColor"
+          stroke="var(--color-gray-black)"
           strokeLinecap="round"
           strokeWidth={strokeWidth}
         >
@@ -36,7 +36,9 @@ export function LoadingButton({
         </svg>
       </span>
 
-      <span>{children}</span>
+      <span>
+        {children}
+      </span>
     </Button>
   );
 }

@@ -13,7 +13,6 @@ export {
 } from "@react-aria/utils";
 
 export { useCollator, useFilter, useIsSSR, SSRProvider } from "react-aria";
-export { animate } from "motion";
 
-import { motion as motionComponent } from "motion/react";
-export { motionComponent as motion };
+export * from "motion";
+export { AnimatePresence, animate, motion } from "motion/react";

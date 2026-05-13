@@ -3,7 +3,7 @@ import React from "react";
 import { useButton, useDisclosure } from "react-aria";
 import { useDisclosureState, DisclosureProps } from "react-stately";
 import { mergeProps, useFocusRing } from "react-aria";
-import { Icon } from "public-icons";
+import { ChevronDown } from "lucide-react";
 
 interface Props extends DisclosureProps {
   title: string;
@@ -22,7 +22,7 @@ export function Accordion(props: Props) {
   let { buttonProps: triggerProps, panelProps } = useDisclosure(
     { ...props },
     state,
-    panelRef
+    panelRef,
   );
   let { buttonProps } = useButton(triggerProps, triggerRef);
   let { isFocusVisible, focusProps } = useFocusRing();
@@ -37,12 +37,11 @@ export function Accordion(props: Props) {
       >
         {props.title || "No title provided"}
         <span className="mr-1">
-          <Icon
-            icon="chevron"
-            size={20}
-            rotate={state.isExpanded ? 0 : -180}
+          <ChevronDown
+            size={18}
             style={{
-              transition: "rotate .15s ease",
+              rotate: `${state.isExpanded ? -180 : 0}deg`,
+              transition: "rotate .1s ease",
             }}
           />
         </span>

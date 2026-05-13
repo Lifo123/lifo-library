@@ -45,7 +45,7 @@ export function Tooltip({
     <TooltipTrigger
       {...props}
       delay={props.delay || 50}
-      closeDelay={props.closeDelay || 50}
+      closeDelay={props.closeDelay || 60}
     >
       <Focusable
         isDisabled={isDisabled}

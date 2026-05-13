@@ -8,12 +8,12 @@ import {
   Select,
   SelectValue,
 } from "react-aria-components";
-import { Icon } from "public-icons";
+import { ChevronDown } from "lucide-react";
 import { SelectMenuProps } from "./types";
 
 export default function SelectMenu<
   T extends object,
-  M extends "single" | "multiple" = "single"
+  M extends "single" | "multiple" = "single",
 >({
   label,
   errorMessage,
@@ -36,7 +36,7 @@ export default function SelectMenu<
       >
         <SelectValue />
         <span aria-hidden="true" className="flex f-center">
-          <Icon icon="chevron" size={18} rotate={180} />
+          <ChevronDown size={16} />
         </span>
       </Button>
       <FieldError>{errorMessage}</FieldError>

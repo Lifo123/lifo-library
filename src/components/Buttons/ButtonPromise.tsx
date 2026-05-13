@@ -8,7 +8,7 @@ import { LoadingButton } from "./LoadingButton";
 
 interface ButtonPromiseProps extends ButtonProps {
   loadingId?: string;
-  action?: () => Promise<void>;
+  action?: () => Promise<any>;
 }
 
 export function ButtonPromise({

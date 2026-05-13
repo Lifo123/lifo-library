@@ -1,17 +1,17 @@
 "use client";
-import { Icon } from "public-icons";
+import { DynamicIcon } from "lucide-react/dynamic";
 
-const success = <Icon icon="circle" size={22} variant="check" />;
+const success = <DynamicIcon name="circle-check" size={22} />;
 
-const info = <Icon icon="circle" size={22} variant="info" />;
+const info = <DynamicIcon name="circle-alert" size={22} style={{rotate: "180deg"}} />;
 
-const warning = <Icon icon="triangle" size={19} variant="alert" />;
+const warning = <DynamicIcon name="triangle-alert" size={19}/>;
 
-const error = <Icon icon="circle" size={22} rotate={180} variant="alert" />;
+const error = <DynamicIcon name="circle-alert" size={22} />;
 
 const loading = (
   <span className="custom-spin">
-    <Icon icon="loader_circle" size={20} strokeWidth={2.25} />
+    <DynamicIcon name="loader-circle" size={20} strokeWidth={2.25} />
   </span>
 );
 

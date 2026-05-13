@@ -1,6 +1,6 @@
 {
   "name": "@lifo123/library",
-  "version": "1.9.3",
+  "version": "1.9.6",
   "description": "Lifo library",
   "type": "module",
   "author": "Lifo",
@@ -33,16 +33,6 @@
       "types": "./dist/utils/index.d.ts",
       "import": "./dist/utils/index.js",
       "require": "./dist/utils/index.cjs"
-    },
-    "./dialog": {
-      "types": "./dist/components/Dialog/index.d.ts",
-      "import": "./dist/components/Dialog/index.js",
-      "require": "./dist/components/Dialog/index.cjs"
-    },
-    "./toast": {
-      "types": "./dist/components/Toast/index.d.ts",
-      "import": "./dist/components/Toast/index.js",
-      "require": "./dist/components/Toast/index.cjs"
     }
   },
   "scripts": {
@@ -51,14 +41,14 @@
     "deploy": "pnpm run build && npm publish --access public"
   },
   "dependencies": {
-    "@react-aria/utils": "^3.31.0"
+    "@react-aria/utils": "^3.34.0"
   },
   "peerDependencies": {
     "@nanostores/deepmap": ">=0.0.1",
     "@nanostores/react": ">=1.0.0",
+    "lucide-react": ">=1.14.0",
     "motion": ">=12.23.26",
     "nanostores": ">=1.1.0",
-    "public-icons": ">=1.0.0",
     "react": ">=18",
     "react-aria": ">=3.44.0",
     "react-aria-components": ">=1.13.0",
@@ -66,25 +56,24 @@
     "react-stately": ">=3.42.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.1",
+    "@eslint/js": "^9.39.4",
     "@nanostores/deepmap": "^0.0.1",
-    "@nanostores/react": "^1.0.0",
-    "@types/react": "^19.2.7",
+    "@nanostores/react": "^1.1.0",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "check-dts": "^0.9.0",
-    "eslint": "^9.39.1",
-    "motion": "^12.23.26",
-    "postcss": "^8.5.6",
+    "eslint": "^9.39.4",
+    "motion": "^12.38.0",
+    "postcss": "^8.5.14",
     "postcss-cli": "^11.0.1",
     "postcss-import": "^16.1.1",
-    "public-icons": "^1.0.0",
-    "react": "^18.2.0",
-    "react-aria": "^3.44.0",
-    "react-aria-components": "^1.13.0",
-    "react-dom": "^18.2.0",
-    "react-stately": "^3.42.0",
+    "react": "^18.3.1",
+    "react-aria": "^3.48.0",
+    "react-aria-components": "^1.17.0",
+    "react-dom": "^18.3.1",
+    "react-stately": "^3.46.0",
     "tsup": "^8.5.1",
-    "tsx": "^4.20.6",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }
 }

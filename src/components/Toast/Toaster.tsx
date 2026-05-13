@@ -5,7 +5,7 @@ import { OverlayContainer } from "react-aria";
 import { useEnterAnimation, useExitAnimation } from "@react-aria/utils";
 import { $toaster, toast } from "./Toaster.store";
 import { uuid } from "@Utils/index";
-import { Icon } from "public-icons";
+import { XIcon } from "lucide-react";
 import type { ToastAllProps, ToasterSettingProps } from "./types";
 
 import { Button, ButtonPromise } from "../Buttons/index";
@@ -179,7 +179,7 @@ const ToastItemInner = React.forwardRef<
                     className={"icon-btn"}
                     onPress={() => toast.dismiss(id, toasterId)}
                   >
-                    <Icon icon="close" size={22} strokeWidth={2.35} />
+                    <XIcon size={22} strokeWidth={2.35} />
                   </Button>
                 )
               )}

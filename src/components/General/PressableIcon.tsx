@@ -1,8 +1,13 @@
 "use client";
 import { Button, ButtonProps } from "react-aria-components";
-import { GlobalIconProps, Icon, IconName } from "public-icons";
+import { DynamicIcon, dynamicIconImports } from "lucide-react/dynamic";
 
 type PressableIconProps = ButtonProps & {
+  icon: keyof typeof dynamicIconImports;
+
+  className?: string;
+  style?: React.CSSProperties;
+
   size?: number;
   color?: string;
   fill?: string;
@@ -12,44 +17,36 @@ type PressableIconProps = ButtonProps & {
   strokeWidth?: number;
   x?: number;
   y?: number;
-  svgProps?: Omit<
-    React.SVGAttributes<SVGSVGElement>,
-    "rotate" | "strokeWidth" | "x" | "y"
-  >;
 };
 
-export function PressableIcon<I extends IconName>({
-  icon,
-  variant,
+export function PressableIcon({
+  icon = "square-dashed",
 
-  size,
+  size = 24,
   color,
-  fill,
+  fill = "none",
   flipHorizontal,
   flipVertical,
-  rotate,
-  strokeWidth,
-  x,
-  y,
-  svgProps,
+  rotate = 0,
+  strokeWidth = 2,
+  x = 0,
+  y = 0,
 
-  ...triggerProps
-}: GlobalIconProps<I> & PressableIconProps) {
+  ...ButtonProps
+}: PressableIconProps) {
   return (
-    <Button {...triggerProps}>
-      <Icon
-        icon={icon}
-        variant={variant}
-        {...svgProps}
+    <Button className={ButtonProps.className || ""} {...ButtonProps}>
+      <DynamicIcon
+        name={icon}
+        viewBox={`${y} ${x} 24 24`}
         size={size}
         color={color}
         fill={fill}
-        flipHorizontal={flipHorizontal}
-        flipVertical={flipVertical}
-        rotate={rotate}
         strokeWidth={strokeWidth}
-        x={x}
-        y={y}
+        style={{
+          rotate: `${rotate}deg`,
+          transform: `scaleX(${flipHorizontal ? -1 : 1}), scaleY(${flipVertical ? -1 : 1})`,
+        }}
       />
     </Button>
   );

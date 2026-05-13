@@ -1,7 +1,8 @@
 "use client";
 import { useStore } from "@nanostores/react";
-import { $darkmode, darkmode } from "./theme.store";
-import { Icon } from "public-icons";
+import { $darkmode, darkmode, ThemeTypes } from "./theme.store";
+import { TvMinimal } from "lucide-react";
+import React from "react";
 
 const typeIcons = {
   light: (
@@ -24,24 +25,34 @@ const typeIcons = {
   ),
 };
 
-export default function DarkmodeIcon({ size = 20 }) {
+type Props = {
+  theme?: ThemeTypes | string;
+  setTheme?: (theme: ThemeTypes) => void;
+};
+
+export default function DarkmodeIcon({ theme, setTheme }: Props) {
+  const [isMounted, setIsMounted] = React.useState(false);
   const THEME = useStore($darkmode);
 
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
-    <span className="lb-dm-icon-toggle" onClick={() => darkmode.toggle()}>
-      {THEME === "system" ? (
-        <Icon icon="scan" size={20} />
-      ) : (
-        <svg
-          height={size}
-          width={size}
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="none"
-        >
-          {THEME === "dark" ? typeIcons.dark : typeIcons.light}
-        </svg>
-      )}
+    <span
+      className="lb-dm-icon-toggle"
+      onClick={() => {
+        setTheme?.((theme || THEME) === "dark" ? "light" : "dark");
+        darkmode.toggle();
+      }}
+    >
+      <svg height={20} width={20} viewBox="0 0 24 24" fill="none" stroke="none">
+        {isMounted
+          ? (theme || THEME) === "dark"
+            ? typeIcons.light
+            : typeIcons.dark
+          : typeIcons.dark}
+      </svg>
     </span>
   );
 }

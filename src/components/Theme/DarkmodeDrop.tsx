@@ -2,18 +2,34 @@
 import { useStore } from "@nanostores/react";
 import { $darkmode, darkmode, ThemeTypes } from "./theme.store";
 import { SelectItem, SelectMenu } from "@Components/index";
+import React from "react";
 
-export default function DarkmodeDrop() {
+type Props = {
+  theme?: ThemeTypes | string;
+  setTheme?: (theme: ThemeTypes) => void;
+};
+
+export default function DarkmodeDrop({ theme, setTheme }: Props) {
+  const [isMounted, setIsMounted] = React.useState(false);
+
   const THEME = useStore($darkmode);
 
   const handleSelect = (value: ThemeTypes) => {
-    darkmode.change(value);
+    if (theme && setTheme) {
+      setTheme?.(value);
+    } else {
+      darkmode.change(value);
+    }
   };
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <>
       <SelectMenu
-        value={THEME}
+        value={isMounted ? theme || THEME : "system"}
         customize={{
           trigger: { className: "dm-select" },
         }}

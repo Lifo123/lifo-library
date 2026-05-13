@@ -31,6 +31,7 @@ export type dialogShowProps = {
   SecondaryAction?: () => Promise<void> | void;
   SecondaryActionLabel?: string;
   isSecondaryActionDisabled?: boolean;
+
 };
 
 export type dialogCustomProps = {

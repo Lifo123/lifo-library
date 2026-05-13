@@ -1,5 +1,5 @@
 "use client";
-import { Icon } from "public-icons";
+import { LoaderCircle } from "lucide-react";
 
 interface PageLoadingProps {
   children?: React.ReactNode;
@@ -10,7 +10,7 @@ export function PageLoading({ children }: PageLoadingProps) {
     <div id="page-load" className="page-load">
       {children || (
         <span>
-          <Icon size={40} icon="loader_circle" strokeWidth={1.8} />
+          <LoaderCircle size={40} strokeWidth={1.8} />
         </span>
       )}
     </div>

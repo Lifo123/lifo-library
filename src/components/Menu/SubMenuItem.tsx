@@ -4,7 +4,7 @@ import {
   SubmenuTrigger,
   type SubmenuTriggerProps,
 } from "react-aria-components";
-import { Icon, IconName } from "public-icons";
+import { DynamicIcon, dynamicIconImports } from "lucide-react/dynamic";
 import { SubMenuContent } from "./MenuContent";
 
 interface SubMenuProps extends Omit<SubmenuTriggerProps, "children"> {
@@ -12,7 +12,7 @@ interface SubMenuProps extends Omit<SubmenuTriggerProps, "children"> {
   label?: string;
   className?: string;
   style?: React.CSSProperties;
-  icon?: IconName | React.ReactNode;
+  icon?: keyof typeof dynamicIconImports ;
 }
 
 export default function SubMenuItem<T extends object>({
@@ -23,10 +23,9 @@ export default function SubMenuItem<T extends object>({
     <SubmenuTrigger {...props} delay={props.delay || 100}>
       <MenuItem>
         {props.label || "No Label"}
-        <Icon
-          icon="arrow"
-          rotate={90}
-          size={20}
+        <DynamicIcon
+          name={props.icon || "chevron-right"}
+          size={16}
           strokeWidth={2.5}
           color="var(--color-gray-a10)"
         />
