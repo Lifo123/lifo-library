@@ -1,0 +1,87 @@
+@theme {
+  --hsl-h: 210;
+  --hsl-s: 60%;
+
+  --color-app-1: hsl(var(--hsl-h), calc(var(--hsl-s) - 20%), 93%);
+  --color-app-2: hsl(var(--hsl-h), var(--hsl-s), 90%);
+  --color-app-3: hsl(var(--hsl-h), var(--hsl-s), 87%);
+  --color-app-4: hsl(var(--hsl-h), var(--hsl-s), 84%);
+  --color-app-5: hsl(var(--hsl-h), var(--hsl-s), 81%);
+  --color-app-6: hsl(var(--hsl-h), var(--hsl-s), 85%);
+  --color-app-7: hsl(var(--hsl-h), var(--hsl-s), 81%);
+  --color-app-8: hsl(var(--hsl-h), var(--hsl-s), 73%);
+  --color-app-9: hsl(var(--hsl-h), var(--hsl-s), 55%);
+  --color-app-10: hsl(var(--hsl-h), calc(var(--hsl-s) + 20%), 50%);
+  --color-app-11: hsl(var(--hsl-h), calc(var(--hsl-s) + 25%), 43%);
+  --color-app-12: hsl(var(--hsl-h), calc(var(--hsl-s) + 30%), 23%);
+
+  --color-app-a1: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.012);
+  --color-app-a2: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.024);
+  --color-app-a3: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.059);
+  --color-app-a4: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.09);
+  --color-app-a5: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.122);
+  --color-app-a6: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.149);
+  --color-app-a7: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.192);
+  --color-app-a8: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.267);
+  --color-app-a9: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.447);
+  --color-app-a10: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.486);
+  --color-app-a11: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.608);
+  --color-app-a12: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.875);
+}
+
+.light {
+  --color-app-1: hsl(var(--hsl-h), calc(var(--hsl-s) - 20%), 93%);
+  --color-app-2: hsl(var(--hsl-h), var(--hsl-s), 90%);
+  --color-app-3: hsl(var(--hsl-h), var(--hsl-s), 87%);
+  --color-app-4: hsl(var(--hsl-h), var(--hsl-s), 84%);
+  --color-app-5: hsl(var(--hsl-h), var(--hsl-s), 81%);
+  --color-app-6: hsl(var(--hsl-h), var(--hsl-s), 85%);
+  --color-app-7: hsl(var(--hsl-h), var(--hsl-s), 81%);
+  --color-app-8: hsl(var(--hsl-h), var(--hsl-s), 73%);
+  --color-app-9: hsl(var(--hsl-h), var(--hsl-s), 55%);
+  --color-app-10: hsl(var(--hsl-h), calc(var(--hsl-s) + 20%), 50%);
+  --color-app-11: hsl(var(--hsl-h), calc(var(--hsl-s) + 25%), 43%);
+  --color-app-12: hsl(var(--hsl-h), calc(var(--hsl-s) + 30%), 23%);
+
+  --color-app-a1: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.012);
+  --color-app-a2: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.024);
+  --color-app-a3: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.059);
+  --color-app-a4: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.09);
+  --color-app-a5: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.122);
+  --color-app-a6: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.149);
+  --color-app-a7: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.192);
+  --color-app-a8: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.267);
+  --color-app-a9: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.447);
+  --color-app-a10: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.486);
+  --color-app-a11: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.608);
+  --color-app-a12: hsla(var(--hsl-h), var(--hsl-s), 0%, 0.875);
+}
+
+.dark {
+  --color-app-1: hsl(var(--hsl-h), calc(var(--hsl-s) - 20%), 7%);
+  --color-app-2: hsl(var(--hsl-h), var(--hsl-s), 10%);
+  --color-app-3: hsl(var(--hsl-h), var(--hsl-s), 13%);
+  --color-app-4: hsl(var(--hsl-h), calc(var(--hsl-s) + 10%), 16%);
+  --color-app-5: hsl(var(--hsl-h), var(--hsl-s), 19%);
+  --color-app-6: hsl(var(--hsl-h), var(--hsl-s), 23%);
+  --color-app-7: hsl(var(--hsl-h), var(--hsl-s), 28%);
+  --color-app-8: hsl(var(--hsl-h), var(--hsl-s), 38%);
+  --color-app-9: hsl(var(--hsl-h), calc(var(--hsl-s) + 30%), 43%);
+  --color-app-10: hsl(var(--hsl-h), calc(var(--hsl-s) + 40%), 62%);
+  --color-app-11: hsl(var(--hsl-h), var(--hsl-s), 71%);
+  --color-app-12: hsl(var(--hsl-h), var(--hsl-s), 93%);
+
+  --color-app-a1: hsla(calc(var(--hsl-h) + 10), calc(var(--hsl-s) + 50%), 35%, 0.067);
+  --color-app-a2: hsla(var(--hsl-h), calc(var(--hsl-s) + 50%), 45%, 0.094);
+  --color-app-a3: hsla(var(--hsl-h), calc(var(--hsl-s) + 30%), 40%, 0.227);
+  --color-app-a4: hsla(var(--hsl-h), calc(var(--hsl-s) + 28%), 35%, 0.341);
+  --color-app-a5: hsla(var(--hsl-h), calc(var(--hsl-s) + 20%), 32%, 0.42);
+  --color-app-a6: hsla(var(--hsl-h), calc(var(--hsl-s) + 5%), 35%, 0.498);
+  --color-app-a7: hsla(var(--hsl-h), var(--hsl-s), 42%, 0.596);
+  --color-app-a8: hsla(var(--hsl-h), var(--hsl-s), 50%, 0.725);
+
+  --color-app-a9: hsl(var(--hsl-h), calc(var(--hsl-s) + 30%), 43%);
+  --color-app-a10: hsl(var(--hsl-h), calc(var(--hsl-s) + 40%), 62%);
+  --color-app-a11: hsl(var(--hsl-h), var(--hsl-s), 71%);
+  --color-app-a12: hsl(var(--hsl-h), var(--hsl-s), 93%);
+}

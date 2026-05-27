@@ -1,0 +1,80 @@
+@theme {
+  --color-gray-1: #fcfcfc;
+  --color-gray-2: #f9f9f9;
+  --color-gray-3: #f0f0f0;
+  --color-gray-4: #e8e8e8;
+  --color-gray-5: #e0e0e0;
+  --color-gray-6: #d9d9d9;
+  --color-gray-7: #cecece;
+  --color-gray-8: #bbbbbb;
+  --color-gray-9: #8d8d8d;
+  --color-gray-10: #838383;
+  --color-gray-11: #646464;
+  --color-gray-12: #202020;
+  --color-gray-a1: #00000003;
+  --color-gray-a2: #00000006;
+  --color-gray-a3: #0000000f;
+  --color-gray-a4: #00000017;
+  --color-gray-a5: #0000001f;
+  --color-gray-a6: #00000026;
+  --color-gray-a7: #00000031;
+  --color-gray-a8: #00000044;
+  --color-gray-a9: #00000072;
+  --color-gray-a10: #0000007c;
+  --color-gray-a11: #0000009b;
+  --color-gray-a12: #000000df;
+}
+
+.light {
+  --color-gray-1: #fcfcfc;
+  --color-gray-2: #f9f9f9;
+  --color-gray-3: #f0f0f0;
+  --color-gray-4: #e8e8e8;
+  --color-gray-5: #e0e0e0;
+  --color-gray-6: #d9d9d9;
+  --color-gray-7: #cecece;
+  --color-gray-8: #bbbbbb;
+  --color-gray-9: #8d8d8d;
+  --color-gray-10: #838383;
+  --color-gray-11: #646464;
+  --color-gray-12: #202020;
+  --color-gray-a1: #00000003;
+  --color-gray-a2: #00000006;
+  --color-gray-a3: #0000000f;
+  --color-gray-a4: #00000017;
+  --color-gray-a5: #0000001f;
+  --color-gray-a6: #00000026;
+  --color-gray-a7: #00000031;
+  --color-gray-a8: #00000044;
+  --color-gray-a9: #00000072;
+  --color-gray-a10: #0000007c;
+  --color-gray-a11: #0000009b;
+  --color-gray-a12: #000000df;
+}
+
+.dark {
+  --color-gray-1: #111111;
+  --color-gray-2: #191919;
+  --color-gray-3: #222222;
+  --color-gray-4: #2a2a2a;
+  --color-gray-5: #313131;
+  --color-gray-6: #3a3a3a;
+  --color-gray-7: #484848;
+  --color-gray-8: #606060;
+  --color-gray-9: #6e6e6e;
+  --color-gray-10: #7b7b7b;
+  --color-gray-11: #b4b4b4;
+  --color-gray-12: #eeeeee;
+  --color-gray-a1: #00000000;
+  --color-gray-a2: #ffffff09;
+  --color-gray-a3: #ffffff12;
+  --color-gray-a4: #ffffff1b;
+  --color-gray-a5: #ffffff22;
+  --color-gray-a6: #ffffff2c;
+  --color-gray-a7: #ffffff3b;
+  --color-gray-a8: #ffffff55;
+  --color-gray-a9: #ffffff64;
+  --color-gray-a10: #ffffff72;
+  --color-gray-a11: #ffffffaf;
+  --color-gray-a12: #ffffffed;
+}

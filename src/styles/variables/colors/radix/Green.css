@@ -1,0 +1,80 @@
+@theme {
+  --color-green-1: #fbfefc;
+  --color-green-2: #f4fbf6;
+  --color-green-3: #e6f6eb;
+  --color-green-4: #d6f1df;
+  --color-green-5: #c4e8d1;
+  --color-green-6: #adddc0;
+  --color-green-7: #8eceaa;
+  --color-green-8: #5bb98b;
+  --color-green-9: #30a46c;
+  --color-green-10: #2b9a66;
+  --color-green-11: #218358;
+  --color-green-12: #193b2d;
+  --color-green-a1: #00c04004;
+  --color-green-a2: #00a32f0b;
+  --color-green-a3: #00a43319;
+  --color-green-a4: #00a83829;
+  --color-green-a5: #019c393b;
+  --color-green-a6: #00963c52;
+  --color-green-a7: #00914071;
+  --color-green-a8: #00924ba4;
+  --color-green-a9: #008f4acf;
+  --color-green-a10: #008647d4;
+  --color-green-a11: #00713fde;
+  --color-green-a12: #002616e6;
+}
+
+.light {
+  --color-green-1: #fbfefc;
+  --color-green-2: #f4fbf6;
+  --color-green-3: #e6f6eb;
+  --color-green-4: #d6f1df;
+  --color-green-5: #c4e8d1;
+  --color-green-6: #adddc0;
+  --color-green-7: #8eceaa;
+  --color-green-8: #5bb98b;
+  --color-green-9: #30a46c;
+  --color-green-10: #2b9a66;
+  --color-green-11: #218358;
+  --color-green-12: #193b2d;
+  --color-green-a1: #00c04004;
+  --color-green-a2: #00a32f0b;
+  --color-green-a3: #00a43319;
+  --color-green-a4: #00a83829;
+  --color-green-a5: #019c393b;
+  --color-green-a6: #00963c52;
+  --color-green-a7: #00914071;
+  --color-green-a8: #00924ba4;
+  --color-green-a9: #008f4acf;
+  --color-green-a10: #008647d4;
+  --color-green-a11: #00713fde;
+  --color-green-a12: #002616e6;
+}
+
+.dark {
+  --color-green-1: #0e1512;
+  --color-green-2: #121b17;
+  --color-green-3: #132d21;
+  --color-green-4: #113b29;
+  --color-green-5: #174933;
+  --color-green-6: #20573e;
+  --color-green-7: #28684a;
+  --color-green-8: #2f7c57;
+  --color-green-9: #30a46c;
+  --color-green-10: #33b074;
+  --color-green-11: #3dd68c;
+  --color-green-12: #b1f1cb;
+  --color-green-a1: #00de4505;
+  --color-green-a2: #29f99d0b;
+  --color-green-a3: #22ff991e;
+  --color-green-a4: #11ff992d;
+  --color-green-a5: #2bffa23c;
+  --color-green-a6: #44ffaa4b;
+  --color-green-a7: #50fdac5e;
+  --color-green-a8: #54ffad73;
+  --color-green-a9: #44ffa49e;
+  --color-green-a10: #43fea4ab;
+  --color-green-a11: #46fea5d4;
+  --color-green-a12: #bbffd7f0;
+}

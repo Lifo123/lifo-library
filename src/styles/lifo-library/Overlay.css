@@ -1,0 +1,111 @@
+@layer components {
+  .dialog-modal-overlay {
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    outline: none;
+    left: 0;
+    overflow: hidden;
+    transition: opacity 0.18s ease;
+    display: flex;
+  }
+
+  .dialog-modal {
+    position: fixed;
+    top: 46%;
+    left: 50%;
+    translate: -50% -50%;
+    transition: opacity 0.25s, top 0.25s;
+  }
+
+  .dialog-modal-overlay[data-entering],
+  .dialog-modal-overlay[data-exiting] {
+    opacity: 0;
+  }
+
+  .dialog-modal[data-entering],
+  .dialog-modal[data-exiting] {
+    top: 50%;
+  }
+
+  /* POPOVER */
+
+  .react-aria-Popover {
+    --background-color: #0000001f;
+
+    outline: 1px solid var(--color-gray-a5);
+    box-sizing: border-box;
+    filter: drop-shadow(var(--color-gray-a5));
+    border-radius: var(--radius-lg);
+    background: var(--color-gray-1);
+    color: var(--color-gray-12);
+    transition: transform 200ms, opacity 200ms;
+    font: var(--p);
+    padding: 8px;
+
+    &[data-trigger=MenuTrigger],
+    &[data-trigger=SubmenuTrigger] {
+      padding: 0;
+    }
+
+    .react-aria-OverlayArrow svg {
+      display: block;
+      fill: var(--background-color);
+      stroke: var(--overlay-border);
+      paint-order: stroke;
+      stroke-width: 2px;
+    }
+
+    &[data-entering],
+    &[data-exiting] {
+      transform: var(--origin);
+      opacity: 0;
+    }
+
+    &[data-placement=top] {
+      --origin: translateY(8px);
+
+      &:has(.react-aria-OverlayArrow) {
+        margin-bottom: 6px;
+      }
+    }
+
+    &[data-placement=bottom] {
+      --origin: translateY(-8px);
+
+      &:has(.react-aria-OverlayArrow) {
+        margin-top: 6px;
+      }
+
+      .react-aria-OverlayArrow svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    &[data-placement=right] {
+      --origin: translateX(-8px);
+
+      &:has(.react-aria-OverlayArrow) {
+        margin-left: 6px;
+      }
+
+      .react-aria-OverlayArrow svg {
+        transform: rotate(90deg);
+      }
+    }
+
+    &[data-placement=left] {
+      --origin: translateX(8px);
+
+      &:has(.react-aria-OverlayArrow) {
+        margin-right: 6px;
+      }
+
+      .react-aria-OverlayArrow svg {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+}

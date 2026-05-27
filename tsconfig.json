@@ -3,7 +3,7 @@
     "rootDir": "./src",
     "target": "es2019",
     "module": "esnext",
-    "moduleResolution": "Bundler",
+    "moduleResolution": "bundler",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
 
     "jsx": "react-jsx",
@@ -17,7 +17,6 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
 
-    // "baseUrl": ".",
     "paths": {
       "@Components/*": ["./src/components/*"],
       "@Utils/*": ["./src/utils/*"],

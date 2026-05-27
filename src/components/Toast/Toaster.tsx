@@ -1,14 +1,15 @@
 "use client";
 import React from "react";
+import { nanoid } from "nanoid";
+import { XIcon } from "lucide-react";
 import { useStore } from "@nanostores/react";
 import { OverlayContainer } from "react-aria";
+import { Button } from "react-aria-components";
 import { useEnterAnimation, useExitAnimation } from "@react-aria/utils";
-import { $toaster, toast } from "./Toaster.store";
-import { uuid } from "@Utils/index";
-import { XIcon } from "lucide-react";
-import type { ToastAllProps, ToasterSettingProps } from "./types";
 
-import { Button, ButtonPromise } from "../Buttons/index";
+import type { ToastAllProps, ToasterSettingProps } from "./types";
+import { $toaster, toast } from "./Toaster.store";
+import { ButtonPromise } from "../Buttons/index";
 import { ToastIcons } from "./ToastAssets";
 
 export function Toaster(props: ToasterSettingProps) {
@@ -21,7 +22,7 @@ export function Toaster(props: ToasterSettingProps) {
     noDissapear = false,
   } = props;
 
-  const [toasterGeneralId] = React.useState(uuid(6, "lifo:toaster:"));
+  const [toasterGeneralId] = React.useState(nanoid(6));
   const TOASTER = useStore($toaster);
 
   const settings = React.useMemo(() => {
@@ -156,14 +157,16 @@ const ToastItemInner = React.forwardRef<
           >
             <div>
               {customIcon || ToastIcons[type] ? (
-                <span className="mr-1">{customIcon || ToastIcons[type]}</span>
+                <span className="ti-icon">
+                  {customIcon || ToastIcons[type]}
+                </span>
               ) : null}
-              <div>
+              <div className="ti-content">
                 {title && <p className="title">{title}</p>}
                 {description && <p className="description">{description}</p>}
               </div>
             </div>
-            <span>
+            <span className="ti-actionable">
               {action ? (
                 <ButtonPromise
                   onPress={async () => {

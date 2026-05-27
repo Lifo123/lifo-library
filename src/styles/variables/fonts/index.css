@@ -1,0 +1,10 @@
+@theme {
+  --ff: Geist, sans-serif;
+  --ff2: Geist, sans-serif;
+
+  --h1: 650 1.125rem/1.5em var(--ff);
+  --h2: bold 1rem/1.5em var(--ff);
+
+  --p: 400 1rem/1.4em var(--ff);
+  --p2: 400 0.875rem/1.4em var(--ff);
+}

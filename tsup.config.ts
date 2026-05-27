@@ -2,11 +2,17 @@ import { defineConfig } from "tsup";
 
 export default defineConfig({
   entry: [
+    //Library
     "src/index.ts",
-    "src/utils/index.ts",
-    "src/Stores/index.ts",
-    "src/components/Dialog/index.ts",
-    "src/components/Toast/index.ts",
+
+    //External
+    "src/external/aria/index.ts",
+    "src/external/aria/components/index.ts",
+    "src/external/aria/utils/index.ts",
+
+    "src/external/lucide/index.ts",
+    "src/external/motion/index.ts",
+    "src/external/nanoid/index.ts",
   ],
   format: ["cjs", "esm"],
   dts: true,

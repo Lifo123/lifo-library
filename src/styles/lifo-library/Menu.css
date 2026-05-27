@@ -1,0 +1,180 @@
+.react-aria-Menu {
+  border: solid 1px var(--color-gray-a5);
+  background-color: var(--color-gray-3);
+  border-radius: var(--radius-md);
+  min-height: 0;
+  max-height: inherit;
+  box-sizing: border-box;
+  overflow: auto;
+  min-width: 150px;
+  box-sizing: border-box;
+  outline: none;
+  display: grid;
+  padding: var(--spacing);
+  --check-width: 0;
+  grid-template-columns: calc(var(--spacing) * 3) var(--check-width) auto 1fr auto calc(var(--spacing) * 3);
+  grid-auto-rows: max-content;
+  &:has(> [data-selection-mode]) {
+    --check-width: calc(var(--spacing) * 6);
+  }
+
+  &[data-empty] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+    min-height: calc(var(--spacing) * 8);
+  }
+}
+
+.react-aria-MenuItem {
+  padding: 8px 6px;
+  border-radius: calc(var(--radius-lg) - var(--spacing));
+  outline: none;
+  cursor: default;
+  color: var(--color-gray-12);
+  font: var(--p2) !important;
+  position: relative;
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: -1;
+  grid-template-areas: ". check icon label end ."
+                       ". . . desc end .";
+  grid-template-columns: subgrid;
+  align-items: center;
+  forced-color-adjust: none;
+  -webkit-tap-highlight-color: transparent;
+
+  > svg:not(.lucide-check, .lucide-dot, .lucide-chevron-right) {
+    grid-area: icon;
+    width: calc(var(--spacing) * 4);
+    height: calc(var(--spacing) * 4);
+    justify-self: center;
+    margin-inline-end: calc(var(--spacing) * 2);
+  }
+
+  &[data-open],
+  &[data-pressed] {
+    background: var(--color-gray-6);
+  }
+
+  &[data-focused] {
+    background: var(--color-gray-6);
+    color: var(--color-gray-12);
+  }
+
+  &[data-selection-mode] {
+    .lucide-check,
+    .lucide-dot {
+      grid-area: check;
+      width: var(--spacing-4);
+      height: var(--spacing-4);
+    }
+
+    .lucide-check {
+      stroke-width: 3px;
+    }
+
+    .lucide-dot {
+      scale: 3;
+    }
+  }
+
+  &[href] {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  &[data-disabled] {
+    color: var(--color-gray-10);
+  }
+
+  .react-aria-Text:not([slot]),
+  [slot=label] {
+    grid-area: label;
+    font-weight: 500;
+  }
+
+  [slot=description] {
+    font-size: var(--p2);
+    grid-area: desc;
+  }
+
+  kbd {
+    grid-area: end;
+    justify-self: end;
+    margin-inline-start: calc(var(--spacing) * 4);
+    font-family: system-ui;
+    font-size: var(--p2);
+    text-align: end;
+    background: var(--highlight-hover);
+    border: 0.5px solid var(--highlight-pressed);
+    padding: 0 var(--spacing);
+    border-radius: var(--radius-sm);
+  }
+
+  &[data-focused] kbd {
+    background: rgb(255 255 255 / 0.1);
+    border-color: rgb(255 255 255 / 0.2);
+  }
+
+  .lucide-chevron-right {
+    grid-area: end;
+    margin-left: var(--spacing);
+    justify-self: end;
+    width: calc(var(--spacing) * 4);
+    height: calc(var(--spacing) * 4);
+  }
+}
+
+.react-aria-MenuSection {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: -1;
+  --check-width: 0;
+  grid-template-columns: calc(var(--spacing) * 3) var(--check-width) auto 1fr auto calc(var(--spacing) * 3);
+
+  &:has(> [data-selection-mode]) {
+    --check-width: calc(var(--spacing) * 6);
+  }
+
+  .react-aria-Header {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    font-size: var(--p2);
+    font-weight: 600;
+    font-variation-settings: initial;
+    padding: var(--spacing-1) calc(var(--spacing) * 3);
+    background: var(--color-gray-1);
+    border-block: 0.5px solid var(--color-gray-4);
+    cursor: default;
+    user-select: none;
+    box-shadow: inset 0px 1px 0px white, inset 0px -4px 8px var(--color-gray-200);
+
+    @media (prefers-color-scheme: dark) {
+      box-shadow: inset 0px 4px 8px var(--color-gray-200);
+    }
+  }
+
+  &:first-child .react-aria-Header {
+    margin-top: -0.5px;
+  }
+}
+
+.react-aria-Menu .react-aria-Separator {
+  grid-column-start: 1;
+  grid-column-end: -1;
+  margin: calc(var(--spacing) * 2) 0;
+  border: 0;
+  border-top: 0.5px solid var(--color-gray-a5);
+  height: auto;
+  width: auto;
+
+  .react-aria-MenuItem + & {
+    margin-block-start: var(--spacing);
+  }
+
+  &:has(+ .react-aria-MenuItem) {
+    margin-block-end: var(--spacing);
+  }
+}

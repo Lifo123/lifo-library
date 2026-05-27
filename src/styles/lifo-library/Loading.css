@@ -1,0 +1,35 @@
+@layer components {
+  .promise-btn {
+    height: var(--btn-height, auto);
+    width: var(--btn-width, auto);
+    overflow: hidden;
+    transition: width .25s, height .25s;
+    position: relative;
+  }
+
+  .promise-btn:active {
+    transform: inherit !important;
+  }
+
+  .promise-btn span {
+    transition-duration: .15s;
+    transition-property: all;
+  }
+
+  .promise-btn span:nth-child(1) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .promise-btn[data-loading="false"] span:nth-child(1) {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.9);
+  }
+
+  .promise-btn[data-loading="true"] span:nth-child(2) {
+    transform: scale(.95);
+    opacity: 0;
+  }
+}

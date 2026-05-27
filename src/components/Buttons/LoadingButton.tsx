@@ -36,9 +36,7 @@ export function LoadingButton({
         </svg>
       </span>
 
-      <span>
-        {children}
-      </span>
+      <span>{children}</span>
     </Button>
   );
 }

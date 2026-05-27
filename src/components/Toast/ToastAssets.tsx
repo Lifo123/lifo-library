@@ -10,8 +10,8 @@ const warning = <DynamicIcon name="triangle-alert" size={19}/>;
 const error = <DynamicIcon name="circle-alert" size={22} />;
 
 const loading = (
-  <span className="custom-spin">
-    <DynamicIcon name="loader-circle" size={20} strokeWidth={2.25} />
+  <span className="ti-spin">
+    <DynamicIcon name="loader-circle" size={20} strokeWidth={2.5} />
   </span>
 );
 

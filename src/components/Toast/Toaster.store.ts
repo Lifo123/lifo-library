@@ -1,6 +1,6 @@
-import { deepMap } from "@nanostores/deepmap";
+import { nanoid } from "nanoid";
 import { map } from "nanostores";
-import { uuid } from "@Utils/index";
+import { deepMap } from "@nanostores/deepmap";
 import type { ToastAllProps, ToasterSettingProps, ToastPromiseProps, ToastProps, ToastRenderProps } from "./types";
 
 interface ToasterItemProps {
@@ -33,7 +33,7 @@ class ToastService {
       return "";
     }
 
-    const id = props?.id ?? uuid(6, "lifo:toast:");
+    const id = props?.id ?? nanoid(6);
     const newIndex = prevData?.toasts?.length || 0;
 
     let lastToast = {

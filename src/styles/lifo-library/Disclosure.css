@@ -1,0 +1,58 @@
+@layer components {
+  .react-aria-Disclosure {
+    width: 100%;
+    .disclosure-button {
+      background: none;
+      border: none;
+      box-shadow: none;
+      text-shadow: none;
+      width: 100%;
+      color: var(--color-gray-12);
+      font: var(--p);
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      text-align: start;
+      gap: calc(var(--spacing) * 2);
+      padding: calc(var(--spacing) * 2);
+      border-radius: var(--radius-md);
+      transition: all 200ms;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+      &[data-hovered],
+      &[data-pressed] {
+        background: var(--color-gray-3);
+      }
+
+      &[data-disabled] {
+        color: var(--text-color-disabled);
+      }
+
+      svg {
+        rotate: 0deg;
+        transition: rotate 200ms;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 3px;
+      }
+    }
+
+    &[data-expanded] .disclosure-button svg {
+      rotate: 90deg;
+    }
+  }
+
+  .react-aria-DisclosurePanel {
+    color: var(--color-gray-11);
+    height: var(--disclosure-panel-height);
+    transition: height 250ms;
+    overflow: clip;
+    @media(prefers-reduced-motion:reduce) {
+      transition: none;
+    }
+
+    div {
+      padding: var(--spacing-2) var(--spacing-4);
+    }
+  }
+}

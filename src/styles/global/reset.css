@@ -1,0 +1,40 @@
+@layer base {
+  * {
+    font-family: var(--ff);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    background-color: var(--color-gray-1);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  svg {
+    pointer-events: none;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@media (hover:none) {
+  *::-webkit-scrollbar {
+    display: none;
+  }
+}

@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import { useStore } from "@nanostores/react";
-import { loading } from "@Components/index";
+import { loading } from "../Loading";
+import { LoadingButton } from "./LoadingButton";
 import type { ButtonProps, PressEvent } from "react-aria-components";
 import type { PromiseButtonProps } from "./types";
-import { LoadingButton } from "./LoadingButton";
 
 interface ButtonPromiseProps extends ButtonProps {
   loadingId?: string;

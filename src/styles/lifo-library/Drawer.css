@@ -1,0 +1,17 @@
+@layer components {
+  .drawer-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+  }
+
+  /* Contenedor que ocupa toda la pantalla pero no bloquea clics */
+
+  .drawer-container {
+    outline: none;
+    pointer-events: auto;
+    touch-action: none;
+    position: fixed;
+  }
+
+}

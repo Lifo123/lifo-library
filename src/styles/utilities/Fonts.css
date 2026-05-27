@@ -1,0 +1,131 @@
+@utility pointer {
+  cursor: pointer;
+  user-select: none;
+  pointer-events: visible !important;
+}
+
+@utility no-select {
+  user-select: none;
+  pointer-events: none;
+}
+
+@utility select {
+  user-select: text;
+  pointer-events: visible;
+}
+
+@utility fw-100 {
+  font-weight: 100 !important;
+}
+
+@utility fw-200 {
+  font-weight: 200 !important;
+}
+
+@utility fw-300 {
+  font-weight: 300 !important;
+}
+
+@utility fw-400 {
+  font-weight: 400 !important;
+}
+
+@utility fw-475 {
+  font-weight: 475 !important;
+}
+
+@utility fw-500 {
+  font-weight: 500 !important;
+}
+
+@utility fw-600 {
+  font-weight: 600 !important;
+}
+
+@utility fw-700 {
+  font-weight: 700 !important;
+}
+
+@utility fw-800 {
+  font-weight: 800 !important;
+}
+
+@utility fw-900 {
+  font-weight: 900 !important;
+}
+
+@utility fs-10 {
+  font-size: calc(var(--font-multiplier) * 10px);
+}
+
+@utility fs-11 {
+  font-size: calc(var(--font-multiplier) * 11px);
+}
+
+@utility fs-12 {
+  font-size: calc(var(--font-multiplier) * 12px);
+}
+
+@utility fs-13 {
+  font-size: calc(var(--font-multiplier) * 13px);
+}
+
+@utility fs-14 {
+  font-size: calc(var(--font-multiplier) * 14px);
+}
+
+@utility fs-15 {
+  font-size: calc(var(--font-multiplier) * 15px);
+}
+
+@utility fs-16 {
+  font-size: calc(var(--font-multiplier) * 16px);
+}
+
+@utility fs-17 {
+  font-size: calc(var(--font-multiplier) * 17px);
+}
+
+@utility fs-18 {
+  font-size: calc(var(--font-multiplier) * 18px);
+}
+
+@utility fs-19 {
+  font-size: calc(var(--font-multiplier) * 19px);
+}
+
+@utility fs-20 {
+  font-size: calc(var(--font-multiplier) * 20px);
+}
+
+@utility fs-21 {
+  font-size: calc(var(--font-multiplier) * 21px);
+}
+
+@utility fs-22 {
+  font-size: calc(var(--font-multiplier) * 22px);
+}
+
+@utility fs-23 {
+  font-size: calc(var(--font-multiplier) * 23px);
+}
+
+@utility fs-24 {
+  font-size: calc(var(--font-multiplier) * 24px);
+}
+
+@utility font-h1 {
+  font: var(--h1);
+}
+
+@utility font-h2 {
+  font: var(--h2);
+}
+
+@utility font-p {
+  font: var(--p);
+}
+
+@utility font-p2 {
+  font: var(--p2);
+}

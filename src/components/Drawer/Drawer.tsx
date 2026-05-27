@@ -1,9 +1,9 @@
+"use client";
 import { useStore } from "@nanostores/react";
+import { AnimatePresence, motion } from "motion/react";
+import { Modal, ModalOverlay } from "react-aria-components";
 import { BasePropsDrawer } from "./types";
 import { $drawer, drawer } from "./drawer.store";
-import { AnimatePresence } from "motion/react";
-import { Modal, ModalOverlay } from "react-aria-components";
-import { motion } from "@Utils/index";
 import InnerDrawer from "./InnerDrawer";
 
 const MotionOverlay = motion.create(ModalOverlay);
@@ -28,7 +28,6 @@ export default function Drawer({
           onOpenChange={() => drawer.hide(id)}
           isDismissable={isDismissable}
           isKeyboardDismissDisabled={isKeyboardDismissDisabled}
-
           initial={{ opacity: 0 }}
           animate={{
             opacity: 1,

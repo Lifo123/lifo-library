@@ -1,6 +1,6 @@
 "use client";
 import { deepMap } from "@nanostores/deepmap";
-import uuid from "@Utils/uuid";
+import { nanoid } from "nanoid";
 import { atom } from "nanostores";
 
 type LoadingStore = {
@@ -14,7 +14,7 @@ const $loading = deepMap<LoadingStore>({
 const currentLoading = atom<string>("");
 
 function set(value: boolean, id?: string): string {
-  const idSafe = id || uuid();
+  const idSafe = id || nanoid();
 
   $loading.updateKey(idSafe, value);
   currentLoading.set(idSafe);

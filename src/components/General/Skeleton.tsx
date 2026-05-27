@@ -1,8 +1,5 @@
 "use client";
-
-type Props = React.HTMLAttributes<HTMLSpanElement>;
-
-export function Skeleton(props: Props) {
+export function Skeleton(props: React.HTMLAttributes<HTMLSpanElement>) {
   return (
     <span
       className={`skeleton ${props.className}`}

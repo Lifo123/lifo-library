@@ -1,8 +1,8 @@
 "use client";
-import { motion, type TargetAndTransition } from "@Utils/index";
+import React from "react";
+import { motion} from "motion/react";
 import { Dialog } from "react-aria-components";
 import { BasePropsDrawer } from "./types";
-import React from "react";
 
 type Props = {
   children: React.ReactNode;
