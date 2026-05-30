@@ -1,19 +1,7 @@
-@import './Disclosure.css';
+/* ARIA COMPONENTS */
+@import './Aria/index.css';
 
-@import './Loading.css';
-
-@import './Menu.css';
-
-@import './Overlay.css';
-
-@import './Select.css';
-
-@import "./ListBox.css";
-
-@import './Tabs.css';
-
-@import './Toast.css';
-
-@import './Tooltip.css';
-
+@import './Dialog.css';
 @import './Drawer.css';
+@import './Loading.css';
+@import './Toast.css';

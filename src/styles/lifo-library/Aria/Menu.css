@@ -1,21 +1,20 @@
 .react-aria-Menu {
   border: solid 1px var(--color-gray-a5);
-  background-color: var(--color-gray-3);
-  border-radius: var(--radius-md);
+  background-color: var(--color-gray-2);
+  border-radius: var(--radius-lg);
   min-height: 0;
   max-height: inherit;
   box-sizing: border-box;
   overflow: auto;
   min-width: 150px;
-  box-sizing: border-box;
   outline: none;
   display: grid;
   padding: var(--spacing);
   --check-width: 0;
-  grid-template-columns: calc(var(--spacing) * 3) var(--check-width) auto 1fr auto calc(var(--spacing) * 3);
+  grid-template-columns: var(--spacing-3) var(--check-width) auto 1fr auto var(--spacing-3);
   grid-auto-rows: max-content;
   &:has(> [data-selection-mode]) {
-    --check-width: calc(var(--spacing) * 6);
+    --check-width: var(--spacing-6);
   }
 
   &[data-empty] {
@@ -23,16 +22,16 @@
     align-items: center;
     justify-content: center;
     font-style: italic;
-    min-height: calc(var(--spacing) * 8);
+    min-height: var(--spacing-8);
   }
 }
 
 .react-aria-MenuItem {
-  padding: 8px 6px;
-  border-radius: calc(var(--radius-lg) - var(--spacing));
+  padding: 8px 4px;
+  border-radius: var(--radius-md);
   outline: none;
   cursor: default;
-  color: var(--color-gray-12);
+  color: var(--color-gray-11);
   font: var(--p2) !important;
   position: relative;
   display: grid;
@@ -47,15 +46,16 @@
 
   > svg:not(.lucide-check, .lucide-dot, .lucide-chevron-right) {
     grid-area: icon;
-    width: calc(var(--spacing) * 4);
-    height: calc(var(--spacing) * 4);
+    width: var(--spacing-4);
+    height: var(--spacing-4);
     justify-self: center;
-    margin-inline-end: calc(var(--spacing) * 2);
+    margin-inline-end: var(--spacing-2);
   }
 
   &[data-open],
   &[data-pressed] {
     background: var(--color-gray-6);
+    color: var(--color-gray-12);
   }
 
   &[data-focused] {
@@ -87,43 +87,57 @@
 
   &[data-disabled] {
     color: var(--color-gray-10);
+
+    [slot=description] {
+      color: var(--color-gray-8);
+    }
+  }
+
+  &[data-danger] {
+    color: var(--color-red-9);
+
+    &[data-focused]{
+      color: var(--color-red-10);
+      background-color: var(--color-red-a3);
+    }
   }
 
   .react-aria-Text:not([slot]),
   [slot=label] {
     grid-area: label;
-    font-weight: 500;
+    font-weight: 475;
   }
 
   [slot=description] {
-    font-size: var(--p2);
+    font: var(--p3) !important;
+    color: var(--color-gray-11);
     grid-area: desc;
   }
 
   kbd {
     grid-area: end;
     justify-self: end;
-    margin-inline-start: calc(var(--spacing) * 4);
-    font-family: system-ui;
-    font-size: var(--p2);
+    margin-inline-start: var(--spacing-4);
+    font: var(--p3) !important;
+    font-size: 0.75rem !important;
     text-align: end;
-    background: var(--highlight-hover);
-    border: 0.5px solid var(--highlight-pressed);
+    background-color: var(--color-gray-a5);
+    border: 0.5px solid var(--color-gray-a6);
     padding: 0 var(--spacing);
     border-radius: var(--radius-sm);
   }
 
   &[data-focused] kbd {
-    background: rgb(255 255 255 / 0.1);
-    border-color: rgb(255 255 255 / 0.2);
+    background: var(--color-gray-a5);
+    border-color: var(--color-gray-a6);
   }
 
   .lucide-chevron-right {
     grid-area: end;
-    margin-left: var(--spacing);
+    margin-left: var(--spacing-3);
     justify-self: end;
-    width: calc(var(--spacing) * 4);
-    height: calc(var(--spacing) * 4);
+    width: var(--spacing-4);
+    height: var(--spacing-4);
   }
 }
 
@@ -132,28 +146,22 @@
   grid-column-start: 1;
   grid-column-end: -1;
   --check-width: 0;
-  grid-template-columns: calc(var(--spacing) * 3) var(--check-width) auto 1fr auto calc(var(--spacing) * 3);
+  grid-template-columns: var(--spacing-3) var(--check-width) auto 1fr auto var(--spacing-3);
 
   &:has(> [data-selection-mode]) {
-    --check-width: calc(var(--spacing) * 6);
+    --check-width: var;
   }
 
   .react-aria-Header {
     grid-column-start: 1;
     grid-column-end: -1;
-    font-size: var(--p2);
-    font-weight: 600;
+    font: var(--p2);
+    font-weight: 600 !important;
     font-variation-settings: initial;
-    padding: var(--spacing-1) calc(var(--spacing) * 3);
-    background: var(--color-gray-1);
-    border-block: 0.5px solid var(--color-gray-4);
+    padding: var(--spacing) var(--spacing-3);
+    background: var(--color-gray-3);
     cursor: default;
     user-select: none;
-    box-shadow: inset 0px 1px 0px white, inset 0px -4px 8px var(--color-gray-200);
-
-    @media (prefers-color-scheme: dark) {
-      box-shadow: inset 0px 4px 8px var(--color-gray-200);
-    }
   }
 
   &:first-child .react-aria-Header {
@@ -164,7 +172,7 @@
 .react-aria-Menu .react-aria-Separator {
   grid-column-start: 1;
   grid-column-end: -1;
-  margin: calc(var(--spacing) * 2) 0;
+  margin: var(--spacing) 0;
   border: 0;
   border-top: 0.5px solid var(--color-gray-a5);
   height: auto;

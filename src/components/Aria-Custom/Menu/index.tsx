@@ -72,7 +72,7 @@ export function SubmenuTrigger(props: SubmenuTriggerProps) {
   return (
     <AriaSubmenuTrigger {...props}>
       {trigger}
-      <Popover offset={-2} crossOffset={-4}>
+      <Popover offset={-4} crossOffset={-4}>
         {menu}
       </Popover>
     </AriaSubmenuTrigger>

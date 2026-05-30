@@ -3,10 +3,7 @@ import { deepMap } from "@nanostores/deepmap";
 export const $drawer = deepMap<Record<string, boolean>>({});
 
 function render(id: string & {}, state: boolean) {
-  if (!id) {
-    console.error("Sheet: id is required");
-  }
-
+  if (!id) throw new Error("Sheet: Id is required field");
   $drawer.updateKey(id, state);
 }
 

@@ -7,25 +7,25 @@
       box-shadow: none;
       text-shadow: none;
       width: 100%;
-      color: var(--color-gray-12);
-      font: var(--p);
-      font-weight: 400;
+      color: var(--color-gray-11);
+      font: var(--p2);
+      font-weight: 500;
       display: flex;
       align-items: center;
       text-align: start;
-      gap: calc(var(--spacing) * 2);
-      padding: calc(var(--spacing) * 2);
+      gap: var(--spacing-2);
+      padding: var(--spacing-2);
       border-radius: var(--radius-md);
       transition: all 200ms;
       outline: none;
       -webkit-tap-highlight-color: transparent;
       &[data-hovered],
       &[data-pressed] {
-        background: var(--color-gray-3);
+        background: var(--color-gray-4);
       }
 
       &[data-disabled] {
-        color: var(--text-color-disabled);
+        color: var(--color-gray-10);
       }
 
       svg {
@@ -45,6 +45,7 @@
   .react-aria-DisclosurePanel {
     color: var(--color-gray-11);
     height: var(--disclosure-panel-height);
+    font: var(--p2);
     transition: height 250ms;
     overflow: clip;
     @media(prefers-reduced-motion:reduce) {

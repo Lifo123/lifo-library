@@ -1,35 +1,67 @@
 @layer components {
-  .promise-btn {
-    height: var(--btn-height, auto);
-    width: var(--btn-width, auto);
-    overflow: hidden;
-    transition: width .25s, height .25s;
-    position: relative;
+  .skeleton {
+    /* Un color base sólido por si el gradiente falla */
+    background-color: var(--color-gray-a2);
+    /* [Base] - > [Brillo] - > [Base] para que el loop sea invisible */
+    background-image: linear-gradient(
+    -85deg,
+    var(--color-gray-a2) 35%,
+    var(--color-gray-a5) 50%, /* El brillo en el centro */
+    var(--color-gray-a2) 65%
+    );
+    /* El fondo es más ancho que el elemento para poder deslizarlo */
+    background-size: 200% 100%;
+    /* La magia de la animación: dura 1.5s, no se detiene nunca, y viaja a velocidad constante (linear) */
+    animation: skeleton-shimmer 3.5s infinite linear;
+    /* Extras de usabilidad: un skeleton no debe ser interactivo */
+    border-radius: var(--radius-sm);
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+.promise-btn {
+  height: var(--btn-height, auto);
+  width: var(--btn-width, auto);
+  overflow: hidden;
+  transition: width .25s, height .25s;
+  position: relative;
+}
+
+.promise-btn:active {
+  transform: inherit !important;
+}
+
+.promise-btn span {
+  transition-duration: .15s;
+  transition-property: all;
+}
+
+.promise-btn span:nth-child(1) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.promise-btn[data-loading="false"] span:nth-child(1) {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.9);
+}
+
+.promise-btn[data-loading="true"] span:nth-child(2) {
+  transform: scale(.95);
+  opacity: 0;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    /* Empieza con el brillo escondido a la izquierda */
+    background-position: 200% 0;
   }
 
-  .promise-btn:active {
-    transform: inherit !important;
-  }
-
-  .promise-btn span {
-    transition-duration: .15s;
-    transition-property: all;
-  }
-
-  .promise-btn span:nth-child(1) {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .promise-btn[data-loading="false"] span:nth-child(1) {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(.9);
-  }
-
-  .promise-btn[data-loading="true"] span:nth-child(2) {
-    transform: scale(.95);
-    opacity: 0;
+  100% {
+    /* Termina con el brillo escondido a la derecha */
+    background-position: -200% 0;
   }
 }

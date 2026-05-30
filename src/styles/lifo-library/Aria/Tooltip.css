@@ -1,0 +1,42 @@
+@layer components {
+  .react-aria-Tooltip {
+    background-color: var(--color-gray-3);
+    border: solid 1px var(--color-gray-a6);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-1) var(--spacing-2);
+    font: var(--p2);
+    font-weight: 400 !important;
+    line-height: 1.6;
+    color: var(--color-gray-12);
+    forced-color-adjust: none;
+    box-shadow: 0 8px 20px rgba(0 0 0 / 0.1);
+    transform: translate3d(0, 0, 0);
+    transition: transform 200ms,
+      opacity 200ms;
+    transform-origin: var(--trigger-anchor-point);
+    &[data-entering],
+    &[data-exiting] {
+      transform: var(--origin);
+      opacity: 0;
+    }
+
+    &[data-placement="top"] {
+      margin-bottom: 10px;
+      --origin: translateY(4px);
+    }
+    &[data-placement="bottom"] {
+      margin-top: 10px;
+      --origin: translateY(-4px);
+    }
+
+    &[data-placement="right"] {
+      margin-left: 10px;
+      --origin: translateX(-4px);
+    }
+
+    &[data-placement="left"] {
+      margin-right: 10px;
+      --origin: translateX(4px);
+    }
+  }
+}

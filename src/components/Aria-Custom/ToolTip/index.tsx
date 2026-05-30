@@ -3,32 +3,29 @@ import React from "react";
 import { TooltipTriggerProps } from "react-aria";
 import {
   TooltipTrigger,
-  Tooltip as Too,
+  Tooltip as AriaTooltip,
   Focusable,
   TooltipProps,
 } from "react-aria-components";
 
 interface TooltipLibProps extends TooltipTriggerProps {
-  children?: React.ReactNode;
-  custom?: React.ReactNode;
+  children: React.ReactNode;
   label?: string;
-  popover?: TooltipProps;
+  content?: React.ReactNode;
+  tooltipProps?: TooltipProps;
 }
 
 export function Tooltip({
   children,
-  custom,
+  content,
   label,
-
-  popover,
-  ...props
+  tooltipProps,
+  delay = 50,
+  closeDelay = 60,
+  ...triggerProps
 }: TooltipLibProps) {
   return (
-    <TooltipTrigger
-      {...props}
-      delay={props.delay || 50}
-      closeDelay={props.closeDelay || 60}
-    >
+    <TooltipTrigger delay={delay} closeDelay={closeDelay} {...triggerProps}>
       <Focusable>
         {React.isValidElement(children) ? (
           React.cloneElement(children as any, {
@@ -41,7 +38,9 @@ export function Tooltip({
           </span>
         )}
       </Focusable>
-      <Too {...popover}>{custom || label || "tooltip"}</Too>
+      <AriaTooltip {...tooltipProps}>
+        {content || label || "tooltip"}
+      </AriaTooltip>
     </TooltipTrigger>
   );
 }

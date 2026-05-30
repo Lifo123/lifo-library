@@ -1,0 +1,117 @@
+@layer components {
+  .react-aria-RadioGroup {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    color: var(--color-gray-11);
+    gap: var(--spacing-2);
+
+    .react-aria-Label {
+      font: var(--p2);
+      font-weight: 550;
+    }
+
+    .radio-items {
+      display: flex;
+      gap: var(--spacing-3);
+    }
+
+    &[data-orientation='vertical'] .radio-items {
+      flex-direction: column;
+    }
+
+    &[data-orientation='horizontal'] .radio-items {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    &[data-invalid]{
+      .indicator {
+        border-color: var(--color-red-8);
+        background-color: var(--color-red-a3);
+      }
+    }
+
+    [slot="errorMessage"] {
+      font: var(--p3);
+      color: var(--color-red-a9);
+    }
+  }
+
+  .react-aria-RadioField {
+    display: flex;
+    flex-direction: column;
+
+    [slot='description'] {
+      margin-left: calc(var(--spacing) * 6.5);
+      font: var(--p2);
+    }
+
+    &[data-disabled] [slot='description'] {
+      color: var(--color-gray-10);
+    }
+  }
+
+  .react-aria-RadioButton {
+    display: flex;
+    /* This is needed so the HiddenInput is positioned correctly */
+    position: relative;
+    align-items: center;
+    gap: var(--spacing-2);
+    font: var(--p2);
+    font-weight: 475;
+    color: var(--color-gray-11);
+    forced-color-adjust: none;
+    -webkit-tap-highlight-color: transparent;
+
+    .indicator {
+      position: relative;
+      border: solid 1px var(--color-gray-a8);
+      background-color: var(--color-gray-a6);
+      width: calc(var(--spacing) * 4.5);
+      height: calc(var(--spacing) * 4.5);
+      flex-shrink: 0;
+      box-sizing: border-box;
+      border-radius: 50%;
+      transition: all 200ms;
+      outline: transparent;
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 1px;
+        border-radius: inherit;
+        background: transparent;
+        transition: scale 200ms;
+        scale: 0;
+      }
+    }
+
+    &[data-selected] {
+      .indicator {
+        border: solid 1px var(--color-blue-a5);
+        background-color: var(--color-blue-a8);
+      }
+      .indicator::after {
+        background: white;
+        scale: 0.37;
+      }
+    }
+
+    &[data-disabled] {
+      color: var(--color-gray-10);
+
+      .indicator {
+        border: solid 1px var(--color-gray-a7);
+        background-color: var(--color-gray-a3);
+      }
+    }
+
+    &[data-focus-visible] {
+      .indicator{
+        outline: 2px solid var(--color-blue-a8);
+        outline-offset: 3px;
+      }
+    }
+  }
+
+}

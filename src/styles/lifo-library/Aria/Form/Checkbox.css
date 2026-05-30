@@ -1,0 +1,138 @@
+@layer components {
+  .react-aria-CheckboxGroup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+
+    .checkbox-items {
+      display: flex;
+      gap: var(--spacing-3);
+      flex-direction: column;
+    }
+
+    &[data-orientation='vertical'] .checkbox-items {
+      flex-direction: column;
+    }
+
+    &[data-orientation='horizontal'] .checkbox-items {
+      flex-direction: row;
+    }
+  }
+
+  .react-aria-CheckboxField {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing);
+
+    [slot='description'],
+    .react-aria-FieldError {
+      margin-left: calc(var(--spacing) * 6.5);
+    }
+
+    &[data-disabled] [slot='description'] {
+      color: var(--color-gray-10);
+    }
+
+    [slot="description"] {
+      font: var(--p2);
+      color: var(--color-gray-11);
+    }
+
+    [slot="errorMessage"] {
+      font: var(--p3);
+      color: var(--color-red-a9);
+    }
+  }
+
+  .react-aria-CheckboxButton {
+    --checkmark-color: var(--color-gray-1);
+
+    display: flex;
+    position: relative;
+    align-items: center;
+    gap: var(--spacing-2);
+    font: var(--p2);
+    font-weight: 475;
+    color: var(--color-gray-11);
+    forced-color-adjust: none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+
+    .indicator {
+      border: solid 1px var(--color-gray-a7);
+      background-color: var(--color-gray-a6);
+      width: calc(var(--spacing) * 4.5);
+      height: calc(var(--spacing) * 4.5);
+      box-sizing: border-box;
+      border-radius: var(--radius-sm);
+      outline: transparent;
+      transition: all 200ms;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    svg {
+      width: calc(100% - var(--spacing-2));
+      height: calc(100% - var(--spacing-2));
+      fill: none;
+      stroke: var(--checkmark-color);
+      stroke-width: 3.5px;
+      stroke-dasharray: 22px;
+      stroke-dashoffset: 66;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: all 50ms ease-in;
+    }
+
+    &[data-selected] {
+      .indicator {
+        border-color: var(--color-blue-a8);
+        background-color: var(--color-blue-a5);
+      }
+
+      svg {
+        stroke-dashoffset: 44;
+        stroke: white;
+      }
+    }
+
+    &[data-indeterminate] {
+      .indicator {
+        border-color: var(--color-gray-a8);
+        background-color: var(--color-gray-a7);
+      }
+
+      svg {
+        stroke-dashoffset: 44;
+        stroke: none;
+        fill: white;
+      }
+    }
+
+    &[data-invalid] {
+      .indicator {
+        border-color: var(--color-red-8);
+        background-color: var(--color-red-a3);
+      }
+    }
+
+    &[data-disabled] {
+      color: var(--color-gray-10);
+      font-weight: 500 !important;
+      cursor: not-allowed;
+
+      .indicator {
+        opacity: 0.8;
+      }
+    }
+
+    &[data-focus-visible] {
+      .indicator{
+        outline: 2px solid var(--color-blue-a8);
+        outline-offset: 3px;
+      }
+    }
+  }
+}

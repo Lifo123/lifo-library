@@ -55,63 +55,63 @@
 }
 
 @utility fs-10 {
-  font-size: calc(var(--font-multiplier) * 10px);
+  font-size: 10px !important;
 }
 
 @utility fs-11 {
-  font-size: calc(var(--font-multiplier) * 11px);
+  font-size: 11px !important;
 }
 
 @utility fs-12 {
-  font-size: calc(var(--font-multiplier) * 12px);
+  font-size: 12px !important;
 }
 
 @utility fs-13 {
-  font-size: calc(var(--font-multiplier) * 13px);
+  font-size: 13px !important;
 }
 
 @utility fs-14 {
-  font-size: calc(var(--font-multiplier) * 14px);
+  font-size: 14px !important;
 }
 
 @utility fs-15 {
-  font-size: calc(var(--font-multiplier) * 15px);
+  font-size: 15px !important;
 }
 
 @utility fs-16 {
-  font-size: calc(var(--font-multiplier) * 16px);
+  font-size: 16px !important;
 }
 
 @utility fs-17 {
-  font-size: calc(var(--font-multiplier) * 17px);
+  font-size: 17px !important;
 }
 
 @utility fs-18 {
-  font-size: calc(var(--font-multiplier) * 18px);
+  font-size: 18px !important;
 }
 
 @utility fs-19 {
-  font-size: calc(var(--font-multiplier) * 19px);
+  font-size: 19px !important;
 }
 
 @utility fs-20 {
-  font-size: calc(var(--font-multiplier) * 20px);
+  font-size: 20px !important;
 }
 
 @utility fs-21 {
-  font-size: calc(var(--font-multiplier) * 21px);
+  font-size: 21px !important;
 }
 
 @utility fs-22 {
-  font-size: calc(var(--font-multiplier) * 22px);
+  font-size: 22px !important;
 }
 
 @utility fs-23 {
-  font-size: calc(var(--font-multiplier) * 23px);
+  font-size: 23px !important;
 }
 
 @utility fs-24 {
-  font-size: calc(var(--font-multiplier) * 24px);
+  font-size: 24px !important;
 }
 
 @utility font-h1 {
@@ -128,4 +128,12 @@
 
 @utility font-p2 {
   font: var(--p2);
+}
+
+@utility font-p3 {
+  font: var(--p3);
+}
+
+@utility font-p4 {
+  font: var(--p4);
 }

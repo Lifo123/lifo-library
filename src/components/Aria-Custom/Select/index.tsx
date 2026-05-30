@@ -14,7 +14,8 @@ import {
   ListBoxItem as DropdownItem,
   PopoverProps,
 } from "react-aria-components";
-import { ChevronDown } from "lucide-react";
+
+import { CheckIcon, ChevronDown } from "lucide-react";
 
 export interface SelectProps<
   T extends object,
@@ -46,11 +47,11 @@ export function Select<
       {label && <Label>{label}</Label>}
       <Button>
         <SelectValue />
-        <ChevronDown />
+        <ChevronDown size={18}/>
       </Button>
       {description && <Text slot="description">{description}</Text>}
       <FieldError>{errorMessage}</FieldError>
-      <Popover {...popover} className="select-popover">
+      <Popover {...popover} className="react-aria-Popover select-popover">
         <SelectListBox items={items}>{children}</SelectListBox>
       </Popover>
     </AriaSelect>
@@ -58,9 +59,22 @@ export function Select<
 }
 
 export function SelectListBox<T extends object>(props: ListBoxProps<T>) {
-  return <DropdownListBox {...props} />;
+  return <DropdownListBox {...props} className={"dropdown-listbox"} />;
 }
 
-export function SelectItem(props: ListBoxItemProps) {
-  return <DropdownItem {...props} />;
+export function SelectItem({ children, ...props }: ListBoxItemProps) {
+  return (
+    <DropdownItem {...props} className={"dropdown-item"}>
+      {typeof children === "string"
+        ? ({ isSelected, selectionMode }) => (
+            <>
+              {isSelected && selectionMode !== "none" ? (
+                <CheckIcon />
+              ) : null}
+              <Text slot="label">{children}</Text>
+            </>
+          )
+        : children}
+    </DropdownItem>
+  );
 }

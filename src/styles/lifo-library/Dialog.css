@@ -1,0 +1,24 @@
+.react-aria-Dialog {
+  max-height: var(--visual-viewport-height);
+  border: 1px solid var(--color-gray-a4);
+  background-color: var(--color-gray-2);
+  width: max-content;
+  min-width: 360px;
+  border-radius: var(--radius-2xl);
+  outline: none;
+  /* padding: 28px 26px; */
+  color: var(--color-gray-12);
+  font-size: 14px;
+
+  .btn{
+    padding: 6px 12px;
+  }
+
+  .btn-outline{
+    border: solid 1px var(--color-gray-a7);
+
+    &::before {
+      background-color: var(--color-gray-5);
+    }
+  }
+}

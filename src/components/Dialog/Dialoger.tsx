@@ -1,35 +1,27 @@
 "use client";
-import { useStore } from "@nanostores/react";
-import { useEnterAnimation, useExitAnimation } from "@react-aria/utils";
+import React from "react";
 import {
-  Dialog,
-  DialogProps,
+  Dialog as AriaDialog,
   Modal,
   ModalOverlay,
+  DialogProps,
   ModalOverlayProps,
 } from "react-aria-components";
-import { BasePropsDrawer } from "./types";
-import { $drawer, drawer } from "./drawer.store";
-import React from "react";
 
-export type DrawerPlacement = "top" | "bottom" | "left" | "right";
+import { useStore } from "@nanostores/react";
+import { $dialog, dialog } from "./dialog.store";
+import { useEnterAnimation, useExitAnimation } from "@react-aria/utils";
 
 type Props = {
+  id: string;
   modalOverlay?: ModalOverlayProps;
-  placement?: DrawerPlacement;
-} & BasePropsDrawer;
+} & DialogProps;
 
-export default function Drawer({
-  id,
-  children,
-  modalOverlay,
-  placement = "bottom",
-  ...props
-}: Props) {
+export function Dialoger({ id, children, modalOverlay, ...props }: Props) {
   if (!id) throw new Error("Id is required field");
 
   const { isOpen, onOpenChange, ...restOverlay } = modalOverlay || {};
-  const RECORD = useStore($drawer, { keys: [id] });
+  const RECORD = useStore($dialog, { keys: [id] });
   const isStoreOpen = RECORD[id] ?? false;
 
   const isActuallyOpen = isOpen !== undefined ? isOpen : isStoreOpen;
@@ -37,8 +29,8 @@ export default function Drawer({
   const handleOpenChange = (newOpenState: boolean) => {
     if (onOpenChange) onOpenChange(newOpenState);
     if (isOpen === undefined) {
-      if (newOpenState) drawer.show(id);
-      else drawer.hide(id);
+      if (newOpenState) dialog.show(id);
+      else dialog.hide(id);
     }
   };
 
@@ -50,15 +42,14 @@ export default function Drawer({
   }
 
   return (
-    <DrawerInner
+    <DialogerInner
       ref={overlayRef}
       isExiting={isExiting}
       dialogProps={props}
-      placement={placement}
       overlayProps={{ ...restOverlay, onOpenChange: handleOpenChange }}
     >
       {children}
-    </DrawerInner>
+    </DialogerInner>
   );
 }
 
@@ -66,40 +57,29 @@ type InnerProps = {
   isExiting: boolean;
   dialogProps: DialogProps;
   overlayProps: ModalOverlayProps;
-  placement: DrawerPlacement;
   children: DialogProps["children"];
 };
 
-const DrawerInner = React.forwardRef<HTMLDivElement, InnerProps>(
-  ({ isExiting, overlayProps, dialogProps, placement, children }, ref) => {
+const DialogerInner = React.forwardRef<HTMLDivElement, InnerProps>(
+  ({ isExiting, dialogProps, overlayProps, children }, ref) => {
     const isEntering =
       useEnterAnimation(ref as React.RefObject<HTMLDivElement>) || false;
 
     return (
       <ModalOverlay
         {...overlayProps}
-        isDismissable={overlayProps.isDismissable || true}
-        className="drawer-overlay"
         isOpen={true}
         ref={ref}
         data-is-entering={isEntering ? "" : undefined}
         data-is-exiting={isExiting ? "" : undefined}
       >
         <Modal
-          className="drawer-modal"
-          data-placement={placement}
           data-is-entering={isEntering ? "" : undefined}
           data-is-exiting={isExiting ? "" : undefined}
         >
-          <Dialog
-            {...dialogProps}
-            className={`${dialogProps.className || ""} drawer-container`}
-          >
-            {children}
-          </Dialog>
+          <AriaDialog {...dialogProps}>{children}</AriaDialog>
         </Modal>
       </ModalOverlay>
     );
   },
 );
-DrawerInner.displayName = "DrawerInner";

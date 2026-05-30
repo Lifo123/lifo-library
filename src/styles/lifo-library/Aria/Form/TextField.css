@@ -1,0 +1,64 @@
+@layer components {
+  .react-aria-TextField {
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    .react-aria-Label {
+      font: var(--p2);
+      font-weight: 550;
+      color: var(--color-gray-11);
+      margin-bottom: var(--spacing-2);
+    }
+
+    [slot='errorMessage'] {
+      font: var(--p3);
+      font-weight: 500;
+      color: var(--color-red-a9);
+      margin-top: var(--spacing-2);
+    }
+
+    &[data-invalid] .react-aria-Input {
+      outline: 1px solid var(--color-red-a8);
+      outline-offset: -1px;
+    }
+  }
+
+  .react-aria-Input,
+  .react-aria-TextArea {
+    width: 100%;
+    min-height: var(--spacing-8);
+    padding: var(--spacing-2) var(--spacing-3);
+    box-sizing: border-box;
+    margin: 0;
+    border: none;
+    border-radius: var(--radius-sm);
+    font: var(--p2);
+    font-weight: 475;
+    color: var(--color-gray-12);
+    outline: solid 1px var(--color-gray-a6);
+    -webkit-tap-highlight-color: transparent;
+    transform: translateZ(0);
+
+    &::placeholder {
+      color: var(--color-gray-10);
+    }
+
+    &[data-disabled] {
+      color: var(--text-color-disabled);
+      &::placeholder {
+        color: var(--text-color-disabled);
+      }
+    }
+
+    &[data-focused] {
+      outline: 1px solid var(--color-blue-a8);
+    }
+  }
+
+  .react-aria-TextArea {
+    min-height: 64px;
+    padding: var(--spacing-2) var(--spacing-3);
+  }
+}
