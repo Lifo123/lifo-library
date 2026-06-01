@@ -13,9 +13,3 @@ export const timeTracker = async <T extends any[], R>(
         return endTime - startTime;
     }
 };
-
-export function isMobile(): boolean {
-    const isSmallScreen = window.matchMedia("(max-width: 768px)").matches;
-    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    return isSmallScreen || isTouch;
-};

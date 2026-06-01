@@ -27,7 +27,7 @@
     display: flex;
 
     .react-aria-SelectionIndicator {
-      background: var(--color-app-9);
+      background: var(--color-blue-a9);
     }
 
     &[data-orientation='horizontal'] {
@@ -64,8 +64,7 @@
     cursor: default;
     outline: none;
     position: relative;
-    font: var(--p);
-    font-size: 15px;
+    font: var(--p2);
     color: var(--color-gray-12);
     transition: color 200ms;
     --border-color: transparent;
@@ -99,7 +98,7 @@
 
     &[data-focus-visible] {
       border-radius: calc(var(--radius-sm) + 8px);
-      outline: 2px solid var(--color-app-7);
+      outline: 2px solid var(--color-blue-a8);
       outline-offset: -8px;
     }
 

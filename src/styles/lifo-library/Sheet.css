@@ -1,5 +1,5 @@
 @layer components {
-  .drawer-overlay {
+  .sheet-overlay {
     position: fixed;
     inset: 0;
     z-index: 100;
@@ -17,7 +17,7 @@
     }
   }
 
-  .drawer-modal {
+  .sheet-modal {
     position: fixed;
     box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
     display: flex;
@@ -47,24 +47,39 @@
         transform: translate(-50%, -100%);
       }
     }
-  }
 
-  .drawer-container {
-    width: 100vw;
-    max-height: inherit;
-    outline: none;
-    overflow: auto;
-    color: var(--color-gray-12);
-    font: var(--p2);
-    .btn{
-      padding: 6px 12px;
-    }
-
-    .btn-outline {
-      border: solid 1px var(--color-gray-7) !important;
-      &::before {
-        background-color: var(--color-gray-5);
+    &[data-placement="left"] {
+      left: 0;
+      top: 50%;
+      max-height: 100dvh;
+      width: min(400px, 90vw);
+      transform: translate(0, -50%);
+      &[data-is-entering],
+      &[data-is-exiting] {
+        transform: translate(-100%, -50%);
       }
     }
+
+    &[data-placement="right"] {
+      right: 0;
+      top: 50%;
+      max-height: 100dvh;
+      width: min(400px, 90vw);
+      border-radius: var(--radius-2xl) 0 0 var(--radius-2xl);
+      transform: translate(0, -50%);
+      &[data-is-entering],
+      &[data-is-exiting] {
+        transform: translate(100%, -50%);
+      }
+    }
+  }
+
+  .sheet-container {
+    outline: none;
+    pointer-events: auto;
+    width: 100%;
+    max-width: min(400px, 100vw);
+    height: 100%;
+    overflow-y: auto;
   }
 }

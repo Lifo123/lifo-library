@@ -1,42 +1,50 @@
 "use client";
-import { Button, ButtonProps } from "react-aria-components";
-import type { LoadingButtonpProps } from "./types";
+import {
+  PressEvent,
+  Button as RACButton,
+  type ButtonProps as RACButtonProps,
+} from "react-aria-components/Button";
+import { composeRenderProps } from "react-aria-components/composeRenderProps";
+import { LoaderCircleIcon } from "lucide-react";
+import { useStore } from "@nanostores/react";
+import { $loading, loading } from "../Loading/Loading.Store";
 
-export function LoadingButton({
-  isLoading = false,
-  children,
-  size = 18,
-  strokeWidth = 2.75,
-  className = "",
+type ButtomPromiseProps = {
+  onPress?: (e: PressEvent) => Promise<any>;
+} & RACButtonProps;
+
+export function ButtonPromise({
+  id = "global",
+  isPending,
   ...props
-}: LoadingButtonpProps<ButtonProps>) {
-  const isDisabled = props.isDisabled || isLoading;
+}: ButtomPromiseProps) {
+  const RECORD = useStore($loading, { keys: [id] });
+  const isActuallyPending = RECORD[id] ?? isPending ?? false;
+
+  const handlePress = async (e: PressEvent) => {
+    if (props.onPress) {
+      loading.start(id);
+      await props.onPress(e);
+      loading.end(id);
+    }
+  };
 
   return (
-    <Button
-      {...props}
-      className={`promise-btn ${className}`}
-      isDisabled={isDisabled}
-      data-loading={isLoading}
-    >
-      <span>
-        <svg
-          className="custom-spin"
-          height={size}
-          width={size}
-          viewBox="0 0 24 24"
-          stroke="var(--color-gray-black)"
-          strokeLinecap="round"
-          strokeWidth={strokeWidth}
-        >
-          <path
-            fill="none"
-            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 12.3375 2.01672 12.6711 2.04938 13"
-          />
-        </svg>
-      </span>
-
-      <span>{children}</span>
-    </Button>
+    <RACButton {...props} isPending={isActuallyPending} onPress={handlePress}>
+      {composeRenderProps(props.children, (children, { isPending }) => (
+        <>
+          <span className="label">{children}</span>
+          {isPending && (
+            <span className="track">
+              <LoaderCircleIcon
+                size={20}
+                aria-label="Saving..."
+                strokeWidth={2.3}
+              />
+            </span>
+          )}
+        </>
+      ))}
+    </RACButton>
   );
 }

@@ -16,11 +16,11 @@
       font: var(--p3);
       font-weight: 500;
       color: var(--color-red-a9);
-      margin-top: var(--spacing-2);
+      margin-top: var(--spacing);
     }
 
     &[data-invalid] .react-aria-Input {
-      outline: 1px solid var(--color-red-a8);
+      outline-color: var(--color-red-a9);
       outline-offset: -1px;
     }
   }
@@ -35,25 +35,26 @@
     border: none;
     border-radius: var(--radius-sm);
     font: var(--p2);
-    font-weight: 475;
+    font-weight: 400;
     color: var(--color-gray-12);
-    outline: solid 1px var(--color-gray-a6);
+    outline: solid 2px var(--color-gray-6);
     -webkit-tap-highlight-color: transparent;
     transform: translateZ(0);
 
     &::placeholder {
-      color: var(--color-gray-10);
+      color: var(--color-gray-11);
+      font-weight: 375;
     }
 
     &[data-disabled] {
-      color: var(--text-color-disabled);
+      color: var(--color-gray-10);
       &::placeholder {
-        color: var(--text-color-disabled);
+        color: var(--color-gray-10);
       }
     }
 
     &[data-focused] {
-      outline: 1px solid var(--color-blue-a8);
+      outline-color: var(--color-blue-a8);
     }
   }
 

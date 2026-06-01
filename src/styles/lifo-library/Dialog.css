@@ -1,24 +1,77 @@
-.react-aria-Dialog {
-  max-height: var(--visual-viewport-height);
-  border: 1px solid var(--color-gray-a4);
-  background-color: var(--color-gray-2);
-  width: max-content;
-  min-width: 360px;
-  border-radius: var(--radius-2xl);
-  outline: none;
-  /* padding: 28px 26px; */
-  color: var(--color-gray-12);
-  font-size: 14px;
+@layer components {
+  .dialog-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--page-width);
+    height: var(--page-height);
+    background: var(--color-gray-modal-bg);
+    overflow: clip;
+    z-index: 100;
+    &[data-is-entering] {
+      animation: modal-fade 200ms;
+    }
 
-  .btn{
-    padding: 6px 12px;
+    &[data-is-exiting] {
+      animation: modal-fade 150ms reverse ease-in;
+    }
   }
 
-  .btn-outline{
-    border: solid 1px var(--color-gray-a7);
+  .dialog-modal {
+    position: sticky;
+    max-height: calc(var(--visual-viewport-height) * 0.9);
+    top: calc(var(--visual-viewport-height) / 2);
+    margin-left: 50vw;
+    translate: -50% -50%;
+    border-radius: var(--radius-xl);
+    outline: none;
+    width: max-content;
+    max-width: min(500px, 90vw);
+    &[data-is-entering] {
+      animation: modal-zoom 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-    &::before {
-      background-color: var(--color-gray-5);
+    .react-aria-TextField {
+      margin-bottom: 8px;
+    }
+  }
+
+  .dialog-container {
+    max-height: inherit;
+    border-radius: var(--radius-2xl);
+    outline: none;
+    overflow: auto;
+    color: var(--color-gray-12);
+    font: var(--p2);
+    .btn{
+      padding: 6px 12px;
+    }
+
+    .btn-outline {
+      border: solid 1px var(--color-gray-7) !important;
+      &::before {
+        background-color: var(--color-gray-5);
+      }
+    }
+  }
+
+  @keyframes modal-fade {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes modal-zoom {
+    from {
+      transform: scale(0.8);
+    }
+
+    to {
+      transform: scale(1);
     }
   }
 }

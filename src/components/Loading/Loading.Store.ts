@@ -1,23 +1,15 @@
 "use client";
 import { deepMap } from "@nanostores/deepmap";
 import { nanoid } from "nanoid";
-import { atom } from "nanostores";
 
-type LoadingStore = {
-  [key: string]: boolean;
-};
-
-const $loading = deepMap<LoadingStore>({
+export const $loading = deepMap<Record<string, boolean>>({
   global: false,
 });
-
-const currentLoading = atom<string>("");
 
 function set(value: boolean, id?: string): string {
   const idSafe = id || nanoid();
 
   $loading.updateKey(idSafe, value);
-  currentLoading.set(idSafe);
   return idSafe;
 }
 
@@ -33,7 +25,7 @@ async function promise(fn: () => Promise<void>, id?: string) {
   }
 }
 
-function off(id?: string) {
+function end(id?: string) {
   if (id) {
     $loading.setKey(id, false);
   }
@@ -47,9 +39,7 @@ function off(id?: string) {
 }
 
 export const loading = {
-  start: (id?: string) => set(true, id),
+  start: (id: string) => set(true, id),
   promise,
-  off,
-  store: $loading,
-  current: currentLoading,
+  end: (id: string) => end(id),
 };

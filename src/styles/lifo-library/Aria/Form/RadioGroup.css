@@ -8,7 +8,7 @@
 
     .react-aria-Label {
       font: var(--p2);
-      font-weight: 550;
+      font-weight: 500;
     }
 
     .radio-items {
@@ -45,6 +45,7 @@
     [slot='description'] {
       margin-left: calc(var(--spacing) * 6.5);
       font: var(--p2);
+      font-weight: 375;
     }
 
     &[data-disabled] [slot='description'] {
@@ -59,8 +60,7 @@
     align-items: center;
     gap: var(--spacing-2);
     font: var(--p2);
-    font-weight: 475;
-    color: var(--color-gray-11);
+    color: var(--color-gray-12);
     forced-color-adjust: none;
     -webkit-tap-highlight-color: transparent;
 
@@ -89,7 +89,7 @@
     &[data-selected] {
       .indicator {
         border: solid 1px var(--color-blue-a5);
-        background-color: var(--color-blue-a8);
+        background-color: var(--color-blue-9);
       }
       .indicator::after {
         background: white;

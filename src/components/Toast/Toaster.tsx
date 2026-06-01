@@ -9,7 +9,6 @@ import { useEnterAnimation, useExitAnimation } from "@react-aria/utils";
 
 import type { ToastAllProps, ToasterSettingProps } from "./types";
 import { $toaster, toast } from "./Toaster.store";
-import { ButtonPromise } from "../Buttons/index";
 import { ToastIcons } from "./ToastAssets";
 
 export function Toaster(props: ToasterSettingProps) {
@@ -167,7 +166,7 @@ const ToastItemInner = React.forwardRef<
               </div>
             </div>
             <span className="ti-actionable">
-              {action ? (
+              {/* {action ? (
                 <ButtonPromise
                   onPress={async () => {
                     await action();
@@ -185,7 +184,7 @@ const ToastItemInner = React.forwardRef<
                     <XIcon size={22} strokeWidth={2.35} />
                   </Button>
                 )
-              )}
+              )} */}
             </span>
           </div>
         </>

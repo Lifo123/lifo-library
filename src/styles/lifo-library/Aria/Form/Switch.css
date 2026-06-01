@@ -25,7 +25,7 @@
     gap: var(--spacing-2);
     font: var(--p2);
     font-weight: 475;
-    color: var(--color-gray-11);
+    color: var(--color-gray-12);
     forced-color-adjust: none;
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
@@ -34,9 +34,9 @@
     .track {
       border: solid 1px var(--color-gray-a7);
       padding: 2px;
-      --height: calc(var(--spacing) * 6);
+      --height: calc(var(--spacing) * 5);
       height: var(--height);
-      width: calc(var(--spacing) * 10);
+      width: calc(var(--spacing) * 9);
       border-radius: var(--height);
       transition: all 200ms;
       box-sizing: border-box;
@@ -55,16 +55,11 @@
       }
     }
 
-    &[data-focus-visible] .track {
-      outline: 2px solid var(--focus-ring-color);
-      outline-offset: 2px;
-    }
-
     &[data-selected] {
       --border-color: var(--color-gray-7);
       .track {
-        border-color: var(--color-blue-a9);
-        background-color: var(--color-blue-8);
+        border-color: var(--color-blue-a8);
+        background-color: var(--color-blue-a9);
       }
 
       .handle {

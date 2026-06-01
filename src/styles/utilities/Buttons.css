@@ -1,12 +1,14 @@
-.btn,
-button,
-[role='button'] {
-  outline: 0px solid transparent;
-  transition: outline 0.2s ease;
-  &[data-focus-visible],
-  &:focus-visible {
-    outline: 2px solid var(--color-app-7);
-    outline-offset: 3px;
+@layer components {
+  .btn,
+  button,
+  [role='button'] {
+    outline: 0px solid transparent;
+    transition: outline 0.1s ease-out;
+    &[data-focus-visible],
+    &:focus-visible {
+      outline: 2px solid var(--color-blue-a8);
+      outline-offset: 3px;
+    }
   }
 }
 
@@ -43,13 +45,35 @@ button,
       display: none;
     }
   }
+
+  &[data-pending="true"] {
+    .label {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .track {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      svg{
+        animation: spin 0.75s linear infinite;
+      }
+    }
+    &::before {
+      transform: scale(1.1);
+      filter: saturate(2);
+      opacity: 0.2;
+    }
+  }
 }
 
 @utility btn-primary {
   background-color: var(--color-gray-12);
   color: var(--color-gray-1);
   padding: 8px 14px;
-  font-weight: 550;
+  font-weight: 500;
 
   &::before {
     background-color: var(--color-gray-11);
@@ -58,8 +82,9 @@ button,
 
   &:hover::before,
     &[data-focus-visible=true]::before {
-    transform: scale(1.1);
+    transform: translateZ(0) scale(1.1);
     opacity: 0.5;
+
   }
 }
 
@@ -110,6 +135,8 @@ button,
 
   &::before {
     background-color: currentColor;
+    border-radius: var(--radius-md);
+    transform: scale(.9);
     transition: transform 0.2s cubic-bezier(0.31, 0.94, 0.34, 1);
   }
 
@@ -119,4 +146,9 @@ button,
     filter: saturate(1.75);
     opacity: 0.2;
   }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
