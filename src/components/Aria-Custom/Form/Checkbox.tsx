@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import {
   CheckboxButton,
@@ -7,7 +8,7 @@ import {
   type CheckboxFieldProps,
   type ValidationResult,
 } from "react-aria-components/Checkbox";
-import { Description, Label } from "./index";
+import { Description, Label } from "./Form";
 
 interface CheckboxProps extends CheckboxFieldProps {
   children?: React.ReactNode;

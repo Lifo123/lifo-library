@@ -1,4 +1,5 @@
 export * from './Form';
+export * from './Overlay';
 
 export * from './Accordion';
 export * from './Menu';

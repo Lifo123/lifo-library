@@ -1,5 +1,5 @@
 @theme {
-  --color-gray-modal-bg: #00000040;
+  --color-gray-modal-bg: #00000025;
   --color-gray-1: #fcfcfc;
   --color-gray-2: #f9f9f9;
   --color-gray-3: #f0f0f0;
@@ -24,7 +24,8 @@
   --color-gray-a10: #0000007c;
   --color-gray-a11: #0000009b;
   --color-gray-a12: #000000df;
-  --color-gray-high: black;
+  --color-gray-black: black;
+  --color-gray-white: white;
 }
 
 .light {
@@ -52,21 +53,22 @@
   --color-gray-a10: #0000007c;
   --color-gray-a11: #0000009b;
   --color-gray-a12: #000000df;
-  --color-gray-high: black;
+  --color-gray-black: black;
+  --color-gray-white: white;
 }
 
 .dark {
   --color-gray-1: #111111;
-  --color-gray-2: #191919;
-  --color-gray-3: #222222;
+  --color-gray-2: hsl(0, 0%, 10%);
+  --color-gray-3: hsl(0, 0%, 13%);
   --color-gray-4: #2a2a2a;
   --color-gray-5: #313131;
   --color-gray-6: #3a3a3a;
   --color-gray-7: #484848;
   --color-gray-8: #606060;
-  --color-gray-9: #6e6e6e;
+  --color-gray-9: hsl(0, 0%, 43%);
   --color-gray-10: #7b7b7b;
-  --color-gray-11: #b4b4b4;
+  --color-gray-11: hsl(0, 0%, 75%);
   --color-gray-12: #eeeeee;
   --color-gray-a1: #00000000;
   --color-gray-a2: #ffffff09;
@@ -80,5 +82,6 @@
   --color-gray-a10: #ffffff72;
   --color-gray-a11: #ffffffaf;
   --color-gray-a12: #ffffffed;
-  --color-gray-high: white;
+  --color-gray-black: white;
+  --color-gray-white: black;
 }

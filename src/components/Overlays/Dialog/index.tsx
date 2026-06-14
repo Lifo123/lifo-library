@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import { useEnterAnimation } from "@react-aria/utils";
-import { Dialog, Modal, ModalOverlay } from "react-aria-components";
+import { Dialog, Modal, ModalOverlay } from "react-aria-components/Modal";
 import { InnerProps, BaseOverlayProps } from "../types";
 import { OverlayController } from "../OverlayController";
-import { dialog } from "../controller.store";
+import { dialog } from "../overlays.store";
 
 export default function Sheet({
   id,
@@ -51,7 +51,7 @@ const DialogInner = React.forwardRef<HTMLDivElement, InnerProps>(
         data-is-exiting={isExiting ? "" : undefined}
       >
         <Modal
-        className="dialog-modal"
+          className="dialog-modal"
           data-is-entering={isEntering ? "" : undefined}
           data-is-exiting={isExiting ? "" : undefined}
         >

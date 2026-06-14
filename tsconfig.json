@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "rootDir": "./src",
-    "target": "es2019",
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
 
     "jsx": "react-jsx",
@@ -17,12 +17,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
 
-    "paths": {
-      "@Components/*": ["./src/components/*"],
-      "@Utils/*": ["./src/utils/*"],
-      "@Stores/*": ["./src/stores/*"]
-    }
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist", "**/*.test.tsx", "**/*.stories.tsx"]
+  "exclude": ["node_modules", "dist", "**/*.test.tsx", "**/*.stories.tsx", "**/*.css"]
 }

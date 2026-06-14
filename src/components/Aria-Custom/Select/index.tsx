@@ -1,21 +1,22 @@
+"use client";
+
+import { Label, FieldError } from "../Form/Form";
+import { CheckIcon, ChevronDown } from "lucide-react";
+import { Button } from "react-aria-components/Button";
+import { Popover, PopoverProps } from "react-aria-components/Popover";
 import {
-  type ListBoxItemProps,
   Select as AriaSelect,
   type SelectProps as AriaSelectProps,
   SelectValue,
   type ValidationResult,
-  type ListBoxProps,
-  Label,
-  Button,
-  FieldError,
-  Popover,
+} from "react-aria-components/Select";
+import {
   Text,
   ListBox as DropdownListBox,
   ListBoxItem as DropdownItem,
-  PopoverProps,
-} from "react-aria-components";
-
-import { CheckIcon, ChevronDown } from "lucide-react";
+  type ListBoxProps,
+  type ListBoxItemProps,
+} from "react-aria-components/ListBox";
 
 export interface SelectProps<
   T extends object,
@@ -47,7 +48,7 @@ export function Select<
       {label && <Label>{label}</Label>}
       <Button>
         <SelectValue />
-        <ChevronDown size={18}/>
+        <ChevronDown size={18} />
       </Button>
       {description && <Text slot="description">{description}</Text>}
       <FieldError>{errorMessage}</FieldError>
@@ -68,9 +69,7 @@ export function SelectItem({ children, ...props }: ListBoxItemProps) {
       {typeof children === "string"
         ? ({ isSelected, selectionMode }) => (
             <>
-              {isSelected && selectionMode !== "none" ? (
-                <CheckIcon />
-              ) : null}
+              {isSelected && selectionMode !== "none" ? <CheckIcon /> : null}
               <Text slot="label">{children}</Text>
             </>
           )

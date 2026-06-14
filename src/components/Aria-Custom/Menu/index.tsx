@@ -1,7 +1,9 @@
 "use client";
+
+import React from "react";
 import { Check, ChevronRight, Dot } from "lucide-react";
+import { Popover, PopoverProps } from "react-aria-components/Popover";
 import {
-  Popover,
   Text,
   Menu as AriaMenu,
   MenuItem as AriaMenuItem,
@@ -13,21 +15,28 @@ import {
   type MenuSectionProps,
   type MenuTriggerProps,
   type SubmenuTriggerProps,
-  PopoverProps,
-} from "react-aria-components";
-import React from "react";
+} from "react-aria-components/Menu";
 
 export function MenuTrigger(
   props: MenuTriggerProps & { popover?: PopoverProps },
 ) {
+  const { isOpen, onOpenChange, popover, ...rest } = props;
+
   let [trigger, menu] = React.Children.toArray(props.children) as [
     React.ReactElement,
     React.ReactElement,
   ];
+
+  const popoverProps = {
+    ...popover,
+    isOpen: isOpen || popover?.isOpen,
+    onOpenChange: onOpenChange || popover?.onOpenChange,
+  };
+
   return (
-    <AriaMenuTrigger {...props}>
+    <AriaMenuTrigger {...rest}>
       {trigger}
-      <Popover {...props.popover}>{menu}</Popover>
+      <Popover {...popoverProps}>{menu}</Popover>
     </AriaMenuTrigger>
   );
 }

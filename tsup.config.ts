@@ -2,26 +2,16 @@ import { defineConfig } from "tsup";
 
 export default defineConfig({
   entry: [
-    //Library
-    "src/index.ts",
-
-    //External
-    "src/external/aria/index.ts",
-    "src/external/aria/components/index.ts",
-    "src/external/aria/utils/index.ts",
-
-    "src/external/lucide/index.ts",
-    "src/external/motion/index.ts",
-    "src/external/nanoid/index.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "!src/**/*.test.tsx",
+    "!src/**/*.stories.tsx",
   ],
   format: ["cjs", "esm"],
   dts: true,
-  splitting: true,
+  bundle: false,
+  splitting: false,
   sourcemap: true,
   clean: true,
-  treeshake: true,
-
-  //minify: true,
-  minifyIdentifiers: true,
-  minifySyntax: true,
+  treeshake: false,
 });

@@ -1,12 +1,14 @@
 "use client";
+
 import {
   Input,
   TextField as AriaTextField,
   type TextFieldProps as AriaTextFieldProps,
   type ValidationResult,
 } from "react-aria-components/TextField";
-import { Label, FieldError } from "react-aria-components";
-import { Description } from "./index";
+import { Label } from "react-aria-components/Label";
+import { FieldError } from "react-aria-components/FieldError";
+import { Description } from "./Form";
 
 export interface TextFieldProps extends AriaTextFieldProps {
   label?: string;
@@ -20,12 +22,17 @@ export function TextField({
   description,
   errorMessage,
   placeholder,
+  children,
   ...props
 }: TextFieldProps) {
   return (
     <AriaTextField {...props}>
       <Label>{label}</Label>
-      <Input className="react-aria-Input inset" placeholder={placeholder} />
+      <Input
+        id={`rac-${props.id}` || undefined}
+        className="react-aria-Input inset"
+        placeholder={placeholder}
+      />
       {description && <Description>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>
     </AriaTextField>

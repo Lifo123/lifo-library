@@ -1,6 +1,7 @@
 {
   "name": "@lifo123/library",
-  "version": "1.9.10",
+  "version": "2.0.5",
+  "sideEffects": false,
   "description": "Lifo library",
   "type": "module",
   "author": "Lifo",
@@ -24,35 +25,24 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./aria": {
-      "types": "./dist/external/aria/index.d.ts",
-      "import": "./dist/external/aria/index.js",
-      "require": "./dist/external/aria/index.cjs"
+    "./stores": {
+      "types": "./dist/stores/index.d.ts",
+      "import": "./dist/stores/index.js",
+      "require": "./dist/stores/index.cjs"
     },
-    "./aria-components": {
-      "types": "./dist/external/aria/components/index.d.ts",
-      "import": "./dist/external/aria/components/index.js",
-      "require": "./dist/external/aria/components/index.cjs"
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "import": "./dist/utils/index.js",
+      "require": "./dist/utils/index.cjs"
     },
-    "./aria-utils": {
-      "types": "./dist/external/aria/utils/index.d.ts",
-      "import": "./dist/external/aria/utils/index.js",
-      "require": "./dist/external/aria/utils/index.cjs"
+    "./styles/*": {
+      "import": "./dist/styles/*",
+      "require": "./dist/styles/*"
     },
-    "./lucide": {
-      "types": "./dist/external/lucide/index.d.ts",
-      "import": "./dist/external/lucide/index.js",
-      "require": "./dist/external/lucide/index.cjs"
-    },
-    "./motion": {
-      "types": "./dist/external/motion/index.d.ts",
-      "import": "./dist/external/motion/index.js",
-      "require": "./dist/external/motion/index.cjs"
-    },
-    "./nanoid": {
-      "types": "./dist/external/nanoid/index.d.ts",
-      "import": "./dist/external/nanoid/index.js",
-      "require": "./dist/external/nanoid/index.cjs"
+    "./*": {
+      "types": "./dist/components/*/index.d.ts",
+      "import": "./dist/components/*/index.js",
+      "require": "./dist/components/*/index.cjs"
     }
   },
   "scripts": {
@@ -78,7 +68,7 @@
     "@eslint/js": "^9.39.4",
     "@nanostores/deepmap": "^0.0.2",
     "@nanostores/react": "^1.1.0",
-    "@types/react": "^19.2.15",
+    "@types/react": "^19.2.16",
     "@types/react-dom": "^19.2.3",
     "check-dts": "^0.9.0",
     "eslint": "^9.39.4",

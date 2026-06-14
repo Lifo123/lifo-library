@@ -1,5 +1,5 @@
 "use client";
-import { Button, ButtonProps } from "react-aria-components";
+import { Button, ButtonProps } from "react-aria-components/Button";
 import { DynamicIcon, dynamicIconImports } from "lucide-react/dynamic";
 
 type PressableIconProps = ButtonProps & {

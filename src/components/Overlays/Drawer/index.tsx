@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import { useEnterAnimation } from "@react-aria/utils";
-import { Dialog, Modal, ModalOverlay } from "react-aria-components";
+import { Dialog, Modal, ModalOverlay } from "react-aria-components/Modal";
 import { InnerProps } from "../types";
 import { OverlayController } from "../OverlayController";
-import { drawer } from "../controller.store";
+import { drawer } from "../overlays.store";
 import { DrawerComponentProps } from "./types";
 
 export default function Drawer({

@@ -1,4 +1,3 @@
-"use client";
 import { DynamicIcon } from "lucide-react/dynamic";
 
 const success = <DynamicIcon name="circle-check" size={22} />;

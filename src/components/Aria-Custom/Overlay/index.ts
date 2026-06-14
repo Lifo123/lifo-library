@@ -1,2 +1,2 @@
-export { Modal, ModalOverlay } from "react-aria-components";
-export { Popover } from "react-aria-components";
+export { Modal, ModalOverlay } from "react-aria-components/Modal";
+export { Popover } from "react-aria-components/Popover";

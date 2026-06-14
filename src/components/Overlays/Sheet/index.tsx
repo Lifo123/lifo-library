@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import { useEnterAnimation } from "@react-aria/utils";
-import { Dialog, Modal, ModalOverlay } from "react-aria-components";
+import { Dialog, Modal, ModalOverlay } from "react-aria-components/Modal";
 import { InnerProps, BaseOverlayProps } from "../types";
 import { OverlayController } from "../OverlayController";
-import { sheet } from "../controller.store";
+import { sheet } from "../overlays.store";
 
 type SheetComponentProps = {
   placement?: "top" | "bottom" | "left" | "right";

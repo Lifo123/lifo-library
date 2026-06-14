@@ -1,63 +1,62 @@
-'use client'
 import { getPath, setPath } from "@nanostores/deepmap";
 
 function isObject(obj: any): boolean {
-  return typeof obj === 'object' && obj !== null && !Array.isArray(obj)
+  return typeof obj === "object" && obj !== null && !Array.isArray(obj);
 }
 
 export function LocalStorage(key: string) {
-  const isServer = typeof window === 'undefined';
+  const isServer = typeof window === "undefined";
+
   function safeJSONParse(value: string | null) {
-    if (!value) return null;
+    if (!value || isServer) return undefined;
     try {
       return JSON.parse(value);
     } catch (e) {
       console.error(`Error parsing localStorage key "${key}":`, e);
-      return null;
+      return undefined;
     }
   }
 
   function getKey(path: string) {
-    if (isServer) return null;
+    if (isServer) return undefined;
 
     let storedValue = localStorage.getItem(key);
     let parsedValue = safeJSONParse(storedValue);
 
-    if (path === '') return parsedValue;
-    if (!parsedValue) return null;
+    if (path === "") return parsedValue;
+    if (!parsedValue) return undefined;
 
     return getPath(path, parsedValue);
   }
 
   function setKey(path: string, value: any) {
-    if (isServer) return;
+    if (isServer) return undefined;
 
-    if (path === '' && value === undefined) {
-      removeKey('');
+    if (path === "" && value === undefined) {
+      removeKey("");
       return;
     }
 
-    let storedValue = localStorage.getItem(key) || '{}';
+    let storedValue = localStorage.getItem(key) || "{}";
     let parsedValue = safeJSONParse(storedValue) || {};
 
-    const res = path === ''
-      ? value
-      : setPath(path, value, parsedValue);
+    const res = path === "" ? value : setPath(path, value, parsedValue);
 
     localStorage.setItem(key, JSON.stringify(res));
   }
 
   function updateKey(path: string, value: any) {
-    if (isServer) return;
-    if (path === '' && value === undefined) {
-      removeKey('');
+    if (isServer) return undefined;
+
+    if (path === "" && value === undefined) {
+      removeKey("");
       return;
-    };
+    }
 
     let storedValue = localStorage.getItem(key);
     let parsedValue = safeJSONParse(storedValue) || {};
 
-    const currentValue = path === '' ? parsedValue : getPath(path, parsedValue);
+    const currentValue = path === "" ? parsedValue : getPath(path, parsedValue);
 
     let newValue = value;
 
@@ -67,17 +66,15 @@ export function LocalStorage(key: string) {
       newValue = [...currentValue, ...value];
     }
 
-    const res = path === ''
-      ? newValue
-      : setPath(path, newValue, parsedValue);
+    const res = path === "" ? newValue : setPath(path, newValue, parsedValue);
 
     localStorage.setItem(key, JSON.stringify(res));
   }
 
   function removeKey(path: string) {
-    if (isServer) return;
+    if (isServer) return undefined;
 
-    if (path === '') {
+    if (path === "") {
       localStorage.removeItem(key);
       return;
     }
@@ -97,9 +94,9 @@ export function LocalStorage(key: string) {
     setKey,
     updateKey,
     removeKey,
-    get: () => getKey(''),
-    set: (value: any) => setKey('', value),
-    update: (value: any) => updateKey('', value),
-    remove: () => removeKey('')
-  }
+    get: () => getKey(""),
+    set: (value: any) => setKey("", value ? value : undefined),
+    update: (value: any) => updateKey("", value ? value : undefined),
+    remove: () => removeKey(""),
+  };
 }

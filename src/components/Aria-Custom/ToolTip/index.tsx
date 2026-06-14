@@ -1,14 +1,15 @@
 "use client";
+
 import React from "react";
-import { TooltipTriggerProps } from "react-aria";
 import {
   TooltipTrigger,
   Tooltip as AriaTooltip,
   Focusable,
   TooltipProps,
-} from "react-aria-components";
+  TooltipTriggerComponentProps,
+} from "react-aria-components/Tooltip";
 
-interface TooltipLibProps extends TooltipTriggerProps {
+interface TooltipLibProps extends TooltipTriggerComponentProps {
   children: React.ReactNode;
   label?: string;
   content?: React.ReactNode;

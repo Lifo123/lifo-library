@@ -1,4 +1,4 @@
-import { DialogProps, ModalOverlayProps } from "react-aria-components";
+import type { DialogProps, ModalOverlayProps } from "react-aria-components/Modal";
 
 export type BaseOverlayProps = {
   id: string;

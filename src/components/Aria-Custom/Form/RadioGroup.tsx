@@ -1,3 +1,5 @@
+"use client";
+
 import {
   RadioGroup as AriaRadioGroup,
   RadioField,
@@ -7,7 +9,7 @@ import {
   type RadioFieldProps,
 } from "react-aria-components/RadioGroup";
 import { composeRenderProps } from "react-aria-components/composeRenderProps";
-import { Label, FieldError, Description } from "./index";
+import { Label, FieldError, Description } from "./Form";
 
 export interface RadioGroupProps extends Omit<AriaRadioGroupProps, "children"> {
   children?: React.ReactNode;

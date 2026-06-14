@@ -2,7 +2,7 @@
 import React from "react";
 import { useStore } from "@nanostores/react";
 import { useExitAnimation } from "@react-aria/utils";
-import { $overlays, drawer, sheet, dialog } from "./controller.store";
+import { $overlays, drawer, sheet, dialog } from "./overlays.store";
 
 type OverlayControllerProps = {
   id: string;

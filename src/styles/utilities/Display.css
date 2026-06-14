@@ -32,3 +32,33 @@
 @utility place-center{
   place-content: center;
 }
+
+@utility hide-2xl {
+  @media (max-width: 1536px) {
+    display: none !important;
+  }
+}
+
+@utility hide-xl {
+  @media (max-width: 1280px) {
+    display: none !important;
+  }
+}
+
+@utility hide-lg {
+  @media (max-width: 1024px) {
+    display: none !important;
+  }
+}
+
+@utility hide-md {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+@utility hide-sm {
+  @media (max-width: 640px) {
+    display: none !important;
+  }
+}

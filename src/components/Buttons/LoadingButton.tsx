@@ -7,7 +7,7 @@ import {
 import { composeRenderProps } from "react-aria-components/composeRenderProps";
 import { LoaderCircleIcon } from "lucide-react";
 import { useStore } from "@nanostores/react";
-import { $loading, loading } from "../Loading/Loading.Store";
+import { _loading, loading } from "../Loading/Loading.Store";
 
 type ButtomPromiseProps = {
   onPress?: (e: PressEvent) => Promise<any>;
@@ -18,14 +18,14 @@ export function ButtonPromise({
   isPending,
   ...props
 }: ButtomPromiseProps) {
-  const RECORD = useStore($loading, { keys: [id] });
-  const isActuallyPending = RECORD[id] ?? isPending ?? false;
+  const LOADERS = useStore(_loading, { keys: [id] });
+  const isActuallyPending = LOADERS[id].state ?? isPending ?? false;
 
   const handlePress = async (e: PressEvent) => {
     if (props.onPress) {
       loading.start(id);
       await props.onPress(e);
-      loading.end(id);
+      loading.stop(id);
     }
   };
 

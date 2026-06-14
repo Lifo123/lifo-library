@@ -1,11 +1,13 @@
+"use client";
+
+import type { ReactNode } from "react";
 import {
   SwitchField,
   SwitchButton,
   type SwitchFieldProps,
   type ValidationResult,
 } from "react-aria-components/Switch";
-import { Description, FieldError } from "./index";
-import type { ReactNode } from "react";
+import { Description, FieldError } from "./Form";
 
 export interface SwitchProps extends Omit<SwitchFieldProps, "children"> {
   children: ReactNode;

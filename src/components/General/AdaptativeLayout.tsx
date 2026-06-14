@@ -1,25 +1,19 @@
 "use client";
 import React from "react";
 import { useStore } from "@nanostores/react";
-import { $clientStore } from "../../stores/clientStore";
+import { _clientStore, ClientStore } from "../../stores/clientStore";
 
 type Props = {
-  children: (props: {
-    isMobile: boolean;
-    isMounted: boolean;
-    isTouchDevice: boolean;
-  }) => React.ReactNode;
+  children: (props: ClientStore & { isMounted: boolean }) => React.ReactNode;
 };
 
 export function AdaptiveLayout({ children }: Props) {
-  const { isMobile, isTouchDevice } = useStore($clientStore, {
-    keys: ["isMobile", "isTouchDevice"],
-  });
+  const client = useStore(_clientStore);
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
     setMounted(true);
   }, []);
 
-  return <>{children({ isMobile, isMounted: mounted, isTouchDevice })}</>;
+  return <>{children({ ...client, isMounted: mounted })}</>;
 }

@@ -1,45 +1,42 @@
-"use client";
 import { deepMap } from "@nanostores/deepmap";
-import { nanoid } from "nanoid";
 
-export const $loading = deepMap<Record<string, boolean>>({
-  global: false,
+type LoadingStore = {
+  state: boolean;
+  message?: string;
+};
+
+export const _loading = deepMap<Record<string, LoadingStore>>({
+  all: {
+    state: false,
+  },
 });
 
-function set(value: boolean, id?: string): string {
-  const idSafe = id || nanoid();
-
-  $loading.updateKey(idSafe, value);
-  return idSafe;
+function start(key: string, message?: string) {
+  _loading.setKey(key, { state: true, message });
 }
 
-async function promise(fn: () => Promise<void>, id?: string) {
-  const idSafe = set(true, id);
+function stop(key: string) {
+  _loading.updateKey(`${key}.state`, false);
+}
 
+async function promise(
+  promise: () => Promise<void>,
+  key: string,
+  message?: string,
+) {
   try {
-    await fn();
-  } catch (error) {
-    throw error;
+    start(key, message);
+    await promise();
+  } catch (e) {
+    console.error(e);
+    stop(key);
   } finally {
-    $loading.setKey(idSafe, false);
+    stop(key);
   }
-}
-
-function end(id?: string) {
-  if (id) {
-    $loading.setKey(id, false);
-  }
-
-  const keys = $loading.get();
-  Object.keys(keys).forEach((key) => {
-    if (key !== id) {
-      $loading.setKey(key, false);
-    }
-  });
 }
 
 export const loading = {
-  start: (id: string) => set(true, id),
+  start,
+  stop,
   promise,
-  end: (id: string) => end(id),
 };
